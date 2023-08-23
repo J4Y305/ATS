@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.AnnMapper">
+
+	<!-- 공고 등록 -->
+	<insert id="create">
+		<selectKey keyProperty="annNum" resultType="int"
+			order="BEFORE">
+			SELECT SEQ_TBL_ANN.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_ANN (ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE,
+		ANN_END_DATE,
+		DETAIL, MNG_ID, ANN_ACT, DEADLINE)
+		VALUES (#{annNum},
+		#{annName}, #{annField},
+		#{annStartDate}, #{annEndDate},
+		#{detail},
+		#{mngId}, #{annAct}, #{deadline})
+	</insert>
+
+	<select id="read" resultType="com.ats.domain.AnnVO">
+		SELECT ANN_NUM, ANN_NAME,
+		ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
+		DETAIL, MNG_ID, ANN_ACT,
+		DEADLINE, ANN_REG_DATE
+		FROM TBL_ANN
+		WHERE ANN_NUM =
+		#{annNum}
+	</select>
+
+	<update id="update">
+		UPDATE TBL_ANN SET ANN_NAME = #{annName},
+		ANN_FIELD = #{annField},
+		ANN_START_DATE = #{annStartDate},
+		ANN_END_DATE = #{annEndDate},
+		DETAIL = #{detail},
+		ANN_ACT = #{annAct},
+		DEADLINE = #{deadline}
+		WHERE ANN_NUM = #{annNum}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM TBL_ANN WHERE ANN_NUM = #{annNum}
+	</delete>
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'a'.toString()">
+				AND TITLE LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'm'.toString()">
+				AND CONTENT LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'd'.toString()">
+				AND (TITLE LIKE '%' || #{keyword} || '%')
+			</if>
+		</if>
+	</sql>
+
+	<select id="listSearch" resultType="com.ats.domain.AnnVO">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
+								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE
+					FROM (SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
+								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
+								FROM TBL_ANN WHERE ANN_NUM > 0
+		]]>
+		<include refid="search"></include>
+		<![CDATA[
+			ORDER BY ANN_NUM DESC))
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY ANN_NUM DESC
+		]]>
+	</select>
+
+	<select id="listSearchCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_ANN
+			WHERE ANN_NUM > 0
+		]]>
+		<include refid="search"></include>
+	</select>
+
+	<!-- 공고 이미지 파일 등록 -->
+	<insert id="insertImage">
+		INSERT INTO TBL_ANN_IMAGE (ANN_IMAGE_NUM,
+		ANN_IMAGE_NAME, ANN_NO)
+		VALUES (SEQ_TBL_ANN_IMAGE.NEXTVAL,
+		#{annImageName}, #{AnnNum})
+	</insert>
+
+	<!-- 공고 이미지 파일 삭제 -->
+	<delete id="deleteImage">
+		DELETE FROM TBL_ANN_IMAGE WHERE ANN_NUM =
+		#{annNum}
+	</delete>
+
+	<!-- 공고 이미지 파일 목록 -->
+	<select id="imageList" resultType="com.ats.domain.AnnImageVO">
+		SELECT ANN_IMAGE_NUM,
+		SUBSTR(ANN_IMAGE_NAME, 50) AS ANN_IMAGE_NAME,
+		ANN_IMAGE_NAME AS FILE_LOCATION,
+		ANN_NUM
+
+		FROM TBL_ANN_IMAGE
+		WHERE ANN_NUM = #{annNUm}
+	</select>
+	
+	<!-- 공고 이미지 파일 등록 -->
+	<insert id="insertFile">
+		INSERT INTO TBL_ANN_FILE (ANN_FILE_NUM,
+		ANN_FILE_NAME, ANN_NO)
+		VALUES (SEQ_TBL_ANN_FILE.NEXTVAL,
+		#{annFileName}, #{AnnNum})
+	</insert>
+
+	<!-- 공고 이미지 파일 삭제 -->
+	<delete id="deleteFile">
+		DELETE FROM TBL_ANN_FILE WHERE ANN_NUM =
+		#{annNum}
+	</delete>
+
+	<!-- 공고 이미지 파일 목록 -->
+	<select id="fileList" resultType="com.ats.domain.AnnFileVO">
+		SELECT ANN_FILE_NUM,
+		SUBSTR(ANN_FILE_NAME, 50) AS ANN_FILE_NAME,
+		ANN_FILE_NAME AS FILE_LOCATION,
+		ANN_NUM
+
+		FROM TBL_ANN_FILE
+		WHERE ANN_NUM = #{annNUm}
+	</select>
+
+
+
+
+
+</mapper>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.RaterMapper">
+
+	<select id="login" resultType="com.ats.domain.RaterVO">
+		SELECT RATER_ID, RATER_PWD, RATER_NAME, RATER_DEPT, RATER_RANK, 
+				RATER_PHONE, RATER_EMAIL, MNG_ID, RATER_REG_DATE
+		FROM TBL_RATER
+		WHERE RATER_ID = #{raterId} AND RATER_PWD = #{raterPwd}
+	</select>
+	
+	<insert id="create">
+		INSERT INTO TBL_RATER (RATER_ID, RATER_PWD, RATER_NAME, RATER_DEPT, RATER_RANK, 
+							RATER_PHONE, RATER_EMAIL, MNG_ID)
+		VALUES (#{raterId}, #{raterPwd}, #{raterName}, #{raterDept}, #{raterRank},
+				#{raterPhone}, #{raterEmail}, #{mngId})
+	</insert>
+	
+	<select id="read" resultType="com.ats.domain.RaterVO">
+		SELECT RATER_ID, RATER_PWD, RATER_NAME, RATER_DEPT, RATER_RANK, 
+				RATER_PHONE, RATER_EMAIL, MNG_ID, RATER_REG_DATE
+		FROM TBL_RATER
+		WHERE RATER_ID = #{raterId}
+	</select>
+	
+	
+	
+	<update id="update">
+		UPDATE TBL_RATER SET RATER_PWD = #{raterPwd}, 
+							RATER_NAME =#{raterName},
+							RATER_DEPT =#{raterDept},
+							RATER_RANK =#{raterRank},
+							RATER_PHONE =#{raterPhone},
+							RATER_EMAIL=#{raterEmail}
+		WHERE RATER_ID = #{raterId}
+	</update>
+	
+	<delete id="delete">
+		DELETE FROM TBL_RATER WHERE RATER_ID = #{raterId}
+	</delete>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'n'.toString()">
+				AND TITLE LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'i'.toString()">
+				AND CONTENT LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'm'.toString()">
+				AND WRITER LIKE '%' || #{keyword} || '%'
+			</if>
+			</if>
+	</sql>
+	
+	<select id="listSearch" resultType="com.ats.domain.RaterVO">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM RNUM, RATER_ID, RATER_PWD, RATER_NAME, RATER_DEPT, RATER_RANK, 
+				RATER_PHONE, RATER_EMAIL, MNG_ID, RATER_REG_DATE
+					FROM (SELECT ROWNUM RNUM, RATER_ID, RATER_PWD, RATER_NAME, RATER_DEPT, RATER_RANK, 
+				RATER_PHONE, RATER_EMAIL, MNG_ID, RATER_REG_DATE FROM TBL_RATER WHERE 1=1
+		]]>
+			<include refid="search"></include>
+		<![CDATA[
+			ORDER BY RNUM DESC))
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY RNUM DESC
+		]]>
+	</select>
+	
+	<select id="listSearchCountCriteria" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_RATER
+			WHERE 1=1
+		]]>
+		<include refid="search"></include>
+	</select>
+</mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.UserMapper">
+
+   <select id="login" resultType="com.ats.domain.UserVO">
+      SELECT USER_ID, USER_PWD, BIRTH_DAY, GENDER, USER_EMAIL, USER_PHONE, USER_REG_DATE, USER_NAME 
+      FROM TBL_USER
+      WHERE USER_ID = #{userId} AND USER_PWD = #{userPwd}
+   </select>
+   
+   <insert id="create">
+      INSERT INTO TBL_USER (USER_ID, USER_PWD, BIRTH_DAY, GENDER, USER_EMAIL, 
+      USER_PHONE, USER_NAME)
+      VALUES (#{userId}, #{userPwd}, #{birthDay}, #{gender}, 
+      #{userEmail}, #{userPhone}, #{userName})
+   </insert>
+
+   <update id="update">
+      UPDATE TBL_USER SET USER_NAME = #{userName}, USER_PWD = #{userPwd}, BIRTH_DAY = #{birthDay}, 
+      GENDER = #{gender}, USER_EMAIL = #{userEmail}, USER_PHONE = #{userPhone}
+      WHERE USER_ID = #{userId}
+   </update>
+   
+   <select id="read" resultType="com.ats.domain.UserVO">
+      SELECT USER_ID, USER_PWD, BIRTH_DAY, GENDER, USER_EMAIL, USER_PHONE, USER_REG_DATE, USER_NAME
+         FROM TBL_USER
+         WHERE USER_ID = #{userId}
+   </select>
+
+   <delete id="delete">
+      DELETE FROM TBL_USER WHERE USER_ID = #{userId}
+   </delete>
+   
+   
+   <sql id="search">
+      <if test="searchType != null">
+         <if test="searchType == 'i'.toString()">
+            AND USER_ID LIKE '%' || #{keyword} || '%'
+         </if>
+         <if test="searchType == 'n'.toString()">
+            AND USER_NAME LIKE '%' || #{keyword} || '%'
+         </if>
+      </if>
+   </sql>
+
+   <select id="listSearch" resultType="com.ats.domain.UserVO">
+   <![CDATA[
+      SELECT * FROM (
+         SELECT ROWNUM RNUM, USER_ID, USER_PWD, BIRTH_DAY, GENDER, USER_EMAIL,
+         USER_PHONE, USER_REG_DATE, USER_NAME
+            FROM (SELECT * FROM TBL_USER WHERE USER_ID IS NOT NULL
+      ]]>
+      <include refid="search"></include>
+            
+   <![CDATA[               
+      ORDER BY USER_ID DESC))
+         WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+      ORDER BY USER_ID DESC
+      ]]>
+   </select>
+
+   <select id="listSearchCount" resultType="int">
+   <![CDATA[
+      SELECT COUNT(*) FROM TBL_USER
+         WHERE USER_ID IS NOT NULL
+   ]]>
+      <include refid="search"></include>
+   </select>
+   
+   
+   
+</mapper>

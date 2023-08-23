@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.MngMapper">
+
+	<select id="login" resultType="com.ats.domain.MngVO">
+		SELECT MNG_ID, MNG_NAME, MNG_DEPT, MNG_RANK, MNG_PHONE, MNG_PWD, MNG_ACT,ENT_NUM, MNG_REG_DATE
+		FROM TBL_MNG
+		WHERE MNG_ID = #{mngId} AND MNG_PWD = #{mngPwd}
+	</select>
+	
+	<insert id="entCreate">
+	<selectKey keyProperty="entNum" resultType="int"
+			order="BEFORE">
+			SELECT SEQ_TBL_ENT.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO TBL_ENT (ENT_NUM, ENT_NAME, CATEGORY, ADDRESS, 
+							ZIP_CODE, ENT_PHONE, REGISTRATION, ADMIN_ID)
+		VALUES (#{entNum}, #{entName}, #{category}, #{address},
+				#{zipCode}, #{entPhone}, #{registration}, #{adminId})
+	</insert>
+	
+	<insert id="mngCreate">
+		INSERT INTO TBL_MNG (MNG_ID, MNG_NAME, MNG_DEPT, MNG_RANK, MNG_PHONE, 
+							MNG_PWD, MNG_ACT, ENT_NUM)
+		VALUES (#{mngId}, #{mngName}, #{mngDept}, #{mngRank}, #{mngPhone},
+				#{mngPwd}, #{mngAct}, #{entNum})
+	</insert>
+	
+	<select id="mngRead" resultType="com.ats.domain.MngVO">
+		SELECT MNG_ID, MNG_NAME, MNG_DEPT, MNG_RANK,
+				MNG_PHONE, MNG_PWD, MNG_ACT, MNG_REG_DATE
+		FROM TBL_MNG
+		WHERE MNG_ID = #{mngId}
+	</select>
+	
+	<select id="entRead" resultType="com.ats.domain.EntVO">
+		SELECT ENT_NUM, ENT_NAME, CATEGORY, ADDRESS, 
+			ZIP_CODE, ENT_PHONE, REGISTRATION, ADMIN_ID, ENT_REG_DATE
+		FROM TBL_ENT
+		WHERE ENT_NUM = #{entNum}
+	</select>
+	
+	<update id="mngUpdate">
+		UPDATE TBL_MNG SET MNG_NAME = #{mngName}, 
+							MNG_DEPT =#{mngDept},
+							MNG_RANK =#{mngRank},
+							MNG_PHONE =#{mngPhone},
+							MNG_PWD =#{mngPwd},
+							MNG_ACT =#{mngAct}
+		WHERE MNG_ID = #{mngId}
+	</update>
+	
+	<update id="entUpdate">
+		UPDATE TBL_ENT SET ENT_NAME = #{entName}, 
+							CATEGORY =#{category},
+							ADDRESS =#{address},
+							ZIP_CODE =#{zipCode},
+							ENT_PHONE =#{entPhone},
+							REGISTRATION =#{registration}
+		WHERE ENT_NUM = #{entNum}
+	</update>
+	
+	<delete id="mngDelete">
+		DELETE FROM TBL_MNG WHERE MNG_ID = #{mngId}
+	</delete>
+	
+	<delete id="entDelete">
+		DELETE FROM TBL_ENT WHERE ENT_NUM = #{entNum}
+	</delete>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'e'.toString()">
+				AND TITLE LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'i'.toString()">
+				AND CONTENT LIKE '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'n'.toString()">
+				AND WRITER LIKE '%' || #{keyword} || '%'
+			</if>
+			</if>
+	</sql>
+	
+	<select id="listSearch" resultType="com.ats.domain.MngVO">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM RNUM, MNG_ID, MNG_NAME, MNG_DEPT, MNG_RANK,
+				MNG_PHONE, MNG_PWD, MNG_ACT, MNG_REG_DATE
+					FROM (SELECT ROWNUM RNUM, MNG_ID, MNG_NAME, MNG_DEPT, MNG_RANK,
+				MNG_PHONE, MNG_PWD, MNG_ACT, MNG_REG_DATE FROM TBL_MNG WHERE 1=1
+		]]>
+			<include refid="search"></include>
+		<![CDATA[
+			ORDER BY RNUM DESC))
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY RNUM DESC
+		]]>
+	</select>
+	
+	<select id="listSearchCountCriteria" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_MNG
+			WHERE 1=1
+		]]>
+		<include refid="search"></include>
+	</select>
+	
+</mapper>

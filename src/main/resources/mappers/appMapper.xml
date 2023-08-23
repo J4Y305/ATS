@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.AppMapper">
+	
+	<insert id="create">
+		INSERT INTO TBL_APP (APP_NUM, USER_ID, ANN_NUM, APP_FILE, ETC, APP_SAVE)
+		VALUES (SEQ_TBL_APP.nextval, #{userId}, #{annNum}, #{appFile}, #{etc}, #{appSave})
+	</insert>
+
+	<update id="update">
+		UPDATE TBL_APP SET APP_FILE = #{appFile}, ETC = #{etc}, APP_SAVE = #{appSave}
+		WHERE APP_NUM = #{appNum}
+	</update>
+	
+	<select id="read" resultType="com.ats.domain.AppVO">
+		SELECT USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+			FROM TBL_APP
+			WHERE APP_NUM = #{appNum}
+	</select>
+
+	<delete id="delete">
+		DELETE FROM TBL_APP WHERE APP_NUM = #{appNum}
+	</delete>
+	
+	
+	
+	<select id="listAll" resultType="com.ats.domain.AppVO">
+	<![CDATA[
+		SELECT USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+				FROM TBL_APP
+		        WHERE APP_NUM > 0
+		        ORDER BY APP_NUM DESC
+		        ]]>
+	</select>
+	
+	<select id="listCountCriteria" resultType="int">
+		SELECT COUNT(*) FROM TBL_APP
+	</select>
+	
+	<select id="listCriteria" resultType="com.ats.domain.AppVO">
+	<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+				FROM (SELECT * FROM TBL_APP ORDER BY APP_NUM DESC)
+					)			
+		WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+		ORDER BY APP_NUM DESC, APP_REG_DATE DESC
+		]]>
+	</select>	
+	
+</mapper>

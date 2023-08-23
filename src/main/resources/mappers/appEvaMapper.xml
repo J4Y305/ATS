@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ats.mapper.AppEvaMapper">
+	<insert id="appEvaCreate">
+		INSERT INTO TBL_APP_EVA (APP_NUM, EVA_NUM, RATER_ID, SCORE_SUM, SCORE_COMMENT)
+		VALUES (#{appNum}, #{evaNum}, #{raterId}, #{scoreSum}, #{scoreComment})
+	</insert>
+	
+	<select id="appEvaRead" resultType="com.ats.domain.AppEvaVO">
+		SELECT APP_NUM, EVA_NUM, RATER_ID, SCORE_SUM, SCORE_COMMENT, SCORE_REG_DATE
+			FROM TBL_APP_EVA
+			WHERE APP_NUM = #{appNum}
+	</select>
+	
+	<insert id="evaDetailCreate">
+		INSERT INTO TBL_EVA_DETAIL (EVA_DETAIL_NUM, EVA_NUM, APP_NUM, RATER_ID, EVA_ITEM_NUM, EVA_DETAIL_SCORE)
+		VALUES (SEQ_TBL_EVA_DETAIL.nextval, #{evaNum}, #{appNum}, 
+		#{raterId}, #{evaItemNum}, #{evaDetailScore})
+	</insert>
+	
+	<select id="evaDetailRead" resultType="com.ats.domain.EvaDetailVO">
+		SELECT EVA_DETAIL_NUM, EVA_NUM, APP_NUM, RATER_ID, EVA_ITEM_NUM, EVA_DETAIL_SCORE
+			FROM TBL_EVA_DETAIL
+			WHERE EVA_NUM = #{evaNum}
+	</select>
+	
+	
+	
+	<select id="listCountCriteria" resultType="int">
+		SELECT COUNT(*) FROM TBL_APP_EVA
+	</select>
+	
+	<select id="listCriteria" resultType="com.ats.domain.AppEvaVO">
+	<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM RNUM, APP_NUM, EVA_NUM, RATER_ID, SCORE_SUM, SCORE_COMMENT, SCORE_REG_DATE
+				FROM (SELECT * FROM TBL_APP_EVA ORDER BY APP_NUM DESC)
+					)			
+		WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+		ORDER BY APP_NUM DESC, SCORE_REG_DATE DESC
+		]]>
+	</select>	
+
+
+</mapper>
