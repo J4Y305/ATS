@@ -26,7 +26,7 @@ public class HomeController {
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
-		Date date = new Date();
+		Date date = new Date();  
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 
 		String formattedDate = dateFormat.format(date);
@@ -34,7 +34,7 @@ public class HomeController {
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";
-	}
+	} 
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public String adminHome(Locale locale, Model model) {
