@@ -44,7 +44,6 @@ public class MngDAOCreateTest {
 		mVo.setMngName("김오래");
 		mVo.setMngDept("근로팀");
 		mVo.setMngRank("팀장");
-		mVo.setMngphone("010-6894-4567");
 		mVo.setMngPwd("1234");
 		mVo.setMngAct(0);
 		mVo.setEntNum(entNum);

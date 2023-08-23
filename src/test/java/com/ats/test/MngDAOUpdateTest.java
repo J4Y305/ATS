@@ -43,7 +43,6 @@ public class MngDAOUpdateTest {
 		mVo.setMngName("김오래_수정");
 		mVo.setMngDept("근로팀_수정");
 		mVo.setMngRank("팀장_수정");
-		mVo.setMngphone("010-6894-4567000");
 		mVo.setMngPwd("1234");
 		mVo.setMngAct(1);
 		

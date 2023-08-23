@@ -11,7 +11,7 @@
 	<select id="appEvaRead" resultType="com.ats.domain.AppEvaVO">
 		SELECT APP_NUM, EVA_NUM, RATER_ID, SCORE_SUM, SCORE_COMMENT, SCORE_REG_DATE
 			FROM TBL_APP_EVA
-			WHERE APP_NUM = #{appNum}
+			WHERE APP_NUM = #{appNum} AND EVA_NUM = #{appNum}
 	</select>
 	
 	<insert id="evaDetailCreate">
@@ -23,7 +23,7 @@
 	<select id="evaDetailRead" resultType="com.ats.domain.EvaDetailVO">
 		SELECT EVA_DETAIL_NUM, EVA_NUM, APP_NUM, RATER_ID, EVA_ITEM_NUM, EVA_DETAIL_SCORE
 			FROM TBL_EVA_DETAIL
-			WHERE EVA_NUM = #{evaNum}
+			WHERE EVA_DETAIL_NUM = #{evaDetailNum} AND EVA_ITEM_NUM = #{evaItemNum}
 	</select>
 	
 	
@@ -43,5 +43,10 @@
 		]]>
 	</select>	
 
-
+<!-- 공고 이미지 파일 목록 -->
+	<select id="evaDetailList" resultType="com.ats.domain.EvaDetailVO">
+		SELECT EVA_DETAIL_NUM, EVA_NUM, APP_NUM, RATER_ID, EVA_ITEM_NUM, EVA_DETAIL_SCORE
+			FROM TBL_EVA_DETAIL
+			WHERE EVA_DETAIL_NUM = #{evaDetailNum} AND EVA_ITEM_NUM = #{evaItemNum}
+	</select>
 </mapper>

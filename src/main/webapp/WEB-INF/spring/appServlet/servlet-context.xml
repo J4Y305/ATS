@@ -21,6 +21,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<beans:bean id="AdminLoginInterceptor"
+		class="com.ats.interceptor.AdminLoginInterceptor">
+	</beans:bean>
+	
 	<beans:bean id="UserLoginInterceptor"
 		class="com.ats.interceptor.UserLoginInterceptor">
 	</beans:bean>
@@ -36,7 +40,6 @@
 		</interceptor>
 
 		<interceptor>
-
 			<mapping path="/user/modifyPage" />
 			<mapping path="/user/removePage" />
 			<mapping path="/product/register" />

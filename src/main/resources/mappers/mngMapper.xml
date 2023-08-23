@@ -100,7 +100,7 @@
 		]]>
 	</select>
 	
-	<select id="listSearchCountCriteria" resultType="int">
+	<select id="listSearchCount" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM TBL_MNG
 			WHERE 1=1

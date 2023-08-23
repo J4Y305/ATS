@@ -11,6 +11,7 @@ public class MngVO {
 	private String mngPwd;
 	private int mngAct;
 	private int entNum;
+	private String entName;
 	private Date mngRegDate;
 
 	public String getMngId() {
@@ -49,8 +50,8 @@ public class MngVO {
 		return mngPhone;
 	}
 
-	public void setMngphone(String mngphone) {
-		this.mngPhone = mngphone;
+	public void setMngPhone(String mngPhone) {
+		this.mngPhone = mngPhone;
 	}
 
 	public String getMngPwd() {
@@ -77,6 +78,14 @@ public class MngVO {
 		this.entNum = entNum;
 	}
 
+	public String getEntName() {
+		return entName;
+	}
+
+	public void setEntName(String entName) {
+		this.entName = entName;
+	}
+
 	public Date getMngRegDate() {
 		return mngRegDate;
 	}
@@ -88,8 +97,8 @@ public class MngVO {
 	@Override
 	public String toString() {
 		return "MngVO [mngId=" + mngId + ", mngName=" + mngName + ", mngDept=" + mngDept + ", mngRank=" + mngRank
-				+ ", mngphone=" + mngPhone + ", mngPwd=" + mngPwd + ", mngAct=" + mngAct + ", entNum=" + entNum
-				+ ", mngRegDate=" + mngRegDate + "]";
+				+ ", mngPhone=" + mngPhone + ", mngPwd=" + mngPwd + ", mngAct=" + mngAct + ", entNum=" + entNum
+				+ ", entName=" + entName + ", mngRegDate=" + mngRegDate + "]";
 	}
 
 }

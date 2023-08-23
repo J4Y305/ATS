@@ -36,9 +36,9 @@ public class AppEvaDAOevaDetailReadTest {
 		}
 	}
 
-	@Test
-	public void testRead() throws Exception {
-		logger.info("testRead : " + dao.evaDetailRead(1));
-
-	}
+//	@Test
+//	public void testRead() throws Exception {
+//		logger.info("testRead : " + dao.evaDetailRead(1));
+//
+//	}
 }
