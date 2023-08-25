@@ -29,12 +29,15 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO read(String userId) throws Exception {
+		System.out.println(dao.read(userId));
 		return dao.read(userId);
 	}
 
 	@Override
 	public void modify(UserVO vo) throws Exception {
+		System.out.println(vo);
 		dao.update(vo);
+		System.out.println(vo);
 	}
 
 	@Override
@@ -51,6 +54,7 @@ public class UserServiceImpl implements UserService{
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return dao.listSearchCount(cri);
 	}
+
 	
 
 }

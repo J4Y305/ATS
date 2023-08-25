@@ -17,6 +17,7 @@ import com.ats.domain.PageMaker;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.RaterVO;
 import com.ats.dto.RaterLoginDTO;
+import com.ats.service.EvaService;
 import com.ats.service.RaterService;
 
 @Controller
@@ -28,21 +29,25 @@ public class RaterController {
 	@Inject
 	private RaterService service;
 	
+	@Inject
+	private EvaService Eservice;
+	
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") RaterLoginDTO dto) throws Exception{
-		
+		logger.info("LOGIN GET...");
 	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
 	public void loginPOST(RaterLoginDTO dto, Model model) throws Exception {
-
+		logger.info("LOGIN POST...");
 		RaterVO vo = service.login(dto);
-
+		logger.info("LOGIN POST..." + dto);
 		if (vo == null) {
 			return;
 		}
 
-		model.addAttribute("RaterVO", vo);
+		model.addAttribute("raterVO", vo);
+		logger.info("register post..." + vo);
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -55,7 +60,7 @@ public class RaterController {
 			session.invalidate();
 		}
 
-		return "redirect:/";
+		return "redirect:/rater/login";
 	}
 	
 	// REGISTER
@@ -71,7 +76,7 @@ public class RaterController {
 		// 유저 등록
 		service.register(vo);
 
-		return "redirect:/rater/list";
+		return "redirect:/rater";
 	}
 	
 	// READPAGE
@@ -131,7 +136,7 @@ public class RaterController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/rater/list";
+		return "redirect:/rater";
 	}
 	
 	// REMOVEPAGE
@@ -156,7 +161,7 @@ public class RaterController {
 			service.remove(raterId);
 			// 목록화면으로 이동.
 			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/rater/list";
+			return "redirect:/rater";
 		} else {
 			// 로그인 정보와 게시글 작성자가 일치하지 않는 경우 -> 상세페이지로 강제이동
 			rttr.addAttribute("raterId", raterId);
@@ -177,16 +182,15 @@ public class RaterController {
 
 		// 선택된 페이지의 게시글 정보로 10개 가져오기
 
-		model.addAttribute("list", service.listSearch(cri));
+		model.addAttribute("list", Eservice.listSearch(cri));
 
 		// 페이징 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service.listSearchCount(cri));
+		pageMaker.setTotalCount(Eservice.listSearchCount(cri));
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
 	}
-
 
 }

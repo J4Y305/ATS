@@ -71,7 +71,7 @@ public class UserController {
 		// 유저 등록
 		service.register(vo);
 
-		return "redirect:/user/list";
+		return "redirect:/";
 	}
 	
 	// READPAGE
@@ -116,6 +116,7 @@ public class UserController {
 		}
 	}
 	
+	
 	@RequestMapping(value = "/modifyPage", method = RequestMethod.POST)
 	public String modifyPagePOST(UserVO vo, @ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr)
 			throws Exception {
@@ -131,7 +132,7 @@ public class UserController {
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
-		return "redirect:/user/list";
+		return "redirect:/user/readPage";
 	}
 	
 	// REMOVEPAGE
@@ -186,6 +187,51 @@ public class UserController {
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	// MODIFYPAGE
+		@RequestMapping(value = "/myPage", method = RequestMethod.GET)
+		public String myPageGET(@RequestParam("userId") String userId, HttpSession session,
+				@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, Model model) throws Exception {
+			logger.info("modifyPage GET.....");
+
+			// 수정할 수 있으려면, 로그인한 정보와 글의 작성자의 정보가 동일할 때만 수정 page로 이동.
+
+			// 1) 로그인 정보 가져오기
+			UserVO user = (UserVO) session.getAttribute("login");
+
+			// 2) 게시글의 작성자 id와 로그인 정보 id를 비교.
+			// 2-1) 게시글 정보 가져오기
+			UserVO userVO = service.read(userId);
+
+			// 2-2) 게시글 작성자와 id와 로그인 정보 id 비교.
+			if (user.getUserId().equals(userVO.getUserId())) {
+				// 작성자와 로그인 정보 같음.
+				model.addAttribute(userVO);
+				// 수정 페이지로 이동.
+				return "/user/myPage";
+			} else {
+				// 로그인 정보와 게시글 작성자가 일치하지 않는 경우 -> 강제이동
+				rttr.addAttribute("userId", userId);
+				rttr.addFlashAttribute("msg", "잘못된 접근입니다.");
+
+				return "redirect:/";
+			}
+		}
+
+		
+	@RequestMapping(value = "/myPage", method = RequestMethod.POST)
+	public String myPagePOST(UserVO vo,  HttpSession session, RedirectAttributes rttr, Model model) throws Exception {
+		
+		service.modify(vo);
+		
+		//session 정보 업데이트
+		session.setAttribute("login", vo);
+		
+		rttr.addAttribute("userId", vo.getUserId());
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		return "redirect:/user/myPage";
 	}
 
 

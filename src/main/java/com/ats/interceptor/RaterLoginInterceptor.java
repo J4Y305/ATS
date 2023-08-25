@@ -36,7 +36,7 @@ public class RaterLoginInterceptor extends HandlerInterceptorAdapter {
 			Object dest = session.getAttribute("dest");
 
 			// 로그인 전 보고 있었던 화면(url)으로 이동
-			response.sendRedirect(dest != null ? (String) dest : "/"); // 조건 ? true : false
+			response.sendRedirect(dest != null ? (String) dest : "/rater"); // 조건 ? true : false
 
 		}
 	}

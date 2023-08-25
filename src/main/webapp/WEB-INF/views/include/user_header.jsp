@@ -213,12 +213,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="/resources/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">${login.userName}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>${userVO.userName}</h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -256,7 +256,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/user/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -276,7 +276,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " href="/user">
           <i class="bi bi-grid"></i>
           <span>회원 - Dashboard</span>
         </a>
@@ -309,11 +309,13 @@
       </li><!-- End 상품 관리 Page Nav -->      
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
-          <!-- <i class="bi bi-person"></i> -->
-          <i class="bi bi-person"></i>
-          <span>마이 페이지</span>
-        </a>
+      <form action="/user/myPage" method="GET">
+        <input type="hidden" name="userId" value="${login.userId}">
+       <button type="submit" class="nav-link btn-link" style="border: none; padding: 10, 15; background: none;">
+            <i class="bi bi-person"></i>
+            <span>마이 페이지</span>
+        </button>
+		</form>
       </li><!-- End 상품 관리 Page Nav -->      
             
     </ul>

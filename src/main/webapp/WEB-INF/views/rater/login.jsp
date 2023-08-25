@@ -80,16 +80,16 @@
 							<div class="card-body">
 
 								<div class="pt-4 pb-2">
-									<h5 class="card-title text-center pb-0 fs-4">로그인</h5>
+									<h5 class="card-title text-center pb-0 fs-4">평가자 로그인</h5>
 									<p class="text-center small">Enter your username & password
 										to login</p>
 								</div>
 
-								<form class="row g-3 needs-validation" action="/user/loginPost" method="post" novalidate>
+								<form class="row g-3 needs-validation" action="/rater/loginPost" method="POST" novalidate>
 
 									<div class="col-12">
 										<label for="yourUsername" class="form-label">ID</label> <input
-											type="text" name="userId" class="form-control" id="userId"
+											type="text" name="raterId" class="form-control" id="raterId"
 											required>
 										<div class="invalid-feedback">Please enter your ID.</div>
 
@@ -97,30 +97,16 @@
 
 									<div class="col-12">
 										<label for="yourPassword" class="form-label">Password</label>
-										<input type="password" name="userPwd" class="form-control"
-											id="userPwd" required>
+										<input type="password" name="raterPwd" class="form-control"
+											id="raterPwd" required>
 										<div class="invalid-feedback">Please enter your
 											password!</div>
 									</div>
 
 									<div class="col-12">
-										<div class="form-check">
-											<input class="form-check-input" type="checkbox"
-												name="remember" value="true" id="rememberMe"> <label
-												class="form-check-label" for="rememberMe">Remember
-												me</label>
-										</div>
-									</div>
-									
-									<div class="col-12">
 										<button class="btn btn-primary w-100" type="submit">Login</button>
 									</div>
-									<div class="col-12">
-										<p class="small mb-0">
-											Don't have account? <a href="/user/register">Create an
-												account</a>
-										</p>
-									</div>
+
 								</form>
 
 							</div>

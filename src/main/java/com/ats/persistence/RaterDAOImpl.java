@@ -21,7 +21,7 @@ public class RaterDAOImpl implements RaterDAO {
 
 	@Override
 	public RaterVO login(RaterLoginDTO dto) throws Exception {
-		return sqlSession.selectOne(namespace + ".login");
+		return sqlSession.selectOne(namespace + ".login", dto);
 	}
 
 	@Override

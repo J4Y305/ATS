@@ -49,11 +49,20 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="getstarted scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">채용 공고</a></li>
-          <li><a class="nav-link scrollto" href="#services">로그인</a></li>
-          <li><a class="getstarted scrollto" href="#about">회원가입</a></li>
+          <li><c:if test="${null eq login.userId}"><a class="nav-link scrollto" href="/user/login">로그인</a></c:if></li>
+          <li><c:if test="${null eq login.userId}"><a class="nav-link scrollto" href="/user/register">회원가입</a></c:if></li>
+      	  <li><c:if test="${null ne login.userId}"><a class="nav-link scrollto" href="/user" onclick="submitFormWithUserId()">마이페이지</a>
+          <form id="userIdForm" action="/user" method="GET" style="display: none;">
+        		<input type="hidden" name="userId" id="userIdInput">
+    		</form>
+    		</c:if>
+          </li>
+          <li><c:if test="${null ne login.userId}"><a class="nav-link scrollto" href="/user/logout">로그아웃</a></c:if></li>
+          
+          
           </ul>
       </nav><!-- .navbar -->
       
@@ -61,3 +70,11 @@
     </div>
     
   </header><!-- End Header -->
+  
+  <script>
+function submitFormWithUserId() {
+    var userId = "${login.userId}"; // 여기서 사용자 아이디 값을 설정합니다.
+    document.getElementById("userIdInput").value = userId;
+    document.getElementById("userIdForm").submit();
+}
+</script>

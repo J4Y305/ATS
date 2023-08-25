@@ -71,7 +71,7 @@
 		]]>
 	</select>
 	
-	<select id="listSearchCountCriteria" resultType="int">
+	<select id="listSearchCount" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM TBL_RATER
 			WHERE 1=1

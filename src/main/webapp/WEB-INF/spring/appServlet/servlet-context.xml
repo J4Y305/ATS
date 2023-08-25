@@ -28,6 +28,10 @@
 	<beans:bean id="UserLoginInterceptor"
 		class="com.ats.interceptor.UserLoginInterceptor">
 	</beans:bean>
+	
+	<beans:bean id="RaterLoginInterceptor"
+		class="com.ats.interceptor.RaterLoginInterceptor">
+	</beans:bean>
 
 	<beans:bean id="AuthInterceptor"
 		class="com.ats.interceptor.AuthInterceptor">
@@ -36,10 +40,18 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPost" />
+			
 			<beans:ref bean="UserLoginInterceptor" />
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/rater/loginPost" />
+			
+			<beans:ref bean="RaterLoginInterceptor" />
 		</interceptor>
 
 		<interceptor>
+			
 			<mapping path="/user/modifyPage" />
 			<mapping path="/user/removePage" />
 			<mapping path="/product/register" />
