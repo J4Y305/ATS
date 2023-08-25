@@ -9,7 +9,8 @@
   <title>ATS - Applicant Tracking System</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Favicons -->
   <link href="/resources/admin/assets/img/favicon.png" rel="icon">
   <link href="/resources/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -45,7 +46,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/startup" class="logo d-flex align-items-center">
+      <a href="/mng" class="logo d-flex align-items-center">
         <img src="/resources/admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">ATS</span>
       </a>
@@ -213,13 +214,13 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="/resources/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">${login.mngId}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6>${login.mngId}</h6>
+              <span></span>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -256,7 +257,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/mng/login">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -283,7 +284,7 @@
       </li><!-- End Dashboard Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="/mng/annList">
           <!-- <i class="bi bi-person"></i> -->
           <i class="bi bi-menu-button-wide"></i>
           <span>공고 관리</span>
@@ -296,12 +297,12 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/mng/annIngList">
               <i class="bi bi-arrow-repeat"></i><span>진행 중인 공고</span>
             </a>
           </li>        
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/mng/annEndList">
               <i class="bi bi-card-list"></i><span>마감된 공고</span>
             </a>
           </li>
@@ -314,17 +315,17 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">       
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/mng/evaList">
               <i class="bi bi-card-list"></i><span>평가 목록</span>
             </a>
           </li>
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/mng/appEvaList">
               <i class="bi bi-card-checklist"></i><span>평가 결과</span>
             </a>
           </li>          
           <li>
-            <a href="icons-bootstrap.html">
+            <a href="/mng/raterLIst">
               <i class="bi bi-person"></i><span>평가자 관리</span>
             </a>
           </li>          

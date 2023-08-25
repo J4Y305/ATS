@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+  
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,8 @@
   <title>ATS - Applicant Tracking System</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-
+  <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Favicons -->
   <link href="/resources/admin/assets/img/favicon.png" rel="icon">
   <link href="/resources/admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -45,7 +47,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="/startup" class="logo d-flex align-items-center">
+      <a href="/admin" class="logo d-flex align-items-center">
         <img src="/resources/admin/assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">ATS</span>
       </a>
@@ -213,12 +215,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="/resources/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">${login.adminId}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>${login.adminId}</h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -256,7 +258,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="/admin/logout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -282,7 +284,7 @@
       </li><!-- End Dashboard Nav -->
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="/admin/mngList">
           <!-- <i class="bi bi-person"></i> -->
           <i class="bi bi-menu-button-wide"></i>
           <span>기업 관리</span>
@@ -290,7 +292,7 @@
       </li><!-- End 상품 관리 Page Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="/admin/userList">
           <i class="bi bi-person"></i>
           <span>회원 관리</span>
         </a>
