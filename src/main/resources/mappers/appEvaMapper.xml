@@ -11,7 +11,7 @@
 	<select id="appEvaRead" resultType="com.ats.domain.AppEvaVO">
 		SELECT APP_NUM, EVA_NUM, RATER_ID, SCORE_SUM, SCORE_COMMENT, SCORE_REG_DATE
 			FROM TBL_APP_EVA
-			WHERE APP_NUM = #{appNum} AND EVA_NUM = #{appNum}
+			WHERE APP_NUM = #{appNum} AND EVA_NUM = #{evaNum}
 	</select>
 	
 	<insert id="evaDetailCreate">
