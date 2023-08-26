@@ -288,7 +288,7 @@
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">       
           <li>
-            <a href="/rater/list">
+            <a href="/eva/evaList">
               <i class="bi bi-card-list"></i><span>평가 목록</span>
             </a>
           </li>        

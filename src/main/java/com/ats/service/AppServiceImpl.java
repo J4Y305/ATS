@@ -47,4 +47,5 @@ public class AppServiceImpl implements AppService{
 		return dao.listCountCriteria(cri);
 	}
 
+
 }

@@ -12,7 +12,7 @@
 
 <section class="section">
    <div class="row">
-      <div class="col-lg-6">
+      <div class="col-lg-10">
 
          <div class="card">
             <div class="card-body">
@@ -26,7 +26,6 @@
                         <thead>
                            <tr>
                               <th scope="col">번호</th>
-                              <th scope="col">공고명</th>
                               <th scope="col">평가명</th>
                               <th scope="col">평가 차수</th>
                               <th scope="col">평가 시작일</th>
@@ -36,7 +35,6 @@
                         </thead>
                         <tbody>
                            <c:forEach items="${list}" var="evaVO" varStatus="var">
-                           
 
                               <tr>
                                  <c:if test="${pageMaker.cri.page == 1 }">
@@ -46,21 +44,21 @@
                                     <td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
                                  </c:if>
                                  <td><a
-                                    href='/rater/readPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}'>
+                                    href='/eva/evaPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}&annNum=${evaVO.annNum}'>
                                        ${evaVO.evaName} </a></td>
-                                 <td>${evaVO.annNum}</td>
-                                 <td>${evaVO.annNum}</td>
-                                 <td>${evaVO.evaStartDate}</td>
-                                 <td>${evaVO.evaEndDate}</td>
-                                 <td><fmt:formatDate pattern="yyyy-MM-dd"
-                                       value="${evaVO.evaRegDate}" /></td>
+                                 <td>${evaVO.degree}</td>
+                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${evaVO.evaStartDate}" /></td>
+                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${evaVO.evaEndDate}" /></td>
+                                 <td><fmt:formatDate pattern="yyyy-MM-dd" value="${evaVO.evaRegDate}" /></td>
                               </tr>
-
+                              
                            </c:forEach>
                         </tbody>
                      </table>
-                     <!-- End Table with hoverable rows -->
-                     <button id="newBtn" class="btn btn-primary">평가</button>
+                   
+                     
+                     
+                     
                      <!-- Pagination with icons -->
                      <nav aria-label="Page navigation example">
                         <ul class="pagination">
