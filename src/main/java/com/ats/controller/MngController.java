@@ -57,7 +57,7 @@ public class MngController {
 	@RequestMapping(value = "/annRegister", method = RequestMethod.POST)
 	public String registerPost(AnnVO vo, RedirectAttributes rttr) throws Exception {
 		logger.info("Ann register Post...");
-
+		
 		annService.register(vo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
 

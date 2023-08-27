@@ -9,6 +9,7 @@ public class EntVO {
 	private String address;
 	private String zipCode;
 	private String entPhone;
+	private String fileName;
 	private String registration;
 	private String adminId;
 	private Date entRegDate;
@@ -61,6 +62,14 @@ public class EntVO {
 		this.entPhone = entPhone;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getRegistration() {
 		return registration;
 	}
@@ -88,8 +97,8 @@ public class EntVO {
 	@Override
 	public String toString() {
 		return "EntVO [entNum=" + entNum + ", entName=" + entName + ", category=" + category + ", address=" + address
-				+ ", zipCode=" + zipCode + ", entPhone=" + entPhone + ", registration=" + registration + ", adminId="
-				+ adminId + ", entRegDate=" + entRegDate + "]";
+				+ ", zipCode=" + zipCode + ", entPhone=" + entPhone + ", fileName=" + fileName + ", registration="
+				+ registration + ", adminId=" + adminId + ", entRegDate=" + entRegDate + "]";
 	}
 
 }

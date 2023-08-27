@@ -44,8 +44,67 @@
 
 						<div class="row">
 							<div class="col-lg-3 col-md-4 label">사업자 등록증:</div>
-							<div class="col-lg-9 col-md-8">${entVO.registration}</div>
+							<ul class="dropzone-previews">
+
+								<li class="dropzone-previews mt-3">
+									<div
+										class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
+										<div class="p-2">
+											<div class="row align-items-center">
+												<c:forTokens var="token" items="${entVO.registration}"
+													delims="." varStatus="status">
+													<c:if test="${status.last}">
+														<c:choose>
+															<c:when test="${token eq 'hwp'}">
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/resources/dist/img/hwp.png"
+																	alt="${entVO.registration}" />
+															</c:when>
+															<c:when test="${token eq 'xls' || token eq 'xlsx' }">
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/resources/dist/img/excelIcon.png" />
+															</c:when>
+															<c:when
+																test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/displayFile?fileName=${entVO.fileName}">
+															</c:when>
+															<c:when test="${token eq 'pdf'}">
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/resources/dist/img/pdf.png"
+																	alt="${entVO.fileName}" />
+															</c:when>
+															<c:when test="${token eq 'ppt' }">
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/resources/dist/img/ppt.png"
+																	alt="${entVO.fileName}" />
+															</c:when>
+															<c:otherwise>
+																<img data-dz-thumbnail=""
+																	class="avatar-sm rounded bg-light"
+																	src="/resources/dist/img/file.svg"
+																	alt="${entVO.fileName}" />
+															</c:otherwise>
+														</c:choose>
+													</c:if>
+												</c:forTokens>
+												<div class="col pl-0">
+													<a href="/displayFile?fileName=${entVO.registration}"
+														text-muted font-weight-bold data-dz-name="">
+														${entVO.fileName}</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
 						</div>
+
 
 						<h5 class="card-title">기업 담당자 정보</h5>
 
@@ -124,4 +183,11 @@
 		});
 
 	});
+	function checkImageType(fileName) {
+
+		var pattern = /jpg|gif|png|jpeg/i;
+
+		return noticeFileName.match(pattern);
+
+	}
 </script>

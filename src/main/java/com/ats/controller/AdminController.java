@@ -1,5 +1,6 @@
 package com.ats.controller;
 
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -112,7 +113,14 @@ public class AdminController {
 	@RequestMapping(value = "/mngReadPage", method = RequestMethod.GET)
 	public void readPage(@RequestParam("mngId") String mngId, @RequestParam("entNum") int entNum,
 			@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
-		model.addAttribute(mngService.entRead(entNum));
+		// 1. 기업 정보 조회
+		EntVO eVo = mngService.entRead(entNum);
+		// 2. 사업자 등록증 파일 이름 추출
+		String text = eVo.getRegistration();
+		String[] text1 = text.split("-.*?_");
+		eVo.setFileName(text1[1]);
+		model.addAttribute(eVo);
+		// 3. 담당자 정보 조회
 		model.addAttribute(mngService.mngRead(mngId));
 	}
 

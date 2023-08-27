@@ -26,6 +26,7 @@ public class AnnServiceImpl implements AnnService {
 		
 		// 2) 공지사항 기본 내용 저장(첨부파일 제외) -> PK인 noticeNo 받아오기
 		int annNum = dao.create(vo);
+		System.out.println(annNum);
 		
 		// 3) 첨부파일 등록
 		// 3-1) 첨부파일 존재 유무 확인
@@ -36,7 +37,9 @@ public class AnnServiceImpl implements AnnService {
 
 				AnnFileVO fVo = new AnnFileVO();
 				fVo.setAnnNum(annNum);
+				System.out.println(fVo.getAnnNum());
 				fVo.setAnnFileName(vo.getAnnFile()[i]);
+				System.out.println(fVo.getAnnFileName());
 
 				dao.insertFile(fVo);
 			}

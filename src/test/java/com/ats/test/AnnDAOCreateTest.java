@@ -28,7 +28,6 @@ public class AnnDAOCreateTest {
 	public void testCreate() throws Exception {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		AnnVO aVo = new AnnVO();
-		aVo.setAnnNum(1);
 		aVo.setAnnName("경영정보학과 조교 채용 공고");
 		aVo.setAnnField("1차");
 		aVo.setAnnStartDate(format.parse("2023-8-21"));
@@ -54,6 +53,7 @@ public class AnnDAOCreateTest {
 
 				AnnImageVO iVo = new AnnImageVO();
 				iVo.setAnnNum(annNum);
+				logger.info("dd" + iVo.getAnnNum());
 				iVo.setAnnImageName(aVo.getAnnImage()[i]);
 
 				logger.info("testCreate :" + iVo);

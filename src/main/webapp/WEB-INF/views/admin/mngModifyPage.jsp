@@ -161,25 +161,26 @@
 								<div class="form-check form-switch">
 									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
 									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault" name="mngAct">
+										id="flexSwitchCheckDefault">
 								</div>
 							</c:if>
 							<c:if test="${1 eq mngVO.mngAct}">
 								<div class="form-check form-switch">
 									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
 									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault" name="mngAct" checked>
+										id="flexSwitchCheckDefault" checked>
 								</div>
 							</c:if>
+							<input type="hidden" name="mngAct" class="form-control">
 						</div>
-						<input type="hidden"
-							name="adminId" class="form-control" value='${login.adminId}'>
+						<input type="hidden" name="adminId" class="form-control"
+							value='${login.adminId}'>
 
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label">등록하기</label>
 							<div class="col-sm-10">
-								<button type="button" onclick="" class="btn btn-outline-danger">취소</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary">저장</button>
+								<button type="button" class="btn btn-outline-danger">취소</button>
+								<button type="submit" class="btn btn-outline-primary">저장</button>
 							</div>
 						</div>
 					</form>
@@ -213,6 +214,8 @@
 						});
 					});
 </script>
+
+
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -259,22 +262,25 @@
 					}
 				}).open();
 	}
-
+	$('#flexSwitchCheckDefault').click(function() {
+		var checked = $('#flexSwitchCheckDefault').is(':checked');
+		if (checked == true) {
+			$('input[name=mngAct]').val(1);
+			console.log($('input[name=mngAct]').val());
+		} else {
+			$('input[name=mngAct]').val(0);
+			console.log($('input[name=mngAct]').val());
+		}
+	})
 	function onSubmitForm() {
-		var detail = document.getElementById("sample4_detailAddress").value;
-		var load = document.getElementById("sample4_roadAddress").value;
+		var detail = document.getElementById("sample6_detailAddress").value;
+		var load = document.getElementById("sample6_address").value;
 		document.getElementById("plusAddress").value = load + " " + detail;
 		console.log(document.getElementById("plusAddress").value);
 
-		if ($("input:radio[name='mngAct']").is(":checked") == true) {
-			// 체크되었을때 실행
-			document.getElementById("flexSwitchCheckDefault").value = 1;
-		} else {
-			document.getElementById("flexSwitchCheckDefault").value = 0;
-		}
-
 	}
 </script>
+
 <!-- SD PROJECT JS -->
 
 <script
@@ -383,14 +389,6 @@
 									}//if문 종료
 
 								});
-
-						$(".btn-cancel")
-								.on(
-										"click",
-										function() {
-											self.location = "list&page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
-										});
 
 					});
 
@@ -524,26 +522,26 @@
 
 	});
 	//파일링크 처리(길이를 줄여줌)
-	function getOriginalName(noticeFileName) {
+	function getOriginalName(registration) {
 
-		if (checkImageType(noticeFileName)) {
+		if (checkImageType(registration)) {
 			return;
 		}
 
-		var idx = noticeFileName.indexOf("_") + 1;
-		return noticeFileName.substr(idx);
+		var idx = registration.indexOf("_") + 1;
+		return registration.substr(idx);
 
 	}
 	//이미지파일 원본 파일 찾기
-	function getImageLink(noticeFileName) {
+	function getImageLink(registration) {
 
-		if (!checkImageType(noticeFileName)) {
+		if (!checkImageType(registration)) {
 			return;
 		}
 		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
 		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
-		var front = noticeFileName.substr(0, 12);
-		var end = noticeFileName.substr(14);
+		var front = registration.substr(0, 12);
+		var end = registration.substr(14);
 
 		return front + end;
 

@@ -77,7 +77,6 @@
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">사업자 등록증 :</label>
-
 							<!-- <div id='mydropzone' class="dropzone"> -->
 							<div class="col-sm-6">
 								<div id='mydropzone'
@@ -159,16 +158,16 @@
 							</div>
 						</div>
 						<div class="row mb-3 ">
-						<label class="col-sm-2 col-form-label">계정 활성 여부</label>
-						<div class="col-sm-10">
-							<div class="form-check form-switch">
-								<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-								<input class="form-check-input" type="checkbox" name="mngAct"
-									id="flexSwitchCheckDefault">
-							</div>
+							<label class="col-sm-2 col-form-label">계정 활성 여부</label>
+							<div class="col-sm-10">
+								<div class="form-check form-switch">
+									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+									<input class="form-check-input" type="checkbox" 
+										id="flexSwitchCheckDefault" >
+								</div>
 							</div>
 						</div>
-
+						<input type="hidden" name="mngAct" class="form-control">
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label">등록하기</label>
 							<div class="col-sm-10">
@@ -231,18 +230,22 @@
 				}).open();
 	}
 
+	$('#flexSwitchCheckDefault').click(function() {
+		var checked = $('#flexSwitchCheckDefault').is(':checked');
+		if(checked == true){
+			$('input[name=mngAct]').val(1);
+			console.log($('input[name=mngAct]').val());
+		}else{
+			$('input[name=mngAct]').val(0);
+			console.log($('input[name=mngAct]').val());
+		}
+	})
+
 	function onSubmitForm() {
-		var detail = document.getElementById("sample4_detailAddress").value;
-		var load = document.getElementById("sample4_roadAddress").value;
+		var detail = document.getElementById("sample6_detailAddress").value;
+		var load = document.getElementById("sample6_address").value;
 		document.getElementById("plusAddress").value = load + " " + detail;
 		console.log(document.getElementById("plusAddress").value);
-
-		if ($("input:radio[name='mngAct']").is(":checked") == true) {
-			// 체크되었을때 실행
-			document.getElementById("flexSwitchCheckDefault").value = 1;
-			console
-					.log(document.getElementById("flexSwitchCheckDefault").value);
-		}
 
 	}
 </script>
@@ -354,14 +357,6 @@
 									}//if문 종료
 
 								});
-
-						$(".btn-cancel")
-								.on(
-										"click",
-										function() {
-											self.location = "list&page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
-										});
 
 					});
 
@@ -534,12 +529,9 @@
 
 			formObj.submit();
 		});
-		
-		$(".btn-outline-danger")
-		.on(
-				"click",
-				function() {
-					self.location = "/admin/mngList";
-				});
+
+		$(".btn-outline-danger").on("click", function() {
+			self.location = "/admin/mngList";
+		});
 	});
 </script>

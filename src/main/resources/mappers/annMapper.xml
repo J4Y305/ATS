@@ -86,9 +86,9 @@
 	<!-- 공고 이미지 파일 등록 -->
 	<insert id="insertImage">
 		INSERT INTO TBL_ANN_IMAGE (ANN_IMAGE_NUM,
-		ANN_IMAGE_NAME, ANN_NO)
+		ANN_IMAGE_NAME, ANN_NUM)
 		VALUES (SEQ_TBL_ANN_IMAGE.NEXTVAL,
-		#{annImageName}, #{AnnNum})
+		#{annImageName}, #{annNum})
 	</insert>
 
 	<!-- 공고 이미지 파일 삭제 -->
@@ -111,9 +111,9 @@
 	<!-- 공고 이미지 파일 등록 -->
 	<insert id="insertFile">
 		INSERT INTO TBL_ANN_FILE (ANN_FILE_NUM,
-		ANN_FILE_NAME, ANN_NO)
+		ANN_FILE_NAME, ANN_NUM)
 		VALUES (SEQ_TBL_ANN_FILE.NEXTVAL,
-		#{annFileName}, #{AnnNum})
+		#{annFileName}, #{annNum})
 	</insert>
 
 	<!-- 공고 이미지 파일 삭제 -->

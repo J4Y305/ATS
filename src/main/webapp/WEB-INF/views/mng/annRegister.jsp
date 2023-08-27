@@ -25,7 +25,7 @@
 							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<input type="hidden" name="adminId" class="form-control"
+						<input type="hidden" name="mngId" class="form-control"
 							value='${login.mngId}'>
 						<div class="row mb-3 ">
 							<label class="col-sm-3 col-form-label">공고명 :</label>
@@ -43,39 +43,37 @@
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 시작일 :</label>
-							<div class="col-sm-3">
-								<input type="text" id="sample6_postcode" name="annStartDate"
-									class="form-control" placeholder="우편번호">
+							<div class="col-sm-5">
+								<input type="date" id="startDate" class="form-control">
+								<input type="hidden" class="form-control" name="annStartDate">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 마감일:</label>
-							<div class="col-sm-4">
-								<input type="text" name="annEndDate" class="form-control"
-									placeholder="대표 전화번호">
+							<div class="col-sm-5">
+								<input type="date" id="endDate" class="form-control">
+								<input type="hidden" class="form-control" name="annEndDate">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 내용:</label>
-							<div class="col-sm-4">
-								<input type="text" name="detail" class="form-control"
-									placeholder="대표 전화번호">
+							<div class="col-sm-5">
+								<textarea class="form-control" style="height: 100px"
+									name="detail"></textarea>
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 관련 이미지 :</label>
-
-							<!-- <div id='mydropzone' class="dropzone"> -->
 							<div class="col-sm-6">
-								<div id='mydropzone'
+								<div id='mydropzoneImage'
 									class="alert alert-primary alert-dismissible fade show">
 
 
-									<input type="file" id="fileUpload" name="fileUpload"
+									<input type="file" id="imageFileUpload" name="imageFileUpload"
 										style="visibility: hidden;" />
 
 									<div class="fileDrop">
-										<input type="hidden" id="uploadCount">
+										<input type="hidden" id="imageUploadCount">
 										<div class="dz-message needsclick">
 											<i class="h1 text-muted dripicons-cloud-upload"></i>
 											<h4 class="alert-heading">Drop files here or click to
@@ -85,24 +83,21 @@
 									</div>
 								</div>
 								<div>
-									<ul class="dropzone-previews clearfix uploadedList">
+									<ul class="dropzone-previews clearfix imageUploadedList">
 									</ul>
 								</div>
 							</div>
 						</div>
-						
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 관련 파일 :</label>
-
 							<!-- <div id='mydropzone' class="dropzone"> -->
 							<div class="col-sm-6">
 								<div id='mydropzone'
 									class="alert alert-primary alert-dismissible fade show">
 
 
-									<input type="file" id="fileUpload" name="fileUpload"
+									 <input type="file" id="fileUpload" name="fileUpload"
 										style="visibility: hidden;" />
-
 									<div class="fileDrop">
 										<input type="hidden" id="uploadCount">
 										<div class="dz-message needsclick">
@@ -119,18 +114,18 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="row mb-3 ">
-						<label class="col-sm-2 col-form-label">계정 활성 여부</label>
-						<div class="col-sm-10">
-							<div class="form-check form-switch">
-								<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-								<input class="form-check-input" type="checkbox" name="mngAct"
-									id="flexSwitchCheckDefault">
-							</div>
+							<label class="col-sm-2 col-form-label">공고 활성 여부</label>
+							<div class="col-sm-10">
+								<div class="form-check form-switch">
+									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+									<input class="form-check-input" type="checkbox"
+										id="flexSwitchCheckDefault">
+								</div>
 							</div>
 						</div>
-
+						<input type="hidden" name="annAct" class="form-control">
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label">등록하기</label>
 							<div class="col-sm-10">
@@ -146,62 +141,30 @@
 </section>
 </main>
 <jsp:include page="../include/admin_footer.jsp" />
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-	function sample6_execDaumPostcode() {
-		new daum.Postcode(
-				{
-					oncomplete : function(data) {
-						// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-						// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-						// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-						var addr = ''; // 주소 변수
-						var extraAddr = ''; // 참고항목 변수
-
-						//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-						if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-							addr = data.roadAddress;
-						} else { // 사용자가 지번 주소를 선택했을 경우(J)
-							addr = data.jibunAddress;
-						}
-
-						// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-						if (data.userSelectedType === 'R') {
-							// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-							// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-							if (data.bname !== ''
-									&& /[동|로|가]$/g.test(data.bname)) {
-								extraAddr += data.bname;
-							}
-							// 건물명이 있고, 공동주택일 경우 추가한다.
-							if (data.buildingName !== ''
-									&& data.apartment === 'Y') {
-								extraAddr += (extraAddr !== '' ? ', '
-										+ data.buildingName : data.buildingName);
-							}
-						}
-
-						// 우편번호와 주소 정보를 해당 필드에 넣는다.
-						document.getElementById('sample6_postcode').value = data.zonecode;
-						document.getElementById("sample6_address").value = addr;
-						// 커서를 상세주소 필드로 이동한다.
-						document.getElementById("sample6_detailAddress")
-								.focus();
-					}
-				}).open();
-	}
-
-	function onSubmitForm() {
-		if ($("input:radio[name='annAct']").is(":checked") == true) {
-			// 체크되었을때 실행
-			document.getElementById("flexSwitchCheckDefault").value = 1;
-			console
-					.log(document.getElementById("flexSwitchCheckDefault").value);
+	//활성 여부 
+	$('#flexSwitchCheckDefault').click(function() {
+		var checked = $('#flexSwitchCheckDefault').is(':checked');
+		if (checked == true) {
+			$('input[name=annAct]').val(1);
+			console.log($('input[name=annAct]').val());
+		} else {
+			$('input[name=annAct]').val(0);
+			console.log($('input[name=annAct]').val());
 		}
-
-	}
+	})
+	// 시작일 날짜형으로 변환
+	$('#startDate').change(function() {
+		var sd = new Date($('#startDate').val());
+		console.log(sd);
+		$('input[name=annStartDate]').val(sd);
+	})
+	// 마감일 날짜형으로 변환
+	$('#endDate').change(function() {
+		var ed = new Date($('#endDate').val());
+		console.log(ed);
+		$('input[name=annEndDate]').val(ed);
+	})
 </script>
 <!-- SD PROJECT JS -->
 
@@ -292,10 +255,33 @@
 
 										var str = "";
 
-										$(".uploadedList .delbtn")
+										$(".imageUploadedList .delbtn")
 												.each(
 														function(index) {
 															str += "<input type='hidden' name='annImage'"
+																	+ " value='"
+																	+ $(this)
+																			.attr(
+																					"href")
+																	+ "'> ";
+														});
+
+										that.append(str);
+										console.log(str);
+
+										that.get(0).submit();
+
+									}//if문 종료
+									if (val) {
+
+										var that = $(this);
+
+										var str = "";
+
+										$(".uploadedList .delbtn")
+												.each(
+														function(index) {
+															str += "<input type='hidden' name='annFile'"
 																	+ " value='"
 																	+ $(this)
 																			.attr(
@@ -322,6 +308,162 @@
 
 					});
 
+	$('#mydropzoneImage').click(function(event) {
+
+		document.frm.imageFileUpload.click();
+
+	});
+
+	var template = Handlebars.compile($("#template").html());
+
+	//dragenter dragover, drop 기본 동작 막기(기본적인 이벤트 처리 제한 preventDefault) 끌어다 놓으면 새로운 창이 열리는 동작
+	$(".fileDrop").on("dragenter dragover", function(event) {
+		event.preventDefault();
+	});
+
+	$(".fileDrop").on("drop", function(event) {
+		event.preventDefault();
+
+		var uploaded = $("#imageUploadCount").val();
+
+		//event.dataTransfer=이벤트와 같이 전달된 데이터   
+		//dataTransfer.files= 그안 에 포함된 전달된 파일 데이터를 찾아 가져오는 부분
+		//jQuery를 이용하는 경우 envent가 순수한 DOM 이벤트가 아니기때문에 
+		var files = event.originalEvent.dataTransfer.files;
+
+		var file = files[0];
+		//formData를 이용한 서버 호출 (기존 <form>태그로 만든 데이터 전송방식과 동일)
+		var formData = new FormData();
+
+		//file 이름으로 파일 객체 추가
+		formData.append("file", file);
+
+		//$.post()를 사용하지 않고 $.ajax() 사용하는 대신 processData,contentType: false로 지정
+		$.ajax({
+			url : '/uploadAjax',
+			data : formData,
+			dataType : 'text',
+			processData : false, //데이터를 자동 변환 할 것인지(true:일반적인 query string / false:자동 변환 없이)
+			contentType : false, //기본값(true) application/urlcod 타입으로 전송 / 파일의 경우(false) multipart/form_data 방식으로 전송
+			type : 'POST',
+			success : function(data) {
+
+				var fileInfo = getFileInfo(data);
+				var html = template(fileInfo);
+
+				var str = "";
+
+				$(".imageUploadedList").append(html);
+
+				uploaded++;
+				$("#imageUploadCount").attr("value", uploaded);
+
+				$(".imageUploadCount").append(str);
+			}
+		});
+	});
+
+	//클릭으로 파일 업로드할 때 호출되는 함수
+	$("#imageFileUpload").on("change", function(event) {
+		event.preventDefault();
+
+		var uploaded = $("#imageUploadCount").val();
+
+		if (uploaded >= 3) {
+			alert('첨부파일은 3개 까지 업로드할 수 있습니다.');
+			return;
+		}
+
+		// 파일업로드 인풋에서 파일을 받음
+		var file = document.getElementById("imageFileUpload").files[0];
+
+		// 새로운 폼데이터를 생성
+		var formData = new FormData();
+
+		// 폼데이터에 파일을 붙임
+		formData.append("file", file);
+
+		// AJAX로 uploadAjax 메소드를 호출해서 파일을 업로드함
+		$.ajax({
+			url : '/uploadAjax',
+			data : formData,
+			dataType : 'text',
+			processData : false,
+			contentType : false,
+			type : 'POST',
+			success : function(data) {
+
+				var fileInfo = getFileInfo(data);
+				var html = template(fileInfo);
+
+				var str = "";
+
+				$(".imageUploadedList").append(html);
+
+				uploaded++;
+				$("#imageUploadCount").attr("value", uploaded);
+
+				$(".imageUploadedList").append(str);
+			}
+		});
+	});
+
+	//첨부파일 삭제 처리
+	$(".imageUploadedList").on("click", ".delbtn", function(event) {
+		event.preventDefault();
+
+		var that = $(this);
+		var uploaded = $("#imageUploadCount").val();
+
+		$.ajax({
+			url : "/deleteFile",
+			type : "post",
+			data : {
+				fileName : $(this).attr("href")
+			},
+			dataType : "text",
+			success : function(result) {
+
+				if (result == 'deleted') {
+
+					that.closest("li").remove();
+					uploaded--;
+					$("#imageUploadCount").attr("value", uploaded);
+
+				}
+			}
+
+		});
+
+	});
+	//파일링크 처리(길이를 줄여줌)
+	function getOriginalName(annImageName) {
+
+		if (checkImageType(annImageName)) {
+			return;
+		}
+
+		var idx = annImageName.indexOf("_") + 1;
+		return annImageName.substr(idx);
+
+	}
+	//이미지파일 원본 파일 찾기
+	function getImageLink(annImageName) {
+
+		if (!checkImageType(annImageName)) {
+			return;
+		}
+		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
+		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
+		var front = annImageName.substr(0, 12);
+		var end = annImageName.substr(14);
+
+		return front + end;
+
+	}
+</script>
+<!--  
+<script>
 	$('#mydropzone').click(function(event) {
 
 		document.frm.fileUpload.click();
@@ -452,33 +594,31 @@
 
 	});
 	//파일링크 처리(길이를 줄여줌)
-	function getOriginalName(noticeFileName) {
+	function getOriginalName(annFileName) {
 
-		if (checkImageType(noticeFileName)) {
+		if (checkImageType(annFileName)) {
 			return;
 		}
 
-		var idx = noticeFileName.indexOf("_") + 1;
-		return noticeFileName.substr(idx);
+		var idx = annFileName.indexOf("_") + 1;
+		return annFileName.substr(idx);
 
 	}
 	//이미지파일 원본 파일 찾기
-	function getImageLink(noticeFileName) {
+	function getImageLink(annFileName) {
 
-		if (!checkImageType(noticeFileName)) {
+		if (!checkImageType(annFileName)) {
 			return;
 		}
 		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
 		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
-		var front = noticeFileName.substr(0, 12);
-		var end = noticeFileName.substr(14);
+		var front = annFileName.substr(0, 12);
+		var end = annFileName.substr(14);
 
 		return front + end;
 
 	}
 </script>
-
-
 
 
 <script>
@@ -491,12 +631,10 @@
 
 			formObj.submit();
 		});
-		
-		$(".btn-outline-danger")
-		.on(
-				"click",
-				function() {
-					self.location = "/admin/mngList";
-				});
+
+		$(".btn-outline-danger").on("click", function() {
+			self.location = "/mng/annList";
+		});
 	});
 </script>
+-->
