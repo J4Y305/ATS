@@ -6,7 +6,7 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>공고 목록</h1>
+	<h1>평가목록</h1>
 </div>
 <!-- End Page Title -->
 
@@ -25,15 +25,16 @@
 								<thead>
 									<tr>
 										<th scope="col">번호</th>
-										<th scope="col">공고명</th>
-										<th scope="col">접수 시작일</th>
-										<th scope="col">접수 마감일</th>
-										<th scope="col">활성 여부</th>
+										<th scope="col">평가명</th>
+										<th scope="col">평가 차수</th>
+										<th scope="col">평가 시작일</th>
+										<th scope="col">평가 마감일</th>
+										<th scope="col">결과 여부</th>
 										<th scope="col">작성자</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${list}" var="annVO" varStatus="var">
+									<c:forEach items="${list}" var="evaVO" varStatus="var">
 										<tr>
 											<c:if test="${pageMaker.cri.page == 1 }">
 												<td>${var.count }</td>
@@ -42,23 +43,21 @@
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
 											<td><a
-												href='/mng/annReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
-													${annVO.annName} </a></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annStartDate}"/></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annEndDate}"/></td>
-											<td><c:if test="${0 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">비활성</div>
-												</c:if> <c:if test="${1 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">활성</div>
-												</c:if></td>
-											<td>${annVO.mngId}</td>
+												href='/mng/evaReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}'>
+													${evaVO.evaName} </a></td>
+													<td>${evaVO.degree}</td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${evaVO.evaStartDate}" /></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${evaVO.evaEndDate}" /></td>
+											<td>??</td>
+											<td>${evaVO.mngId}</td>
 										</tr>
-
 									</c:forEach>
 								</tbody>
 							</table>
+							<button id="newBtn" class="btn btn-outline-primary">평가등록</button>
 							<!-- End Table with hoverable rows -->
-							<button id="newBtn" class="btn btn-outline-primary">공고등록</button>
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
@@ -110,12 +109,12 @@
 									+ "&keyword=" + $('#keywordInput').val();
 
 						});
-
 				$('#newBtn').on("click", function(evt) {
 
-					self.location = "/mng/annRegister";
+					self.location = "/mng/evaRegister";
 
 				});
 
 			});
+
 </script>

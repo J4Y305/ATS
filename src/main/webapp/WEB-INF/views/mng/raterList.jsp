@@ -6,7 +6,7 @@
 <main id="main" class="main">
 
 <div class="pagetitle">
-	<h1>공고 목록</h1>
+	<h1>평가자 목록</h1>
 </div>
 <!-- End Page Title -->
 
@@ -19,21 +19,24 @@
 					<h5 class="card-title"></h5>
 					<div class="card">
 						<div class="card-body">
+							<h5 class="card-title"></h5>
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
 								<thead>
 									<tr>
 										<th scope="col">번호</th>
-										<th scope="col">공고명</th>
-										<th scope="col">접수 시작일</th>
-										<th scope="col">접수 마감일</th>
-										<th scope="col">활성 여부</th>
-										<th scope="col">작성자</th>
+										<th scope="col">아이디</th>
+										<th scope="col">이름</th>
+										<th scope="col">비밀번호</th>
+										<th scope="col">직급</th>
+										<th scope="col">전화번호</th>
+										<th scope="col">등록인</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${list}" var="annVO" varStatus="var">
+									<c:forEach items="${list}" var="raterVO" varStatus="var">
+
 										<tr>
 											<c:if test="${pageMaker.cri.page == 1 }">
 												<td>${var.count }</td>
@@ -42,23 +45,20 @@
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
 											<td><a
-												href='/mng/annReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
-													${annVO.annName} </a></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annStartDate}"/></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annEndDate}"/></td>
-											<td><c:if test="${0 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">비활성</div>
-												</c:if> <c:if test="${1 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">활성</div>
-												</c:if></td>
-											<td>${annVO.mngId}</td>
+												href='/mng/raterReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&raterId=${raterVO.raterId}'>
+													${raterVO.raterId}</a></td>
+											<td>${raterVO.raterName}</td>
+											<td>${raterVO.raterPwd}</td>
+											<td>${raterVO.raterRank}</td>
+											<td>${raterVO.raterPhone}</td>
+											<td>${raterVO.mngId}</td>
 										</tr>
 
 									</c:forEach>
 								</tbody>
 							</table>
 							<!-- End Table with hoverable rows -->
-							<button id="newBtn" class="btn btn-outline-primary">공고등록</button>
+							<button id="newBtn" class="btn btn-outline-primary">평가자 등록</button>
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
@@ -113,7 +113,7 @@
 
 				$('#newBtn').on("click", function(evt) {
 
-					self.location = "/mng/annRegister";
+					self.location = "/mng/raterRegister";
 
 				});
 

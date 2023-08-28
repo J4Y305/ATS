@@ -21,7 +21,8 @@ public class EvaDAOImpl implements EvaDAO {
 
 	@Override
 	public int evaCreate(EvaVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".evaCreate", vo);
+		sqlSession.insert(namespace + ".evaCreate", vo);
+		return vo.getEvaNum();
 	}
 
 	@Override

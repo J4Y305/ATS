@@ -20,46 +20,52 @@
 
 					<!-- General Form Elements -->
 					<form class="row g-3" role="form" method="post" name="frm"
-						onsubmit="onSubmitForm()">
+						onsubmit="onSubmitForm()" action="annModifyPage">
 						<input type='hidden' name='page' value="${cri.page}"> <input
 							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
 						<input type="hidden" name="mngId" class="form-control"
 							value='${login.mngId}'>
+							<input type="hidden" name="annNum" class="form-control"
+							value='${annVO.annNum}'>
 						<div class="row mb-3 ">
 							<label class="col-sm-3 col-form-label">공고명 :</label>
 							<div class="col-sm-5">
 								<input type="text" name="annName" class="form-control"
-									placeholder="공고명">
+									value="${annVO.annName}">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">모집분야 :</label>
 							<div class="col-sm-5">
 								<input type="text" name="annField" class="form-control"
-									placeholder="모집분야">
+									value="${annVO.annField}">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 시작일 :</label>
 							<div class="col-sm-5">
-								<input type="date" id="startDate" class="form-control">
-								<input type="hidden" class="form-control" name="annStartDate">
+								<input type="date" id="startDate" class="form-control" value=<fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annStartDate}"/>>
+									<input type="hidden"
+									class="form-control" name="annStartDate">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 마감일:</label>
 							<div class="col-sm-5">
-								<input type="date" id="endDate" class="form-control">
-								<input type="hidden" class="form-control" name="annEndDate">
+								<input type="date" id="endDate" class="form-control"
+									value=<fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annEndDate}"/>> <input type="hidden"
+									class="form-control" name="annEndDate">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-3 col-form-label">공고 내용:</label>
 							<div class="col-sm-5">
 								<textarea class="form-control" style="height: 100px"
-									name="detail"></textarea>
+									name="detail">${annVO.detail}</textarea>
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -96,7 +102,7 @@
 									class="alert alert-primary alert-dismissible fade show">
 
 
-									 <input type="file" id="fileUpload" name="fileUpload"
+									<input type="file" id="fileUpload" name="fileUpload"
 										style="visibility: hidden;" />
 									<div class="fileDrop">
 										<input type="hidden" id="uploadCount">
@@ -117,20 +123,29 @@
 
 						<div class="row mb-3 ">
 							<label class="col-sm-2 col-form-label">공고 활성 여부</label>
-							<div class="col-sm-10">
-								<div class="form-check form-switch">
-									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault">
-								</div>
+							<div class="row mb-3 ">
+								<c:if test="${0 eq annVO.annAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault">
+									</div>
+								</c:if>
+								<c:if test="${1 eq annVO.annAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault" checked>
+									</div>
+								</c:if>
+								<input type="hidden" name="annAct" class="form-control">
 							</div>
 						</div>
-						<input type="hidden" name="annAct" class="form-control">
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label">등록하기</label>
 							<div class="col-sm-10">
-								<button type="button" onclick="" class="btn btn-outline-danger">취소</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary">등록</button>
+								<button type="button" class="btn btn-outline-danger">취소</button>
+								<button type="submit" class="btn btn-outline-primary">저장</button>
 							</div>
 						</div>
 					</form>
@@ -165,6 +180,7 @@
 		console.log(ed);
 		$('input[name=annEndDate]').val(ed);
 	})
+	
 </script>
 <!-- SD PROJECT JS -->
 
@@ -260,7 +276,9 @@
 														function(index) {
 															str += "<input type='hidden' name='annImage'"
 																	+ " value='"
-																	+ $(this).attr("href")
+																	+ $(this)
+																			.attr(
+																					"href")
 																	+ "'> ";
 														});
 
@@ -295,14 +313,6 @@
 									}//if문 종료
 
 								});
-
-						$(".btn-cancel")
-								.on(
-										"click",
-										function() {
-											self.location = "annList&page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
-										});
 
 					});
 
@@ -620,18 +630,24 @@
 
 
 <script>
-	$(document).ready(function() {
-/* 		var formObj = $("form[role='form']");
+	$(document)
+			.ready(
+					function() {
+						var formObj = $("form[role='form']");
 
-		console.log(formObj);
+						console.log(formObj);
 
-		$("#btn_submit").on("click", function() {
+						$(".btn-outline-danger")
+								.on(
+										"click",
+										function() {
+											self.location = "/mng/annList?page=${cri.page}&perPageNum=${cri.perPageNum}"
+													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 
-			formObj.submit();
-		});
- */
-		$(".btn-outline-danger").on("click", function() {
-			self.location = "/mng/annList";
-		});
-	});
+										});
+
+						$(".btn-outline-success").on("click", function() {
+							formObj.submit();
+						});
+					});
 </script>

@@ -143,4 +143,34 @@ public class AnnServiceImpl implements AnnService {
 		return dao.fileList(annNum);
 	}
 
+	@Override
+	public List<AnnVO> listIngSearch(SearchCriteria cri) throws Exception {
+		return dao.listIngSearch(cri);
+	}
+
+	@Override
+	public List<AnnVO> listEndSearch(SearchCriteria cri) throws Exception {
+		return dao.listEndSearch(cri);
+	}
+
+	@Override
+	public int listIngSearchCount(SearchCriteria cri) throws Exception {
+		return dao.listIngSearchCount(cri);
+	}
+
+	@Override
+	public int listEndSearchCount(SearchCriteria cri) throws Exception {
+		return dao.listEndSearchCount(cri);
+	}
+
+	@Override
+	public List<AnnVO> listIESearch(SearchCriteria cri) throws Exception {
+		return dao.listIESearch(cri);
+	}
+
+	@Override
+	public int listIESearchCount(SearchCriteria cri) throws Exception {
+		return dao.listIESearchCount(cri);
+	}
+
 }

@@ -28,7 +28,7 @@
 										<th scope="col">공고명</th>
 										<th scope="col">접수 시작일</th>
 										<th scope="col">접수 마감일</th>
-										<th scope="col">활성 여부</th>
+										<th scope="col">마감 D-day</th>
 										<th scope="col">작성자</th>
 									</tr>
 								</thead>
@@ -42,23 +42,20 @@
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
 											<td><a
-												href='/mng/annReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
+												href='/mng/annAppList${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
 													${annVO.annName} </a></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annStartDate}"/></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annEndDate}"/></td>
-											<td><c:if test="${0 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">비활성</div>
-												</c:if> <c:if test="${1 eq annVO.annAct}">
-													<div class="col-lg-9 col-md-8">활성</div>
-												</c:if></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annStartDate}" /></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annEndDate}" /></td>
+											<td></td>
 											<td>${annVO.mngId}</td>
 										</tr>
-
+						<input type=hidden value="${annVO.annEndDate}" name="annEndDate">
 									</c:forEach>
 								</tbody>
 							</table>
 							<!-- End Table with hoverable rows -->
-							<button id="newBtn" class="btn btn-outline-primary">공고등록</button>
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
@@ -111,11 +108,25 @@
 
 						});
 
-				$('#newBtn').on("click", function(evt) {
-
-					self.location = "/mng/annRegister";
-
-				});
-
 			});
+
+	// 시작일 날짜형으로 변환
+	$('#startDate').change(function() {
+		var sd = new Date($('#startDate').val());
+		console.log(sd);
+		$('input[name=annStartDate]').val(sd);
+	})
+	// 마감일 날짜형으로 변환
+	$('#endDate').change(function() {
+		var ed = new Date($('#endDate').val());
+		console.log(ed);
+		$('input[name=annEndDate]').val(ed);
+	})
+
+	var today = new Date();
+	console.log(today)
+	var dDay = $('input[name=annEndDate]').val();
+	console.log(dDay)
+	var date = today.getTime() - dDay.getTime();
+	console.log(date);
 </script>

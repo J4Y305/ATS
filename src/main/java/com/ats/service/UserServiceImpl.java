@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO read(String userId) throws Exception {
-		System.out.println(dao.read(userId));
 		return dao.read(userId);
 	}
 

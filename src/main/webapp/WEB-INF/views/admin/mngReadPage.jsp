@@ -147,9 +147,9 @@
 								<div class="col-lg-9 col-md-8">활성</div>
 							</c:if>
 						</div>
-						<button type="submit" onclick="" class="btn btn-danger">삭제</button>
-						<button type="submit" onclick="" class="btn btn-warning">수정</button>
-						<button type="submit" onclick="" class="btn btn-primary">목록</button>
+						<button type="submit" onclick="" class="btn btn-outline-danger">삭제</button>
+						<button type="submit" onclick="" class="btn btn-outline-warning">수정</button>
+						<button type="submit" onclick="" class="btn btn-outline-primary">목록</button>
 					</div>
 				</div>
 			</div>
@@ -165,18 +165,18 @@
 
 		console.log(formObj);
 
-		$(".btn-warning").on("click", function() {
+		$(".btn-outline-warning").on("click", function() {
 			formObj.attr("action", "/admin/mngModifyPage");
 			formObj.attr("method", "get");
 			formObj.submit();
 		});
 
-		$(".btn-danger").on("click", function() {
+		$(".btn-outline-danger").on("click", function() {
 			formObj.attr("action", "/admin/mngRemovePage");
 			formObj.submit();
 		});
 
-		$(".btn-primary").on("click", function() {
+		$(".btn-outline-primary").on("click", function() {
 			formObj.attr("method", "get");
 			formObj.attr("action", "/admin/mngList");
 			formObj.submit();

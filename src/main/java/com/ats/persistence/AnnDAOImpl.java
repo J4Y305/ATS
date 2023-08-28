@@ -22,7 +22,8 @@ public class AnnDAOImpl implements AnnDAO {
 
 	@Override
 	public int create(AnnVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".create", vo);
+		sqlSession.insert(namespace + ".create", vo);
+		return vo.getAnnNum();
 	}
 
 	@Override
@@ -78,6 +79,37 @@ public class AnnDAOImpl implements AnnDAO {
 	@Override
 	public List<AnnFileVO> fileList(int annNum) throws Exception {
 		return sqlSession.selectList(namespace + ".fileList", annNum);
+	}
+
+	@Override
+	public List<AnnVO> listIngSearch(SearchCriteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".listIngSearch", cri);
+
+	}
+
+	@Override
+	public List<AnnVO> listEndSearch(SearchCriteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".listEndSearch", cri);
+	}
+
+	@Override
+	public int listIngSearchCount(SearchCriteria cri) throws Exception {
+		return sqlSession.selectOne(namespace + ".listIngSearchCount", cri);
+	}
+
+	@Override
+	public int listEndSearchCount(SearchCriteria cri) throws Exception {
+		return sqlSession.selectOne(namespace + ".listEndSearchCount", cri);
+	}
+
+	@Override
+	public List<AnnVO> listIESearch(SearchCriteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".listIESearch", cri);
+	}
+
+	@Override
+	public int listIESearchCount(SearchCriteria cri) throws Exception {
+		return sqlSession.selectOne(namespace + ".listIESearchCount", cri);
 	}
 
 }

@@ -1,8 +1,5 @@
 package com.ats.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -16,17 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.ats.domain.PageMaker;
-import com.ats.domain.SearchCriteria;
-import com.ats.domain.AnnVO;
 import com.ats.domain.AppEvaVO;
-import com.ats.domain.AppVO;
-import com.ats.domain.EntVO;
-import com.ats.domain.EvaDetailVO;
-import com.ats.domain.EvaVO;
-import com.ats.domain.MngVO;
+import com.ats.domain.PageMaker;
 import com.ats.domain.RaterVO;
-import com.ats.dto.RaterLoginDTO;
+import com.ats.domain.SearchCriteria;
 import com.ats.service.AnnService;
 import com.ats.service.AppEvaService;
 import com.ats.service.AppService;

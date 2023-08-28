@@ -325,7 +325,7 @@
             </a>
           </li>          
           <li>
-            <a href="/mng/raterLIst">
+            <a href="/mng/raterList">
               <i class="bi bi-person"></i><span>평가자 관리</span>
             </a>
           </li>          
