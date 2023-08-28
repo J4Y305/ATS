@@ -35,6 +35,7 @@
                         </thead>
                         <tbody>
                            <c:forEach items="${list}" var="evaVO" varStatus="var">
+                           <input type="hidden" name="keyword" value="${login.raterId}"> 
 
                               <tr>
                                  <c:if test="${pageMaker.cri.page == 1 }">
@@ -44,7 +45,7 @@
                                     <td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
                                  </c:if>
                                  <td><a
-                                    href='/eva/evaPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}&annNum=${evaVO.annNum}'>
+                                    href='/eva/evaPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}&annNum=${evaVO.annNum}&raterId=${login.raterId}'>
                                        ${evaVO.evaName} </a></td>
                                  <td>${evaVO.degree}</td>
                                  <td><fmt:formatDate pattern="yyyy-MM-dd" value="${evaVO.evaStartDate}" /></td>

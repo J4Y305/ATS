@@ -4,74 +4,85 @@ import java.util.Date;
 
 public class AppVO {
 
-   private String userId;
-   private int annNum;
-   private int appNum;
-   private String appFile;
-   private String etc;
-   private Date appRegDate;
-   private int appSave;
+	private String userId;
+	private int annNum;
+	private int appNum;
+	private String appFile;
+	private String etc;
+	private Date appRegDate;
+	private int appSave;
+	private int evaEnd;
 
-   public String getUserId() {
-      return userId;
-   }
+	public String getUserId() {
+		return userId;
+	}
 
-   public void setUserId(String userId) {
-      this.userId = userId;
-   }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-   public int getAnnNum() {
-      return annNum;
-   }
+	public int getAnnNum() {
+		return annNum;
+	}
 
-   public void setAnnNum(int annNum) {
-      this.annNum = annNum;
-   }
+	public void setAnnNum(int annNum) {
+		this.annNum = annNum;
+	}
 
-   public int getAppNum() {
-      return appNum;
-   }
+	public int getAppNum() {
+		return appNum;
+	}
 
-   public void setAppNum(int appNum) {
-      this.appNum = appNum;
-   }
+	public void setAppNum(int appNum) {
+		this.appNum = appNum;
+	}
 
-   public String getAppFile() {
-      return appFile;
-   }
+	public String getAppFile() {
+		return appFile;
+	}
 
-   public void setAppFile(String appFile) {
-      this.appFile = appFile;
-   }
+	public void setAppFile(String appFile) {
+		this.appFile = appFile;
+	}
 
-   public String getEtc() {
-      return etc;
-   }
+	public String getEtc() {
+		return etc;
+	}
 
-   public void setEtc(String etc) {
-      this.etc = etc;
-   }
+	public void setEtc(String etc) {
+		this.etc = etc;
+	}
 
-   public Date getAppRegDate() {
-      return appRegDate;
-   }
+	public Date getAppRegDate() {
+		return appRegDate;
+	}
 
-   public void setAppRegDate(Date appRegDate) {
-      this.appRegDate = appRegDate;
-   }
+	public void setAppRegDate(Date appRegDate) {
+		this.appRegDate = appRegDate;
+	}
 
-   public int getAppSave() {
-      return appSave;
-   }
+	public int getAppSave() {
+		return appSave;
+	}
 
-   public void setAppSave(int appSave) {
-      this.appSave = appSave;
-   }
+	public void setAppSave(int appSave) {
+		this.appSave = appSave;
+	}
 
-   @Override
-   public String toString() {
-      return "AppVO [userId=" + userId + ", annNum=" + annNum + ", appNum=" + appNum + ", appFile=" + appFile
-            + ", etc=" + etc + ", appRegDate=" + appRegDate + ", appSave=" + appSave + "]";
-   }
+	public int getEvaEnd() {
+		return evaEnd;
+	}
+
+	public void setEvaEnd(int evaEnd) {
+		this.evaEnd = evaEnd;
+	}
+
+	@Override
+	public String toString() {
+		return "AppVO [userId=" + userId + ", annNum=" + annNum + ", appNum=" + appNum + ", appFile=" + appFile
+				+ ", etc=" + etc + ", appRegDate=" + appRegDate + ", appSave=" + appSave + ", evaEnd=" + evaEnd + "]";
+	}
+	
+	
 
 }

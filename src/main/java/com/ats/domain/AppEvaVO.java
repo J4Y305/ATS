@@ -6,10 +6,15 @@ public class AppEvaVO {
 
 	private int appNum;
 	private int evaNum;
+	private int annNum;
 	private String raterId;
 	private int scoreSum;
 	private String scoreComment;
 	private Date scoreRegDate;
+	
+	private int evaItemNum;
+	private int evaDetailScore;
+	
 
 	public int getAppNum() {
 		return appNum;
@@ -59,11 +64,36 @@ public class AppEvaVO {
 		this.scoreRegDate = scoreRegDate;
 	}
 
-	@Override
-	public String toString() {
-		return "AppEvaVO [appNum=" + appNum + ", evaNum=" + evaNum + ", raterId=" + raterId + ", scoreSum=" + scoreSum
-				+ ", scoreComment=" + scoreComment + ", scoreRegDate=" + scoreRegDate + "]";
+	public int getEvaItemNum() {
+		return evaItemNum;
 	}
 
-	
+	public void setEvaItemNum(int evaItemNum) {
+		this.evaItemNum = evaItemNum;
+	}
+
+	public int getEvaDetailScore() {
+		return evaDetailScore;
+	}
+
+	public void setEvaDetailScore(int evaDetailScore) {
+		this.evaDetailScore = evaDetailScore;
+	}
+
+	public int getAnnNum() {
+		return annNum;
+	}
+
+	public void setAnnNum(int annNum) {
+		this.annNum = annNum;
+	}
+
+	@Override
+	public String toString() {
+		return "AppEvaVO [appNum=" + appNum + ", evaNum=" + evaNum + ", annNum=" + annNum + ", raterId=" + raterId
+				+ ", scoreSum=" + scoreSum + ", scoreComment=" + scoreComment + ", scoreRegDate=" + scoreRegDate
+				+ ", evaItemNum=" + evaItemNum + ", evaDetailScore=" + evaDetailScore + "]";
+	}
+
+
 }

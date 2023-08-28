@@ -89,12 +89,24 @@
 								<c:if test="${pageMaker.cri.page != 1 }">
 								<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 								</c:if>
+							<c:if test="${0 eq appVO.evaEnd}">	
 							<td scope="row"><a
-								href="/eva/evaReadPage${pageMaker.makeSearch(pageMaker.cri.page)}&evaNum=${evaVO.evaNum}
-								&annNum=${appVO.annNum}&appNum=${appVO.appNum}&userId=${appVO.userId}">${appVO.userId}</a></td>
+								href="/eva/evaRegister${pageMaker.makeSearch(pageMaker.cri.page)}&evaNum=${evaVO.evaNum}
+								&annNum=${appVO.annNum}&appNum=${appVO.appNum}&userId=${appVO.userId}&raterId=${login.raterId}">${appVO.userId}</a></td>
+							</c:if>
+							<c:if test="${1 eq appVO.evaEnd}">
+							<td scope="row"><a
+								href="/eva/evaDetailReadPage${pageMaker.makeSearch(pageMaker.cri.page)}&evaNum=${evaVO.evaNum}
+								&annNum=${appVO.annNum}&appNum=${appVO.appNum}&userId=${appVO.userId}&raterId=${login.raterId}">${appVO.userId}</a></td>
+							</c:if>	
 							<td>${appVO.appNum}</td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${appVO.appRegDate}" /></td>
-							<td>${appVO.appSave}</td>
+							<td><c:if test="${0 eq appVO.evaEnd}">
+									<div class="col-lg-9 col-md-8">X</div>
+								</c:if>
+								<c:if test="${1 eq appVO.evaEnd}">
+									<div class="col-lg-9 col-md-8">O</div>
+								</c:if></td>
 						</tr>
 						</c:forEach>
 					</tbody>
@@ -133,13 +145,19 @@
 		<!-- /.box-body -->
 
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary">평가 완료</button>
+			<div style="display: flex; justify-content: center;">
+					<button type="submit" class="btn btn-primary" id="submitBtn">평가 완료</button>
+					</div>
 		</div>
 	</section>
 
 
 	</main>
 	<!-- End #main -->
+	<script>
+	
+	</script>
+	
 	<script>
 		$(document).ready(function() {
 

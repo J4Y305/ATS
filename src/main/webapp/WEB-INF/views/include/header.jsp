@@ -53,7 +53,7 @@
           <li><a class="getstarted scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">채용 공고</a></li>
           <li><c:if test="${null eq login.userId}"><a class="nav-link scrollto" href="/user/login">로그인</a></c:if></li>
-          <li><c:if test="${null eq login.userId}"><a class="nav-link scrollto" href="/user/register">회원가입</a></c:if></li>
+          <li><c:if test="${null eq login.userId}"><a class="nav-link scrollto" href="/user/userRegister">회원가입</a></c:if></li>
       	  <li><c:if test="${null ne login.userId}"><a class="nav-link scrollto" href="/user" onclick="submitFormWithUserId()">마이페이지</a>
           <form id="userIdForm" action="/user" method="GET" style="display: none;">
         		<input type="hidden" name="userId" id="userIdInput">

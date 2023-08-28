@@ -133,6 +133,18 @@ public class EvaServiceImpl implements EvaService {
 		dao.raterCompleteUpdate(vo);
 	}
 
+	@Override
+	public List<EvaItemVO> evaItemList(int evaNum) throws Exception {
+		return dao.evaItemList(evaNum);
+	}
+
+	@Override
+	public List<RaterListVO> raterArrayList(int evaNum) throws Exception {
+		return dao.raterArrayList(evaNum);
+	}
+
+
+
 	
 
 }

@@ -8,11 +8,11 @@ import com.ats.domain.EvaDetailVO;
 
 public interface AppEvaService {
 
-	public void aeRegister(AppEvaVO vo) throws Exception;
+	public void aeRegister(AppEvaVO vo, int[] evaItemNums, int[] evaDetailScores) throws Exception;
 
 	public void edRegister(EvaDetailVO vo) throws Exception;
 
-	public void read(AppEvaVO vo) throws Exception;
+	public AppEvaVO read(AppEvaVO vo) throws Exception;
 
 	public List<AppEvaVO> listCriteria (Criteria cri) throws Exception;
 

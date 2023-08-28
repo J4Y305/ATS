@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.ats.domain.RaterVO;
 import com.ats.dto.RaterLoginDTO;
-import com.ats.service.EvaService;
 import com.ats.service.RaterService;
 
 

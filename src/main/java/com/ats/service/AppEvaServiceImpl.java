@@ -18,8 +18,24 @@ public class AppEvaServiceImpl implements AppEvaService {
 	private AppEvaDAO dao;
 	
 	@Override
-	public void aeRegister(AppEvaVO vo) throws Exception {
+	public void aeRegister(AppEvaVO vo, int[] evaItemNums, int[] evaDetailScores) throws Exception {
+		
+		// 1) 지원자에 대한 종합 평가 등록
 		dao.appEvaCreate(vo);
+		
+		// 2) 평가 항목에 따른 점수 등록
+		for(int i=0; i<evaItemNums.length; i++) {
+			EvaDetailVO detailVO = new EvaDetailVO();
+			detailVO.setAppNum(vo.getAppNum());
+			detailVO.setEvaNum(vo.getEvaNum());
+			detailVO.setRaterId(vo.getRaterId());
+			
+			detailVO.setEvaItemNum(evaItemNums[i]);
+			detailVO.setEvaDetailScore(evaDetailScores[i]);
+			
+			dao.evaDetailCreate(detailVO);
+		}
+		
 	}
 
 	@Override
@@ -28,8 +44,8 @@ public class AppEvaServiceImpl implements AppEvaService {
 	}
 
 	@Override
-	public void read(AppEvaVO vo) throws Exception {
-		dao.appEvaRead(vo);
+	public AppEvaVO read(AppEvaVO vo) throws Exception {
+		return dao.appEvaRead(vo);
 	}
 
 	@Override
@@ -46,5 +62,7 @@ public class AppEvaServiceImpl implements AppEvaService {
 	public List<EvaDetailVO> evaDetailList(AppEvaVO vo) throws Exception {
 		return dao.evaDetailList(vo);
 	}
+
+
 
 }

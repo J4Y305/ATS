@@ -22,5 +22,6 @@ public interface RaterService {
 
 	public int listSearchCount(SearchCriteria cri) throws Exception;
 	
+	
 
 }
