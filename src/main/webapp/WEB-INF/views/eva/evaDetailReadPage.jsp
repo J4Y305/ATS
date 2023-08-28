@@ -80,7 +80,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">지원서</h5>
-				<iframe width="100%" height="600" src="./compressed.tracemonkey-pldi-09.pdf"></iframe>
+				<div id="example1" style="height: 30rem;"></div>
 			</div>
 		</div>
 
@@ -152,5 +152,5 @@
 	<jsp:include page="../include/admin_footer.jsp" />
 
 </body>
-
+<script>PDFObject.embed("/file/${appVO.appFile}","#example1");</script>
 </html>

@@ -146,7 +146,7 @@
 
 		<div class="box-footer">
 			<div style="display: flex; justify-content: center;">
-					<button type="submit" class="btn btn-primary" id="submitBtn">평가 완료</button>
+					<button type="submit" class="btn btn-outline primary" id="submitBtn">평가 완료</button>
 					</div>
 		</div>
 	</section>

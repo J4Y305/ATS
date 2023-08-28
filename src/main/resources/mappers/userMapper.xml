@@ -69,6 +69,31 @@
       <include refid="search"></include>
    </select>
    
+   <select id="listSearchResult" resultType="com.ats.domain.AnnVO">
+   <![CDATA[
+      SELECT * FROM (
+         SELECT ROWNUM RNUM, ANN_NAME, ANN_FIELD, BIRTH_DAY, GENDER, USER_EMAIL,
+         USER_PHONE, USER_REG_DATE, USER_NAME
+            FROM (SELECT * FROM TBL_USER WHERE USER_ID IS NOT NULL
+      ]]>
+      <include refid="search"></include>
+            
+   <![CDATA[               
+      ORDER BY USER_ID DESC))
+         WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+      ORDER BY USER_ID DESC
+      ]]>
+   </select>
+   
+   <select id="listSearchCountResult" resultType="int">
+   <![CDATA[
+      SELECT COUNT(*) FROM TBL_USER
+         WHERE USER_ID IS NOT NULL
+   ]]>
+      <include refid="search"></include>
+   </select>
+   
+   
    
    
 </mapper>

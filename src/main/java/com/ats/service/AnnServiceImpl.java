@@ -173,4 +173,14 @@ public class AnnServiceImpl implements AnnService {
 		return dao.listIESearchCount(cri);
 	}
 
+	@Override
+	public List<AnnVO> listSearchResult(SearchCriteria cri) throws Exception {
+		return dao.listSearchResult(cri);
+	}
+
+	@Override
+	public int listSearchCountResult(SearchCriteria cri) throws Exception {
+		return dao.listSearchCountResult(cri);
+	}
+
 }

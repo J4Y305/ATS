@@ -2,6 +2,7 @@ package com.ats.persistence;
 
 import java.util.List;
 
+import com.ats.domain.AnnVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.UserVO;
 import com.ats.dto.UserLoginDTO;
@@ -23,6 +24,5 @@ public interface UserDAO {
    
    // 페이징, 검색하기 위한 게시물 수 반환
    public int listSearchCount(SearchCriteria cri) throws Exception;
-
-
+   
 }

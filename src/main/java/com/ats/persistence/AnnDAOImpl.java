@@ -112,4 +112,14 @@ public class AnnDAOImpl implements AnnDAO {
 		return sqlSession.selectOne(namespace + ".listIESearchCount", cri);
 	}
 
+	@Override
+	public List<AnnVO> listSearchResult(SearchCriteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".listSearchResult", cri);
+	}
+
+	@Override
+	public int listSearchCountResult(SearchCriteria cri) throws Exception {
+		return sqlSession.selectOne(namespace + ".listSearchCountResult", cri);
+	}
+
 }

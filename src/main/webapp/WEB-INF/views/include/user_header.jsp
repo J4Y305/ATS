@@ -5,6 +5,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <title>ATS - Applicant Tracking System</title>
   <meta content="" name="description">
@@ -301,7 +303,7 @@
       </li><!-- End Icons Nav -->      
       
       <li class="nav-item">
-        <a class="nav-link collapsed" href="users-profile.html">
+        <a class="nav-link collapsed" href="/user/result">
           <!-- <i class="bi bi-person"></i> -->
           <i class="bi bi-layout-text-window-reverse"></i>
           <span>결과 조회</span>

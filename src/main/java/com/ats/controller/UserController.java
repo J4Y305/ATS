@@ -17,6 +17,7 @@ import com.ats.domain.PageMaker;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.UserVO;
 import com.ats.dto.UserLoginDTO;
+import com.ats.service.AnnService;
 import com.ats.service.UserService;
 
 @Controller
@@ -27,6 +28,10 @@ public class UserController {
 	
 	@Inject
 	private UserService service;
+	
+	@Inject
+	private AnnService annService;
+	
 	
 	@RequestMapping(value = "/login", method=RequestMethod.GET)
 	public void loginGET(@ModelAttribute("dto") UserLoginDTO dto) throws Exception{
@@ -74,42 +79,6 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	
-	// REMOVEPAGE
-	@RequestMapping(value = "/removePage", method = RequestMethod.POST)
-	public String removePagePOST(@RequestParam("userId") String userId, HttpSession session,
-			@ModelAttribute("cri") SearchCriteria cri, RedirectAttributes rttr, Model model) throws Exception {
-		logger.info("removePage POST.....");
- 
-		// 삭제하려면 로그인한 정보와 게시글의 작성자가 일치.
-
-		// 1) 로그인 정보 가져오기
-		UserVO user = (UserVO) session.getAttribute("login");
-
-		// 2) 게시글의 작성자 id와 로그인 정보 id를 비교.
-		// 2-1) 게시글 정보 가져오기
-		UserVO product = service.read(userId);
-
-		// 2-2) 게시글 작성자와 id와 로그인 정보 id 비교.
-		if (user.getUserId().equals(product.getUserId())) {
-			// 작성자와 로그인 정보 같음 -> 게시글 삭제
-			logger.info("remove POST.....");
-			service.remove(userId);
-			// 목록화면으로 이동.
-			rttr.addFlashAttribute("msg", "SUCCESS");
-			return "redirect:/user/list";
-		} else {
-			// 로그인 정보와 게시글 작성자가 일치하지 않는 경우 -> 상세페이지로 강제이동
-			rttr.addAttribute("userId", userId);
-			rttr.addAttribute("page", cri.getPage());
-			rttr.addAttribute("perPageNum", cri.getPerPageNum());
-			rttr.addAttribute("searchType", cri.getSearchType());
-			rttr.addAttribute("keyword", cri.getKeyword());
-			rttr.addFlashAttribute("msg", "잘못된 접근입니다.");
-
-			return "redirect:/user/readPage";
-		}
-	}
 	
 	//LISTPAGE
 	@RequestMapping(value = "list", method = RequestMethod.GET)
@@ -173,6 +142,35 @@ public class UserController {
 
 		return "redirect:/user/myPage";
 	}
+	
+	// LISTPAGE
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
+	public void resultPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session,
+			Model model) throws Exception {
+		logger.info("listPage GET.....");
+
+		UserVO vo = (UserVO) session.getAttribute("login");
+		cri.setKeyword(vo.getUserId());
+		
+		
+		// 선택된 페이지의 게시글 정보로 10개 가져오기
+		model.addAttribute("list", annService.listSearchResult(cri));
+		
+		// 페이징 네비게이션 추가
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(annService.listSearchCount(cri));
+		// 페이징 정보 화면 전달 
+		model.addAttribute("pageMaker", pageMaker);
+		
+		
+		logger.info("result Model....." + model);
+		logger.info("result cri....." + cri);
+		
+		
+
+	}
+
 
 
 }

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.ats.domain.AnnVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.UserVO;
 import com.ats.dto.UserLoginDTO;
@@ -53,7 +54,5 @@ public class UserServiceImpl implements UserService{
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return dao.listSearchCount(cri);
 	}
-
-	
 
 }

@@ -3,6 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <main id="main" class="main">
 
 <div class="pagetitle">
@@ -48,10 +49,12 @@
 													value="${annVO.annStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}" /></td>
-											<td></td>
+											<td class="dDayCell"></td>
 											<td>${annVO.mngId}</td>
 										</tr>
-						<input type=hidden value="${annVO.annEndDate}" name="annEndDate">
+										<div class="annEd">
+						<input type=hidden value="${annVO.annEndDate}" name="annEndDate" class="annEndInput">
+						</div>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -115,18 +118,26 @@
 		var sd = new Date($('#startDate').val());
 		console.log(sd);
 		$('input[name=annStartDate]').val(sd);
-	})
+	});
 	// 마감일 날짜형으로 변환
 	$('#endDate').change(function() {
 		var ed = new Date($('#endDate').val());
 		console.log(ed);
 		$('input[name=annEndDate]').val(ed);
-	})
+	});
 
-	var today = new Date();
-	console.log(today)
-	var dDay = $('input[name=annEndDate]').val();
-	console.log(dDay)
-	var date = today.getTime() - dDay.getTime();
-	console.log(date);
+</script>
+<script>
+        $(document).ready(function() {
+            $('.annEd').each(function(index, element) {
+                var today = new Date();
+                var ed = $(element).find('.annEdInput').val();
+                var deadline = new Date(ed);
+                var difference = deadline.getTime() - today.getTime();
+                var dDay = Math.ceil(difference / (1000 * 60 * 60 * 24));
+                
+                // 해당 클래스가 있는 요소의 내용을 변경하여 dDay 값을 표시합니다.
+                $('.dDayCell').eq(index).text("D - " + dDay);
+            });
+        });
 </script>

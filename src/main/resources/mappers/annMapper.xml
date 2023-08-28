@@ -214,6 +214,34 @@
 		]]>
 		<include refid="search"></include>
 	</select>
+	
+	<select id="listSearchResult" resultType="com.ats.domain.AnnVO">
+	<![CDATA[
+	SELECT * FROM (
+         SELECT ROWNUM RNUM, APP.APP_NUM,APP.ANN_NUM,APP.USER_ID, APP.APP_REG_DATE 
+        ,ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
+        FROM TBL_ANN ANN, TBL_APP APP 
+        WHERE ANN.ANN_NUM = APP.ANN_NUM 
+                AND APP.ANN_NUM = (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                AND ANN.DEADLINE != 0 
+                ORDER BY APP_NUM DESC)
+                ]]>
+                
+                <![CDATA[
+                      WHERE (RNUM >= 1 AND RNUM <= 1)
+      					ORDER BY APP_NUM DESC, APP_REG_DATE DESC
+      					]]>
+	</select>
+	
+	<select id="listSearchCountResult" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_ANN
+			WHERE (ANN_ACT = 1 AND DEADLINE = 1) 
+								
+		]]>
+		<include refid="search"></include>
+	</select>
+	
 
 
 

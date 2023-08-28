@@ -49,5 +49,11 @@ public interface AnnDAO {
 	public List<AnnVO> listIESearch(SearchCriteria cri) throws Exception;
 	
 	public int listIESearchCount(SearchCriteria cri) throws Exception;
+	
+	// 결과조회(유저)
+	public List<AnnVO> listSearchResult(SearchCriteria cri) throws Exception;
+	
+	public int listSearchCountResult(SearchCriteria cri) throws Exception;
+	
 
 }
