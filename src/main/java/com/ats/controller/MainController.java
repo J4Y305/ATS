@@ -10,10 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.ats.domain.AppVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.SearchCriteria;
 import com.ats.service.AnnService;
+import com.ats.service.AppService;
+import com.ats.service.UserService;
 
 @Controller
 @RequestMapping("/*")
@@ -23,6 +27,12 @@ public class MainController {
 	
 	@Inject
 	private AnnService annService;
+	
+	@Inject
+	private AppService appService;
+	
+	@Inject
+	private UserService userService;
 	
 	@RequestMapping(value = "/annListMainPage", method = RequestMethod.GET)
 	public void annListMainPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
@@ -51,5 +61,22 @@ public class MainController {
 
 		// 공고 첨부 파일
 		model.addAttribute("annFileVO", annService.fileList(annNum));
+	}
+	
+	@RequestMapping(value = "/appRegister", method = RequestMethod.GET)
+	public void registerGET(@RequestParam("annNum") int annNum, @ModelAttribute("cri") SearchCriteria cri, @RequestParam("userId") String userId, Model model) throws Exception {
+		logger.info("Ann register Get...");
+		model.addAttribute(annService.read(annNum));
+		model.addAttribute(userService.read(userId));
+	}
+	
+	@RequestMapping(value = "/appRegister", method = RequestMethod.POST)
+	public String registerPost(AppVO vo, RedirectAttributes rttr) throws Exception {
+		logger.info("App register Post...");
+
+		appService.register(vo);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		return "redirect:/user";
 	}
 }

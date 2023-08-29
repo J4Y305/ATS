@@ -22,6 +22,7 @@
 									<!-- General Form Elements -->
 									<form class="row g-3" role="form" method="get" name="frm"
 										action="appRegister">
+										
 										<input type='hidden' name='page' value="${cri.page}">
 										<input type='hidden' name='perPageNum'
 											value="${cri.perPageNum}"> <input type='hidden'
@@ -29,7 +30,7 @@
 											type='hidden' name='keyword' value="${cri.keyword}">
 										<input type="hidden" name="annNum" class="form-control"
 											value='${annVO.annNum}'> <input type="hidden"
-											name="annNum" class="form-control" value='${login.userId}'>
+											name="userId" class="form-control" value='${login.userId}'>
 										<h2>${annVO.annName}</h2>
 										<ul>
 											<li><strong>모집분야</strong>: ${annVO.annField}</li>
@@ -140,7 +141,12 @@
 
 								<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
 									<div class="text-center">
-										<button type="submit" class="btn btn-primary">지원하기</button>
+										<button type="submit" class="btn btn-success">지원하기</button>
+									</div>
+								</div>
+								<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+									<div class="text-center">
+										<button type="submit" class="btn btn-primary">목록</button>
 									</div>
 								</div>
 							</div>
@@ -164,7 +170,13 @@
 
 		console.log(formObj);
 
-		$(".btn-outline-primary").on("click", function() {
+		$(".btn-primary").on("click", function() {
+			formObj.attr("method", "get");
+			formObj.attr("action", "/annListMainPage");
+			formObj.submit();
+		});
+		
+		$(".btn-success").on("click", function() {
 			formObj.attr("method", "get");
 			formObj.attr("action", "/appRegister");
 			formObj.submit();

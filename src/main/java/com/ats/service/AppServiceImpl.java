@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
+import com.ats.dto.AppListDTO;
 import com.ats.persistence.AppDAO;
 
 @Service
@@ -46,6 +47,28 @@ public class AppServiceImpl implements AppService{
 	public int listCountCriteria(Criteria cri) throws Exception {
 		return dao.listCountCriteria(cri);
 	}
+
+	@Override
+	public List<AppListDTO> listStoreCriteria(Criteria cri) throws Exception {
+		return dao.listStoreCriteria(cri);
+	}
+
+	@Override
+	public int listStoreCountCriteria(Criteria cri) throws Exception {
+		return dao.listStoreCountCriteria(cri);
+	}
+
+	@Override
+	public List<AppListDTO> listFinalCriteria(Criteria cri) throws Exception {
+		return dao.listFinalCriteria(cri);
+	}
+
+	@Override
+	public int listFinalCountCriteria(Criteria cri) throws Exception {
+		return dao.listFinalCountCriteria(cri);
+	}
+
+	
 
 
 }

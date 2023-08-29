@@ -2,116 +2,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fmt2" uri="http://java.sun.com/jstl/fmt_rt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<jsp:include page="include/header.jsp" />
+<jsp:include page="../include/user_header.jsp" />
+<main id="main" class="main">
 
-<main id="main"> <!-- ======= Breadcrumbs ======= -->
-<section id="breadcrumbs" class="breadcrumbs">
-	<div class="container">
-		<h2>채용 공고</h2>
-		<!-- End Breadcrumbs -->
-		<section id="pricing" class="pricing" style="padding-top: 1px;">
-			<div class="container" data-aos="fade-up">
-				<div class="row">
-					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-						<div class="box" style="padding-top: 1px;">
-							<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-								<form action="appRegister" method="post" role="form" name="frm"
-									class="php-email-form">
-									<input type='hidden' name='page' value="${cri.page}"> <input
-										type='hidden' name='perPageNum' value="${cri.perPageNum}">
-									<input type='hidden' name='searchType'
-										value="${cri.searchType}"> <input type='hidden'
-										name='keyword' value="${cri.keyword}"> <input
-										type="hidden" name="annNum" class="form-control"
-										value='${annVO.annNum}'> <input type="hidden"
-										name="userId" class="form-control" value='${login.userId}'>
-									<div class="row">
-										<div class="form-group col-md-6">
-											<label for="name">이름</label> <input type="text" name="userName"
-												class="form-control" id="name" value="${userVO.userName}">
-										</div>
-										<div class="form-group col-md-6">
-											<label for="name">전화번호</label> <input type="email"
-												class="form-control" name="email" id="email"
-												value="${userVO.userPhone}">
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="name">이메일</label> <input type="text"
-											class="form-control" name="subject" id="subject"
-											value="${userVO.userEmail}">
-									</div>
-								
-									<div class="row">
-										<div class="form-group col-md-6">
-											<label for="name">생년월일</label> <input type="text" name="name"
-												class="form-control" id="name" value="${userVO.birthDay}">
-										</div>
-										<div class="form-group col-md-6">
-											<label for="name">성별</label> 
-											<c:if test="${1 eq userVO.gender}">
-											<input type="text" class="form-control" name="gender" id="gender"
-												value="남"></c:if>
-												<c:if test="${2 eq userVO.gender}">
-											<input type="text" class="form-control" name="gender" id="gender"
-												value="여"></c:if>
-										</div>
-									</div>
-									<div class="form-group">
-										<label for="name">비고란</label>
-										<textarea class="form-control" name="etc" rows="10"
-											required></textarea>
-									</div>
-									<div class="row mb-3">
-										<label class="col-sm-3 col-form-label">지원서 업로드 :</label>
-										<!-- <div id='mydropzone' class="dropzone"> -->
-										<div class="col-sm-8">
-											<div id='mydropzone' class="alert alert-primary alert-dismissible fade show">
-												<input type="file" id="fileUpload" name="fileUpload" style="visibility: hidden;" />
-												<div class="fileDrop">
-													<input type="hidden" id="uploadCount">
-													<div class="dz-message needsclick">
-														<i class="h1 text-muted dripicons-cloud-upload"></i>
-														<h4 class="alert-heading">Drop files here or click to upload.</h4>
-														<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
-													</div>
-												</div>
-											</div>
-											<div>
-												<ul class="dropzone-previews clearfix uploadedList">
-												</ul>
-											</div>
-										</div>
-									</div>
-								</form>
+<div class="pagetitle">
+	<h1>지원서 내용 수정</h1>
+
+</div>
+<!-- End Page Title -->
+<section class="section">
+	<div class="row">
+		<div class="col-lg-10">
+
+			<div class="card">
+				<!-- General Form Elements -->
+				<form class="row g-3" role="form" method="post" name="frm">
+					<div class="card-body">
+						<h5 class="card-title">기업 기본 정보</h5>
+						<input type="hidden" name="userId" class="form-control"
+							value='${login.userId}'> <input type="hidden"
+							name="appNum" class="form-control" value='${appVO.appNum}'>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-3 col-form-label">이름 :</label>
+						<div class="col-sm-5">
+							<input type="text" name="userName" class="form-control"
+								value="${userVO.userName}" readOnly>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-3 col-form-label">전화번호 :</label>
+						<div class="col-sm-3">
+							<input type="text" name="userPhone" class="form-control"
+								value="${userVO.userPhone}" readOnly>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-3 col-form-label">이메일:</label>
+						<div class="col-sm-4">
+							<input type="text" name="entPhone" class="form-control"
+								value="${userVO.userEmail}" readOnly>
+						</div>
+					</div>
+					<div class="row mb-3 ">
+						<label class="col-sm-3 col-form-label">생년월일 :</label>
+						<div class="col-sm-5">
+							<input type="text" name="mngName" class="form-control"
+								value="${userVO.birthDay}" readOnly>
+						</div>
+					</div>
+					<div class="row mb-3 ">
+						<label class="col-sm-3 col-form-label">성별 :</label>
+						<c:if test="${1 eq userVO.gender}">
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="gender"
+									id="gender" readOnly value="남">
 							</div>
-							<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-								<div class="text-center">
-									<button type="submit" class="btn btn-primary" value="1">최종제출</button>
+						</c:if>
+						<c:if test="${2 eq userVO.gender}">
+							<div class="col-sm-5">
+								<input type="text" class="form-control" name="gender"
+									id="gender" readOnly value="여">
+							</div>
+						</c:if>
+					</div>
+					<div class="row mb-3 ">
+						<label class="col-sm-3 col-form-label">비고란 :</label>
+						<div class="col-sm-5">
+							<input type="text" name="etc" class="form-control"
+								value="${appVO.etc}">
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label class="col-sm-3 col-form-label">지원서 업로드 :</label>
+						<!-- <div id='mydropzone' class="dropzone"> -->
+						<div class="col-sm-8">
+							<div id='mydropzone'
+								class="alert alert-primary alert-dismissible fade show">
+								<input type="file" id="fileUpload" name="fileUpload"
+									style="visibility: hidden;" />
+								<div class="fileDrop">
+									<input type="hidden" id="uploadCount">
+									<div class="dz-message needsclick">
+										<i class="h1 text-muted dripicons-cloud-upload"></i>
+										<h4 class="alert-heading">Drop files here or click to
+											upload.</h4>
+										<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+									</div>
 								</div>
-								<div class="text-center">
-									<button type="submit" class="btn btn-success" value="0">임시저장</button>
-								</div>
-								<input type=hidden name="appSave">
-								<div class="text-center">
-									<button type="submit" class="btn btn-danger">취소</button>
-								</div>
+							</div>
+							<div>
+								<ul class="dropzone-previews clearfix uploadedList">
+								</ul>
 							</div>
 						</div>
-
 					</div>
+				</form>
+			</div>
+			<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+				<div class="text-center">
+					<button type="submit" class="btn btn-primary" value="1">최종제출</button>
+				</div>
+				<div class="text-center">
+					<button type="submit" class="btn btn-success" value="0">임시저장</button>
+				</div>
+				<input type=hidden name="appSave">
+				<div class="text-center">
+					<button type="submit" class="btn btn-danger">취소</button>
 				</div>
 			</div>
+		</div>
+
 	</div>
+
 </section>
-<!-- End Contact Section --> </main>
-<!-- End #main -->
-
-<jsp:include page="include/footer.jsp" />
-
+</main>
+<jsp:include page="../include/admin_footer.jsp" />
 <script>
 	$(document).ready(function() {
 
@@ -121,24 +127,21 @@
 
 		$(".btn-primary").on("click", function() {
 			$('input[name=appSave]').val(1);
-			console.log($('input[name=appSave]').val());
 			formObj.attr("method", "post");
-			formObj.attr("action", "/appRegister");
+			formObj.attr("action", "/user/appModifyPage");
 			formObj.submit();
 		});
-		
+
 		$(".btn-success").on("click", function() {
 			$('input[name=appSave]').val(0);
-			console.log($('input[name=appSave]').val());
 			formObj.attr("method", "post");
-			formObj.attr("action", "/appRegister");
+			formObj.attr("action", "/user/appModifyPage");
 			formObj.submit();
 		});
 		$(".btn-danger").on("click", function() {
-						self.location = "/annReadMainPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
-								+ "&searchType=${cri.searchType}&keyword=${cri.keyword}${annVO.annNum}";
+			self.location = "/user/appStoreList";
 
-					});
+		});
 
 	});
 	function checkImageType(fileName) {
@@ -372,26 +375,26 @@
 	//파일링크 처리(길이를 줄여줌)
 	//function getOriginalName(appFile) {
 
-		//if (checkImageType(appFile)) {
-			//return;
-		//}
+	//if (checkImageType(appFile)) {
+	//return;
+	//}
 
-		//var idx = appFile.indexOf("_") + 1;
-		//return appFile.substr(idx);
+	//var idx = appFile.indexOf("_") + 1;
+	//return appFile.substr(idx);
 
 	//}
 	//이미지파일 원본 파일 찾기
 	//function getImageLink(appFile) {
 
-		//if (!checkImageType(appFile)) {
-			//return;
-		//}
-		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
-		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
-		//var front = appFile.substr(0, 12);
-		//var end = appFile.substr(14);
+	//if (!checkImageType(appFile)) {
+	//return;
+	//}
+	//noticeFileName.substring(0,12)/년/월/일 경로 추출  
+	//noticeFileName.substring(14) 파일 이름앞의 's_'제거
+	//var front = appFile.substr(0, 12);
+	//var end = appFile.substr(14);
 
-		//return front + end;
+	//return front + end;
 
 	//}
 </script>
