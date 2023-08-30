@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!DOCTYPE html>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>ATS - Login</title>
+<title>ATS Login</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -31,7 +29,8 @@
 <link
 	href="/resources/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-<link href="/resources/admin/assets/vendor/boxicons/css/boxicons.min.css"
+<link
+	href="/resources/admin/assets/vendor/boxicons/css/boxicons.min.css"
 	rel="stylesheet">
 <link href="/resources/admin/assets/vendor/quill/quill.snow.css"
 	rel="stylesheet">
@@ -54,6 +53,38 @@
   ======================================================== -->
 </head>
 
+
+<script type="text/javascript">
+	/* $("#submit").on("click", function(){
+		if($("#userId").val()=="1"){
+		alert("아이디를 입력해주세요.");
+		$("#userId").focus();
+		return false;
+	}
+			if ($("#pwdc").val() == "") {
+				alert("암호확인 필수");
+				$("#pwdc").focus();
+				return false;
+			}
+	} */
+	/* function save() {
+		   if ((document.formm.userPwd.value != document.formm.pwdc.value)) {
+		    alert("비밀번호가 일치하지 않습니다,.");
+		    document.formm.pwd.focus();
+		  } else {
+		    document.formm.action = "user";
+		    document.formm.submit();
+		  }
+		}
+		function idc() {
+		  if (document.formm.userId.value == "") {
+		    alert('중복체크를 해주세요');
+		    document.formm.userId.focus();
+		    return;
+		  } */
+		
+	</script>
+ 
 <body>
 
 	<main>
@@ -69,7 +100,7 @@
 						<div class="d-flex justify-content-center py-4">
 							<a href="index.html"
 								class="logo d-flex align-items-center w-auto"> <img
-								src="assets/img/logo.png" alt=""> <span
+								src="/resources/user/assets/img/logo.png" alt=""> <span
 								class="d-none d-lg-block">ATS</span>
 							</a>
 						</div>
@@ -81,15 +112,16 @@
 
 								<div class="pt-4 pb-2">
 									<h5 class="card-title text-center pb-0 fs-4">로그인</h5>
-									<p class="text-center small">Enter your username & password
-										to login</p>
+									<p class="text-center small">Enter your username & password to login</p>
 								</div>
 
-								<form class="row g-3 needs-validation" action="/user/loginPost" method="post" novalidate>
+								<form class="row g-3 needs-validation" action="/user/loginPost"
+									method="post" novalidate>
 
 									<div class="col-12">
-										<label for="yourUsername" class="form-label">ID</label> <input
-											type="text" name="userId" class="form-control" id="userId"
+										<label for="yourUsername" class="form-label">ID</label> 
+										
+										<input type="text" name="userId" class="form-control" id="yourUsername"
 											required>
 										<div class="invalid-feedback">Please enter your ID.</div>
 
@@ -98,9 +130,8 @@
 									<div class="col-12">
 										<label for="yourPassword" class="form-label">Password</label>
 										<input type="password" name="userPwd" class="form-control"
-											id="userPwd" required>
-										<div class="invalid-feedback">Please enter your
-											password!</div>
+											id="yourPassword" required>
+										<div class="invalid-feedback">Please enter your password!</div>
 									</div>
 
 									<div class="col-12">
@@ -111,9 +142,9 @@
 												me</label>
 										</div>
 									</div>
-									
+
 									<div class="col-12">
-										<button class="btn btn-primary w-100" type="submit">Login</button>
+										<button class="btn btn-primary w-100" type="submit" >Login</button>
 									</div>
 									<div class="col-12">
 										<p class="small mb-0">
@@ -165,5 +196,4 @@
 	<script src="/resources/admin/assets/js/main.js"></script>
 
 </body>
-
 </html>

@@ -1,37 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>   
-
-<!DOCTYPE html>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ATS - Register</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<title>ATS</title>
+<meta content="" name="description">
+<meta content="" name="keywords">
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<!-- Favicons -->
+<link href="/resources/admin/assets/img/favicon.png" rel="icon">
+<link href="/resources/admin/assets/img/apple-touch-icon.png"
+	rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link
+	href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="/resources/user/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="/resources/user/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+<!-- Vendor CSS Files -->
+<link
+	href="/resources/admin/assets/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="/resources/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	rel="stylesheet">
+<link
+	href="/resources/admin/assets/vendor/boxicons/css/boxicons.min.css"
+	rel="stylesheet">
+<link href="/resources/admin/assets/vendor/quill/quill.snow.css"
+	rel="stylesheet">
+<link href="/resources/admin/assets/vendor/quill/quill.bubble.css"
+	rel="stylesheet">
+<link href="/resources/admin/assets/vendor/remixicon/remixicon.css"
+	rel="stylesheet">
+<link href="/resources/admin/assets/vendor/simple-datatables/style.css"
+	rel="stylesheet">
 
-  <!-- Template Main CSS File -->
-  <link href="/resources/user/assets/css/style.css" rel="stylesheet">
+<!-- Template Main CSS File -->
+<link href="/resources/admin/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
+<!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jul 27 2023 with Bootstrap v5.3.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -39,9 +52,35 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
 <body>
-
+  <script type="text/javascript">
+			
+					var idc = $("#idc").val();
+					if(idc == "N"){
+						alert("중복확인 버튼을 눌러주세요.");
+					}else if(idc == "Y"){
+						$("#userId").submit();
+					}
+				});
+			})
+			
+			function idc(){
+				$.ajax({
+					url : "/user/register",
+					type : "post",
+					dataType : "json",
+					data : {"userId" : $("#userId").val()},
+					success : function(data){
+						if(data == 1){
+							alert("중복된 아이디입니다.");
+						}else if(data == 0){
+							$("#id").attr("value", "Y");
+							alert("사용가능한 아이디입니다.");
+						}
+					}
+				})
+			}
+		</script>
   <main>
     <div class="container">
 
@@ -68,20 +107,27 @@
 
                   <form class="row g-3 needs-validation" method="post" novalidate>
                     <div class="col-12">
-                      <label for="yourId" class="form-label">ID</label>
-                      <input type="text" name="userId" class="form-control" id="userId" required>
+                      <label for="yourUsername" class="form-label">ID</label>
+                      <input type="text" name="userId" class="form-control" id="yourUsername" required>
                       <div class="invalid-feedback">Please, enter your ID!</div>
+                      <button class="idc" type="button" id="idc" onclick="idc();" value="N">중복확인</button>
                     </div>
                      
                      <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="userPwd" class="form-control" id="userPwd" required>
+                      <input type="password" name="userPwd" class="form-control" id="yourPassword" required>
                       <div class="invalid-feedback">Please enter your password!</div>
+                    </div>
+                    
+                    <div class="col-12">
+                      <label for="yourPasswordcheck" class="form-label">Passwordcheck</label>
+                      <input type="password" name="pwdc" class="form-control" id="pwdc" required>
+                      <div class="invalid-feedback">Please enter your password onemore!</div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourName" class="form-label">Your Name</label>
-                      <input type="text" name="userName" class="form-control" id="userName" required>
+                      <input type="text" name="userName" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please choose a username!</div>
                     </div>
                     
@@ -99,21 +145,22 @@
                     
 					<div class="col-12">
                       <label for="Gender" class="form-label">Your Gender</label>
-                      		<label><input type="radio" name="gender" value="1"> 남자</label>
-                      		<label><input type="radio" name="gender" value="2"> 여자</label> 
+                      		<label><input type="radio" name="gender" value="1" > 남자</label>
+                      		<label><input type="radio" name="gender" value="2" > 여자</label> 
                       <div class="invalid-feedback">Please check your Gender!</div>
                     </div> 
-
-                    <div class="col-12">
-                      <label for="yourEmail" class="form-label">Email</label>
+						
+						
+						
+					 <div class="col-12">
+                      <label for="userEmail" class="form-label">Email</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="email" name="userEmail" class="form-control" id="userEmail" required>
-                        <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                        <input type="text" name="userEmail" class="form-control" id="userEmail" required>
+                        <div class="invalid-feedback">Please enter a valid Email.</div>
                       </div>
                     </div>
-
-
+                    
 
                     <div class="col-12">
                       <div class="form-check">
@@ -148,23 +195,29 @@
       </section>
 
     </div>
-  </main><!-- End #main -->
+  </main>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+	<!-- End #main -->
 
-  <!-- Vendor JS Files -->
-  <script src="/resources/user/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="/resources/user/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/resources/user/assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="/resources/user/assets/vendor/echarts/echarts.min.js"></script>
-  <script src="/resources/user/assets/vendor/quill/quill.min.js"></script>
-  <script src="/resources/user/assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="/resources/user/assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="/resources/user/assets/vendor/php-email-form/validate.js"></script>
+	<a href="#"
+		class="back-to-top d-flex align-items-center justify-content-center"><i
+		class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Template Main JS File -->
-  <script src="/resources/user/assets/js/main.js"></script>
+	<!-- Vendor JS Files -->
+	<script
+		src="/resources/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+	<script
+		src="/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/admin/assets/vendor/chart.js/chart.umd.js"></script>
+	<script src="/resources/admin/assets/vendor/echarts/echarts.min.js"></script>
+	<script src="/resources/admin/assets/vendor/quill/quill.min.js"></script>
+	<script
+		src="/resources/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+	<script src="/resources/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+	<script src="/resources/admin/assets/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="/resources/admin/assets/js/main.js"></script>
 
 </body>
-
 </html>
