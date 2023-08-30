@@ -50,11 +50,25 @@
 		]]>
 	</select>	
 	
+		<select id="listAppEva" resultType="com.ats.domain.AppVO">
+	<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE, 
+			(SELECT COUNT(*) FROM TBL_APP_EVA WHERE TBL_APP_EVA.APP_NUM = APP.APP_NUM AND TBL_APP_EVA.RATER_ID =#{raterId}) AS EVA_END
+				FROM (SELECT * FROM TBL_APP WHERE ANN_NUM = #{annNum} ORDER BY APP_NUM DESC) APP )			
+		WHERE (RNUM >= #{cri.pageStart} AND RNUM <= #{cri.pageEnd})
+		ORDER BY APP_NUM DESC, APP_REG_DATE DESC
+		]]>
+	</select>	
 	
+	<select id="listCountAppEva" resultType="int">
+		SELECT COUNT(*)
+				FROM (SELECT * FROM TBL_APP WHERE ANN_NUM = #{annNum})
+	</select>	
 		
 	<select id="listStoreCountCriteria" resultType="int">
 		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM =(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
                 AND APP_SAVE=0
 	</select>
 	
@@ -65,7 +79,7 @@
 					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
         			FROM TBL_ANN ANN, TBL_APP APP 
         			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM=(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                		AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
                 		AND APP_SAVE=0 ORDER BY APP_NUM DESC)			
 					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
 					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   
@@ -74,7 +88,7 @@
 	
 	<select id="listFinalCountCriteria" resultType="int">
 		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM =(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
                 AND APP_SAVE=1
 	</select>
 	
@@ -85,7 +99,7 @@
 					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
         			FROM TBL_ANN ANN, TBL_APP APP 
         			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM=(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                		AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
                 		AND APP_SAVE=1 ORDER BY APP_NUM DESC)			
 					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
 					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   

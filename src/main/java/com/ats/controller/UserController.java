@@ -168,16 +168,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/appFinalList", method = RequestMethod.GET)
-	public void annAppList(@ModelAttribute("cri") SearchCriteria cri, UserVO vo, HttpSession session,
+	public void annAppList(UserVO vo, HttpSession session, @ModelAttribute("cri") SearchCriteria cri,
 			Model model) throws Exception {
 		logger.info("app Final Get...");
 
 		UserVO user = (UserVO) session.getAttribute("login");
 		String userId = user.getUserId();
 		cri.setKeyword(userId);
+		logger.info("final" + appService.listFinalCriteria(cri));	
 		// 지원서 리스트 가져오기
 		model.addAttribute("list", appService.listFinalCriteria(cri));
-
+		
 		// 페이징 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -188,8 +189,16 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/appReadPage", method = RequestMethod.GET)
-	public void appReadPageGET(@RequestParam("appNum") int appNum, @RequestParam("annNum") int annNum, Model model)
+	@RequestMapping(value = "/appStoreReadPage", method = RequestMethod.GET)
+	public void appStoreReadPageGET(@RequestParam("appNum") int appNum, @RequestParam("annNum") int annNum, Model model)
+			throws Exception {
+		logger.info("appReadPage Get...");
+		model.addAttribute(appService.read(appNum));
+		model.addAttribute(annService.read(annNum));
+	}
+	
+	@RequestMapping(value = "/appFinalReadPage", method = RequestMethod.GET)
+	public void appFinalReadPageGET(@RequestParam("appNum") int appNum, @RequestParam("annNum") int annNum, Model model)
 			throws Exception {
 		logger.info("appReadPage Get...");
 		model.addAttribute(appService.read(appNum));
