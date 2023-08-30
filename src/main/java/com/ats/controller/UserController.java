@@ -155,6 +155,7 @@ public class UserController {
 		UserVO user = (UserVO) session.getAttribute("login");
 		String userId = user.getUserId();
 		cri.setKeyword(userId);
+		logger.info("app Store Get..."+ cri.getKeyword());
 		model.addAttribute("list", appService.listStoreCriteria(cri));
 
 		// 페이징 네비게이션 추가
@@ -164,6 +165,8 @@ public class UserController {
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
+		
+		logger.info("app Store Get..." + model);
 
 	}
 
@@ -175,6 +178,7 @@ public class UserController {
 		UserVO user = (UserVO) session.getAttribute("login");
 		String userId = user.getUserId();
 		cri.setKeyword(userId);
+		logger.info("app Final Get Cri..." + cri);
 		// 지원서 리스트 가져오기
 		model.addAttribute("list", appService.listFinalCriteria(cri));
 

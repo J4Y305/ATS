@@ -53,42 +53,38 @@
 	
 		
 	<select id="listStoreCountCriteria" resultType="int">
-		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM =(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                AND APP_SAVE=0
+		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE ANN.ANN_NUM = APP.ANN_NUM 
+                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword} 
+                AND APP_SAVE=0)
 	</select>
 	
 	<select id="listStoreCriteria" resultType="com.ats.dto.AppListDTO">
 	<![CDATA[
 		SELECT * FROM (
-			SELECT ROWNUM RNUM, APP.APP_NUM,APP.ANN_NUM,APP.USER_ID, APP.APP_REG_DATE,
-					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
-        			FROM TBL_ANN ANN, TBL_APP APP 
-        			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM=(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                		AND APP_SAVE=0 ORDER BY APP_NUM DESC)			
-					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
-					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   
+			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+                FROM (SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+        			FROM TBL_APP WHERE APP_NUM > 0 AND USER_ID = #{keyword}
+                		AND APP_SAVE=0 ORDER BY APP_NUM DESC))
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY APP_NUM DESC
 		]]>
 	</select>
 	
 	<select id="listFinalCountCriteria" resultType="int">
 		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM =(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                AND APP_SAVE=1
+                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}
+                AND APP_SAVE=1)
 	</select>
 	
 	<select id="listFinalCriteria" resultType="com.ats.dto.AppListDTO">
 	<![CDATA[
 		SELECT * FROM (
-			SELECT ROWNUM RNUM, APP.APP_NUM,APP.ANN_NUM,APP.USER_ID, APP.APP_REG_DATE,
-					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
-        			FROM TBL_ANN ANN, TBL_APP APP 
-        			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM=(SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                		AND APP_SAVE=1 ORDER BY APP_NUM DESC)			
-					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
-					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   
+			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+                FROM (SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+        			FROM TBL_APP WHERE APP_NUM > 0 AND USER_ID = #{keyword}
+                		AND APP_SAVE=1 ORDER BY APP_NUM DESC))
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY APP_NUM DESC
 		]]>
 	</select>		
 </mapper>
