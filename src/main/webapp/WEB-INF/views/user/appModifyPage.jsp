@@ -97,16 +97,17 @@
 							</div>
 						</div>
 					</div>
+					<input type=hidden name="appSave">
 				</form>
 			</div>
 			<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
 				<div class="text-center">
-					<button type="submit" class="btn btn-primary" value="1">최종제출</button>
+					<button type="submit" class="btn btn-primary">최종제출</button>
 				</div>
 				<div class="text-center">
-					<button type="submit" class="btn btn-success" value="0">임시저장</button>
+					<button type="submit" class="btn btn-success">임시저장</button>
 				</div>
-				<input type=hidden name="appSave">
+				
 				<div class="text-center">
 					<button type="submit" class="btn btn-danger">취소</button>
 				</div>

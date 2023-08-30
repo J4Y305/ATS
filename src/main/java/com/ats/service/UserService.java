@@ -2,7 +2,6 @@ package com.ats.service;
 
 import java.util.List;
 
-import com.ats.domain.AnnVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.UserVO;
 import com.ats.dto.UserLoginDTO;

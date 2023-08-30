@@ -3,135 +3,143 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>공고 등록</h1>
-
-</div>
-<!-- End Page Title -->
+<main id="main" class="main"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
-		<div class="col-lg-10">
-
+	<div class="row justify-content-center">
+		<div class="col-lg-9">
+			<div class="pagetitle fw-bold p-4">
+				<h1>공고 등록</h1>
+			</div>
 			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">공고 정보</h5>
-
+				<div class="card-body w-90 p-3">
 					<!-- General Form Elements -->
 					<form class="row g-3" role="form" method="post" name="frm"
 						onsubmit="onSubmitForm()">
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
-						<input type='hidden' name='searchType' value="${cri.searchType}">
-						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<input type="hidden" name="mngId" class="form-control"
-							value='${login.mngId}'>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">공고명 :</label>
-							<div class="col-sm-5">
-								<input type="text" name="annName" class="form-control"
-									placeholder="공고명">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">모집분야 :</label>
-							<div class="col-sm-5">
-								<input type="text" name="annField" class="form-control"
-									placeholder="모집분야">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 시작일 :</label>
-							<div class="col-sm-5">
-								<input type="date" id="startDate" class="form-control">
-								<input type="hidden" class="form-control" name="annStartDate">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 마감일:</label>
-							<div class="col-sm-5">
-								<input type="date" id="endDate" class="form-control">
-								<input type="hidden" class="form-control" name="annEndDate">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 내용:</label>
-							<div class="col-sm-5">
-								<textarea class="form-control" style="height: 100px"
-									name="detail"></textarea>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 관련 이미지 :</label>
-							<div class="col-sm-6">
-								<div id='mydropzoneImage'
-									class="alert alert-primary alert-dismissible fade show">
-
-
-									<input type="file" id="imageFileUpload" name="imageFileUpload"
-										style="visibility: hidden;" />
-
-									<div class="fileDrop">
-										<input type="hidden" id="imageUploadCount">
-										<div class="dz-message needsclick">
-											<i class="h1 text-muted dripicons-cloud-upload"></i>
-											<h4 class="alert-heading">Drop files here or click to
-												upload.</h4>
-											<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
-										</div>
-									</div>
-								</div>
-								<div>
-									<ul class="dropzone-previews clearfix imageUploadedList">
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 관련 파일 :</label>
-							<!-- <div id='mydropzone' class="dropzone"> -->
-							<div class="col-sm-6">
-								<div id='mydropzone'
-									class="alert alert-primary alert-dismissible fade show">
-
-
-									 <input type="file" id="fileUpload" name="fileUpload"
-										style="visibility: hidden;" />
-									<div class="fileDrop">
-										<input type="hidden" id="uploadCount">
-										<div class="dz-message needsclick">
-											<i class="h1 text-muted dripicons-cloud-upload"></i>
-											<h4 class="alert-heading">Drop files here or click to
-												upload.</h4>
-											<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
-										</div>
-									</div>
-								</div>
-								<div>
-									<ul class="dropzone-previews clearfix uploadedList">
-									</ul>
-								</div>
-							</div>
-						</div>
-
-						<div class="row mb-3 ">
-							<label class="col-sm-2 col-form-label">공고 활성 여부</label>
-							<div class="col-sm-10">
-								<div class="form-check form-switch">
-									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault">
-								</div>
-							</div>
-						</div>
 						<input type="hidden" name="annAct" class="form-control">
 						<div class="row mb-3">
-							<label class="col-sm-2 col-form-label">등록하기</label>
-							<div class="col-sm-10">
-								<button type="button" onclick="" class="btn btn-outline-danger">취소</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary">등록</button>
+							<input type='hidden' name='page' value="${cri.page}"> <input
+								type='hidden' name='perPageNum' value="${cri.perPageNum}">
+							<input type='hidden' name='searchType' value="${cri.searchType}">
+							<input type='hidden' name='keyword' value="${cri.keyword}">
+							<input type="hidden" name="mngId" class="form-control"
+								value='${login.mngId}'>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고명
+									:</label>
+								<div class="col-sm-10">
+									<input type="text" name="annName" class="form-control"
+										placeholder="공고명">
+								</div>
 							</div>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">모집분야
+									:</label>
+								<div class="col-sm-10">
+									<input type="text" name="annField" class="form-control"
+										placeholder="모집분야">
+								</div>
+							</div>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									시작일 :</label>
+								<div class="col-sm-10">
+									<input type="date" id="startDate" class="form-control">
+									<input type="hidden" class="form-control" name="annStartDate">
+								</div>
+							</div>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									마감일:</label>
+								<div class="col-sm-10">
+									<input type="date" id="endDate" class="form-control"> <input
+										type="hidden" class="form-control" name="annEndDate">
+								</div>
+							</div>
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고내용:</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" style="height: 100px"
+										name="detail"></textarea>
+								</div>
+							</div>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									관련 이미지 :</label>
+								<div class="col-sm-10">
+									<div id='mydropzoneImage'
+										class="alert alert-primary alert-dismissible fade show">
+
+
+										<input type="file" id="imageFileUpload" name="imageFileUpload"
+											style="visibility: hidden;" />
+
+										<div class="fileDrop">
+											<input type="hidden" id="imageUploadCount">
+											<div class="dz-message needsclick">
+												<i class="h1 text-muted dripicons-cloud-upload"></i>
+												<h4 class="alert-heading">Drop files here or click to
+													upload.</h4>
+												<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+											</div>
+										</div>
+									</div>
+									<div>
+										<ul class="dropzone-previews clearfix imageUploadedList">
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									관련 파일 :</label>
+								<!-- <div id='mydropzone' class="dropzone"> -->
+								<div class="col-sm-10">
+									<div id='mydropzone'
+										class="alert alert-primary alert-dismissible fade show">
+
+
+										<input type="file" id="fileUpload" name="fileUpload"
+											style="visibility: hidden;" />
+										<div class="fileDrop">
+											<input type="hidden" id="uploadCount">
+											<div class="dz-message needsclick">
+												<i class="h1 text-muted dripicons-cloud-upload"></i>
+												<h4 class="alert-heading">Drop files here or click to
+													upload.</h4>
+												<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+											</div>
+										</div>
+									</div>
+									<div>
+										<ul class="dropzone-previews clearfix uploadedList">
+										</ul>
+									</div>
+								</div>
+							</div>
+
+							<div class="row mb-3 p-4">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									활성 여부</label>
+								<div class="form-check form-switch col-sm-10 pt-2">
+									<input class="form-check-input" type="checkbox"
+										id="flexSwitchCheckDefault"><label
+										class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+								</div>
+							</div>
+							<div class="row mb-3 p-4 justify-content-center">
+								<div class="col-sm-5 d-flex justify-content-center">
+									<button type="button" class="btn btn-outline-danger btn-lg">취소</button>
+									<button type="submit"
+										class="btn btn-outline-success btn-lg mx-4">등록</button>
+								</div>
+							</div>
+
 						</div>
 					</form>
 				</div>
@@ -174,7 +182,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
-<li class="dropzone-previews mt-3">
+<li style="list-style:none;">
 <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 <div class="p-2">
 <div class="row align-items-center">
@@ -185,7 +193,7 @@
    <a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  </div>
  <div class="col-auto">
-   <a href="{{fullName}}" class="btn btn-danger delbtn"><i class="bi bi-exclamation-octagon"></i></a>
+   <a href="{{fullName}}" class="btn btn-danger delbtn"><i class="bi bi-folder-minus"></i></a>
  </div>
 </div>
 </div>
@@ -260,7 +268,9 @@
 														function(index) {
 															str += "<input type='hidden' name='annImage'"
 																	+ " value='"
-																	+ $(this).attr("href")
+																	+ $(this)
+																			.attr(
+																					"href")
 																	+ "'> ";
 														});
 
@@ -621,15 +631,15 @@
 
 <script>
 	$(document).ready(function() {
-/* 		var formObj = $("form[role='form']");
+		/* 		var formObj = $("form[role='form']");
 
-		console.log(formObj);
+		 console.log(formObj);
 
-		$("#btn_submit").on("click", function() {
+		 $("#btn_submit").on("click", function() {
 
-			formObj.submit();
-		});
- */
+		 formObj.submit();
+		 });
+		 */
 		$(".btn-outline-danger").on("click", function() {
 			self.location = "/mng/annList";
 		});

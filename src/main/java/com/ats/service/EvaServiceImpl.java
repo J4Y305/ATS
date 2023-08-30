@@ -1,15 +1,19 @@
 package com.ats.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.swing.text.html.HTMLEditorKit.Parser;
 
 import org.springframework.stereotype.Service;
 
 import com.ats.domain.EvaItemVO;
 import com.ats.domain.EvaVO;
+import com.ats.domain.PassVO;
 import com.ats.domain.RaterListVO;
 import com.ats.domain.SearchCriteria;
+import com.ats.dto.EvaPassDTO;
 import com.ats.persistence.EvaDAO;
 
 @Service
@@ -37,6 +41,7 @@ public class EvaServiceImpl implements EvaService {
 				iVo.setEvaNum(evaNum);
 				iVo.setEvaScore(vo.getEvaScore()[i]);
 
+				System.out.println(iVo);
 				dao.evaItemCreate(iVo);
 			}
 		}
@@ -52,6 +57,7 @@ public class EvaServiceImpl implements EvaService {
 				rVo.setEvaNum(evaNum);
 				rVo.setRaterId(vo.getRaterList()[i]);
 
+				System.out.println(rVo);
 				dao.raterListCreate(rVo);
 			}
 		}
@@ -60,7 +66,11 @@ public class EvaServiceImpl implements EvaService {
 
 	@Override
 	public EvaVO read(int evaNum) throws Exception {
-		return dao.evaRead(evaNum);
+
+		EvaVO vo = dao.evaRead(evaNum);
+		vo.setEvaItemList((ArrayList<EvaItemVO>) dao.evaItemList(evaNum));
+		vo.setRaterArrayList((ArrayList<RaterListVO>) dao.raterArrayList(evaNum));
+		return vo;
 	}
 
 	@Override
@@ -143,8 +153,40 @@ public class EvaServiceImpl implements EvaService {
 		return dao.raterArrayList(evaNum);
 	}
 
+	@Override
+	public List<EvaVO> listMngEva(SearchCriteria cri) throws Exception {
+		return dao.listMngEva(cri);
+	}
 
+	@Override
+	public int listMngEvaCount(SearchCriteria cri) throws Exception {
+		int count = dao.listMngEvaCount(cri);
+		System.out.println(count);
+		return dao.listMngEvaCount(cri);
+	}
 
-	
+	@Override
+	public List<EvaPassDTO> listEvaPass(int evaNum) throws Exception {
+		return dao.listEvaPass(evaNum);
+	}
+
+	@Override
+	public void evaPassRegister(PassVO vo) throws Exception {
+
+		if (vo.getAppNumList() != null) {
+
+			// 합격 결과 등록
+			for (int i = 0; i < vo.getAppNumList().length; i++) {
+
+				PassVO pVo = new PassVO();
+				pVo.setEvaNum(vo.getEvaNum());
+				pVo.setAppNum(Integer.parseInt(vo.getAppNumList()[i]));
+
+				System.out.println(pVo);
+				dao.insertEvaPass(pVo);
+			}
+		}
+
+	}
 
 }

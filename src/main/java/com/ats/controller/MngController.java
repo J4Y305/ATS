@@ -1,6 +1,7 @@
 package com.ats.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -88,9 +89,14 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/annList", method = RequestMethod.GET)
-	public void annListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void annListPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
 		logger.info("Ann List Get...");
-		// 선택된 페이지의 게시글 정보 가져오기
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
+
+		// 본인이 작성한 공고글 리스트 가져오기
 		model.addAttribute("list", annService.listSearch(cri));
 
 		// 페이징 네비게이션 추가
@@ -164,9 +170,14 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/annIngList", method = RequestMethod.GET)
-	public void annIngListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void annIngListPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
 		logger.info("Ann List Get...");
-		// 선택된 페이지의 게시글 정보 가져오기
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
+
+		// 본인이 작성한 공고글 리스트 가져오기
 		model.addAttribute("list", annService.listIngSearch(cri));
 
 		// 페이징 네비게이션 추가
@@ -179,9 +190,14 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/annEndList", method = RequestMethod.GET)
-	public void annEndListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void annEndListPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
 		logger.info("Ann List Get...");
-		// 선택된 페이지의 게시글 정보 가져오기
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
+
+		// 본인이 작성한 공고글 리스트 가져오기
 		model.addAttribute("list", annService.listEndSearch(cri));
 
 		// 페이징 네비게이션 추가
@@ -257,9 +273,12 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/raterList", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void listPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model) throws Exception {
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
 
-		// 선택된 페이지의 게시글 정보 가져오기
+		// 본인이 작성한 평가자 리스트 가져오기
 		model.addAttribute("list", raterService.listSearch(cri));
 
 		// 페이징 네비게이션 추가
@@ -296,8 +315,13 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/evaRegister", method = RequestMethod.GET)
-	public void evaRegisterGET(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void evaRegisterGET(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
 		logger.info("eva register Get...");
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
+
 		model.addAttribute("annList", annService.listEndSearch(cri));
 		model.addAttribute("raterList", raterService.listSearch(cri));
 
@@ -316,15 +340,20 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/evaList", method = RequestMethod.GET)
-	public void evaListPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+	public void evaListPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
 		logger.info("eva List Get...");
-		// 선택된 페이지의 게시글 정보 가져오기
-		model.addAttribute("list", evaService.listSearch(cri));
+		// 기업 담당자 아이디 가져오기
+		MngVO mVo = (MngVO) session.getAttribute("login");
+		cri.setKeyword(mVo.getMngId());
+
+		// 본인이 작성한 평가 리스트 가져오기
+		model.addAttribute("list", evaService.listMngEva(cri));
 
 		// 페이징 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(evaService.listSearchCount(cri));
+		pageMaker.setTotalCount(evaService.listMngEvaCount(cri));
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);

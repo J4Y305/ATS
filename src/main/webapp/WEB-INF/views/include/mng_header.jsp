@@ -320,7 +320,7 @@
             </a>
           </li>
           <li>
-            <a href="/mng/appEvaList">
+            <a href="/eva/listEva">
               <i class="bi bi-card-checklist"></i><span>평가 결과</span>
             </a>
           </li>          

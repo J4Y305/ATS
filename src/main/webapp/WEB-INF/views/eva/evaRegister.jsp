@@ -78,7 +78,10 @@
 		<div class="card">
 			<div class="card-body">
 				<h5 class="card-title">지원서</h5>
-				<div id="example1" style="height: 30rem;"></div>
+				<div id="example1" style="height: 80rem; width: 50rem;"></div>
+					<script>
+						PDFObject.embed("/file/${appVO.appFile}", "#example1");
+					</script>
 
 			</div>
 		</div>
@@ -114,7 +117,6 @@
 									<input type="text" id="evaDetailScore${var.index}" name="evaDetailScore" class="form-control eva-score-input" style="width: 10%" data-index="${var.index}"></td>
 								</tr>
 							</c:forEach>
-
 							<td></td>
 							<th>종합점수</th>
 							<td><input type="text" id="evaScoreSum"  name="scoreSum" class="form-control"

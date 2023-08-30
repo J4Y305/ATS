@@ -16,7 +16,8 @@ public class EvaVO {
 	private String[] evaItem;
 	private int[] evaScore;
 	private String[] raterList;
-	
+	private int evaPass;
+
 	private String mngId;
 
 	private ArrayList<EvaItemVO> evaItemList;
@@ -126,14 +127,21 @@ public class EvaVO {
 		this.mngId = mngId;
 	}
 
+	public int getEvaPass() {
+		return evaPass;
+	}
+
+	public void setEvaPass(int evaPass) {
+		this.evaPass = evaPass;
+	}
+
 	@Override
 	public String toString() {
 		return "EvaVO [evaNum=" + evaNum + ", annNum=" + annNum + ", evaName=" + evaName + ", degree=" + degree
 				+ ", evaStartDate=" + evaStartDate + ", evaEndDate=" + evaEndDate + ", evaRegDate=" + evaRegDate
 				+ ", evaItem=" + Arrays.toString(evaItem) + ", evaScore=" + Arrays.toString(evaScore) + ", raterList="
-				+ Arrays.toString(raterList) + ", mngId=" + mngId + ", evaItemList=" + evaItemList + ", raterArrayList="
-				+ raterArrayList + "]";
+				+ Arrays.toString(raterList) + ", evaPass=" + evaPass + ", mngId=" + mngId + ", evaItemList="
+				+ evaItemList + ", raterArrayList=" + raterArrayList + "]";
 	}
-
 
 }

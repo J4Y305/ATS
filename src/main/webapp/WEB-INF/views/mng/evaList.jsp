@@ -3,22 +3,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>평가목록</h1>
-</div>
-<!-- End Page Title -->
-
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-lg-10">
-
+			<div class="pagetitle">
+				<h1>평가 목록</h1>
+			</div>
 			<div class="card">
-				<div class="card-body">
+				<div class="card-body" style="height: 750px;">
 					<h5 class="card-title"></h5>
 					<div class="card">
-						<div class="card-body">
+						<div class="card-body" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -45,7 +41,7 @@
 											<td><a
 												href='/mng/evaReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}'>
 													${evaVO.evaName} </a></td>
-													<td>${evaVO.degree}</td>
+											<td>${evaVO.degree}</td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${evaVO.evaStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -56,13 +52,13 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<button id="newBtn" class="btn btn-outline-primary">평가등록</button>
-							<!-- End Table with hoverable rows -->
+						</div>
+						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
+							<nav aria-label="Page navigation example ">
+								<ul class="pagination ">
 									<c:if test="${pageMaker.prev}">
-										<li class="page-item"><a class="page-link"
+										<li class="page-item d-flex"><a class="page-link"
 											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
 										</a></li>
@@ -86,8 +82,16 @@
 							<!-- End Pagination with icons -->
 						</div>
 					</div>
+					<!-- End Table with hoverable rows -->
+					<div class="d-flex justify-content-end">
+						<button id="newBtn" class="btn btn-outline-primary ">평가 등록</button>
+					</div>
+
 				</div>
 			</div>
+
+		</div>
+	</div>
 </section>
 
 </main>
@@ -116,5 +120,4 @@
 				});
 
 			});
-
 </script>

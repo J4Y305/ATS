@@ -2,8 +2,6 @@ package com.ats.persistence;
 
 import java.util.List;
 
-import javax.sql.rowset.serial.SerialArray;
-
 import com.ats.domain.AnnFileVO;
 import com.ats.domain.AnnImageVO;
 import com.ats.domain.AnnVO;

@@ -43,7 +43,7 @@
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
 											<td><a
-												href='/user/appReadPage${pageMaker.makeQuery(pageMaker.cri.page) }&appNum=${appListDTO.appNum}&annNum=${appListDTO.annNum}'>
+												href='/user/appStoreReadPage${pageMaker.makeQuery(pageMaker.cri.page) }&appNum=${appListDTO.appNum}&annNum=${appListDTO.annNum}'>
 													${appListDTO.appNum}</a></td>
 											<td>${appListDTO.annName}</td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"

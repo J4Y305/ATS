@@ -3,22 +3,18 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>공고 목록</h1>
-</div>
-<!-- End Page Title -->
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 
 <section class="section">
-	<div class="row">
-		<div class="col-lg-10">
-
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title"></h5>
+	<div class="row justify-content-center">
+		<div class="col-lg-10 ">
+			<div class="pagetitle">
+				<h1>공고 목록</h1>
+			</div>
+			<div class="card ">
+				<div class="card-body mt-5" style="height: 750px;">
 					<div class="card">
-						<div class="card-body">
+						<div class="card-body mt-5" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -44,8 +40,10 @@
 											<td><a
 												href='/mng/annReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
 													${annVO.annName} </a></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annStartDate}"/></td>
-											<td><fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annEndDate}"/></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annStartDate}" /></td>
+											<td><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${annVO.annEndDate}" /></td>
 											<td><c:if test="${0 eq annVO.annAct}">
 													<div class="col-lg-9 col-md-8">비활성</div>
 												</c:if> <c:if test="${1 eq annVO.annAct}">
@@ -57,13 +55,13 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<!-- End Table with hoverable rows -->
-							<button id="newBtn" class="btn btn-outline-primary">공고등록</button>
+						</div>
+						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
+							<nav aria-label="Page navigation example ">
+								<ul class="pagination ">
 									<c:if test="${pageMaker.prev}">
-										<li class="page-item"><a class="page-link"
+										<li class="page-item d-flex"><a class="page-link"
 											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
 										</a></li>
@@ -87,8 +85,16 @@
 							<!-- End Pagination with icons -->
 						</div>
 					</div>
+					<!-- End Table with hoverable rows -->
+					<div class="d-flex justify-content-end">
+						<button id="newBtn" class="btn btn-outline-primary ">공고등록</button>
+					</div>
+
 				</div>
 			</div>
+
+		</div>
+	</div>
 </section>
 
 </main>

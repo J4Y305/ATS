@@ -23,7 +23,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		} else {
 			query = "?" + query;
 		}
-		
+
 		if (request.getMethod().equals("GET")) {
 			logger.info("dest: " + (uri + query));
 
@@ -36,7 +36,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 
 		HttpSession session = request.getSession();
-		
+
 		if (session.getAttribute(LOGIN) == null) {
 			logger.info("current user is not logined");
 

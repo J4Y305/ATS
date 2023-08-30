@@ -4,22 +4,18 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>공고 목록</h1>
-</div>
-<!-- End Page Title -->
-
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-lg-10">
-
+			<div class="pagetitle">
+				<h1>진행중인 공고 목록</h1>
+			</div>
 			<div class="card">
-				<div class="card-body">
+				<div class="card-body" style="height: 750px;">
 					<h5 class="card-title"></h5>
 					<div class="card">
-						<div class="card-body">
+						<div class="card-body" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -53,42 +49,47 @@
 											<td>${annVO.mngId}</td>
 										</tr>
 										<div class="annEd">
-						<input type=hidden value="${annVO.annEndDate}" name="annEndDate" class="annEndInput">
-						</div>
+											<input type=hidden value="${annVO.annEndDate}"
+												name="annEndDate" class="annEndInput">
+										</div>
 									</c:forEach>
 								</tbody>
 							</table>
-							<!-- End Table with hoverable rows -->
-							<!-- Pagination with icons -->
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<c:if test="${pageMaker.prev}">
-										<li class="page-item"><a class="page-link"
-											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
-											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:if>
-									<c:forEach begin="${pageMaker.startPage }"
-										end="${pageMaker.endPage }" var="idx">
-										<li class="page-item"
-											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-										</li>
-									</c:forEach>
-									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-										<li class="page-item"><a class="page-link"
-											aria-label="Next"
-											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
-												aria-hidden="true">&raquo;</span></a></li>
-									</c:if>
+							</div>
+							<div class="d-flex justify-content-center">
+								<!-- Pagination with icons -->
+								<nav aria-label="Page navigation example ">
+									<ul class="pagination ">
+										<c:if test="${pageMaker.prev}">
+											<li class="page-item d-flex"><a class="page-link"
+												href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+												aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+											</a></li>
+										</c:if>
+										<c:forEach begin="${pageMaker.startPage }"
+											end="${pageMaker.endPage }" var="idx">
+											<li class="page-item"
+												<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+												<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+											</li>
+										</c:forEach>
+										<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+											<li class="page-item"><a class="page-link"
+												aria-label="Next"
+												href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+													aria-hidden="true">&raquo;</span></a></li>
+										</c:if>
 
-								</ul>
-							</nav>
-							<!-- End Pagination with icons -->
+									</ul>
+								</nav>
+								<!-- End Pagination with icons -->
+							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
+		</div>
 </section>
 
 </main>
@@ -125,19 +126,18 @@
 		console.log(ed);
 		$('input[name=annEndDate]').val(ed);
 	});
-
 </script>
 <script>
-        $(document).ready(function() {
-            $('.annEd').each(function(index, element) {
-                var today = new Date();
-                var ed = $(element).find('.annEdInput').val();
-                var deadline = new Date(ed);
-                var difference = deadline.getTime() - today.getTime();
-                var dDay = Math.ceil(difference / (1000 * 60 * 60 * 24));
-                
-                // 해당 클래스가 있는 요소의 내용을 변경하여 dDay 값을 표시합니다.
-                $('.dDayCell').eq(index).text("D - " + dDay);
-            });
-        });
+	$(document).ready(function() {
+		$('.annEd').each(function(index, element) {
+			var today = new Date();
+			var ed = $(element).find('.annEdInput').val();
+			var deadline = new Date(ed);
+			var difference = deadline.getTime() - today.getTime();
+			var dDay = Math.ceil(difference / (1000 * 60 * 60 * 24));
+
+			// 해당 클래스가 있는 요소의 내용을 변경하여 dDay 값을 표시합니다.
+			$('.dDayCell').eq(index).text("D - " + dDay);
+		});
+	});
 </script>

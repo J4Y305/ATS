@@ -175,7 +175,7 @@ public class UserController {
 		UserVO user = (UserVO) session.getAttribute("login");
 		String userId = user.getUserId();
 		cri.setKeyword(userId);
-		logger.info("final" + appService.listFinalCriteria(cri));	
+		logger.info("final" + appService.listFinalCriteria(cri));
 		// 지원서 리스트 가져오기
 		model.addAttribute("list", appService.listFinalCriteria(cri));
 		

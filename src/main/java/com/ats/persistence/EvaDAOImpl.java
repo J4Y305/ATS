@@ -9,8 +9,10 @@ import org.springframework.stereotype.Repository;
 
 import com.ats.domain.EvaItemVO;
 import com.ats.domain.EvaVO;
+import com.ats.domain.PassVO;
 import com.ats.domain.RaterListVO;
 import com.ats.domain.SearchCriteria;
+import com.ats.dto.EvaPassDTO;
 
 @Repository
 public class EvaDAOImpl implements EvaDAO {
@@ -21,7 +23,8 @@ public class EvaDAOImpl implements EvaDAO {
 
 	@Override
 	public int evaCreate(EvaVO vo) throws Exception {
-		return sqlSession.insert(namespace + ".evaCreate", vo);
+		sqlSession.insert(namespace + ".evaCreate", vo);
+		return vo.getEvaNum();
 	}
 
 	@Override
@@ -94,5 +97,24 @@ public class EvaDAOImpl implements EvaDAO {
 		sqlSession.update(namespace + ".raterCompleteUpdate", vo);
 	}
 
+	@Override
+	public List<EvaVO> listMngEva(SearchCriteria cri) throws Exception {
+		return sqlSession.selectList(namespace + ".listMngEva", cri);
+	}
+
+	@Override
+	public int listMngEvaCount(SearchCriteria cri) throws Exception {
+		return sqlSession.selectOne(namespace + ".listMngEvaCount", cri);
+	}
+
+	@Override
+	public List<EvaPassDTO> listEvaPass(int evaNum) throws Exception {
+		return sqlSession.selectList(namespace + ".listEvaPass", evaNum);
+	}
+
+	@Override
+	public void insertEvaPass(PassVO vo) throws Exception {
+		sqlSession.insert(namespace + ".insertEvaPass", vo);
+	}
 
 }

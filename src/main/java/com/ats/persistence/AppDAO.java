@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
-import com.ats.domain.SearchCriteria;
+import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
 
 public interface AppDAO {
@@ -30,5 +30,10 @@ public interface AppDAO {
 	public List<AppListDTO> listFinalCriteria(Criteria cri) throws Exception;
 
 	public int listFinalCountCriteria(Criteria cri) throws Exception;
+	
+	// 평가를 위한 지원현황 목록
+	public List<AppVO> listAppEva(AppEvaDTO dto) throws Exception;
+	
+	public int listCountAppEva(AppEvaDTO dto) throws Exception;
 
 }

@@ -64,15 +64,16 @@
 	<select id="listSearch" resultType="com.ats.domain.AnnVO">
 		<![CDATA[
 			SELECT * FROM (
-				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE
-					FROM (SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
-								FROM TBL_ANN WHERE ANN_NUM > 0
+				SELECT ROWNUM RNUM, ANN.ANN_NUM, ANN.ANN_NAME, 
+						ANN.ANN_FIELD, ANN.ANN_START_DATE, ANN.ANN_END_DATE,
+						ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, 
+						ANN.ANN_REG_DATE 
+				FROM TBL_ANN ANN, TBL_MNG MNG  
+				WHERE ANN.MNG_ID = MNG.MNG_ID AND MNG.MNG_ID = #{keyword}
 		]]>
 		<include refid="search"></include>
 		<![CDATA[
-			ORDER BY ANN_NUM DESC))
+			ORDER BY ANN_NUM DESC)
 			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
 			ORDER BY ANN_NUM DESC
 		]]>
@@ -80,8 +81,8 @@
 
 	<select id="listSearchCount" resultType="int">
 		<![CDATA[
-			SELECT COUNT(*) FROM TBL_ANN
-			WHERE ANN_NUM > 0
+			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
+			WHERE ANN.MNG_ID = MNG.MNG_ID AND MNG.MNG_ID=#{keyword}
 		]]>
 		<include refid="search"></include>
 	</select>
@@ -139,51 +140,68 @@
 	</select>
 
 	<select id="listIngSearch" resultType="com.ats.domain.AnnVO">
-		<![CDATA[
-			SELECT * FROM (
-				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE
-					FROM (SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
-								FROM TBL_ANN WHERE ANN_ACT = 1 AND ANN_START_DATE < SYSDATE AND DEADLINE = 0
+	<![CDATA[
+	SELECT * FROM (
+				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, 
+						ANN_START_DATE, ANN_END_DATE,
+						DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
+						FROM (SELECT ROWNUM RNUM, ANN.ANN_NUM, ANN.ANN_NAME, 
+									ANN.ANN_FIELD, ANN.ANN_START_DATE, ANN.ANN_END_DATE,
+									ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, ANN.ANN_REG_DATE 
+									FROM TBL_ANN ANN, TBL_MNG MNG 
+                                		WHERE ANN.MNG_ID = MNG.MNG_ID
+                                    			AND MNG.MNG_ID = #{keyword}
+                                   				AND ANN.ANN_ACT = 1 
+												AND ANN.ANN_START_DATE < SYSDATE 
+												AND ANN.DEADLINE = 0
+									]]><include refid="search"></include>
+		<![CDATA[ORDER BY ANN_NUM DESC)) 
+				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
 		]]>
-		<include refid="search"></include>
-		<![CDATA[
-			ORDER BY ANN_NUM DESC))
-			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
-			ORDER BY ANN_NUM DESC
-		]]>
+		
 	</select>
 
 	<select id="listIngSearchCount" resultType="int">
 		<![CDATA[
-			SELECT COUNT(*) FROM TBL_ANN
-			WHERE ANN_ACT = 1 AND ANN_START_DATE < SYSDATE AND DEADLINE = 0
+			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
+			WHERE ANN.ANN_ACT = 1 
+				AND ANN.ANN_START_DATE < SYSDATE 
+				AND ANN.DEADLINE = 0
+				AND ANN.MNG_ID = MNG.MNG_ID
+				AND MNG.MNG_ID = #{keyword}
 		]]>
 		<include refid="search"></include>
 	</select>
 
 	<select id="listEndSearch" resultType="com.ats.domain.AnnVO">
-		<![CDATA[
-			SELECT * FROM (
-				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE
-					FROM (SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
-								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
-								FROM TBL_ANN WHERE ANN_ACT = 1 AND ANN_END_DATE < SYSDATE AND DEADLINE = 1
-		]]>
-		<include refid="search"></include>
-		<![CDATA[
-			ORDER BY ANN_NUM DESC))
-			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
-			ORDER BY ANN_NUM DESC
+	<![CDATA[
+		SELECT * FROM (
+				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, 
+						ANN_START_DATE, ANN_END_DATE,
+						DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
+						FROM (SELECT ROWNUM RNUM, ANN.ANN_NUM, ANN.ANN_NAME, 
+									ANN.ANN_FIELD, ANN.ANN_START_DATE, ANN.ANN_END_DATE,
+									ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, ANN.ANN_REG_DATE 
+									FROM TBL_ANN ANN, TBL_MNG MNG 
+                                		WHERE ANN.MNG_ID = MNG.MNG_ID
+                                    			AND MNG.MNG_ID = #{keyword}
+                                   				AND ANN.ANN_ACT = 1 
+												AND ANN.ANN_END_DATE < SYSDATE 
+												AND ANN.DEADLINE = 1
+									]]><include refid="search"></include>
+		<![CDATA[ORDER BY ANN_NUM DESC)) 
+				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
 		]]>
 	</select>
 
 	<select id="listEndSearchCount" resultType="int">
 		<![CDATA[
-			SELECT COUNT(*) FROM TBL_ANN
-			WHERE ANN_ACT = 1 AND ANN_END_DATE < SYSDATE AND DEADLINE = 1
+			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
+			WHERE ANN.ANN_ACT = 1 
+				AND ANN.ANN_END_DATE < SYSDATE 
+				AND ANN.DEADLINE = 1
+				AND ANN.MNG_ID = MNG.MNG_ID
+				AND MNG.MNG_ID = #{keyword}
 		]]>
 		<include refid="search"></include>
 	</select>

@@ -146,7 +146,6 @@ public class AppController {
 		logger.info("listPage GET.....");
 
 		// 선택된 페이지의 게시글 정보로 10개 가져오기
-
 		model.addAttribute("list", service.listCriteria(cri));
 
 		// 페이징 네비게이션 추가

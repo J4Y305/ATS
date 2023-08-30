@@ -32,11 +32,12 @@
 											value='${annVO.annNum}'> <input type="hidden"
 											name="userId" class="form-control" value='${login.userId}'>
 										<h2>${annVO.annName}</h2>
-										<ul>
-											<li><strong>모집분야</strong>: ${annVO.annField}</li>
-											<li><strong>모집 기간</strong>: <fmt:formatDate
+										<ul style="color: #000">
+											<ol><li><strong>모집분야</strong>: ${annVO.annField}</li></ol>
+											<ol><li><strong>모집 기간</strong>: <fmt:formatDate
 													pattern="yyyy-MM-dd" value="${annVO.annStartDate}" /> - <fmt:formatDate
 													pattern="yyyy-MM-dd" value="${annVO.annEndDate}" /></li>
+													</ol><hr/>
 										</ul>
 										<h3>공고 내용</h3>
 										<c:if test="${!empty annImageVO}">
@@ -58,7 +59,7 @@
 										<br> <br>
 										<div class="portfolio-description">
 											<p>${annVO.detail}</p>
-										</div>
+										</div><hr/>
 
 										<c:if test="${!empty annFileVO}">
 											<div class="form-group">
@@ -141,12 +142,10 @@
 
 								<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
 									<div class="text-center">
-										<button type="submit" class="btn btn-success">지원하기</button>
+										<button type="submit" class="btn btn-success" style="margin:10px">지원하기</button>
 									</div>
-								</div>
-								<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
 									<div class="text-center">
-										<button type="submit" class="btn btn-primary">목록</button>
+										<button type="submit" class="btn btn-primary" style="margin:10px">목록</button>
 									</div>
 								</div>
 							</div>

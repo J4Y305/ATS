@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
+import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
 
 @Repository
@@ -64,12 +65,22 @@ public class AppDAOImpl implements AppDAO{
 
 	@Override
 	public List<AppListDTO> listFinalCriteria(Criteria cri) throws Exception {
-		return session.selectList(namespace + ".listFinalCountCriteria", cri);
+		return session.selectList(namespace + ".listFinalCriteria", cri);
 	}
 
 	@Override
 	public int listFinalCountCriteria(Criteria cri) throws Exception {
 		return session.selectOne(namespace + ".listFinalCountCriteria", cri);
+	}
+
+	@Override
+	public List<AppVO> listAppEva(AppEvaDTO dto) throws Exception {
+		return session.selectList(namespace + ".listAppEva", dto);
+	}
+
+	@Override
+	public int listCountAppEva(AppEvaDTO dto) throws Exception {
+		return session.selectOne(namespace + ".listCountAppEva", dto);
 	}
 
 

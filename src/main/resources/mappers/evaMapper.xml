@@ -108,8 +108,58 @@
 		<include refid="search"></include>
 	</select>
 	
+	<select id="listMngEva" resultType="com.ats.domain.EvaVO">
+		<![CDATA[
+			SELECT * FROM (
+				SELECT ROWNUM RNUM, EVA_NUM, ANN_NUM, EVA_NAME, DEGREE, 
+				EVA_START_DATE, EVA_END_DATE, EVA_REG_DATE, 
+				(SELECT COUNT(*) FROM TBL_PASS WHERE TBL_PASS.EVA_NUM=EVA_NUM) AS EVA_PASS
+					FROM (SELECT ROWNUM RNUM, EVA.EVA_NUM, EVA.ANN_NUM, EVA.EVA_NAME, EVA.DEGREE, 
+							EVA.EVA_START_DATE, EVA.EVA_END_DATE, EVA.EVA_REG_DATE
+								FROM TBL_EVA EVA, TBL_ANN ANN 
+                                WHERE EVA.EVA_NUM > 0 
+                                        AND EVA.ANN_NUM = ANN.ANN_NUM
+                                        AND ANN.MNG_ID = #{keyword})
+		]]>
+		<![CDATA[
+			ORDER BY EVA_NUM DESC)
+			WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+			ORDER BY EVA_NUM DESC
+		]]>
+	</select>
+	
+		<select id="listMngEvaCount" resultType="int">
+		<![CDATA[
+			SELECT COUNT(*) FROM TBL_EVA EVA, TBL_ANN ANN
+			WHERE EVA_NUM > 0 AND EVA.ANN_NUM = ANN.ANN_NUM
+                                        AND ANN.MNG_ID = #{keyword}
+		]]>
+		<include refid="search"></include>
+	</select>
+	
+	
 	<update id="raterCompleteUpdate">
 		UPDATE TBL_RATER_LIST SET COMPLETE = #{complete}
 		WHERE EVA_NUM = #{evaNum} AND RATER_ID = #{raterId}
 	</update>
+	
+	
+	<select id="listEvaPass" resultType="com.ats.dto.EvaPassDTO">
+		SELECT EVA_NUM, APP_NUM, RATER_ID, USER_NAME, DETAILS, SCORE,
+				(SUM (SCORE) OVER (PARTITION BY APP_NUM)) AS TOTAL_SUM,
+				ROUND((AVG (SCORE) OVER (PARTITION BY APP_NUM)),3) AS TOTAL_AVG
+		FROM(
+			SELECT dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME, 
+				LISTAGG(dt.EVA_DETAIL_SCORE, ',')WITHIN GROUP(ORDER BY dt.EVA_DETAIL_SCORE) AS DETAILS, 
+				SUM(dt.EVA_DETAIL_SCORE) AS SCORE
+			FROM TBL_EVA_DETAIL dt, TBL_USER us 
+			WHERE (SELECT USER_ID FROM TBL_APP WHERE TBL_APP.APP_NUM = dt.APP_NUM) = us.USER_ID 
+			AND EVA_NUM = #{evaNum} GROUP BY dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME
+			ORDER BY dt.APP_NUM )
+	</select>	
+	
+	<insert id="insertEvaPass">
+		INSERT INTO TBL_PASS (APP_NUM, EVA_NUM)
+		VALUES (#{appNum}, #{evaNum})
+	</insert>
 </mapper>

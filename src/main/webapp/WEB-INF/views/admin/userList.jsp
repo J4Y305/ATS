@@ -53,11 +53,11 @@
 													<c:otherwise>0</c:otherwise>
 												</c:choose></td>
 											<td>${userVO.userEmail}</td>
-											<form role="form" action="userRemovePage" method="POST">
+											<form role="form" action="/admin/userRemovePage" method="POST">
 												<input type="hidden" name="userId" class="form-control"
 													value='${userVO.userId}'>
 											<td><button id="delBtn" class="btn btn-outline-danger"
-													type="submit" formmethod="post">삭제</button></td>
+													type="submit">삭제</button></td>
 											</form>
 										</tr>
 
@@ -115,6 +115,7 @@
 									+ "&searchType="
 									+ $("select option:selected").val()
 									+ "&keyword=" + $('#keywordInput').val();
+									
 
 						});
 

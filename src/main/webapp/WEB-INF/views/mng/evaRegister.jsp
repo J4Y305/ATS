@@ -3,169 +3,226 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>공고 등록</h1>
-</div>
-<!-- End Page Title -->
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-lg-10">
-
-			<div class="card">
+			<div class="pagetitle">
+				<h1>평가 등록</h1>
+			</div>
+			<div class="card p-4">
 				<div class="card-body">
-					<h5 class="card-title">공고 정보</h5>
+					<div class="card">
+						<div class="card-body">
+							<div class="icon">
+								<h5 class="card-title fw-bold">
+									<i class="bi bi bi-tags mx-3"></i>평가 기본 정보
+								</h5>
+							</div>
+							<!-- General Form Elements -->
+							<form class="row g-3" role="form" method="post" name="frm">
+								<input type='hidden' name='page' value="${cri.page}"> <input
+									type='hidden' name='perPageNum' value="${cri.perPageNum}">
+								<input type='hidden' name='searchType' value="${cri.searchType}">
+								<input type='hidden' name='keyword' value="${cri.keyword}">
+								<input type="hidden" name="mngId" class="form-control"
+									value='${login.mngId}'>
 
-					<!-- General Form Elements -->
-					<form class="row g-3" role="form" method="post" name="frm">
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
-						<input type='hidden' name='searchType' value="${cri.searchType}">
-						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<input type="hidden" name="mngId" class="form-control"
-							value='${login.mngId}'>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">평가명 :</label>
-							<div class="col-sm-5">
-								<input type="text" name="evaName" class="form-control"
-									placeholder="평가명">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 시작일 :</label>
-							<div class="col-sm-5">
-								<input type="date" id="startDate" class="form-control">
-								<input type="hidden" class="form-control" name="evaStartDate">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">공고 마감일:</label>
-							<div class="col-sm-5">
-								<input type="date" id="endDate" class="form-control"> <input
-									type="hidden" class="form-control" name="evaEndDate">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-2 col-form-label">해당 공고:</label>
-							<div class="col-sm-10">
-								<select class="form-select" aria-label="Default select example"
-									name="annNum">
-									<c:forEach items="${annList}" var="annVO" varStatus="var">
-										<option value="${annVO.annNum}">${annVO.annName}</option>
-									</c:forEach>
-								</select>
-							</div>
-						</div>
-						<fieldset class="row mb-3">
-							<legend class="col-form-label col-sm-2 pt-0">평가 차수:</legend>
-							<div class="col-sm-10">
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="degree"
-										id="gridRadios1" value="0" checked> <label
-										class="form-check-label" for="gridRadios1"> 1차 </label>
-								</div>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="degree"
-										id="gridRadios2" value="1"> <label
-										class="form-check-label" for="gridRadios2"> 2차 </label>
-								</div>
-							</div>
-						</fieldset>
-						<div id="box">
-							<div class="inputWrapper">
-								<input id="evaItem" class="col-sm-5 evaItem" type="text"><input
-									id="evaScore" class="col-sm-2 evaScore" type="text"><input
-									type="button" value="+" class="btn btn-outline-primary"
-									onclick="add_textbox()">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">항목 수:</label>
-							<div class="col-sm-5">
-								<input type="text" id="itemUploadCount" value="1">
-							</div>
-						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">총점:</label>
-							<div class="col-sm-5">
-								<input type="text" id="evaScoreSum">
-							</div>
-						</div>
-
-						<div class="row mb-3">
-							<label for="inputPassword" class="col-sm-2 col-form-label">종합의견</label>
-							<div class="col-sm-10">
-								<textarea class="form-control" style="height: 100px"></textarea>
-							</div>
-						</div>
-
-						<div class="card">
-							<div class="card-body">
-								<h5 class="card-title">평가자 목록</h5>
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th scope="col">번호</th>
-											<th scope="col">아이디</th>
-											<th scope="col">권한 설정</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${raterList}" var="raterVO" varStatus="var">
-											<tr>
-												<c:if test="${pageMaker.cri.page == 1 }">
-													<td>${var.count }</td>
-												</c:if>
-												<c:if test="${pageMaker.cri.page != 1 }">
-													<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-												</c:if>
-												<td>${raterVO.raterId}</a></td>
-												<td><div class="form-check">
-														<input class="form-check-input raterList" type="checkbox"
-															id="gridCheck1" value="${raterVO.raterId}">
-													</div></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-
-								<!-- Pagination with icons -->
-								<nav aria-label="Page navigation example">
-									<ul class="pagination">
-										<c:if test="${pageMaker.prev}">
-											<li class="page-item"><a class="page-link"
-												href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
-												aria-label="Previous"><span aria-hidden="true">&raquo;</span>
-											</a></li>
-										</c:if>
-										<c:forEach begin="${pageMaker.startPage }"
-											end="${pageMaker.endPage }" var="idx">
-											<li class="page-item"
-												<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-												<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-											</li>
-										</c:forEach>
-										<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-											<li class="page-item"><a class="page-link"
-												aria-label="Next"
-												href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
-													aria-hidden="true">&raquo;</span></a></li>
-										</c:if>
-
-									</ul>
-								</nav>
-								<!-- End Pagination with icons -->
-								<div class="row mb-3">
-									<label class="col-sm-2 col-form-label">등록하기</label>
+								<div class="row mb-3 p-4 justify-content-center">
+									<label class="col-sm-2 col-form-label fw-bold">평가명 :</label>
 									<div class="col-sm-10">
-										<button type="button" class="btn btn-outline-danger">취소</button>
-										<button type="submit" id="btn_submit"
-											class="btn btn-outline-success">등록</button>
+										<input type="text" name="evaName" class="form-control"
+											placeholder="평가명">
+									</div>
+								</div>
+								<div class="row mb-3 p-4 justify-content-center">
+									<label class="col-sm-2 col-form-label fw-bold">공고 시작일 :</label>
+									<div class="col-sm-10">
+										<input type="date" id="startDate" class="form-control">
+										<input type="hidden" class="form-control" name="evaStartDate">
+									</div>
+								</div>
+								<div class="row mb-3 p-4 justify-content-center">
+									<label class="col-sm-2 col-form-label fw-bold">공고 마감일:</label>
+									<div class="col-sm-10">
+										<input type="date" id="endDate" class="form-control">
+										<input type="hidden" class="form-control" name="evaEndDate">
+									</div>
+								</div>
+								<div class="row mb-3 p-4 justify-content-center">
+									<label class="col-sm-2 col-form-label fw-bold">해당 공고:</label>
+									<div class="col-sm-10">
+										<select class="form-select"
+											aria-label="Default select example" name="annNum">
+											<c:forEach items="${annList}" var="annVO" varStatus="var">
+												<option value="${annVO.annNum}">${annVO.annName}</option>
+											</c:forEach>
+										</select>
+									</div>
+								</div>
+								<fieldset class="row mb-3 p-4 justify-content-center">
+									<legend class="col-sm-2 col-form-label fw-bold">평가 차수:</legend>
+									<div class="col-sm-10 pt-2">
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="degree"
+												id="gridRadios1" value="0" checked> <label
+												class="form-check-label" for="gridRadios1"> 1차 </label>
+										</div>
+										<div class="form-check">
+											<input class="form-check-input" type="radio" name="degree"
+												id="gridRadios2" value="1"> <label
+												class="form-check-label" for="gridRadios2"> 2차 </label>
+										</div>
+									</div>
+								</fieldset>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="icon">
+								<h5 class="card-title fw-bold">
+									<i class="bi bi-card-list mx-3"></i>평가 항목
+								</h5>
+							</div>
+							<div id="box">
+								<div class="form-group row inputWrapper pt-3">
+									<div class="col">
+										<div class="input-group">
+											<span class="input-group-text"></span>
+											<textarea id="evaItem" class="form-control evaItem"
+												aria-label="With textarea"></textarea>
+										</div>
+									</div>
+									<div class="col-sm-1 pt-2 mr-2">
+										<input type="text" id="evaScore"
+											class="form-control evaScore " style="width: 80px;">
+									</div>
+									<div class="col-sm-1 pt-2 ml-2">
+										<input type="button" value="+" class="btn btn-outline-primary"
+											onclick="add_textbox()">
 									</div>
 								</div>
 							</div>
+							<!--  
+							<div id="box">
+								<div class="inputWrapper">
+									<input id="evaItem" class="col-sm-5 evaItem" type="text"><input
+										id="evaScore" class="col-sm-2 evaScore" type="text"><input
+										type="button" value="+" class="btn btn-outline-primary"
+										onclick="add_textbox()">
+								</div>
+							</div>
+							-->
+							<div class="form-group row">
+								<div class="col">
+									<div class="input-group">
+										<span class="input-group-text">항목 수</span> <input type="text"
+											id="itemUploadCount" value="1" class="form-control"
+											style="width: 80px;">
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-group">
+										<span class="input-group-text">총점:</span> <input type="text"
+											id="evaScoreSum" class="form-control" style="width: 80px;">
+									</div>
+								</div>
+							</div>
+							<!--  
+							<div class="row mb-3 p-4 justify-content-center">
+								<label class="col-sm-2 col-form-label fw-bold">항목 수:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="itemUploadCount"
+										value="1">
+								</div>
+							</div>
+							<div class="row mb-3 p-4 justify-content-center">
+								<label class="col-sm-2 col-form-label fw-bold">총점:</label>
+								<div class="col-sm-10">
+									<input type="text" class="form-control" id="evaScoreSum">
+								</div>
+							</div>
+-->
+							<div class="row mb-3 p-4 justify-content-center">
+								<label for="inputPassword"
+									class="col-sm-2 col-form-label fw-bold">종합의견</label>
+								<div class="col-sm-10">
+									<textarea class="form-control" style="height: 100px"></textarea>
+								</div>
+							</div>
 						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="icon">
+								<h5 class="card-title fw-bold">
+									<i class="bi bi-pencil-square mx-3"></i>평가자 설정
+								</h5>
+							</div>
+
+							<table class="table table-hover">
+								<thead>
+									<tr>
+										<th scope="col">번호</th>
+										<th scope="col">아이디</th>
+										<th scope="col">권한 설정</th>
+									</tr>
+								</thead>
+								<tbody>
+									<c:forEach items="${raterList}" var="raterVO" varStatus="var">
+										<tr>
+											<c:if test="${pageMaker.cri.page == 1 }">
+												<td>${var.count }</td>
+											</c:if>
+											<c:if test="${pageMaker.cri.page != 1 }">
+												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+											</c:if>
+											<td>${raterVO.raterId}</a></td>
+											<td><div class="form-check">
+													<input class="form-check-input raterList" type="checkbox"
+														id="gridCheck1" value="${raterVO.raterId}">
+												</div></td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+
+							<!-- Pagination with icons -->
+							<nav aria-label="Page navigation example">
+								<ul class="pagination">
+									<c:if test="${pageMaker.prev}">
+										<li class="page-item"><a class="page-link"
+											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+										</a></li>
+									</c:if>
+									<c:forEach begin="${pageMaker.startPage }"
+										end="${pageMaker.endPage }" var="idx">
+										<li class="page-item"
+											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+										</li>
+									</c:forEach>
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li class="page-item"><a class="page-link"
+											aria-label="Next"
+											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+												aria-hidden="true">&raquo;</span></a></li>
+									</c:if>
+
+								</ul>
+							</nav>
+							<!-- End Pagination with icons -->
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">등록하기</label>
+								<div class="col-sm-10">
+									<button type="button" class="btn btn-outline-danger">취소</button>
+									<button type="submit" id="btn_submit"
+										class="btn btn-outline-success">등록</button>
+								</div>
+							</div>
+						</div>
+					</div>
 					</form>
 				</div>
 			</div>
@@ -180,7 +237,7 @@ const add_textbox = () => {
 	var uploaded = $("#itemUploadCount").val();
     const box = document.getElementById("box");
     const newP = document.createElement('p');
-    newP.innerHTML = "<input id='evaItem' type='text' class='col-sm-5 evaItem'><input id='evaScore' type='text' class='col-sm-2 evaScore'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick='remove(this)'>";
+    newP.innerHTML = "<div class='form-group row inputWrapper pt-3'><div class='col'><div class='input-group'><span class='input-group-text'></span><textarea id='evaItem' class='form-control evaItem aria-label='With textarea'></textarea></div></div><div class='col-sm-1 pt-2 mr-2'><input type='text' id='evaScore' class='form-control evaScore' style='width: 80px;''></div><div class='col-sm-1 pt-2 ml-2'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick='remove(this)'></div></div>";                                     
     box.appendChild(newP);
 
 
