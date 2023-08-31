@@ -185,9 +185,9 @@
 									FROM TBL_ANN ANN, TBL_MNG MNG 
                                 		WHERE ANN.MNG_ID = MNG.MNG_ID
                                     			AND MNG.MNG_ID = #{keyword}
-                                   				AND ANN.ANN_ACT = 1 
+                                   				AND ANN.ANN_ACT = 0
 												AND ANN.ANN_END_DATE < SYSDATE 
-												AND ANN.DEADLINE = 1
+												AND ANN.DEADLINE = 0
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
 				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
@@ -197,9 +197,9 @@
 	<select id="listEndSearchCount" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
-			WHERE ANN.ANN_ACT = 1 
+			WHERE ANN.ANN_ACT = 0
 				AND ANN.ANN_END_DATE < SYSDATE 
-				AND ANN.DEADLINE = 1
+				AND ANN.DEADLINE = 0
 				AND ANN.MNG_ID = MNG.MNG_ID
 				AND MNG.MNG_ID = #{keyword}
 		]]>

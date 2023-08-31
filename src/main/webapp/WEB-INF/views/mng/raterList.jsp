@@ -4,18 +4,19 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
 <main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
+
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
 				<h1>평가자 목록</h1>
 			</div>
-			<div class="card">
-				<div class="card-body" style="height: 750px;">
-					<h5 class="card-title"></h5>
+			
+			<div class="card" style="height: 750px;">
+				<div class="card-body" >
+				<h5 class="card-title"></h5>
 					<div class="card">
 						<div class="card-body" style="height: 550px;">
-							<h5 class="card-title"></h5>
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -53,7 +54,8 @@
 									</c:forEach>
 								</tbody>
 							</table>
-						</div>
+						
+						
 						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example ">
@@ -83,14 +85,13 @@
 							<!-- End Pagination with icons -->
 						</div>
 					</div>
-					<!-- End Table with hoverable rows -->
-					<div class="d-flex justify-content-end">
+					
+				</div>
+				<div class="d-flex justify-content-end">
 						<button id="newBtn" class="btn btn-outline-primary ">평가자 등록</button>
 					</div>
-
-				</div>
 			</div>
-
+			</div>
 		</div>
 	</div>
 </section>

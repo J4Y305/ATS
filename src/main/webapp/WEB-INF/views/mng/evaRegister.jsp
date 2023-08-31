@@ -36,14 +36,14 @@
 									</div>
 								</div>
 								<div class="row mb-3 p-4 justify-content-center">
-									<label class="col-sm-2 col-form-label fw-bold">공고 시작일 :</label>
+									<label class="col-sm-2 col-form-label fw-bold">평가 시작일 :</label>
 									<div class="col-sm-10">
 										<input type="date" id="startDate" class="form-control">
 										<input type="hidden" class="form-control" name="evaStartDate">
 									</div>
 								</div>
 								<div class="row mb-3 p-4 justify-content-center">
-									<label class="col-sm-2 col-form-label fw-bold">공고 마감일:</label>
+									<label class="col-sm-2 col-form-label fw-bold">평가 마감일:</label>
 									<div class="col-sm-10">
 										<input type="date" id="endDate" class="form-control">
 										<input type="hidden" class="form-control" name="evaEndDate">
@@ -95,9 +95,9 @@
 									</div>
 									<div class="col-sm-1 pt-2 mr-2">
 										<input type="text" id="evaScore"
-											class="form-control evaScore " style="width: 80px;">
+											class="form-control evaScore " style="width: 59px;">
 									</div>
-									<div class="col-sm-1 pt-2 ml-2">
+									<div class="col-sm-1 pt-2 ml-2" style="width:10%">
 										<input type="button" value="+" class="btn btn-outline-primary"
 											onclick="add_textbox()">
 									</div>
@@ -237,7 +237,7 @@ const add_textbox = () => {
 	var uploaded = $("#itemUploadCount").val();
     const box = document.getElementById("box");
     const newP = document.createElement('p');
-    newP.innerHTML = "<div class='form-group row inputWrapper pt-3'><div class='col'><div class='input-group'><span class='input-group-text'></span><textarea id='evaItem' class='form-control evaItem aria-label='With textarea'></textarea></div></div><div class='col-sm-1 pt-2 mr-2'><input type='text' id='evaScore' class='form-control evaScore' style='width: 80px;''></div><div class='col-sm-1 pt-2 ml-2'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick='remove(this)'></div></div>";                                     
+    newP.innerHTML = "<div class='form-group row inputWrapper pt-3'><div class='col'><div class='input-group'><span class='input-group-text'></span><textarea id='evaItem' class='form-control evaItem aria-label='With textarea'></textarea></div></div><div class='col-sm-1 pt-2 mr-2'><input type='text' id='evaScore' class='form-control evaScore' style='width: 59px;''></div><div class='col-sm-1 pt-2 ml-2'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick='remove(this)'></div></div>";                                     
     box.appendChild(newP);
 
 

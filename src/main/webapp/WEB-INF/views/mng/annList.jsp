@@ -11,10 +11,12 @@
 			<div class="pagetitle">
 				<h1>공고 목록</h1>
 			</div>
-			<div class="card ">
-				<div class="card-body mt-5" style="height: 750px;">
-					<div class="card">
-						<div class="card-body mt-5" style="height: 550px;">
+			
+			<div class="card" style="height: 750px;">
+				<div class="card-body">
+				<h5 class="card-title"></h5>
+					<div class="card" >
+						<div class="card-body" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -56,6 +58,7 @@
 								</tbody>
 							</table>
 						</div>
+						
 						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example ">

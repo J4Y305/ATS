@@ -3,23 +3,20 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/admin_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>기업 목록</h1>
-</div>
-<!-- End Page Title -->
+<main id="main" class="main" style="padding-top: 50px;">
 
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
-
-			<div class="card">
+			<div class="pagetitle">
+				<h1>기업 목록</h1>
+			</div>
+		
+			<div class="card" style="height: 750px;">
 				<div class="card-body">
 					<h5 class="card-title"></h5>
 					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title">담당자</h5>
+						<div class="card-body" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
@@ -60,8 +57,9 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<!-- End Table with hoverable rows -->
-							<button id="newBtn" class="btn btn-outline-primary">기업등록</button>
+							
+							</div>
+						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
@@ -90,8 +88,15 @@
 							<!-- End Pagination with icons -->
 						</div>
 					</div>
+							<div class="d-flex justify-content-end">
+								<button id="newBtn" class="btn btn-outline-primary">기업 및 평가자등록</button>
+							</div>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
+							
+							
 </section>
 
 </main>

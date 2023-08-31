@@ -8,7 +8,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>마감된 공고 목록</h1>
+				<h1>마감된 공고</h1>
 			</div>
 			<div class="card">
 				<div class="card-body" style="height: 750px;">

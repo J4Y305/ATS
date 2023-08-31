@@ -8,14 +8,7 @@
 	<main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>공고 평가</h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-				<li class="breadcrumb-item">Tables</li>
-				<li class="breadcrumb-item active">General</li>
-			</ol>
-		</nav>
+		<h1>평가</h1>
 	</div>
 	<!-- End Page Title -->
 
@@ -146,7 +139,7 @@
 
 		<div class="box-footer">
 			<div style="display: flex; justify-content: center;">
-					<button type="submit" class="btn btn-outline primary" id="submitBtn">평가 완료</button>
+					<button type="submit" class="btn btn-outline-primary" id="submitBtn">평가 완료</button>
 					</div>
 		</div>
 	</section>

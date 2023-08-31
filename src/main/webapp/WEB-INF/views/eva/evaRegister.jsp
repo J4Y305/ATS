@@ -13,7 +13,7 @@
 <body>
 	<main id="main" class="main">
 	<div class="pagetitle">
-		<h1>공고 평가</h1>
+		<h1>평가</h1>
 	</div>
 	<!-- End Page Title -->
 
@@ -131,7 +131,7 @@
 						</div>
 					</div>
 					<div style="display: flex; justify-content: center;">
-					<button type="submit" class="btn btn-primary" id="submitBtn">평가 완료</button>
+					<button type="submit" class="btn btn-outline-primary" id="submitBtn">평가 완료</button>
 					</div>
 				</form>
 			</div>

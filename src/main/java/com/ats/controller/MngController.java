@@ -324,6 +324,12 @@ public class MngController {
 
 		model.addAttribute("annList", annService.listEndSearch(cri));
 		model.addAttribute("raterList", raterService.listSearch(cri));
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(raterService.listSearchCount(cri));
+		model.addAttribute("pageMaker", pageMaker);
+
 
 	}
 

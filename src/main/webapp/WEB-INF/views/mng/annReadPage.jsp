@@ -7,12 +7,14 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="../include/mng_header.jsp" />
 <main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
+
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 			<div class="pagetitle">
 				<h1>공고 정보</h1>
 			</div>
+			
 			<div class="card p-4">
 				<div class="card-body">
 					<!-- General Form Elements -->
@@ -33,21 +35,21 @@
 									value='${login.mngId}'> <input type="hidden"
 									name="annNum" class="form-control" value='${annVO.annNum}'>
 								<div class="row mb-3 ">
-									<label class="col-sm-3 col-form-label fw-bold px-5">공고명
+									<label class="col-sm-3 col-form-label fw-bold">공고명
 										:</label>
 									<div class="col-sm-5">
-										<div class="col-lg-9 col-md-8 pt-2">${annVO.annName}</div>
+										<div class="pt-2">${annVO.annName}</div>
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold px-5">모집분야
+									<label class="col-sm-3 col-form-label fw-bold">모집분야
 										:</label>
 									<div class="col-sm-5">
-										<div class="col-lg-9 col-md-8 pt-2">${annVO.annField}</div>
+										<div class="pt-2">${annVO.annField}</div>
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold px-5">공고
+									<label class="col-sm-3 col-form-label fw-bold">공고
 										시작일 :</label>
 									<div class="col-sm-5 pt-2">
 										<fmt:formatDate pattern="yyyy-MM-dd"
@@ -55,7 +57,7 @@
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold px-5">공고
+									<label class="col-sm-3 col-form-label fw-bold">공고
 										마감일:</label>
 									<div class="col-sm-5 pt-2">
 										<fmt:formatDate pattern="yyyy-MM-dd"
