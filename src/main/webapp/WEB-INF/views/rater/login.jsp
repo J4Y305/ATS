@@ -14,8 +14,8 @@
 <meta content="" name="keywords">
 
 <!-- Favicons -->
-<link href="/resources/user/assets/img/favicon.png" rel="icon">
-<link href="/resources/user/assets/img/apple-touch-icon.png"
+<link href="/resources/admin/assets/img/favicon.png" rel="icon">
+<link href="/resources/admin/assets/img/apple-touch-icon.png"
 	rel="apple-touch-icon">
 
 <!-- Google Fonts -->
@@ -26,24 +26,24 @@
 
 <!-- Vendor CSS Files -->
 <link
-	href="/resources/user/assets/vendor/bootstrap/css/bootstrap.min.css"
+	href="/resources/admin/assets/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 <link
-	href="/resources/user/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+	href="/resources/admin/assets/vendor/bootstrap-icons/bootstrap-icons.css"
 	rel="stylesheet">
-<link href="/resources/user/assets/vendor/boxicons/css/boxicons.min.css"
+<link href="/resources/admin/assets/vendor/boxicons/css/boxicons.min.css"
 	rel="stylesheet">
-<link href="/resources/user/assets/vendor/quill/quill.snow.css"
+<link href="/resources/admin/assets/vendor/quill/quill.snow.css"
 	rel="stylesheet">
-<link href="/resources/user/assets/vendor/quill/quill.bubble.css"
+<link href="/resources/admin/assets/vendor/quill/quill.bubble.css"
 	rel="stylesheet">
-<link href="/resources/user/assets/vendor/remixicon/remixicon.css"
+<link href="/resources/admin/assets/vendor/remixicon/remixicon.css"
 	rel="stylesheet">
-<link href="/resources/user/assets/vendor/simple-datatables/style.css"
+<link href="/resources/admin/assets/vendor/simple-datatables/style.css"
 	rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="/resources/user/assets/css/style.css" rel="stylesheet">
+<link href="/resources/admin/assets/css/style.css" rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: NiceAdmin
@@ -53,9 +53,46 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
+<<script type="text/javascript">
+<!--
 
-<body>
+//-->
+</script>
 
+
+<script>
+$(function(){
+/*     $("#idc").click(function(){
+    
+        let userId= $("#userId").val();
+         
+        $.ajax({
+            type:'post', //post 형식으로 controller 에 보내기위함!!
+            url:"user", // 컨트롤러로 가는 mapping 입력
+            data: {"userId":userId}, 
+            success: function(data){ 
+                if(data == "N"){ // 만약 성공할시
+                    result = "사용 가능한 아이디입니다.";
+                    $("#idc").html(result).css("color", "green");
+                    $("#userPwd").trigger("focus");
+                 
+             }else{ // 만약 실패할시
+                 result="이미 사용중인 아이디입니다.";
+                     $("#idc").html(result).css("color","red");
+                     $("#userId").val("").trigger("focus");
+             }
+                 
+         },
+            error : function(error){alert(error);}
+        });
+        
+    });
+    
+}); */
+
+ 
+ 
+</script>
 	<main>
 	<div class="container">
 
@@ -136,19 +173,19 @@
 
 	<!-- Vendor JS Files -->
 	<script
-		src="/resources/user/assets/vendor/apexcharts/apexcharts.min.js"></script>
+		src="/resources/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
 	<script
-		src="/resources/user/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/user/assets/vendor/chart.js/chart.umd.js"></script>
-	<script src="/resources/user/assets/vendor/echarts/echarts.min.js"></script>
-	<script src="/resources/user/assets/vendor/quill/quill.min.js"></script>
+		src="/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/resources/admin/assets/vendor/chart.js/chart.umd.js"></script>
+	<script src="/resources/admin/assets/vendor/echarts/echarts.min.js"></script>
+	<script src="/resources/admin/assets/vendor/quill/quill.min.js"></script>
 	<script
-		src="/resources/user/assets/vendor/simple-datatables/simple-datatables.js"></script>
-	<script src="/resources/user/assets/vendor/tinymce/tinymce.min.js"></script>
-	<script src="/resources/user/assets/vendor/php-email-form/validate.js"></script>
+		src="/resources/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+	<script src="/resources/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+	<script src="/resources/admin/assets/vendor/php-email-form/validate.js"></script>
 
 	<!-- Template Main JS File -->
-	<script src="/resources/user/assets/js/main.js"></script>
+	<script src="/resources/admin/assets/js/main.js"></script>
 
 </body>
 

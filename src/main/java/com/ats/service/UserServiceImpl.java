@@ -12,8 +12,8 @@ import com.ats.dto.UserLoginDTO;
 import com.ats.persistence.UserDAO;
 
 @Service
-public class UserServiceImpl implements UserService{
-	
+public class UserServiceImpl implements UserService {
+
 	@Inject
 	private UserDAO dao;
 
@@ -29,6 +29,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public UserVO read(String userId) throws Exception {
+		System.out.println(dao.read(userId));
 		return dao.read(userId);
 	}
 
@@ -42,6 +43,18 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void remove(String userId) throws Exception {
 		dao.delete(userId);
+	}
+
+	@Override
+	public int pwdc(UserVO vo) throws Exception {
+		int result = dao.pwdc(vo);
+		return result;
+	}
+
+	@Override
+	public int idc(UserVO vo) throws Exception {
+		int result = dao.idc(vo);
+		return result;
 	}
 
 	@Override

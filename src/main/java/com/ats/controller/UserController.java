@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ats.domain.AppVO;
@@ -82,9 +83,30 @@ public class UserController {
 
 		return "redirect:/";
 	}
-
-
-
+	
+	
+	//비번확인
+		@ResponseBody
+		@RequestMapping(value = "/pwdc", method = RequestMethod.POST)
+		public int pwdc(UserVO vo) throws Exception {
+			int result = service.pwdc(vo);
+			return result;
+		}
+		
+		/*//아이디중복췍
+		@ResponseBody
+		@RequestMapping(value="/idc", method = RequestMethod.POST)
+		public int idc(UserVO vo) throws Exception {
+			int result = service.idc(vo);
+			return result;
+		
+		}*/
+	@RequestMapping(value = "/user/idc")
+	@ResponseBody
+	public int idc(@RequestParam("id") UserVO vo) throws Exception{
+		int cnt = service.idc(vo);
+		return cnt;
+	}
 	// LISTPAGE
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {

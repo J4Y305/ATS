@@ -33,6 +33,25 @@
       DELETE FROM TBL_USER WHERE USER_ID = #{userId}
    </delete>
    
+   <select id="pwdc" resultType="int">
+		SELECT COUNT(*) FROM TBL_USER
+		WHERE USER_ID = #{userId}
+		AND USER_PWD = #{userPwd}
+	</select>
+
+	<!-- <select id="idc" resultType="int">
+		SELECT COUNT(*) FROM TBL_USER
+		WHERE
+		USER_ID = #{userId}
+	</select> -->
+	<select id="idc" resultType = "int" parameterType = "String">
+    SELECT COUNT(id)
+    FROM
+    	TBL_USER
+    WHERE
+    	userId = #{userId}	
+</select>
+   
    
    <sql id="search">
       <if test="searchType != null">

@@ -2,6 +2,7 @@ package com.ats.service;
 
 import java.util.List;
 
+import com.ats.domain.AnnVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.domain.UserVO;
 import com.ats.dto.UserLoginDTO;
@@ -17,6 +18,10 @@ public interface UserService {
    public void modify(UserVO vo) throws Exception;
    
    public void remove(String userId) throws Exception;
+   
+   public int pwdc(UserVO vo) throws Exception;
+   
+   public int idc(UserVO vo) throws Exception;
    
    // 페이징, 검색할 수 있는 list
    public List<UserVO> listSearch(SearchCriteria cri) throws Exception;
