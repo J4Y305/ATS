@@ -28,10 +28,12 @@
 										type="hidden" name="annNum" class="form-control"
 										value='${annVO.annNum}'> <input type="hidden"
 										name="userId" class="form-control" value='${login.userId}'>
+									<input type=hidden name="appSave">
 									<div class="row">
 										<div class="form-group col-md-6">
-											<label for="name">이름</label> <input type="text" name="userName"
-												class="form-control" id="name" value="${userVO.userName}">
+											<label for="name">이름</label> <input type="text"
+												name="userName" class="form-control" id="name"
+												value="${userVO.userName}">
 										</div>
 										<div class="form-group col-md-6">
 											<label for="name">전화번호</label> <input type="email"
@@ -44,39 +46,44 @@
 											class="form-control" name="subject" id="subject"
 											value="${userVO.userEmail}">
 									</div>
-								
+
 									<div class="row">
 										<div class="form-group col-md-6">
 											<label for="name">생년월일</label> <input type="text" name="name"
 												class="form-control" id="name" value="${userVO.birthDay}">
 										</div>
 										<div class="form-group col-md-6">
-											<label for="name">성별</label> 
+											<label for="name">성별</label>
 											<c:if test="${1 eq userVO.gender}">
-											<input type="text" class="form-control" name="gender" id="gender"
-												value="남"></c:if>
-												<c:if test="${2 eq userVO.gender}">
-											<input type="text" class="form-control" name="gender" id="gender"
-												value="여"></c:if>
+												<input type="text" class="form-control" name="gender"
+													id="gender" value="남">
+											</c:if>
+											<c:if test="${2 eq userVO.gender}">
+												<input type="text" class="form-control" name="gender"
+													id="gender" value="여">
+											</c:if>
 										</div>
 									</div>
 									<div class="form-group">
 										<label for="name">비고란</label>
-										<textarea class="form-control" name="etc" rows="10"
-											required></textarea>
+										<textarea class="form-control" name="etc" rows="10" required></textarea>
 									</div>
 									<div class="row mb-3">
 										<label class="col-sm-3 col-form-label">지원서 업로드 :</label>
 										<!-- <div id='mydropzone' class="dropzone"> -->
 										<div class="col-sm-8">
-											<div id='mydropzone' class="alert alert-primary alert-dismissible fade show">
-												<input type="file" id="fileUpload" name="fileUpload" style="visibility: hidden;" />
+											<div id='mydropzone'
+												class="alert alert-primary alert-dismissible fade show">
+												<input type="file" id="fileUpload" name="fileUpload"
+													style="visibility: hidden;" />
 												<div class="fileDrop">
 													<input type="hidden" id="uploadCount">
 													<div class="dz-message needsclick">
 														<i class="h1 text-muted dripicons-cloud-upload"></i>
-														<h4 class="alert-heading">Drop files here or click to upload.</h4>
-														<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+														<h4 class="alert-heading">Drop files here or click to
+															upload.</h4>
+														<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나
+															클릭해주세요</p>
 													</div>
 												</div>
 											</div>
@@ -95,7 +102,7 @@
 								<div class="text-center">
 									<button type="submit" class="btn btn-success" value="0">임시저장</button>
 								</div>
-								<input type=hidden name="appSave">
+
 								<div class="text-center">
 									<button type="submit" class="btn btn-danger">취소</button>
 								</div>
@@ -113,34 +120,39 @@
 <jsp:include page="include/footer.jsp" />
 
 <script>
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		var formObj = $("form[role='form']");
+						var formObj = $("form[role='form']");
 
-		console.log(formObj);
+						console.log(formObj);
 
-		$(".btn-primary").on("click", function() {
-			$('input[name=appSave]').val(1);
-			console.log($('input[name=appSave]').val());
-			formObj.attr("method", "post");
-			formObj.attr("action", "/appRegister");
-			formObj.submit();
-		});
-		
-		$(".btn-success").on("click", function() {
-			$('input[name=appSave]').val(0);
-			console.log($('input[name=appSave]').val());
-			formObj.attr("method", "post");
-			formObj.attr("action", "/appRegister");
-			formObj.submit();
-		});
-		$(".btn-danger").on("click", function() {
-						self.location = "/annReadMainPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
-								+ "&searchType=${cri.searchType}&keyword=${cri.keyword}${annVO.annNum}";
+						$(".btn-primary").on("click", function() {
+							$('input[name=appSave]').val(1);
+							alert($('input[name=appSave]').val());
+							formObj.attr("method", "post");
+							formObj.attr("action", "/appRegister");
+							formObj.submit();
+						});
+
+						$(".btn-success").on("click", function() {
+							$('input[name=appSave]').val(0);
+							alert($('input[name=appSave]').val());
+							formObj.attr("method", "post");
+							formObj.attr("action", "/appRegister");
+							formObj.submit();
+						});
+						$(".btn-danger")
+								.on(
+										"click",
+										function() {
+											self.location = "/annReadMainPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
+													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}${annVO.annNum}";
+
+										});
 
 					});
-
-	});
 	function checkImageType(fileName) {
 
 		var pattern = /jpg|gif|png|jpeg/i;
@@ -372,91 +384,93 @@
 	//파일링크 처리(길이를 줄여줌)
 	//function getOriginalName(appFile) {
 
-		//if (checkImageType(appFile)) {
-			//return;
-		//}
+	//if (checkImageType(appFile)) {
+	//return;
+	//}
 
-		//var idx = appFile.indexOf("_") + 1;
-		//return appFile.substr(idx);
+	//var idx = appFile.indexOf("_") + 1;
+	//return appFile.substr(idx);
 
 	//}
 	//이미지파일 원본 파일 찾기
 	//function getImageLink(appFile) {
 
-		//if (!checkImageType(appFile)) {
-			//return;
-		//}
-		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
-		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
-		//var front = appFile.substr(0, 12);
-		//var end = appFile.substr(14);
+	//if (!checkImageType(appFile)) {
+	//return;
+	//}
+	//noticeFileName.substring(0,12)/년/월/일 경로 추출  
+	//noticeFileName.substring(14) 파일 이름앞의 's_'제거
+	//var front = appFile.substr(0, 12);
+	//var end = appFile.substr(14);
 
-		//return front + end;
+	//return front + end;
 
 	//}
 </script>
 <style>
-#header.header-scrolled,
-#header.header-inner-pages {
-  background: rgba(40, 58, 90, 0.9);
+#header.header-scrolled, #header.header-inner-pages {
+	background: rgba(40, 58, 90, 0.9);
 }
-#header:hover{
-  padding:15px;
-  
+
+#header:hover {
+	padding: 15px;
 }
-#header{
+
+#header {
 	background: rgba(40, 58, 90, 0.9);
 }
 
 .logo:hover {
-  text-shadow: 0 0 10px rgba(221, 221, 221, 0.8),
-               0 0 20px rgba(221, 221, 221, 0.8);
+	text-shadow: 0 0 10px rgba(221, 221, 221, 0.8), 0 0 20px
+		rgba(221, 221, 221, 0.8);
 }
-.navbar a:hover{
-  transform: scale(1.2, 1.2);
+
+.navbar a:hover {
+	transform: scale(1.2, 1.2);
 }
+
 .nav-up {
-    top: -73px;
+	top: -73px;
 }
 </style>
 
 <script>
-// Hide Header on on scroll down
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = $('header').outerHeight();
+	// Hide Header on on scroll down
+	var didScroll;
+	var lastScrollTop = 0;
+	var delta = 5;
+	var navbarHeight = $('header').outerHeight();
 
-$(window).scroll(function(event){
-    didScroll = true;
-});
+	$(window).scroll(function(event) {
+		didScroll = true;
+	});
 
-setInterval(function() {
-    if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-    }
-}, 250);
+	setInterval(function() {
+		if (didScroll) {
+			hasScrolled();
+			didScroll = false;
+		}
+	}, 250);
 
-function hasScrolled() {
-    var st = $(this).scrollTop();
-    
-    // Make sure they scroll more than delta
-    if(Math.abs(lastScrollTop - st) <= delta)
-        return;
-    
-    // If they scrolled down and are past the navbar, add class .nav-up.
-    // This is necessary so you never see what is "behind" the navbar.
-    if (st > lastScrollTop && st > navbarHeight){
-        // Scroll Down
-        $('header').removeClass('nav-down').addClass('nav-up');
-    } else {
-        // Scroll Up
-        if(st + $(window).height() < $(document).height()) {
-            $('header').removeClass('nav-up').addClass('nav-down');
-        }
-    }
-    
-    lastScrollTop = st;
-}
+	function hasScrolled() {
+		var st = $(this).scrollTop();
+
+		// Make sure they scroll more than delta
+		if (Math.abs(lastScrollTop - st) <= delta)
+			return;
+
+		// If they scrolled down and are past the navbar, add class .nav-up.
+		// This is necessary so you never see what is "behind" the navbar.
+		if (st > lastScrollTop && st > navbarHeight) {
+			// Scroll Down
+			$('header').removeClass('nav-down').addClass('nav-up');
+		} else {
+			// Scroll Up
+			if (st + $(window).height() < $(document).height()) {
+				$('header').removeClass('nav-up').addClass('nav-down');
+			}
+		}
+
+		lastScrollTop = st;
+	}
 </script>

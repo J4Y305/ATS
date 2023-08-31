@@ -206,18 +206,17 @@ public class EvaController {
 
 		// 평가 상세 정보
 		model.addAttribute(evaService.read(evaNum));
-		
-		
+
 		// 합격을 위한 처리하기 위한 전체 리스트 가져오기
 		model.addAttribute("list", evaService.listEvaPass(evaNum));
 
 	}
-	
-	@RequestMapping(value = "/evaPassRegister", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/evaPassRegister", method = RequestMethod.POST)
 	public String evaPassRegisterPost(PassVO vo, RedirectAttributes rttr) throws Exception {
 		logger.info("register Post...");
 		logger.info("evaRegister...=====> " + vo);
-		
+
 		evaService.evaPassRegister(vo);
 
 		rttr.addFlashAttribute("msg", "SUCCESS");
@@ -225,4 +224,16 @@ public class EvaController {
 		return "redirect:/eva/listEva";
 	}
 
+	// 결과 등록이 완료된 평가 결과 상세보기
+	@RequestMapping(value = "readEvaPass", method = RequestMethod.GET)
+	public void readEvaPass(@RequestParam("evaNum") int evaNum, Model model) throws Exception {
+		logger.info("evaPass GET.....");
+
+		// 평가 상세 정보
+		model.addAttribute(evaService.read(evaNum));
+
+		// 합격을 위한 처리하기 위한 전체 리스트 가져오기
+		model.addAttribute("list", evaService.listEvaPass(evaNum));
+
+	}
 }

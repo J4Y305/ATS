@@ -144,19 +144,20 @@
 	SELECT * FROM (
 				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, 
 						ANN_START_DATE, ANN_END_DATE,
-						DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
+						DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE,
+                        TO_DATE(ANN_END_DATE, 'YYYY-MM-DD') - TO_DATE(SYSDATE, 'YYYY-MM-DD') AS D_DAY
 						FROM (SELECT ROWNUM RNUM, ANN.ANN_NUM, ANN.ANN_NAME, 
 									ANN.ANN_FIELD, ANN.ANN_START_DATE, ANN.ANN_END_DATE,
 									ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, ANN.ANN_REG_DATE 
 									FROM TBL_ANN ANN, TBL_MNG MNG 
                                 		WHERE ANN.MNG_ID = MNG.MNG_ID
-                                    			AND MNG.MNG_ID = #{keyword}
+                                    			AND MNG.MNG_ID = 'mng1'
                                    				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_START_DATE < SYSDATE 
 												AND ANN.DEADLINE = 0
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
-				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
+				WHERE (RNUM >= 1 AND RNUM <= 10)ORDER BY ANN_NUM DESC
 		]]>
 		
 	</select>
@@ -185,9 +186,9 @@
 									FROM TBL_ANN ANN, TBL_MNG MNG 
                                 		WHERE ANN.MNG_ID = MNG.MNG_ID
                                     			AND MNG.MNG_ID = #{keyword}
-                                   				AND ANN.ANN_ACT = 0
+                                   				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_END_DATE < SYSDATE 
-												AND ANN.DEADLINE = 0
+												AND ANN.DEADLINE = 1
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
 				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
@@ -197,9 +198,9 @@
 	<select id="listEndSearchCount" resultType="int">
 		<![CDATA[
 			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
-			WHERE ANN.ANN_ACT = 0
+			WHERE ANN.ANN_ACT = 1 
 				AND ANN.ANN_END_DATE < SYSDATE 
-				AND ANN.DEADLINE = 0
+				AND ANN.DEADLINE = 1
 				AND ANN.MNG_ID = MNG.MNG_ID
 				AND MNG.MNG_ID = #{keyword}
 		]]>

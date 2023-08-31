@@ -8,7 +8,6 @@ public class PassVO {
 	private int appNum;
 	private int evaNum;
 	private String[] appNumList;
-	private String[] evaNumLIst;
 	private Date passRegDate;
 
 	public int getAppNum() {
@@ -35,14 +34,6 @@ public class PassVO {
 		this.appNumList = appNumList;
 	}
 
-	public String[] getEvaNumLIst() {
-		return evaNumLIst;
-	}
-
-	public void setEvaNumLIst(String[] evaNumLIst) {
-		this.evaNumLIst = evaNumLIst;
-	}
-
 	public Date getPassRegDate() {
 		return passRegDate;
 	}
@@ -54,7 +45,7 @@ public class PassVO {
 	@Override
 	public String toString() {
 		return "PassVO [appNum=" + appNum + ", evaNum=" + evaNum + ", appNumList=" + Arrays.toString(appNumList)
-				+ ", evaNumLIst=" + Arrays.toString(evaNumLIst) + ", passRegDate=" + passRegDate + "]";
+				+ ", passRegDate=" + passRegDate + "]";
 	}
 
 }

@@ -3,29 +3,33 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.ats.mapper.AppMapper">
-	
+
 	<insert id="create">
-		INSERT INTO TBL_APP (APP_NUM, USER_ID, ANN_NUM, APP_FILE, ETC, APP_SAVE)
-		VALUES (SEQ_TBL_APP.nextval, #{userId}, #{annNum}, #{appFile}, #{etc}, #{appSave})
+		INSERT INTO TBL_APP (APP_NUM, USER_ID, ANN_NUM,
+		APP_FILE, ETC, APP_SAVE)
+		VALUES (SEQ_TBL_APP.nextval, #{userId},
+		#{annNum}, #{appFile}, #{etc}, #{appSave})
 	</insert>
 
 	<update id="update">
-		UPDATE TBL_APP SET APP_FILE = #{appFile}, ETC = #{etc}, APP_SAVE = #{appSave}
+		UPDATE TBL_APP SET APP_FILE = #{appFile}, ETC =
+		#{etc}, APP_SAVE = #{appSave}
 		WHERE APP_NUM = #{appNum}
 	</update>
-	
+
 	<select id="read" resultType="com.ats.domain.AppVO">
-		SELECT USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
-			FROM TBL_APP
-			WHERE APP_NUM = #{appNum}
+		SELECT USER_ID, ANN_NUM, APP_NUM,
+		APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+		FROM TBL_APP
+		WHERE APP_NUM = #{appNum}
 	</select>
 
 	<delete id="delete">
 		DELETE FROM TBL_APP WHERE APP_NUM = #{appNum}
 	</delete>
-	
-	
-	
+
+
+
 	<select id="listAll" resultType="com.ats.domain.AppVO">
 	<![CDATA[
 		SELECT USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE
@@ -34,11 +38,12 @@
 		        ORDER BY APP_NUM DESC
 		        ]]>
 	</select>
-	
+
 	<select id="listCountCriteria" resultType="int">
-		SELECT COUNT(*) FROM TBL_APP
+		SELECT COUNT(*) FROM
+		TBL_APP
 	</select>
-	
+
 	<select id="listCriteria" resultType="com.ats.domain.AppVO">
 	<![CDATA[
 		SELECT * FROM (
@@ -48,9 +53,9 @@
 		WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
 		ORDER BY APP_NUM DESC, APP_REG_DATE DESC
 		]]>
-	</select>	
-	
-		<select id="listAppEva" resultType="com.ats.domain.AppVO">
+	</select>
+
+	<select id="listAppEva" resultType="com.ats.domain.AppVO">
 	<![CDATA[
 		SELECT * FROM (
 			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE, 
@@ -59,50 +64,55 @@
 		WHERE (RNUM >= #{cri.pageStart} AND RNUM <= #{cri.pageEnd})
 		ORDER BY APP_NUM DESC, APP_REG_DATE DESC
 		]]>
-	</select>	
-	
+	</select>
+
 	<select id="listCountAppEva" resultType="int">
 		SELECT COUNT(*)
-				FROM (SELECT * FROM TBL_APP WHERE ANN_NUM = #{annNum})
-	</select>	
-		
-	<select id="listStoreCountCriteria" resultType="int">
-		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                AND APP_SAVE=0
+		FROM (SELECT * FROM TBL_APP WHERE ANN_NUM = #{annNum})
 	</select>
-	
-	<select id="listStoreCriteria" resultType="com.ats.dto.AppListDTO">
+
+	<select id="listStoreCountCriteria" resultType="int">
+		SELECT COUNT(*)
+			FROM TBL_ANN ANN, TBL_APP APP 
+				WHERE ANN.ANN_NUM = APP.ANN_NUM
+					AND APP.USER_ID = #{keyword}
+					AND APP_SAVE=0
+	</select>
+
+	<select id="listStoreCriteria"
+		resultType="com.ats.dto.AppListDTO">
 	<![CDATA[
 		SELECT * FROM (
 			SELECT ROWNUM RNUM, APP.APP_NUM,APP.ANN_NUM,APP.USER_ID, APP.APP_REG_DATE,
-					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
-        			FROM TBL_ANN ANN, TBL_APP APP 
+						ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
+        			FROM TBL_ANN ANN, TBL_APP APP
         			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                        AND APP.USER_ID = #{keyword}
                 		AND APP_SAVE=0 ORDER BY APP_NUM DESC)			
 					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
-					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   
+					ORDER BY APP_NUM DESC, APP_REG_DATE DESC 
 		]]>
 	</select>
-	
+
 	<select id="listFinalCountCriteria" resultType="int">
-		SELECT COUNT(*) FROM TBL_ANN ANN, TBL_APP APP WHERE  ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
-                AND APP_SAVE=1
+		SELECT COUNT(*)
+		FROM TBL_ANN ANN, TBL_APP APP WHERE ANN.ANN_NUM = APP.ANN_NUM
+		AND APP.USER_ID = #{keyword}
+		AND APP_SAVE=1
 	</select>
-	
-	<select id="listFinalCriteria" resultType="com.ats.dto.AppListDTO">
+
+	<select id="listFinalCriteria"
+		resultType="com.ats.dto.AppListDTO">
 	<![CDATA[
 		SELECT * FROM (
 			SELECT ROWNUM RNUM, APP.APP_NUM,APP.ANN_NUM,APP.USER_ID, APP.APP_REG_DATE,
 					ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
         			FROM TBL_ANN ANN, TBL_APP APP 
         			WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                		AND APP.ANN_NUM IN (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                		AND APP.USER_ID = #{keyword}
                 		AND APP_SAVE=1 ORDER BY APP_NUM DESC)			
 					WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
 					ORDER BY APP_NUM DESC, APP_REG_DATE DESC   
 		]]>
-	</select>		
+	</select>
 </mapper>

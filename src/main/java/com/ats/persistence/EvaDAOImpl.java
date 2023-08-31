@@ -117,4 +117,9 @@ public class EvaDAOImpl implements EvaDAO {
 		sqlSession.insert(namespace + ".insertEvaPass", vo);
 	}
 
+	@Override
+	public List<PassVO> listPassUser(int evaNum) throws Exception {
+		return sqlSession.selectList(namespace + ".listPassUser" + evaNum);
+	}
+
 }

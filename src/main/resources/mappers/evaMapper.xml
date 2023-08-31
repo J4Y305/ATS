@@ -147,19 +147,25 @@
 	<select id="listEvaPass" resultType="com.ats.dto.EvaPassDTO">
 		SELECT EVA_NUM, APP_NUM, RATER_ID, USER_NAME, DETAILS, SCORE,
 				(SUM (SCORE) OVER (PARTITION BY APP_NUM)) AS TOTAL_SUM,
-				ROUND((AVG (SCORE) OVER (PARTITION BY APP_NUM)),3) AS TOTAL_AVG
-		FROM(
-			SELECT dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME, 
-				LISTAGG(dt.EVA_DETAIL_SCORE, ',')WITHIN GROUP(ORDER BY dt.EVA_DETAIL_SCORE) AS DETAILS, 
-				SUM(dt.EVA_DETAIL_SCORE) AS SCORE
-			FROM TBL_EVA_DETAIL dt, TBL_USER us 
-			WHERE (SELECT USER_ID FROM TBL_APP WHERE TBL_APP.APP_NUM = dt.APP_NUM) = us.USER_ID 
-			AND EVA_NUM = #{evaNum} GROUP BY dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME
-			ORDER BY dt.APP_NUM )
+				ROUND((AVG (SCORE) OVER (PARTITION BY APP_NUM)),3) AS TOTAL_AVG,
+                NVL2(PASS, '1', '0') AS PASS_CHECK
+                    FROM(
+                        select dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, USER_NAME, DETAILS, SCORE, pas.APP_NUM as PASS 
+                                FROM (SELECT dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME, 
+                                        LISTAGG(dt.EVA_DETAIL_SCORE, ',')WITHIN GROUP(ORDER BY dt.EVA_DETAIL_SCORE) AS DETAILS, 
+                                        SUM(dt.EVA_DETAIL_SCORE) AS SCORE
+                                FROM TBL_EVA_DETAIL dt, TBL_USER us 
+                                        WHERE (SELECT USER_ID FROM TBL_APP WHERE TBL_APP.APP_NUM = dt.APP_NUM) = us.USER_ID 
+                                        AND EVA_NUM = #{evaNum} GROUP BY dt.EVA_NUM, dt.APP_NUM, dt.RATER_ID, us.USER_NAME
+                                        ORDER BY dt.APP_NUM) dt left join TBL_PASS pas ON dt.APP_NUM = pas.APP_NUM)
 	</select>	
 	
 	<insert id="insertEvaPass">
 		INSERT INTO TBL_PASS (APP_NUM, EVA_NUM)
 		VALUES (#{appNum}, #{evaNum})
 	</insert>
+	
+	<select id="listPassUser" resultType="com.ats.domain.PassVO">
+		SELECT * FROM TBL_PASS WHERE EVA_NUM = #{evaNum} 
+	</select>
 </mapper>

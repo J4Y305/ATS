@@ -70,7 +70,7 @@ public class AppListDTO {
 
 	@Override
 	public String toString() {
-		return "appListDTO [appNum=" + appNum + ", annNum=" + annNum + ", userId=" + userId + ", annName=" + annName
+		return "AppListDTO [appNum=" + appNum + ", annNum=" + annNum + ", userId=" + userId + ", annName=" + annName
 				+ ", annStartDate=" + annStartDate + ", annEndDate=" + annEndDate + ", appRegDate=" + appRegDate + "]";
 	}
 

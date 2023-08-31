@@ -18,6 +18,7 @@ public class AnnVO {
 	private int annAct;
 	private int deadline;
 	private Date annRegDate;
+	private int dDay;
 
 	private ArrayList<AnnImageVO> imageList;
 	private ArrayList<AnnFileVO> fileList;
@@ -134,13 +135,21 @@ public class AnnVO {
 		this.fileList = fileList;
 	}
 
+	public int getdDay() {
+		return dDay;
+	}
+
+	public void setdDay(int dDay) {
+		this.dDay = dDay;
+	}
+
 	@Override
 	public String toString() {
 		return "AnnVO [annNum=" + annNum + ", annName=" + annName + ", annField=" + annField + ", annStartDate="
 				+ annStartDate + ", annEndDate=" + annEndDate + ", detail=" + detail + ", annImage="
 				+ Arrays.toString(annImage) + ", annFile=" + Arrays.toString(annFile) + ", mngId=" + mngId + ", annAct="
-				+ annAct + ", deadline=" + deadline + ", annRegDate=" + annRegDate + ", imageList=" + imageList
-				+ ", fileList=" + fileList + "]";
+				+ annAct + ", deadline=" + deadline + ", annRegDate=" + annRegDate + ", dDay=" + dDay + ", imageList="
+				+ imageList + ", fileList=" + fileList + "]";
 	}
 
 }

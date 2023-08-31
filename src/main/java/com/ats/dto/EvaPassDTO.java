@@ -10,6 +10,7 @@ public class EvaPassDTO {
 	private int score;
 	private int totalSum;
 	private float totalAvg;
+	private int passCheck;
 
 	public int getEvaNum() {
 		return evaNum;
@@ -75,11 +76,19 @@ public class EvaPassDTO {
 		this.totalAvg = totalAvg;
 	}
 
+	public int getPassCheck() {
+		return passCheck;
+	}
+
+	public void setPassCheck(int passCheck) {
+		this.passCheck = passCheck;
+	}
+
 	@Override
 	public String toString() {
 		return "EvaPassDTO [evaNum=" + evaNum + ", appNum=" + appNum + ", raterId=" + raterId + ", userName=" + userName
 				+ ", details=" + details + ", score=" + score + ", totalSum=" + totalSum + ", totalAvg=" + totalAvg
-				+ "]";
+				+ ", passCheck=" + passCheck + "]";
 	}
 
 }

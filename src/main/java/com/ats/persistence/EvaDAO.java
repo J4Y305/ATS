@@ -46,16 +46,19 @@ public interface EvaDAO {
 	public List<EvaVO> listMngEva(SearchCriteria cri) throws Exception;
 
 	public int listMngEvaCount(SearchCriteria cri) throws Exception;
-	
-	//합격을 위한 평가 리스트 불러오기
+
+	// 합격을 위한 평가 리스트 불러오기
 	public List<EvaPassDTO> listEvaPass(int evaNum) throws Exception;
-	
+
 	// 합격 결과 등록
 	public void insertEvaPass(PassVO vo) throws Exception;
 
-//	// 결과 미등록 평가 리스트 불러오기
-//	public List<EvaVO> listNonScoredEvaList(SearchCriteria cri) throws Exception;
-//
-//	public int listNonScoredEvaListCount(SearchCriteria cri) throws Exception;
+	// 합격자 명단 명단 받아오기
+	public List<PassVO> listPassUser(int evaNum) throws Exception;
+
+	// // 결과 미등록 평가 리스트 불러오기
+	// public List<EvaVO> listNonScoredEvaList(SearchCriteria cri) throws Exception;
+	//
+	// public int listNonScoredEvaListCount(SearchCriteria cri) throws Exception;
 
 }

@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
-import javax.swing.text.html.HTMLEditorKit.Parser;
-
 import org.springframework.stereotype.Service;
 
 import com.ats.domain.EvaItemVO;
@@ -187,6 +185,11 @@ public class EvaServiceImpl implements EvaService {
 			}
 		}
 
+	}
+
+	@Override
+	public List<PassVO> listPassUser(int evaNum) throws Exception {
+		return dao.listPassUser(evaNum);
 	}
 
 }

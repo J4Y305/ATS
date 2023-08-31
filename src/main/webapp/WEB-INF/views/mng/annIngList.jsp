@@ -5,14 +5,12 @@
 <jsp:include page="../include/mng_header.jsp" />
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
-
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>진행 중인 공고</h1>
+				<h1>진행중인 공고 목록</h1>
 			</div>
-			
 			<div class="card">
 				<div class="card-body" style="height: 750px;">
 					<h5 class="card-title"></h5>
@@ -47,7 +45,7 @@
 													value="${annVO.annStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}" /></td>
-											<td class="dDayCell"></td>
+											<td class="dDayCell">${annVO.dDay}-day</td>
 											<td>${annVO.mngId}</td>
 										</tr>
 										<div class="annEd">
@@ -57,7 +55,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							
+							</div>
 							<div class="d-flex justify-content-center">
 								<!-- Pagination with icons -->
 								<nav aria-label="Page navigation example ">
@@ -129,6 +127,7 @@
 		$('input[name=annEndDate]').val(ed);
 	});
 </script>
+<!--  
 <script>
 	$(document).ready(function() {
 		$('.annEd').each(function(index, element) {
@@ -143,3 +142,4 @@
 		});
 	});
 </script>
+-->

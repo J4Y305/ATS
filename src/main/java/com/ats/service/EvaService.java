@@ -38,8 +38,11 @@ public interface EvaService {
 
 	// 합격을 위한 평가 리스트 불러오기
 	public List<EvaPassDTO> listEvaPass(int evaNum) throws Exception;
-	
+
 	// 합격 결과 등록
 	public void evaPassRegister(PassVO vo) throws Exception;
+
+	// 합격자 조회
+	public List<PassVO> listPassUser(int evaNum) throws Exception;
 
 }
