@@ -159,14 +159,14 @@
 																</c:if>
 															</c:forTokens>
 														 -->
-																	<div class="col">
-																		<div class="icon">
-																			<i class="bi bi-box-arrow-down"></i> <a
-																				href="/displayFile?fileName=${annFileVO.fileLocation}"
+																	<div class="col">																		
+																			<div class="icon">
+																			<i class="bi bi-box-arrow-down"></i>
+																			<a href="/displayFile?fileName=${annFileVO.fileLocation}"
 																				text-muted font-weight-bold data-dz-name="">
 																				${annFileVO.annFileName}</a>
+																				</div>
 																		</div>
-																	</div>
 																</div>
 															</div>
 														</div>

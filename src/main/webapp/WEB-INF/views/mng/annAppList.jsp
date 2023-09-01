@@ -8,7 +8,7 @@
 	<main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>공고 평가</h1>
+		<h1>진행 중인 공고</h1>
 		<nav>
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -37,8 +37,10 @@
 
 						<div class="row">
 							<div class="col-lg-3 col-md-4 label">접수 시작일</div>
+							<div class="col-lg-9 col-md-8">
 							<fmt:formatDate pattern="yyyy-MM-dd"
 								value="${annVO.annStartDate}" />
+								</div>
 						</div>
 
 						<div class="row">
@@ -83,7 +85,10 @@
 								<td>${appVO.appNum}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${appVO.appRegDate}" /></td>
-								<td>${appVO.appSave}</td>
+								<td><c:if test="${0 eq appVO.appSave}">임시저장됨
+								</c:if>
+								<c:if test="${1 eq appVO.appSave}">최종제출됨 </c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

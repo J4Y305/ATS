@@ -17,7 +17,7 @@
       <div class="row">
 
         <!-- Left side columns -->
-       <div class="col-12">
+       <div class="col-8">
           <div class="row">
 
             <!-- Sales Card -->
@@ -38,15 +38,16 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Application</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-file-earmark-text"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>6</h6>
+                       <a href=""><span class="text-primary small pt-2 ps-1">View
+                       <i class="bi bi-arrow-right"></i></span></a>
 
                     </div>
                   </div>
@@ -73,15 +74,16 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title">Interested Recruit</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
+                      <i class="bi bi-star"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>7</h6>
+                      <a href=""><span class="text-primary small pt-2 ps-1">View
+                       <i class="bi bi-arrow-right"></i></span></a>
 
                     </div>
                   </div>
@@ -109,15 +111,16 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">Recruits for You</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                      <i class="bi bi-newspaper"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                      <h6>1,094</h6>
+                      <a href=""><span class="text-primary small pt-2 ps-1">View
+                       <i class="bi bi-arrow-right"></i></span></a>
 
                     </div>
                   </div>
@@ -145,57 +148,57 @@
                 </div>
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                  <h5 class="card-title">Find your Business</h5>
+                  
+                  <style>
+                  .card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 800px;
+    padding: 20px;
+}
+.card{
+}
 
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
+                  </style>
+                  
+                  
+				<div class="card-container">
+                  
+                  <div class="card" style="background-color: #cfe2ff; width: 199px; height: 129px; display: flex; justify-content: center; align-items: center;">
+                  	<div class="card-body text-center d-flex flex-column justify-content-center align-items-center" style="width: 199px; height: 129px;">
+                  		<span class="fw-bold">IT·웹·통신<br> 연봉 1위 기업 보러가요.</span>
+                  		<p style="text-decoration: underline">연봉정보 보러가기</p>
+                  	</div>
+                  
+                  </div>
+                  
+                  <div class="card" style="background-color: #cfe2ff; width: 199px; height: 129px; display: flex; justify-content: center; align-items: center;">
+                  	<div class="card-body text-center d-flex flex-column justify-content-center align-items-center" style="width: 199px; height: 129px;">
+                  		<span class="fw-bold">구직자들의 고민과<br> 재직자들의 답변은?</span>
+                  		<p style="text-decoration: underline">커뮤니티 확인하기</p> 
+                  	</div>
+                  
+                  </div>
+                  
+                  <div class="card" style="background-color: #cfe2ff; width: 199px; height: 129px; display: flex; justify-content: center; align-items: center;">
+                  	<div class="card-body text-center d-flex flex-column justify-content-center align-items-center" style="width: 199px; height: 129px;">
+                  		<span class="fw-bold">이 기업 장점만 모아!<br> 큐레이션 보러가요.</span>
+                  		<p style="text-decoration: underline">기업스토리 보러가기</p>
+                  	</div>
+                  
+                  </div>
+                  
+                  <div class="card" style="background-color: #cfe2ff; width: 199px; height: 129px; align-items: center; display: flex; justify-content: center; align-items: center;">
+                  	<div class="card-body text-center d-flex flex-column justify-content-center align-items-center" style="width: 199px; height: 129px;">
+                  		<span class="fw-bold ">나의 이력서는 어느정도?</span>
+                  		<p style="text-decoration: underline">AI이력서 평가하기</p>
+                  	</div>
+                  
+                  </div>
+                  </div>
+                  
                 </div>
 
               </div>
@@ -203,6 +206,83 @@
 
           </div>
         </div><!-- End Left side columns -->
+
+
+        <!-- Right side columns -->
+        <div class="col-lg-4">
+
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="filter">
+              <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                <li class="dropdown-header text-start">
+                  <h6>Filter</h6>
+                </li>
+
+                <li><a class="dropdown-item" href="#">Today</a></li>
+                <li><a class="dropdown-item" href="#">This Month</a></li>
+                <li><a class="dropdown-item" href="#">This Year</a></li>
+              </ul>
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Pre-closing Recruit</h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <div class="activite-label">D-12</div>
+                  <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                  <div class="activity-content">
+                  <span class="fw-bold text-dark">카카오</span>
+                    <p>신입 사원 모집</p>
+                  </div>
+                </div><!-- End activity item-->
+                
+                <div class="activity-item d-flex">
+                  <div class="activite-label">D-5</div>
+                  <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                  <div class="activity-content">
+                  <span class="fw-bold text-dark">네이버</span>
+                    <p>부문별 신입/경력 모집</p>
+                  </div>
+                </div><!-- End activity item-->
+                
+                <div class="activity-item d-flex">
+                  <div class="activite-label">D-2</div>
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                  <span class="fw-bold text-dark">과학기술정보통신부</span>
+                    <p>디지털인재얼라이언스 채용</p>
+                  </div>
+                </div><!-- End activity item--> 
+
+                <div class="activity-item d-flex">
+                  <div class="text-danger activite-label">오늘마감</div>
+                  <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                  <div class="activity-content">
+                  <span class="fw-bold text-dark">LG</span>
+                    <p>대전 콘텐츠 기업 온라인 채용</p>
+                  </div>
+                </div><!-- End activity item-->
+                
+                <div class="activity-item d-flex">
+                  <div class="text-danger activite-label">16:28</div>
+                  <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                  <div class="activity-content">
+                  <span class="fw-bold text-dark">COUPANG</span>
+                    <p>하반기 신입/경력 공개 채용</p>
+                  </div>
+                </div><!-- End activity item-->
+                
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+          
+
+
 
 
           <!-- News & Updates Traffic -->
@@ -226,7 +306,7 @@
               <div class="news">
                 <div class="post-item clearfix">
                   <img src="/resources/admin/assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+                  <h4><a href="#">서비스 정기점검 안내 (9/2)</a></h4>
                   <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
                 </div>
 

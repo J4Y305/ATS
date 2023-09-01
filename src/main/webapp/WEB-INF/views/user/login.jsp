@@ -54,36 +54,7 @@
 </head>
 
 
-<script type="text/javascript">
-	/* $("#submit").on("click", function(){
-		if($("#userId").val()=="1"){
-		alert("아이디를 입력해주세요.");
-		$("#userId").focus();
-		return false;
-	}
-			if ($("#pwdc").val() == "") {
-				alert("암호확인 필수");
-				$("#pwdc").focus();
-				return false;
-			}
-	} */
-	/* function save() {
-		   if ((document.formm.userPwd.value != document.formm.pwdc.value)) {
-		    alert("비밀번호가 일치하지 않습니다,.");
-		    document.formm.pwd.focus();
-		  } else {
-		    document.formm.action = "user";
-		    document.formm.submit();
-		  }
-		}
-		function idc() {
-		  if (document.formm.userId.value == "") {
-		    alert('중복체크를 해주세요');
-		    document.formm.userId.focus();
-		    return;
-		  } */
-		
-	</script>
+
  
 <body>
 

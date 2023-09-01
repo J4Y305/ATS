@@ -7,18 +7,28 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="include/header.jsp" />
 
+<style>
+img{
+width:50rem;
+}
+
+</style>
+
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
-<section id="breadcrumbs" class="breadcrumbs">
-	<div class="container">
+<section id="breadcrumbs" class="breadcrumbs ">
+	<div class="container ">
 		<h2>채용 공고</h2>
 		<!-- End Breadcrumbs -->
-		<section id="pricing" class="pricing" style="padding-top: 1px;">
-			<div class="container" data-aos="fade-up">
-				<div class="row">
+		
+		<section id="pricing" class="pricing " style="padding-top: 1px;">
+			<div class="card " data-aos="fade-up">
+				<div class="card-body">
+				<h5 class="card-title"></h5>
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-						<div class="box" style="padding-top: 1px;">
-							<div class="col-lg-4">
-								<div class="portfolio-info">
+						<div class="card justify-content-center" style="padding-top: 1px;">
+						<div class="card-body">
+							
+									
 									<!-- General Form Elements -->
 									<form class="row g-3" role="form" method="get" name="frm"
 										action="appRegister">
@@ -31,24 +41,24 @@
 										<input type="hidden" name="annNum" class="form-control"
 											value='${annVO.annNum}'> <input type="hidden"
 											name="userId" class="form-control" value='${login.userId}'>
-										<h2>${annVO.annName}</h2>
-										<ul style="color: #000">
-											<ol><li><strong>모집분야</strong>: ${annVO.annField}</li></ol>
+										<h2>${annVO.annName}</h2><hr/>
+										<ul style="color: #000;">
+											<ol><li ><strong>모집분야</strong>: ${annVO.annField}</li></ol>
 											<ol><li><strong>모집 기간</strong>: <fmt:formatDate
 													pattern="yyyy-MM-dd" value="${annVO.annStartDate}" /> - <fmt:formatDate
 													pattern="yyyy-MM-dd" value="${annVO.annEndDate}" /></li>
 													</ol><hr/>
 										</ul>
-										<h3>공고 내용</h3>
+										<h3><strong>공고 내용</strong></h3>
 										<c:if test="${!empty annImageVO}">
 											<ul class="dropzone-previews">
 
 												<c:forEach items="${annImageVO}" var="annImageVO"
 													varStatus="status">
-													<div class="col-sm-5">
+													<ol class="justify-content-center">
 														<img
 															src="/displayFile?fileName=${annImageVO.fileLocation}">
-													</div>
+													</ol>
 
 
 												</c:forEach>
@@ -62,9 +72,10 @@
 										</div><hr/>
 
 										<c:if test="${!empty annFileVO}">
-											<div class="form-group">
-												<label for="exampleInputEmail1" class="col-form-label">첨부파일</label>
-											</div>
+									
+											<h3><strong>첨부파일</strong></h3>
+												
+											
 
 											<ul class="dropzone-previews">
 
@@ -79,7 +90,7 @@
 															class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 															<div class="p-2">
 																<div class="row align-items-center">
-																	<c:forTokens var="token" items="${annFileNum}"
+ 																	<%--<c:forTokens var="token" items="${annFileNum}"
 																		delims="." varStatus="status">
 																		<c:if test="${status.last}">
 																			<c:choose>
@@ -120,15 +131,18 @@
 																				</c:otherwise>
 																			</c:choose>
 																		</c:if>
-																	</c:forTokens>
-																	<div class="col pl-0">
-																		<a
-																			href="/displayFile?fileName=${annFileVO.fileLocation}"
-																			text-muted font-weight-bold data-dz-name="">
-																			${annFileVO.annFileName}</a>
+																	</c:forTokens> --%>
+																	<div class="col">																		
+																			<div class="icon">
+																			<i class="bi bi-box-arrow-down">
+																			<a href="/displayFile?fileName=${annFileVO.fileLocation}"
+																				text-muted font-weight-bold data-dz-name="">
+																				${annFileVO.annFileName}</a></i>
+																				</div>
+																		</div>
 																	</div>
 																</div>
-															</div>
+
 														</div>
 													</li>
 												</c:forEach>
@@ -140,12 +154,10 @@
 									</form>
 								</div>
 
-								<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-									<div class="text-center">
-										<button type="submit" class="btn btn-success" style="margin:10px">지원하기</button>
-									</div>
-									<div class="text-center">
-										<button type="submit" class="btn btn-primary" style="margin:10px">목록</button>
+								<div class="row mb-3 p-4 justify-content-center">
+									<div class="col-sm-10 d-flex justify-content-center">
+										<button type="submit" onclick="" class="btn btn-outline-success btn-lg" style="margin:10px">지원하기</button>
+										<button type="submit" onclick="" class="btn btn-outline-primary btn-lg" style="margin:10px">목록</button>
 									</div>
 								</div>
 							</div>
@@ -154,6 +166,7 @@
 					</div>
 				</div>
 			</div>
+		
 		</section>
 	</div>
 </section>
@@ -169,13 +182,13 @@
 
 		console.log(formObj);
 
-		$(".btn-primary").on("click", function() {
+		$(".btn-outline-primary").on("click", function() {
 			formObj.attr("method", "get");
 			formObj.attr("action", "/annListMainPage");
 			formObj.submit();
 		});
 		
-		$(".btn-success").on("click", function() {
+		$(".btn-outline-success").on("click", function() {
 			formObj.attr("method", "get");
 			formObj.attr("action", "/appRegister");
 			formObj.submit();

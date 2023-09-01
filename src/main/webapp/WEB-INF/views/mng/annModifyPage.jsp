@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
 <main id="main" class="main">
+
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-9">

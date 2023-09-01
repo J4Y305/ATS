@@ -9,7 +9,7 @@
 </head>
 <body>
   <script type="text/javascript">
-    self.location = "/rater";
+    self.location = "/eva/evaList";
   </script>
 </body>
 </html>

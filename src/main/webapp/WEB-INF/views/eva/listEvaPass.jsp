@@ -35,7 +35,8 @@
 
 							<div class="row">
 								<div class="col-lg-3 col-md-4 label">평가 차수</div>
-								<div class="col-lg-9 col-md-8">${evaVO.degree}차</div>
+								<div class="col-lg-9 col-md-8"><c:if test="${0 eq evaVO.degree}">1차</c:if>
+                                 <c:if test="${1 eq evaVO.degree}">2차</c:if></div>
 							</div>
 
 							<div class="row">

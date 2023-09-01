@@ -12,12 +12,17 @@
 	<div class="container">
 		<h2>채용 공고</h2>
 		<!-- End Breadcrumbs -->
+		
+		
 		<section id="pricing" class="pricing" style="padding-top: 1px;">
-			<div class="container" data-aos="fade-up">
-				<div class="row">
+			<div class="card" data-aos="fade-up">
+				<div class="card-body">
+				<h5 class="card-title"></h5>
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-						<div class="box" style="padding-top: 1px;">
-							<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+						<div class="card justify-content-center" style="padding-top: 1px;">
+							<div class="card-body">
+							
+							
 								<form action="appRegister" method="post" role="form" name="frm"
 									class="php-email-form">
 									<input type='hidden' name='page' value="${cri.page}"> <input
@@ -36,31 +41,31 @@
 												value="${userVO.userName}">
 										</div>
 										<div class="form-group col-md-6">
-											<label for="name">전화번호</label> <input type="email"
-												class="form-control" name="email" id="email"
+											<label for="phone">전화번호</label> <input type="text"
+												class="form-control" name="phone" id="phone"
 												value="${userVO.userPhone}">
 										</div>
 									</div>
-									<div class="form-group">
-										<label for="name">이메일</label> <input type="text"
-											class="form-control" name="subject" id="subject"
+									<div class="form-group col-md-6">
+										<label for="email">이메일</label> <input type="email"
+											class="form-control" name="email" id="email"
 											value="${userVO.userEmail}">
 									</div>
 
 									<div class="row">
 										<div class="form-group col-md-6">
-											<label for="name">생년월일</label> <input type="text" name="name"
-												class="form-control" id="name" value="${userVO.birthDay}">
+											<label for="birthDay">생년월일</label> <input type="text" name="birthDay"
+												class="form-control" id="birthDay" value="${userVO.birthDay}">
 										</div>
 										<div class="form-group col-md-6">
-											<label for="name">성별</label>
+											<label for="gender">성별</label>
 											<c:if test="${1 eq userVO.gender}">
-												<input type="text" class="form-control" name="gender"
-													id="gender" value="남">
+												<div class="col-lg-9 col-md-8 pt-2">남자</div>
 											</c:if>
 											<c:if test="${2 eq userVO.gender}">
-												<input type="text" class="form-control" name="gender"
-													id="gender" value="여">
+												<div class="col-lg-9 col-md-8 pt-2">여자</div>
+												
+								</div>
 											</c:if>
 										</div>
 									</div>
@@ -95,16 +100,11 @@
 									</div>
 								</form>
 							</div>
-							<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-								<div class="text-center">
-									<button type="submit" class="btn btn-primary" value="1">최종제출</button>
-								</div>
-								<div class="text-center">
-									<button type="submit" class="btn btn-success" value="0">임시저장</button>
-								</div>
-
-								<div class="text-center">
-									<button type="submit" class="btn btn-danger">취소</button>
+							<div class="row mb-3 p-4 justify-content-center">
+									<div class="col-sm-10 d-flex justify-content-center">
+									<button type="submit" class="btn btn-outline-primary btn-lg" style="margin:10px" value="1">최종제출</button>
+									<button type="submit" class="btn btn-outline-success btn-lg" style="margin:10px" value="0">임시저장</button>
+									<button type="submit" class="btn btn-outline-danger btn-lg" style="margin:10px">취소</button>
 								</div>
 							</div>
 						</div>
@@ -128,22 +128,22 @@
 
 						console.log(formObj);
 
-						$(".btn-primary").on("click", function() {
+						$(".btn-outline-primary").on("click", function() {
 							$('input[name=appSave]').val(1);
-							alert($('input[name=appSave]').val());
+							alert("최종제출 되었습니다.");
 							formObj.attr("method", "post");
 							formObj.attr("action", "/appRegister");
 							formObj.submit();
 						});
 
-						$(".btn-success").on("click", function() {
+						$(".btn-outline-success").on("click", function() {
 							$('input[name=appSave]').val(0);
-							alert($('input[name=appSave]').val());
+							alert("임시저장 되었습니다.");
 							formObj.attr("method", "post");
 							formObj.attr("action", "/appRegister");
 							formObj.submit();
 						});
-						$(".btn-danger")
+						$(".btn-outline-danger")
 								.on(
 										"click",
 										function() {

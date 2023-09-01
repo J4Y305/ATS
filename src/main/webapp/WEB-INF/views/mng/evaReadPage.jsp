@@ -5,22 +5,13 @@
 <jsp:include page="../include/mng_header.jsp" />
 
 <body>
-	<main id="main" class="main">
+	<main id="main" class="main" style="padding-top: 50px;">
 
-	<div class="pagetitle">
+	<section class="section justify-content-center">
+	<div class="row">
+		<div class="pagetitle">
 		<h1>평가 상세</h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-				<li class="breadcrumb-item">Tables</li>
-				<li class="breadcrumb-item active">General</li>
-			</ol>
-		</nav>
 	</div>
-	<!-- End Page Title -->
-
-	<section class="section">
-		<div class="row">
 			<div class="col-lg-6">
 				<div class="card">
 					<div class="card-body">
@@ -37,8 +28,10 @@
 
 						<div class="row">
 							<div class="col-lg-3 col-md-4 label">평가 시작일</div>
+							<div class="col-lg-9 col-md-8">
 							<fmt:formatDate pattern="yyyy-MM-dd"
-								value="${evaVO.evaStartDate}" />
+								value="${evaVO.evaStartDate}"/>
+								</div>
 						</div>
 
 						<div class="row">
@@ -49,7 +42,8 @@
 						</div>
 						<div class="row">
 							<div class="col-lg-3 col-md-4 label">차수:</div>
-							<div class="col-lg-9 col-md-8">${evaVO.degree}</div>
+							<div class="col-lg-9 col-md-8"><c:if test="${0 eq evaVO.degree}">1차</c:if>
+                                 <c:if test="${1 eq evaVO.degree}">2차</c:if></div>
 						</div>
 
 
@@ -119,7 +113,13 @@
 
 			</div>
 		</div>
-		<button type="submit" class="btn btn-outline-primary">목록</button>
+		<div class="row mb-3 p-4 justify-content-center">
+							<div class="col-sm-10 d-flex justify-content-center">
+								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg">삭제</button>
+								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg mx-4">수정</button>
+								<button type="submit" onclick="" class="btn btn-outline-primary btn-lg ">목록</button>
+							</div>
+						</div>
 		<!-- /.box-body -->
 
 	</section>
@@ -137,6 +137,17 @@
 			$("btn-outline-primary").on("click", function() {
 				formObj.attr("method", "get");
 				formObj.attr("action", "/evaList");
+				formObj.submit();
+			});
+			
+			$(".btn-outline-warning").on("click", function() {
+				formObj.attr("action", "/mng/evaModifyPage");
+				formObj.attr("method", "get");
+				formObj.submit();
+			});
+
+			$(".btn-outline-danger").on("click", function() {
+				formObj.attr("action", "/mng/evaRemovePage");
 				formObj.submit();
 			});
 

@@ -42,7 +42,8 @@
 											<td><a
 												href='/mng/evaReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}'>
 													${evaVO.evaName} </a></td>
-											<td>${evaVO.degree}</td>
+											<td><c:if test="${0 eq evaVO.degree}">1차</c:if>
+                                 <c:if test="${1 eq evaVO.degree}">2차</c:if></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${evaVO.evaStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
