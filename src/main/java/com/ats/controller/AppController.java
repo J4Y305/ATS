@@ -21,7 +21,7 @@ import com.ats.service.AppService;
 
 
 @Controller
-@RequestMapping("/product/*")
+@RequestMapping("/app/*")
 public class AppController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AppController.class);
@@ -156,7 +156,5 @@ public class AppController {
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
 	}
-
-
 
 }

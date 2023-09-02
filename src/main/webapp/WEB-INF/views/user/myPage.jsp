@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="../include/user_header.jsp" />
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <body>
 
@@ -67,8 +68,8 @@
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">About</h5>
-                  <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
+                  <h5 class="card-title">자기소개</h5>
+                  <p class="small fst-italic">항상 나아가기 위해 노력하기를 멈추지 않고 어떠한 상황에도 성실히 맡은 일에 최선을 다하는 개발자입니다 :)</p>
 
                   <h5 class="card-title">Profile Details</h5>
 
@@ -94,12 +95,14 @@
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">성별</div>
-                    <div class="col-lg-9 col-md-8">${userVO.gender}</div>
+                    <div class="col-lg-9 col-md-8"><c:if test="${0 eq userVO.gender}">남자</c:if>
+                                 <c:if test="${1 eq userVO.gender}">여자</c:if></div>
                   </div>
 
                   <div class="row">
                     <div class="col-lg-3 col-md-4 label">생성날짜</div>
-                    <div class="col-lg-9 col-md-8">${userVO.userRegDate}</div>
+                    <div class="col-lg-9 col-md-8"><fmt:formatDate pattern="yyyy-MM-dd"
+													value="${userVO.userRegDate}" /></div>
                   </div>
 
                 </div>

@@ -59,14 +59,18 @@
 										</div>
 										<div class="form-group col-md-6">
 											<label for="gender">성별</label>
-											<c:if test="${1 eq userVO.gender}">
-												<div class="col-lg-9 col-md-8 pt-2">남자</div>
+											<c:if test="${0 eq userVO.gender}">
+											<input type="text" name="gender"
+												class="form-control" id="gender" value="남자">
+												
 											</c:if>
-											<c:if test="${2 eq userVO.gender}">
-												<div class="col-lg-9 col-md-8 pt-2">여자</div>
+											<c:if test="${1 eq userVO.gender}">
+											<input type="text" name="gender"
+												class="form-control" id="gender" value="여자">
+												</c:if>
 												
 								</div>
-											</c:if>
+											
 										</div>
 									</div>
 									<div class="form-group">

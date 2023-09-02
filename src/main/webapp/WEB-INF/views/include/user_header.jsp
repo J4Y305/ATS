@@ -63,7 +63,7 @@
 	<header id="header" class="header fixed-top d-flex align-items-center">
 
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="/" class="logo d-flex align-items-center"> <img
+			<a href="/user" class="logo d-flex align-items-center"> <img
 				src="/resources/admin/assets/img/logo.png" alt=""> <span
 				class="d-none d-lg-block">ATS</span>
 			</a> <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -312,7 +312,7 @@
 			<!-- End Icons Nav -->
 
 			<li class="nav-item"><a class="nav-link collapsed"
-				href="/user/result""> <!-- <i class="bi bi-person"></i> -->
+				href="/user/appResultList""> <!-- <i class="bi bi-person"></i> -->
 					<i class="bi bi-layout-text-window-reverse"></i> <span>결과 조회</span>
 			</a></li>
 			<!-- End 상품 관리 Page Nav -->

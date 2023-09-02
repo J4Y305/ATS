@@ -12,6 +12,7 @@ import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
 import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
+import com.ats.dto.AppPassDTO;
 
 @Repository
 public class AppDAOImpl implements AppDAO{
@@ -81,6 +82,16 @@ public class AppDAOImpl implements AppDAO{
 	@Override
 	public int listCountAppEva(AppEvaDTO dto) throws Exception {
 		return session.selectOne(namespace + ".listCountAppEva", dto);
+	}
+
+	@Override
+	public List<AppPassDTO> listAppPass(String userId) throws Exception {
+		return session.selectList(namespace + ".listAppPass", userId);
+	}
+
+	@Override
+	public int listCountAppPass(String userId) throws Exception {
+		return session.selectOne(namespace + ".listCountAppPass", userId);
 	}
 
 

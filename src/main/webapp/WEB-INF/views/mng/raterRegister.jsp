@@ -35,7 +35,7 @@
 							<div class="col-sm-5" style="display:-webkit-inline-box">
 								<input type="text" name="raterId" class="form-control"
 									placeholder="아이디">&nbsp;
-									<button type="button" onclick="" class="btn btn-outline-primary">중복검사</button>
+									<button type="button" onclick="" class="btn btn-outline-primary">중복확인</button>
 							</div>
 							<div class="col-sm-5">
 								

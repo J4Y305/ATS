@@ -146,8 +146,8 @@
 									<label for="yourUsername" class="form-label">ID</label> <input
 										type="text" name="userId" class="form-control"
 										id="yourUsername" required>
-									<div class="invalid-feedback">Please, enter your ID!</div>
-									<button class="idc" type="button" id="idc" onclick="idc();"
+									<div class="invalid-feedback">Please, enter your ID!></div>
+									<button class="btn btn-outline-primary" type="button" id="idc" onclick="idc();"
 										value="N">중복확인</button>
 									<!-- <span class="id_ok" style="color: green; display: none;">사용가능한
 										아이디입니다</span> <span class="id_already"

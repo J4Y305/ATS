@@ -188,7 +188,7 @@
                                     			AND MNG.MNG_ID = #{keyword}
                                    				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_END_DATE < SYSDATE 
-												AND ANN.DEADLINE = 1
+												AND ANN.DEADLINE = 0
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
 				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
@@ -200,7 +200,7 @@
 			SELECT COUNT(*) FROM TBL_ANN ANN, TBL_MNG MNG
 			WHERE ANN.ANN_ACT = 1 
 				AND ANN.ANN_END_DATE < SYSDATE 
-				AND ANN.DEADLINE = 1
+				AND ANN.DEADLINE = 0
 				AND ANN.MNG_ID = MNG.MNG_ID
 				AND MNG.MNG_ID = #{keyword}
 		]]>
@@ -209,13 +209,14 @@
 
 	<select id="listIESearch" resultType="com.ats.domain.AnnVO">
 		<![CDATA[
+		
 			SELECT * FROM (
 				SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
 								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE
 					FROM (SELECT ROWNUM RNUM, ANN_NUM, ANN_NAME, ANN_FIELD, ANN_START_DATE, ANN_END_DATE,
 								DETAIL, MNG_ID, ANN_ACT, DEADLINE, ANN_REG_DATE 
-								FROM TBL_ANN WHERE (ANN_ACT = 1 AND ANN_END_DATE < SYSDATE AND DEADLINE = 1) 
-								or (ANN_ACT = 1 AND ANN_END_DATE > SYSDATE AND DEADLINE = 0)
+								FROM TBL_ANN WHERE (ANN_ACT = 1 AND ANN_END_DATE < SYSDATE) 
+								or (ANN_ACT = 1 AND ANN_END_DATE > SYSDATE)
 		]]>
 		<include refid="search"></include>
 		<![CDATA[
@@ -241,7 +242,7 @@
         ,ANN.ANN_NAME, ANN.ANN_START_DATE, ANN.ANN_END_DATE 
         FROM TBL_ANN ANN, TBL_APP APP 
         WHERE ANN.ANN_NUM = APP.ANN_NUM 
-                AND APP.ANN_NUM = (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
+                AND APP.ANN_NUM in (SELECT ANN_NUM FROM TBL_APP WHERE USER_ID=#{keyword}) 
                 AND ANN.DEADLINE != 0 
                 ORDER BY APP_NUM DESC)
                 ]]>

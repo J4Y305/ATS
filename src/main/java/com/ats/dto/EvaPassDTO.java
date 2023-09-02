@@ -12,6 +12,7 @@ public class EvaPassDTO {
 	private float totalAvg;
 	private int passCheck;
 
+
 	public int getEvaNum() {
 		return evaNum;
 	}

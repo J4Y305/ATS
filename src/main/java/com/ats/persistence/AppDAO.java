@@ -6,6 +6,7 @@ import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
 import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
+import com.ats.dto.AppPassDTO;
 
 public interface AppDAO {
 	public void create(AppVO vo) throws Exception;
@@ -35,5 +36,10 @@ public interface AppDAO {
 	public List<AppVO> listAppEva(AppEvaDTO dto) throws Exception;
 	
 	public int listCountAppEva(AppEvaDTO dto) throws Exception;
+	
+	// 사용자가 자신이 지원한 지원서의 결과를 조회하는 기능
+	public List<AppPassDTO> listAppPass(String userId) throws Exception;
+	
+	public int listCountAppPass(String userId) throws Exception;
 
 }

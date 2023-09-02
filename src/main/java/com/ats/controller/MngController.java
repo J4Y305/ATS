@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ats.domain.AnnVO;
+import com.ats.domain.AppEvaVO;
 import com.ats.domain.AppVO;
 import com.ats.domain.EvaVO;
 import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.RaterVO;
 import com.ats.domain.SearchCriteria;
+import com.ats.dto.AppEvaDTO;
 import com.ats.dto.MngLoginDTO;
 import com.ats.service.AnnService;
 import com.ats.service.AppEvaService;
@@ -70,6 +72,19 @@ public class MngController {
 		}
 
 		model.addAttribute("mngVO", vo);
+	}
+
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpSession session) throws Exception {
+
+		Object RaterVO = session.getAttribute("login");
+
+		if (RaterVO != null) {
+			session.removeAttribute("login");
+			session.invalidate();
+		}
+
+		return "redirect:/mng/login";
 	}
 
 	@RequestMapping(value = "/annRegister", method = RequestMethod.GET)
@@ -217,6 +232,8 @@ public class MngController {
 		model.addAttribute(annService.read(annNum));
 
 		// 지원서 리스트 가져오기
+		
+		cri.setKeyword(Integer.toString(annNum));
 		model.addAttribute("list", appService.listCriteria(cri));
 
 		// 페이징 네비게이션 추가
@@ -324,12 +341,11 @@ public class MngController {
 
 		model.addAttribute("annList", annService.listEndSearch(cri));
 		model.addAttribute("raterList", raterService.listSearch(cri));
-		
+
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(raterService.listSearchCount(cri));
 		model.addAttribute("pageMaker", pageMaker);
-
 
 	}
 
@@ -368,14 +384,59 @@ public class MngController {
 	@RequestMapping(value = "/evaReadPage", method = RequestMethod.GET)
 	public void evaReadPage(@RequestParam("evaNum") int evaNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
+
 		logger.info("eva ReadPage Get...");
 		EvaVO eVo = evaService.read(evaNum);
 		model.addAttribute(annService.read(eVo.getAnnNum()));
+
 		// 평가 정보
 		model.addAttribute(eVo);
 
 		// 평가서 목록
 		model.addAttribute("list", apEvService.listCriteria(cri));
+
+		// 페이징 네비게이션 추가
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(apEvService.listCountCriteria(cri));
+
+		// 페이징 정보 화면 전달
+		model.addAttribute("pageMaker", pageMaker);
+
+	}
+
+	// READPAGE
+	@RequestMapping(value = "/evaDetailReadPage", method = RequestMethod.GET)
+	public void evaDetailReadPage(@RequestParam("evaNum") int evaNum, @RequestParam("annNum") int annNum,
+			@RequestParam("appNum") int appNum, @RequestParam("userId") String userId,
+			@RequestParam("raterId") String raterId, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
+		logger.info("readPage.....");
+
+		// 평가정보
+		model.addAttribute(evaService.read(evaNum));
+		model.addAttribute(annService.read(annNum));
+		model.addAttribute(userService.read(userId));
+		model.addAttribute(appService.read(appNum));
+
+		model.addAttribute("list", evaService.evaItemList(evaNum));
+
+		// RATER_ID='rater1' AND EVA_NUM=21 AND APP_NUM=10;
+		AppEvaVO vo = new AppEvaVO();
+		vo.setRaterId(raterId);
+		vo.setEvaNum(evaNum);
+		vo.setAppNum(appNum);
+
+		model.addAttribute("detail", apEvService.read(vo));
+		model.addAttribute("detailList", apEvService.evaDetailList(vo));
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(evaService.listSearchCount(cri));
+
+		// 페이징 정보 화면 전달
+		model.addAttribute("pageMaker", pageMaker);
+		logger.info("readPage....." + model);
 	}
 
 	@RequestMapping(value = "/evaModifyPage", method = RequestMethod.GET)

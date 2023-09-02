@@ -251,33 +251,28 @@ public class UserController {
 		return "redirect:/user/appStoreList";
 	}
 	
-	// LISTPAGE
-		@RequestMapping(value = "/result", method = RequestMethod.GET)
+	// 사용자가 지원한 결과를 확인하는 기능
+		@RequestMapping(value = "/appResultList", method = RequestMethod.GET)
 		public void resultPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session,
 				Model model) throws Exception {
 			logger.info("listPage GET.....");
 
 			UserVO vo = (UserVO) session.getAttribute("login");
-			cri.setKeyword(vo.getUserId());
+			String userId = vo.getUserId();
 			
 			
 			// 선택된 페이지의 게시글 정보로 10개 가져오기
-			model.addAttribute("list", annService.listSearchResult(cri));
+			model.addAttribute("list", appService.listAppPassCriteria(userId));
 			
 			// 페이징 네비게이션 추가
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(annService.listSearchCount(cri));
+			pageMaker.setTotalCount(appService.listCountAppPass(userId));
 			// 페이징 정보 화면 전달 
 			model.addAttribute("pageMaker", pageMaker);
 			
 			
 			logger.info("result Model....." + model);
 			logger.info("result cri....." + cri);
-			
-			
-
 		}
-
-
 }

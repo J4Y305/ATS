@@ -11,10 +11,11 @@ public class AppEvaVO {
 	private int scoreSum;
 	private String scoreComment;
 	private Date scoreRegDate;
-	
+	private String userId;
+	private Date appRegDate;
+
 	private int evaItemNum;
 	private int evaDetailScore;
-	
 
 	public int getAppNum() {
 		return appNum;
@@ -30,6 +31,14 @@ public class AppEvaVO {
 
 	public void setEvaNum(int evaNum) {
 		this.evaNum = evaNum;
+	}
+
+	public int getAnnNum() {
+		return annNum;
+	}
+
+	public void setAnnNum(int annNum) {
+		this.annNum = annNum;
 	}
 
 	public String getRaterId() {
@@ -64,6 +73,14 @@ public class AppEvaVO {
 		this.scoreRegDate = scoreRegDate;
 	}
 
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public int getEvaItemNum() {
 		return evaItemNum;
 	}
@@ -76,24 +93,24 @@ public class AppEvaVO {
 		return evaDetailScore;
 	}
 
+	public Date getAppRegDate() {
+		return appRegDate;
+	}
+
+	public void setAppRegDate(Date appRegDate) {
+		this.appRegDate = appRegDate;
+	}
+
 	public void setEvaDetailScore(int evaDetailScore) {
 		this.evaDetailScore = evaDetailScore;
-	}
-
-	public int getAnnNum() {
-		return annNum;
-	}
-
-	public void setAnnNum(int annNum) {
-		this.annNum = annNum;
 	}
 
 	@Override
 	public String toString() {
 		return "AppEvaVO [appNum=" + appNum + ", evaNum=" + evaNum + ", annNum=" + annNum + ", raterId=" + raterId
 				+ ", scoreSum=" + scoreSum + ", scoreComment=" + scoreComment + ", scoreRegDate=" + scoreRegDate
-				+ ", evaItemNum=" + evaItemNum + ", evaDetailScore=" + evaDetailScore + "]";
+				+ ", userId=" + userId + ", appRegDate=" + appRegDate + ", evaItemNum=" + evaItemNum
+				+ ", evaDetailScore=" + evaDetailScore + "]";
 	}
-
 
 }

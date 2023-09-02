@@ -10,6 +10,7 @@ import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
 import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
+import com.ats.dto.AppPassDTO;
 import com.ats.persistence.AppDAO;
 
 @Service
@@ -77,6 +78,16 @@ public class AppServiceImpl implements AppService{
 	@Override
 	public int listCountAppEva(AppEvaDTO dto) throws Exception {
 		return dao.listCountAppEva(dto);
+	}
+
+	@Override
+	public List<AppPassDTO> listAppPassCriteria(String userId) throws Exception {
+		return dao.listAppPass(userId);
+	}
+
+	@Override
+	public int listCountAppPass(String userId) throws Exception {
+		return dao.listCountAppPass(userId);
 	}
 
 	
