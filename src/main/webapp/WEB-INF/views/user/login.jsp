@@ -119,7 +119,7 @@
 									</div>
 									<div class="col-12">
 										<p class="small mb-0">
-											Don't have account? <a href="/user/register">Create an
+											Don't have account? <a href="/user/userRegister">Create an
 												account</a>
 										</p>
 									</div>
