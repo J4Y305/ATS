@@ -54,46 +54,35 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
-<script type="text/javascript">
-<!--
-
-//-->
-</script>
-
-
 <script>
-$(function(){
-/*     $("#idc").click(function(){
-    
-        let userId= $("#userId").val();
-         
-        $.ajax({
-            type:'post', //post 형식으로 controller 에 보내기위함!!
-            url:"user", // 컨트롤러로 가는 mapping 입력
-            data: {"userId":userId}, 
-            success: function(data){ 
-                if(data == "N"){ // 만약 성공할시
-                    result = "사용 가능한 아이디입니다.";
-                    $("#idc").html(result).css("color", "green");
-                    $("#userPwd").trigger("focus");
-                 
-             }else{ // 만약 실패할시
-                 result="이미 사용중인 아이디입니다.";
-                     $("#idc").html(result).css("color","red");
-                     $("#userId").val("").trigger("focus");
-             }
-                 
-         },
-            error : function(error){alert(error);}
-        });
-        
-    });
-    
-}); */
-
- 
- 
+	//$(function(){
+	/*     $("#idc").click(function(){
+	
+	 let userId= $("#userId").val();
+	
+	 $.ajax({
+	 type:'post', //post 형식으로 controller 에 보내기위함!!
+	 url:"user", // 컨트롤러로 가는 mapping 입력
+	 data: {"userId":userId}, 
+	 success: function(data){ 
+	 if(data == "N"){ // 만약 성공할시
+	 result = "사용 가능한 아이디입니다.";
+	 $("#idc").html(result).css("color", "green");
+	 $("#userPwd").trigger("focus");
+	
+	 }else{ // 만약 실패할시
+	 result="이미 사용중인 아이디입니다.";
+	 $("#idc").html(result).css("color","red");
+	 $("#userId").val("").trigger("focus");
+	 }
+	
+	 },
+	 error : function(error){alert(error);}
+	 });
+	
+	 });
+	
+	 }); */
 </script>
 <main>
 <div class="container">
@@ -112,7 +101,6 @@ $(function(){
 						</a>
 					</div>
 					<!-- End Logo -->
-
 					<div class="card mb-3">
 
 						<div class="card-body">
@@ -123,8 +111,7 @@ $(function(){
 									to login</p>
 							</div>
 
-							<form class="row g-3 needs-validation" action="/rater/loginPost"
-								method="POST" novalidate>
+							<form class="row g-3 needs-validation" action="/rater/loginPost" method="POST" novalidate>
 
 								<div class="col-12">
 									<label for="yourUsername" class="form-label">ID</label> <input
@@ -165,7 +152,10 @@ $(function(){
 	</section>
 
 </div>
+
+</body>
 </main>
+
 <!-- End #main -->
 
 <a href="#"
@@ -187,7 +177,4 @@ $(function(){
 
 <!-- Template Main JS File -->
 <script src="/resources/admin/assets/js/main.js"></script>
-
-</body>
-
 </html>

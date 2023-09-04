@@ -27,7 +27,6 @@
 										<th scope="col">평가 시작일</th>
 										<th scope="col">평가 마감일</th>
 										<th scope="col">결과 여부</th>
-										<th scope="col">작성자</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -42,20 +41,28 @@
 											<td><a
 												href='/mng/evaReadPage${pageMaker.makeSearch(pageMaker.cri.page) }&evaNum=${evaVO.evaNum}'>
 													${evaVO.evaName} </a></td>
-											<td><c:if test="${0 eq evaVO.degree}">1차</c:if>
-                                 <c:if test="${1 eq evaVO.degree}">2차</c:if></td>
+											<td>
+											<c:if test="${0 eq evaVO.degree}">
+													<c:out value="1차"></c:out>
+												</c:if> <c:if test="${0 ne evaVO.degree}">
+													<c:out value="2차"></c:out>
+												</c:if></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${evaVO.evaStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${evaVO.evaEndDate}" /></td>
-											<td>??</td>
-											<td>${evaVO.mngId}</td>
+											<td><c:if test="${0 eq evaVO.evaPass}">
+													<c:out value="등록 미완료"></c:out>
+												</c:if> <c:if test="${0 ne evaVO.evaPass}">
+													<c:out value="등록 완료"></c:out>
+												</c:if></td>
+
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						
+
 						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example ">
@@ -85,9 +92,10 @@
 							<!-- End Pagination with icons -->
 						</div>
 					</div>
-					
+
 					<div class="d-flex justify-content-end">
-						<button id="newBtn" class="btn btn-outline-primary ">평가 등록</button>
+						<button id="newBtn" class="btn btn-outline-primary ">평가
+							등록</button>
 					</div>
 
 				</div>

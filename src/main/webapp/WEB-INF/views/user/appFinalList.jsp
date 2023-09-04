@@ -3,19 +3,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/user_header.jsp" />
-<main id="main" class="main" style="padding-top: 50px;">
-
-
-<!-- End Page Title -->
+<main id="main" class="main"  style="padding-top: 50px;">
 
 <section class="section">
-<div class="row justify-content-center">
+	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>제출 완료한 지원서</h1>
+				<h1>최종 제출한 지원서</h1>
 			</div>
-	
-	<div class="card">
+			
+			<div class="card">
 				<div class="card-body mt-5" style="height: 750px;">
 					<div class="card">
 						<div class="card-body" style="height: 550px;"> 
@@ -57,6 +54,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							</div>
 							<!-- End Table with hoverable rows -->
 							<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
@@ -88,10 +86,10 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			</div>
-			</div>
-			</div>
+			</div>	
+		</div>
+	</div>
+				
 </section>
 
 </main>

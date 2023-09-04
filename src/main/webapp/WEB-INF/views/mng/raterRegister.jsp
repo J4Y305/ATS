@@ -3,25 +3,21 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main" style="padding-top: 50px;">
+<main id="main" class="main">
 
+<div class="pagetitle">
+	<h1>평가자 등록</h1>
 
+</div>
 <!-- End Page Title -->
 <section class="section">
-<div class="row justify-content-center">
-	<div class="col-lg-10">
-	<div class="pagetitle">
-		<h1>평가자 등록</h1>
-	</div>
-		<div class="card p-4">
+	<div class="row">
+		<div class="col-lg-10">
+
+			<div class="card">
 				<div class="card-body">
-					<div class="card">
-						<div class="card-body">
-							<div class="icon">
-								<h5 class="card-title fw-bold">
-									<i class="bi bi-person mx-3"></i>평가자 기본 정보
-								</h5>
-							</div>
+					<h5 class="card-title"></h5>
+
 					<!-- General Form Elements -->
 					<form class="row g-3" role="form" method="post" name="frm">
 						<input type='hidden' name='page' value="${cri.page}"> <input
@@ -30,15 +26,15 @@
 						<input type='hidden' name='keyword' value="${cri.keyword}">
 						<input type="hidden" name="mngId" class="form-control"
 							value='${login.mngId}'>
-						<div class="row mb-3" >
+						<div class="row mb-3 ">
 							<label class="col-sm-3 col-form-label">아이디 :</label>
-							<div class="col-sm-5" style="display:-webkit-inline-box">
+							<div class="col-sm-3">
 								<input type="text" name="raterId" class="form-control"
-									placeholder="아이디">&nbsp;
-									<button type="button" onclick="" class="btn btn-outline-primary">중복확인</button>
+									placeholder="아이디">
 							</div>
 							<div class="col-sm-5">
-								
+								<button type="button" onclick="" class="btn btn-outline-primary">중복
+									검사</button>
 							</div>
 						</div>
 						<div class="row mb-3 ">
@@ -85,14 +81,14 @@
 						</div>
 						<div class="row mb-3 ">
 							<label class="col-sm-3 col-form-label">이메일 :</label>
-							<div class="col-sm-5">
+							<div class="col-sm-3">
 								<input type="text" name="raterEmail" class="form-control"
 									placeholder="이메일">
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">등록하기</label>
-							<div class="col-sm-5">
+							<label class="col-sm-2 col-form-label">등록하기</label>
+							<div class="col-sm-10">
 								<button type="button" onclick="" class="btn btn-outline-danger">취소</button>
 								<button type="submit" onclick="" class="btn btn-outline-primary">등록</button>
 							</div>

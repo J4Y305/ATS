@@ -25,7 +25,7 @@
 							<div class="card-body">
 								<div class="icon">
 									<h5 class="card-title fw-bold">
-										<i class="bi bi-person mx-3"></i>평가자 기본 정보
+										<i class="bi bi bi-tags mx-3"></i>평가자 기본 정보
 									</h5>
 								</div>
 						

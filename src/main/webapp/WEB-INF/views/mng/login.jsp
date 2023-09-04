@@ -57,9 +57,7 @@
 
 	<main>
 	<div class="container">
-
-		<section
-			class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+		<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div
@@ -83,7 +81,8 @@
 									to login</p>
 							</div>
 
-							<form class="row g-3 needs-validation" action="/mng/loginPost" method="post" novalidate>
+							<form class="row g-3 needs-validation" action="/mng/loginPost"
+								method="post" novalidate>
 
 								<div class="col-12">
 									<label for="adminId" class="form-label">ID</label>
@@ -91,8 +90,7 @@
 										<span class="input-group-text" id="inputGroupPrepend">@</span>
 										<input type="text" name="mngId" class="form-control"
 											id="adminId" required>
-										<div class="invalid-feedback">Please enter your
-											ID.</div>
+										<div class="invalid-feedback">Please enter your ID.</div>
 									</div>
 								</div>
 

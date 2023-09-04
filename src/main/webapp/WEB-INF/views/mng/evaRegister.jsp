@@ -89,17 +89,14 @@
 									<div class="col">
 										<div class="input-group">
 											<span class="input-group-text"></span>
-											<textarea id="evaItem" class="form-control evaItem"
-												aria-label="With textarea"></textarea>
+											<textarea id="evaItem" class="form-control evaItem" aria-label="With textarea"></textarea>
 										</div>
 									</div>
 									<div class="col-sm-1 pt-2 mr-2">
-										<input type="text" id="evaScore"
-											class="form-control evaScore " style="width: 59px;">
+										<input type="text" id="evaScore" class="form-control evaScore " style="width: 59px;">
 									</div>
 									<div class="col-sm-1 pt-2 ml-2" style="width:10%">
-										<input type="button" value="+" class="btn btn-outline-primary"
-											onclick="add_textbox()">
+										<input type="button" value="+" class="btn btn-outline-primary" onclick="add_textbox()">
 									</div>
 								</div>
 							</div>
@@ -237,7 +234,7 @@ const add_textbox = () => {
 	var uploaded = $("#itemUploadCount").val();
     const box = document.getElementById("box");
     const newP = document.createElement('p');
-    newP.innerHTML = "<div class='form-group row inputWrapper pt-3'><div class='col'><div class='input-group'><span class='input-group-text'></span><textarea id='evaItem' class='form-control evaItem aria-label='With textarea'></textarea></div></div><div class='col-sm-1 pt-2 mr-2'><input type='text' id='evaScore' class='form-control evaScore' style='width: 59px;''></div><div class='col-sm-1 pt-2 ml-2'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick='remove(this)'></div></div>";                                     
+    newP.innerHTML = "<div class='form-group row inputWrapper pt-3' id='"+"myDiv" + uploaded+"'><div class='col'><div class='input-group'><span class='input-group-text'></span><textarea id='evaItem' class='form-control evaItem aria-label='With textarea'></textarea></div></div><div class='col-sm-1 pt-2 mr-2'><input type='text' id='evaScore' class='form-control evaScore' style='width: 59px;''></div><div class='col-sm-1 pt-2 ml-2'><input type='button' id='itemBtn' class='btn btn-outline-danger removeBtn' value='-' onclick=remove("+"'myDiv" + uploaded+"')></div></div>";                                     
     box.appendChild(newP);
 
 
@@ -248,7 +245,15 @@ const add_textbox = () => {
 }
 const remove = (obj) => {
 	var uploaded = $("#itemUploadCount").val();
-    document.getElementById('box').removeChild(obj.parentNode);
+	alert(obj)
+	//var parent = obj.parentElement; // 부모 객체 알아내기
+	//parent.removeChild(obj);
+    //document.getElementById('box').removeChild(obj);
+    
+    var myDiv = document.getElementById(obj);
+	var parent = myDiv.parentElement; // 부모 객체 알아내기
+	parent.removeChild(myDiv); // 부모로부터 myDiv 객체 떼어내기
+    
     uploaded--;
 	$("#itemUploadCount").attr("value", uploaded);
 	console.log(uploaded);

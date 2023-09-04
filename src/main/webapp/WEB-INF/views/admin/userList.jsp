@@ -3,9 +3,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/admin_header.jsp" />
-<main id="main" class="main" style="padding-top: 50px;">
-
-<!-- End Page Title -->
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 
 <section class="section">
 	<div class="row justify-content-center">
@@ -19,53 +17,57 @@
 					<div class="card">
 						<div class="card-body" style="height: 550px;">
 
-
-							<!-- Table with hoverable rows -->
-							<table class="table table-hover">
-								<thead>
-									<tr>
-										<th scope="col">번호</th>
-										<th scope="col">이름</th>
-										<th scope="col">아이디</th>
-										<th scope="col">생년월일</th>
-										<th scope="col">성별</th>
-										<th scope="col">이메일</th>
-										<th scope="col">삭제</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${list}" var="userVO" varStatus="var">
+							<form role="form" action="/admin/userRemovePage" method="POST">
+								<input type="hidden" name="userId" class="form-control"
+									value='${userVO.userId}' />
+								<!-- Table with hoverable rows -->
+								<table class="table table-hover">
+									<thead>
 										<tr>
-
-											<c:if test="${pageMaker.cri.page == 1 }">
-												<td>${var.count }</td>
-											</c:if>
-											<c:if test="${pageMaker.cri.page != 1 }">
-												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
-											</c:if>
-											<td>${userVO.userName}</td>
-											<td>${userVO.userId}</td>
-											<td>${userVO.birthDay}"</td>
-											<td><c:choose>
-													<c:when test="${1 eq userVO.gender}">남 </c:when>
-
-													<c:otherwise>0</c:otherwise>
-												</c:choose></td>
-											<td>${userVO.userEmail}</td>
-											<form role="form" action="/admin/userRemovePage" method="POST">
-												<input type="hidden" name="userId" class="form-control"
-													value='${userVO.userId}'>
-											<td><button id="delBtn" class="btn btn-outline-danger"
-													type="submit">삭제</button></td>
-											</form>
+											<th scope="col">번호</th>
+											<th scope="col">이름</th>
+											<th scope="col">아이디</th>
+											<th scope="col">생년월일</th>
+											<th scope="col">성별</th>
+											<th scope="col">이메일</th>
+											<th scope="col">삭제</th>
 										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${list}" var="userVO" varStatus="var">
+											<tr>
 
-									</c:forEach>
-								</tbody>
-							</table>
-							</div>
-							<!-- End Table with hoverable rows -->
-							<div class="d-flex justify-content-center">
+												<c:if test="${pageMaker.cri.page == 1 }">
+													<td>${var.count }</td>
+												</c:if>
+												<c:if test="${pageMaker.cri.page != 1 }">
+													<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+												</c:if>
+												<td>${userVO.userName}</td>
+												<td>${userVO.userId}</td>
+												<td>${userVO.birthDay}</td>
+												<td><c:choose>
+														<c:when test="${1 eq userVO.gender}">남 </c:when>
+														<c:when test="${0 eq userVO.gender}">여 </c:when>
+														<c:otherwise>0</c:otherwise>
+													</c:choose></td>
+												<td>${userVO.userEmail}</td>
+
+
+												<td><button id="delBtn" class="btn btn-outline-danger"
+														type="submit">삭제</button></td>
+
+											</tr>
+
+										</c:forEach>
+									</tbody>
+
+								</table>
+							</form>
+						</div>
+
+						<!-- End Table with hoverable rows -->
+						<div class="d-flex justify-content-center">
 							<!-- Pagination with icons -->
 							<nav aria-label="Page navigation example">
 								<ul class="pagination">
@@ -91,12 +93,12 @@
 
 								</ul>
 							</nav>
-							</div>
-							</div>
-							<!-- End Pagination with icons -->
 						</div>
 					</div>
+					<!-- End Pagination with icons -->
 				</div>
+			</div>
+		</div>
 
 	</div>
 </section>
@@ -118,7 +120,6 @@
 									+ "&searchType="
 									+ $("select option:selected").val()
 									+ "&keyword=" + $('#keywordInput').val();
-									
 
 						});
 

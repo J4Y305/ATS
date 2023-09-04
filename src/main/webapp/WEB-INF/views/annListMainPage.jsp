@@ -4,32 +4,21 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="include/header.jsp" />
 
-<style>
-.table>:not(caption)>*>* {
-    padding: 0.65rem 0.5rem;
-}
-</style>
-
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
 	<div class="container">
 		<h2>채용 공고</h2>
-		
 		<!-- End Breadcrumbs -->
-		
-		
 		<section id="pricing" class="pricing" style="padding-top: 1px;">
-			<div class="card" data-aos="fade-up">
-				<div class="card-body">
-				<h5 class="card-title"></h5>
+			<div class="container" data-aos="fade-up">
+				<div class="row">
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-						<div class="card">
-						<div class="card-body">
+						<div class="box">
 
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
 								<thead>
-									<tr >
+									<tr>
 										<th scope="col">번호</th>
 										<th scope="col">공고명</th>
 										<th scope="col">모집 분야</th>
@@ -67,42 +56,11 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="d-flex justify-content-center">
-							<!-- Pagination with icons -->
-							<nav aria-label="Page navigation example ">
-								<ul class="pagination ">
-									<c:if test="${pageMaker.prev}">
-										<li class="page-item d-flex">
-										<a class="page-link" aria-label="Previous"
-											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }">
-											<span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:if>
-									<c:forEach begin="${pageMaker.startPage }"
-										end="${pageMaker.endPage }" var="idx">
-										<li class="page-item" 
-											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-										</li>
-									</c:forEach>
-									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-										<li class="page-item">
-										<a class="page-link" aria-label="Next"
-											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }">
-											<span aria-hidden="true">&raquo;</span></a></li>
-									</c:if>
-
-								</ul>
-							</nav>
-							<!-- End Pagination with icons -->
-						</div>
-						
 					</div>
 				</div>
 			</div>
-			</div>
 		</section>
-		</div>
+	</div>
 </section>
 <!-- End Contact Section --> </main>
 <!-- End #main -->

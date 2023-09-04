@@ -19,7 +19,7 @@
 			value="${login.mngId}">
 		<section class="section">
 			<div class="row">
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
 							<h5 class="card-title">평가 정보</h5>
@@ -35,8 +35,7 @@
 
 							<div class="row">
 								<div class="col-lg-3 col-md-4 label">평가 차수</div>
-								<div class="col-lg-9 col-md-8"><c:if test="${0 eq evaVO.degree}">1차</c:if>
-                                 <c:if test="${1 eq evaVO.degree}">2차</c:if></div>
+								<div class="col-lg-9 col-md-8">${evaVO.degree}차</div>
 							</div>
 
 							<div class="row">
@@ -72,9 +71,9 @@
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">지원자 평가 목록</h5>
-					<table class="table table-hover">
+					<table class="table table-bordered text-center">
 						<thead>
-							<tr>
+							<tr  class="table-primary">
 								<th scope="col">번호</th>
 								<th scope="col">이름</th>
 								<th scope="col">접수번호</th>

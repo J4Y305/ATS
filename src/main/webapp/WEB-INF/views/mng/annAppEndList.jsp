@@ -8,14 +8,8 @@
 	<main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>공고 평가</h1>
-		<nav>
-			<ol class="breadcrumb">
-				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
-				<li class="breadcrumb-item">Tables</li>
-				<li class="breadcrumb-item active">General</li>
-			</ol>
-		</nav>
+		<h1>마감된 공고</h1>
+		
 	</div>
 	<!-- End Page Title -->
 
@@ -37,8 +31,10 @@
 
 						<div class="row">
 							<div class="col-lg-3 col-md-4 label">접수 시작일</div>
+							<div class="col-lg-9 col-md-8">
 							<fmt:formatDate pattern="yyyy-MM-dd"
 								value="${annVO.annStartDate}" />
+								</div>
 						</div>
 
 						<div class="row">
@@ -65,7 +61,7 @@
 							<th scope="col">이름</th>
 							<th scope="col">접수번호</th>
 							<th scope="col">지원서 등록 날짜</th>
-							<th scope="col">평가 여부</th>
+							<th scope="col">제출 여부</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -83,7 +79,10 @@
 								<td>${appVO.appNum}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${appVO.appRegDate}" /></td>
-								<td>${appVO.appSave}</td>
+								<td><c:if test="${0 eq appVO.appSave}">임시저장됨
+								</c:if>
+								<c:if test="${1 eq appVO.appSave}">최종제출됨 </c:if>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>

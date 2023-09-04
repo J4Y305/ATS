@@ -9,7 +9,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		self.location = "/mng/evaList";
+		self.location = "/mng";
 	</script>
 </body>
 </html>
