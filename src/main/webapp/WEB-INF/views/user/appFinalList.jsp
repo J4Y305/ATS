@@ -12,7 +12,7 @@
 <div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>최종 제출한 지원서</h1>
+				<h1>제출 완료한 지원서</h1>
 			</div>
 	
 	<div class="card">

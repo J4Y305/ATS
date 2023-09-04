@@ -6,20 +6,24 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <jsp:include page="../include/user_header.jsp" />
-<main id="main" class="main">
+<main id="main" class="main" style="padding-top: 50px;">
 
-<div class="pagetitle">
-	<h1>공고 정보</h1>
 
-</div>
 <!-- End Page Title -->
 <section class="section">
-	<div class="row">
+<div class="row justify-content-center">
+	
 		<div class="col-lg-10">
+		<div class="pagetitle">
+	<h1>공고 정보</h1>
+</div>
+<div class="card">
+				<div class="card-body mt-5" style="height: 1750px;">
+						<div class="card-body" style="height: 550px;">
 			<!-- General Form Elements -->
 			<form class="row g-3" role="form" method="post" name="frm"
 				action="mngModifyPage">
-				<div class="card">
+				<div class="card ">
 					<input type="hidden" name="userId" class="form-control"
 						value='${login.userId}'> <input type="hidden"
 						name="appNum" class="form-control" value='${appVO.appNum}'>
@@ -39,24 +43,29 @@
 						</div>
 					</div>
 				</div>
-				<div class="card">
+				<div class="card ">
+				<div class="row justify-content-center">
 					<div id="example1" style="height: 80rem; width: 50rem;"></div>
 					<script>
 						PDFObject.embed("/file/${appVO.appFile}", "#example1");
 					</script>
+					</div>
 				</div>
-				<div class="row mb-3">
-					<div class="col-sm-10">
-						<button type="submit" onclick="" class="btn btn-outline-danger">삭제</button>
-						<button type="submit" onclick="" class="btn btn-outline-warning">수정</button>
-						<button type="button" class="btn btn-outline-primary">목록</button>
+				<div class="row mb-3 p-4 justify-content-center">
+									<div class="col-sm-10 d-flex justify-content-center">
+						<button type="submit" onclick="" class="btn btn-outline-danger btn-lg" style="margin:10px">삭제</button>
+						<button type="submit" onclick="" class="btn btn-outline-warning btn-lg" style="margin:10px">수정</button>
+						<button type="button" class="btn btn-outline-primary btn-lg" style="margin:10px">목록</button>
 					</div>
 				</div>
 
 			</form>
 		</div>
-
-	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 </section>
 </main>

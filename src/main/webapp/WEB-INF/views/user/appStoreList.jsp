@@ -9,7 +9,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>임시 저장된 공고</h1>
+				<h1>임시 저장된 지원서</h1>
 			</div>
 			
 			<div class="card">
