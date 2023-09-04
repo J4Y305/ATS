@@ -151,13 +151,13 @@
 									ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, ANN.ANN_REG_DATE 
 									FROM TBL_ANN ANN, TBL_MNG MNG 
                                 		WHERE ANN.MNG_ID = MNG.MNG_ID
-                                    			AND MNG.MNG_ID = 'mng1'
+                                    			AND MNG.MNG_ID = #{keyword}
                                    				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_START_DATE < SYSDATE 
 												AND ANN.DEADLINE = 0
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
-				WHERE (RNUM >= 1 AND RNUM <= 10)ORDER BY ANN_NUM DESC
+				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
 		]]>
 		
 	</select>
@@ -248,7 +248,7 @@
                 ]]>
                 
                 <![CDATA[
-                      WHERE (RNUM >= 1 AND RNUM <= 1)
+                      WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
       					ORDER BY APP_NUM DESC, APP_REG_DATE DESC
       					]]>
 	</select>
