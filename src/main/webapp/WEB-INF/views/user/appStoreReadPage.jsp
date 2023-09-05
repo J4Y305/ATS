@@ -64,7 +64,7 @@
 										<i class="bi bi-file-text mx-3"></i>지원서 파일
 									</h5>
 								</div>
-								<div id="example1" style="height: 80rem; width: 50rem; margin-left:50px;"></div>
+								<div id="example1" style="height: 50rem;"></div>
 								<script>
 									PDFObject.embed("/file/${appVO.appFile}",
 											"#example1");
@@ -73,9 +73,9 @@
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-10 d-flex justify-content-center">
-								<button type="submit" onclick="" class="btn btn-outline-danger">삭제</button>
-								<button type="submit" onclick="" class="btn btn-outline-warning">수정</button>
-								<button type="button" class="btn btn-outline-primary">목록</button>
+								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg" style="margin:10px">삭제</button>
+								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg" style="margin:10px">수정</button>
+								<button type="button" class="btn btn-outline-primary btn-lg" style="margin:10px">목록</button>
 							</div>
 						</div>
 					</div>

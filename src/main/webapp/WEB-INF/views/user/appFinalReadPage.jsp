@@ -12,7 +12,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-8">
 			<div class="pagetitle">
-				<h1>임시 저장한 지원서</h1>
+				<h1>제출 완료한 지원서</h1>
 			</div>
 			<!-- General Form Elements -->
 			<form class="row g-3" role="form" method="post" name="frm"
@@ -65,7 +65,7 @@
 									</h5>
 								</div>
 								<div id="example1"
-									style="height: 80rem; width: 50rem; margin-left: 50px;"></div>
+									style="height: 80rem;"></div>
 								<script>
 									PDFObject.embed("/file/${appVO.appFile}",
 											"#example1");
@@ -75,7 +75,7 @@
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-10 d-flex justify-content-center">
 
-								<button type="button" class="btn btn-outline-primary">목록</button>
+								<button type="button" class="btn btn-outline-primary btn-lg">목록</button>
 
 							</div>
 						</div>

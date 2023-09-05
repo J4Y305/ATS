@@ -70,7 +70,7 @@
 		</div>
 		<!-- End Logo -->
 
-		<div class="search-bar">
+		<!-- <div class="search-bar">
 			<form class="search-form d-flex align-items-center" method="POST"
 				action="#">
 				<input type="text" name="query" placeholder="Search"
@@ -79,25 +79,25 @@
 					<i class="bi bi-search"></i>
 				</button>
 			</form>
-		</div>
+		</div> -->
 		<!-- End Search Bar -->
 
 		<nav class="header-nav ms-auto">
 			<ul class="d-flex align-items-center">
 
-				<li class="nav-item d-block d-lg-none"><a
+				<!-- <li class="nav-item d-block d-lg-none"><a
 					class="nav-link nav-icon search-bar-toggle " href="#"> <i
 						class="bi bi-search"></i>
 				</a></li>
-				<!-- End Search Icon-->
+				End Search Icon
 
 				<li class="nav-item dropdown"><a class="nav-link nav-icon"
 					href="#" data-bs-toggle="dropdown"> <i class="bi bi-bell"></i>
 						<span class="badge bg-primary badge-number">4</span>
 				</a>
-				<!-- End Notification Icon -->
+ -->				<!-- End Notification Icon -->
 
-					<ul
+<!-- 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
 						<li class="dropdown-header">You have 4 new notifications <a
 							href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View
@@ -158,17 +158,17 @@
 								notifications</a></li>
 
 					</ul>
-					<!-- End Notification Dropdown Items --></li>
-				<!-- End Notification Nav -->
+					End Notification Dropdown Items</li>
+				End Notification Nav
 
 				<li class="nav-item dropdown"><a class="nav-link nav-icon"
 					href="#" data-bs-toggle="dropdown"> <i
 						class="bi bi-chat-left-text"></i> <span
 						class="badge bg-success badge-number">3</span>
-				</a>
+				</a> -->
 				<!-- End Messages Icon -->
 
-					<ul
+<!-- 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
 						<li class="dropdown-header">You have 3 new messages <a
 							href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View
@@ -224,13 +224,13 @@
 						</li>
 
 					</ul>
-					<!-- End Messages Dropdown Items --></li>
+					End Messages Dropdown Items</li> -->
 				<!-- End Messages Nav -->
 
 				<li class="nav-item dropdown pe-3"><a
 					class="nav-link nav-profile d-flex align-items-center pe-0"
 					href="#" data-bs-toggle="dropdown"> <img
-						src="/resources/admin/assets/img/profile-img.jpg" alt="Profile"
+						src="/resources/admin/assets/img/profile.jpg" alt="Profile"
 						class="rounded-circle"> <span
 						class="d-none d-md-block dropdown-toggle ps-2">${login.userName}</span>
 				</a>
@@ -239,17 +239,17 @@
 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>${userVO.userName}</h6> <span>Web Designer</span>
+							<h6>${userVO.userName}</h6> <span>Programmer</span>
 						</li>
 						<li>
 							<hr class="dropdown-divider">
 						</li>
 
 						<li><a class="dropdown-item d-flex align-items-center"
-							href="users-profile.html"> <i class="bi bi-person"></i> <span>My
+							href="/user/myPage?userId=${login.userId}"> <i class="bi bi-person"></i> <span>My
 									Profile</span>
 						</a></li>
-						<li>
+						<!-- <li>
 							<hr class="dropdown-divider">
 						</li>
 
@@ -264,7 +264,7 @@
 						<li><a class="dropdown-item d-flex align-items-center"
 							href="pages-faq.html"> <i class="bi bi-question-circle"></i>
 								<span>Need Help?</span>
-						</a></li>
+						</a></li> -->
 						<li>
 							<hr class="dropdown-divider">
 						</li>
@@ -291,7 +291,7 @@
 		<ul class="sidebar-nav" id="sidebar-nav">
 
 			<li class="nav-item"><a class="nav-link " href="/user"> <i
-					class="bi bi-grid"></i> <span>회원 - Dashboard</span>
+					class="bi bi-grid"></i> <span>회원</span>
 			</a></li>
 			<!-- End Dashboard Nav -->
 
@@ -303,29 +303,26 @@
 				<ul id="icons-nav" class="nav-content collapse "
 					data-bs-parent="#sidebar-nav">
 					<li><a href="/user/appStoreList"> <i
-							class="bi bi-card-checklist"></i><span>임시 저장된 공고</span>
+							class="bi bi-card-checklist"></i><span>임시 저장된 지원서</span>
 					</a></li>
 					<li><a href="/user/appFinalList"> <i
-							class="bi bi-card-list"></i><span>제출 완료한 공고</span>
+							class="bi bi-card-list"></i><span>제출 완료한 지원서</span>
 					</a></li>
 				</ul></li>
 			<!-- End Icons Nav -->
 
 			<li class="nav-item"><a class="nav-link collapsed"
-				href="/user/appResultList""> <!-- <i class="bi bi-person"></i> -->
+				href="/user/appResultList"> <!-- <i class="bi bi-person"></i> -->
 					<i class="bi bi-layout-text-window-reverse"></i> <span>결과 조회</span>
 			</a></li>
 			<!-- End 상품 관리 Page Nav -->
 
 			<li class="nav-item">
-				<form action="/user/myPage" method="GET">
-					<input type="hidden" name="userId" value="${login.userId}">
-					<button type="submit" class="nav-link btn-link"
-						style="border: none; padding: 10, 15; background: none;">
-						<i class="bi bi-person"></i> <span>마이 페이지</span>
-					</button>
-				</form>
-			</li>
+			<a class="nav-link collapsed"
+				href="/user/myPage?userId=${login.userId}">
+						<i class="bi bi-person"></i> <span>회원정보 수정</span>
+					
+			</a></li>
 			<!-- End 상품 관리 Page Nav -->
 
 		</ul>

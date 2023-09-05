@@ -9,7 +9,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>임시 저장된 공고</h1>
+				<h1>임시 저장된 지원서</h1>
 			</div>
 			
 			<div class="card">
@@ -21,8 +21,8 @@
 							<table class="table table-hover">
 								<thead>
 									<tr>
-										<th scope="col">번호</th>
-										<th scope="col">접수번호</th>
+										<th scope="col" style="text-align:center;">번호</th>
+										<th scope="col" style="text-align:center;">접수번호</th>
 										<th scope="col">공고명</th>
 										<th scope="col">접수 기간</th>
 										<th scope="col">저장일</th>
@@ -33,12 +33,12 @@
 
 										<tr>
 											<c:if test="${pageMaker.cri.page == 1 }">
-												<td>${var.count }</td>
+												<td style="text-align:center;">${var.count }</td>
 											</c:if>
 											<c:if test="${pageMaker.cri.page != 1 }">
-												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+												<td style="text-align:center;">${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
-											<td><a
+											<td style="text-align:center;"><a
 												href='/user/appStoreReadPage${pageMaker.makeQuery(pageMaker.cri.page) }&appNum=${appListDTO.appNum}&annNum=${appListDTO.annNum}'>
 													${appListDTO.appNum}</a></td>
 											<td>${appListDTO.annName}</td>

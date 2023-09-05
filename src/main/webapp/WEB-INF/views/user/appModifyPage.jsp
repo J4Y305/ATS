@@ -3,119 +3,134 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/user_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>지원서 내용 수정</h1>
-
-</div>
-<!-- End Page Title -->
+<main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
+	<div class="row justify-content-center">
 		<div class="col-lg-10">
+			<div class="pagetitle">
+				<h1>지원서 내용 수정</h1>
+			</div>
 
-			<div class="card">
-				<!-- General Form Elements -->
-				<form class="row g-3" role="form" method="post" name="frm">
+			<!-- General Form Elements -->
+			<form class="row g-3" role="form" method="post" name="frm">
+				<input type="hidden" name="userId" class="form-control"
+					value='${login.userId}'> <input type="hidden" name="appNum"
+					class="form-control" value='${appVO.appNum}'>
+				<div class="card p-4">
 					<div class="card-body">
-						<h5 class="card-title">기업 기본 정보</h5>
-						<input type="hidden" name="userId" class="form-control"
-							value='${login.userId}'> <input type="hidden"
-							name="appNum" class="form-control" value='${appVO.appNum}'>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-3 col-form-label">이름 :</label>
-						<div class="col-sm-5">
-							<input type="text" name="userName" class="form-control"
-								value="${userVO.userName}" readOnly>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-3 col-form-label">전화번호 :</label>
-						<div class="col-sm-3">
-							<input type="text" name="userPhone" class="form-control"
-								value="${userVO.userPhone}" readOnly>
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-3 col-form-label">이메일:</label>
-						<div class="col-sm-4">
-							<input type="text" name="entPhone" class="form-control"
-								value="${userVO.userEmail}" readOnly>
-						</div>
-					</div>
-					<div class="row mb-3 ">
-						<label class="col-sm-3 col-form-label">생년월일 :</label>
-						<div class="col-sm-5">
-							<input type="text" name="mngName" class="form-control"
-								value="${userVO.birthDay}" readOnly>
-						</div>
-					</div>
-					<div class="row mb-3 ">
-						<label class="col-sm-3 col-form-label">성별 :</label>
-						<c:if test="${1 eq userVO.gender}">
-							<div class="col-sm-5">
-								<input type="text" class="form-control" name="gender"
-									id="gender" readOnly value="남">
-							</div>
-						</c:if>
-						<c:if test="${2 eq userVO.gender}">
-							<div class="col-sm-5">
-								<input type="text" class="form-control" name="gender"
-									id="gender" readOnly value="여">
-							</div>
-						</c:if>
-					</div>
-					<div class="row mb-3 ">
-						<label class="col-sm-3 col-form-label">비고란 :</label>
-						<div class="col-sm-5">
-							<input type="text" name="etc" class="form-control"
-								value="${appVO.etc}">
-						</div>
-					</div>
-					<div class="row mb-3">
-						<label class="col-sm-3 col-form-label">지원서 업로드 :</label>
-						<!-- <div id='mydropzone' class="dropzone"> -->
-						<div class="col-sm-8">
-							<div id='mydropzone'
-								class="alert alert-primary alert-dismissible fade show">
-								<input type="file" id="fileUpload" name="fileUpload"
-									style="visibility: hidden;" />
-								<div class="fileDrop">
-									<input type="hidden" id="uploadCount">
-									<div class="dz-message needsclick">
-										<i class="h1 text-muted dripicons-cloud-upload"></i>
-										<h4 class="alert-heading">Drop files here or click to
-											upload.</h4>
-										<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+						<div class="card">
+							<div class="card-body">
+								<div class="icon">
+									<h5 class="card-title fw-bold">
+										<i class="bi bi-person mx-3"></i>지원자 기본 정보
+									</h5>
+								</div>
+								<div class="row mb-3">
+									<label class="col-sm-3 col-form-label fw-bold">이름 :</label>
+									<div class="col-sm-5">
+										<input type="text" name="userName" class="form-control pt-2	"
+											value="${userVO.userName}" readOnly>
 									</div>
 								</div>
-							</div>
-							<div>
-								<ul class="dropzone-previews clearfix uploadedList">
-								</ul>
+								<div class="row mb-3">
+									<label class="col-sm-3 col-form-label fw-bold">전화번호 :</label>
+									<div class="col-sm-3">
+										<input type="text" name="userPhone" class="form-control pt-2"
+											value="${userVO.userPhone}" readOnly>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<label class="col-sm-3 col-form-label fw-bold">이메일:</label>
+									<div class="col-sm-4">
+										<input type="text" name="entPhone" class="form-control"
+											value="${userVO.userEmail}" readOnly>
+									</div>
+								</div>
+								<div class="row mb-3 ">
+									<label class="col-sm-3 col-form-label fw-bold">생년월일 :</label>
+									<div class="col-sm-5">
+										<input type="text" name="mngName" class="form-control"
+											value="${userVO.birthDay}" readOnly>
+									</div>
+								</div>
+								<div class="row mb-3 ">
+									<label class="col-sm-3 col-form-label fw-bold">성별 :</label>
+									<c:if test="${1 eq userVO.gender}">
+										<div class="col-sm-5">
+											<input type="text" class="form-control" name="gender"
+												id="gender" readOnly value="남자">
+										</div>
+									</c:if>
+									<c:if test="${2 eq userVO.gender}">
+										<div class="col-sm-5">
+											<input type="text" class="form-control" name="gender"
+												id="gender" readOnly value="여자">
+										</div>
+									</c:if>
+								</div>
 							</div>
 						</div>
-					</div>
-					<input type=hidden name="appSave">
-				</form>
-			</div>
-			<div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-				<div class="text-center">
-					<button type="submit" class="btn btn-primary">최종제출</button>
-				</div>
-				<div class="text-center">
-					<button type="submit" class="btn btn-success">임시저장</button>
-				</div>
-				
-				<div class="text-center">
-					<button type="submit" class="btn btn-danger">취소</button>
-				</div>
-			</div>
+
+
+						<div class="card">
+							<div class="card-body">
+								<div class="icon">
+									<h5 class="card-title fw-bold">
+										<i class="bi bi bi-tags mx-3"></i>지원서 등록
+									</h5>
+								</div>
+								<div class="row mb-3 ">
+									<label class="col-sm-3 col-form-label fw-bold">비고란 :</label>
+									<div class="col-sm-5">
+										<textarea class="form-control" name="etc" style="height: 100px" value="${appVO.etc}"></textarea>
+									</div>
+								</div>
+								<div class="row mb-3">
+									<label class="col-sm-3 col-form-label fw-bold">지원서 업로드
+										:</label>
+									<!-- <div id='mydropzone' class="dropzone"> -->
+									<div class="col-sm-8">
+										<div id='mydropzone'
+											class="alert alert-primary alert-dismissible fade show">
+											<input type="file" id="fileUpload" name="fileUpload"
+												style="visibility: hidden;" />
+											<div class="fileDrop">
+												<input type="hidden" id="uploadCount">
+												<div class="dz-message needsclick">
+													<i class="h1 text-muted dripicons-cloud-upload"></i>
+													<h4 class="alert-heading">Drop files here or click to
+														upload.</h4>
+													<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나 클릭해주세요</p>
+												</div>
+											</div>
+										</div>
+										<div>
+											<ul class="dropzone-previews clearfix uploadedList">
+											</ul>
+										</div>
+									</div>
+								</div>
+								</div>
+								</div>
+								<input type=hidden name="appSave">
+			</form>
+
 		</div>
-
 	</div>
-
+		<div class="row mb-3 p-4 justify-content-center">
+		<div class="col-sm-10 d-flex justify-content-center">
+			<button type="submit" class="btn btn-outline-primary btn-lg"
+				style="margin: 10px">최종제출</button>
+			<button type="submit" class="btn btn-outline-success btn-lg"
+				style="margin: 10px">임시저장</button>
+			<button type="submit" class="btn btn-outline-danger btn-lg"
+				style="margin: 10px">취소</button>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
 </section>
 </main>
 <jsp:include page="../include/admin_footer.jsp" />
@@ -126,20 +141,20 @@
 
 		console.log(formObj);
 
-		$(".btn-primary").on("click", function() {
+		$(".btn-outline-primary").on("click", function() {
 			$('input[name=appSave]').val(1);
 			formObj.attr("method", "post");
 			formObj.attr("action", "/user/appModifyPage");
 			formObj.submit();
 		});
 
-		$(".btn-success").on("click", function() {
+		$(".btn-outline-success").on("click", function() {
 			$('input[name=appSave]').val(0);
 			formObj.attr("method", "post");
 			formObj.attr("action", "/user/appModifyPage");
 			formObj.submit();
 		});
-		$(".btn-danger").on("click", function() {
+		$(".btn-outline-danger").on("click", function() {
 			self.location = "/user/appStoreList";
 
 		});

@@ -19,26 +19,26 @@
 						<div class="card-body" style="height: 550px;">
 
 							<!-- Table with hoverable rows -->
-							<table class="table table-hover">
+							<table class="table table-hover ">
 								<thead>
 									<tr>
-										<th scope="col">접수 번호</th>
+										<th scope="col" style="text-align:center;">접수 번호</th>
 										<th scope="col">공고명</th>
 										<th scope="col">접수일</th>
 										<th scope="col">결과 개시일</th>
-										<th scope="col">합격 여부</th>
+										<th scope="col" style="text-align:center;">합격 여부</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach items="${list}" var="appPassDTO" varStatus="var">
 										<tr>
-											<td>${appPassDTO.appNum}</td>
+											<td style="text-align:center;">${appPassDTO.appNum}</td>
 											<td>${appPassDTO.annName}</td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${appPassDTO.appRegDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${appPassDTO.evaRegDate}" /></td>
-											<td>${appPassDTO.passMsg}</td>
+											<td style="text-align:center;">${appPassDTO.passMsg}</td>
 										</tr>
 									</c:forEach>
 								</tbody>

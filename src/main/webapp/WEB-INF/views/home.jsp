@@ -144,7 +144,38 @@ padding: 60px 40px;
      <div class="container" data-aos="fade-up">
      <div class="section-title">
           <h2>채용공고</h2>
-          <div class="box">
+          
+              
+          <div class="row">
+          <c:forEach items="${list}" var="annVO" varStatus="var">
+                  <c:if test="${var.index < 4}">
+          <div class="col-xxl-3 col-md-6">        
+           <div class="card info-card sales-card">
+          			<div class="card-body">
+                  <h5 class="card-title">${annVO.annName}</h5>
+                  <div class="bs-success">${annVO.annField}
+                  <c:if test="${0 eq annVO.deadline}">
+													<p class="text-success">모집중</p>
+												</c:if> <c:if test="${1 eq annVO.deadline}">
+													<p class="text-danger">모집 마감</p>
+												</c:if></div>
+                  
+                  <br>
+                  <div class="d-flex justify-content-end">
+                    
+                    <div class="ps-3">
+                       <a href='/annReadMainPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'><i class="bi bi-file-earmark-text"></i><span class="text-primary small pt-2 ps-1">공고 보러가기
+                       <i class="bi bi-arrow-right"></i></span></a>
+                       
+					</div>
+					</div>
+					</div>
+					</div>
+					</div>
+					</c:if>
+					</c:forEach>
+					</div>       
+<%--           <div class="box">
           <table class="table table-hover">
 								<thead>
 									<tr>
@@ -185,7 +216,7 @@ padding: 60px 40px;
 								</tbody>
 							</table>
 
-			</div>
+			</div> --%>
           </div>
      </div>
      
