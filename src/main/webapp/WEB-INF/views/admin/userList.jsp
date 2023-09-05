@@ -15,7 +15,7 @@
 				<div class="card-body" style="height: 750px;">
 					<h5 class="card-title"></h5>
 					<div class="card">
-						<div class="card-body" style="height: 550px;">
+						<div class="card-body" style="height:600px;">
 
 							<form role="form" action="/admin/userRemovePage" method="POST">
 								<input type="hidden" name="userId" class="form-control"
@@ -65,38 +65,39 @@
 								</table>
 							</form>
 						</div>
-
-						<!-- End Table with hoverable rows -->
-						<div class="d-flex justify-content-center">
-							<!-- Pagination with icons -->
-							<nav aria-label="Page navigation example">
-								<ul class="pagination">
-									<c:if test="${pageMaker.prev}">
-										<li class="page-item"><a class="page-link"
-											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
-											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
-										</a></li>
-									</c:if>
-									<c:forEach begin="${pageMaker.startPage }"
-										end="${pageMaker.endPage }" var="idx">
-										<li class="page-item"
-											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
-										</li>
-									</c:forEach>
-									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-										<li class="page-item"><a class="page-link"
-											aria-label="Next"
-											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
-												aria-hidden="true">&raquo;</span></a></li>
-									</c:if>
-
-								</ul>
-							</nav>
-						</div>
 					</div>
-					<!-- End Pagination with icons -->
+					<!-- End Table with hoverable rows -->
+					<div class="d-flex justify-content-center">
+						<!-- Pagination with icons -->
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<c:if test="${pageMaker.prev}">
+									<li class="page-item"><a class="page-link"
+										href="userList${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+										aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</c:if>
+								<c:forEach begin="${pageMaker.startPage }"
+									end="${pageMaker.endPage }" var="idx">
+									<li class="page-item"
+										<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+										<a class="page-link"
+										href="userList${pageMaker.makeSearch(idx)}">${idx}</a>
+									</li>
+								</c:forEach>
+								<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+									<li class="page-item"><a class="page-link"
+										aria-label="Next"
+										href="userList${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+											aria-hidden="true">&raquo;</span></a></li>
+								</c:if>
+
+							</ul>
+						</nav>
+					</div>
 				</div>
+				<!-- End Pagination with icons -->
+
 			</div>
 		</div>
 

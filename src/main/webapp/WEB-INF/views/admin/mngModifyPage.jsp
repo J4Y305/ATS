@@ -3,20 +3,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/admin_header.jsp" />
-<main id="main" class="main">
-
-<div class="pagetitle">
-	<h1>기업 및 담당자 수정</h1>
-
-</div>
-<!-- End Page Title -->
+<main id="main" class="main"> <!-- End Page Title -->
 <section class="section">
-	<div class="row">
-		<div class="col-lg-10">
-
+	<div class="row justify-content-center">
+		<div class="col-lg-9">
+			<div class="pagetitle fw-bold p-4">
+				<h1>기업 및 담당자 등록</h1>
+			</div>
 			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">기업 기본 정보</h5>
+				<div class="card-body w-90 p-3">
 
 					<!-- General Form Elements -->
 					<form class="row g-3" role="form" action="mngModifyPage"
@@ -26,23 +21,23 @@
 							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">기업명 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">기업명 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="entName" class="form-control"
 									value="${entVO.entName}">
 							</div>
 						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">업종 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">업종 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="category" class="form-control"
 									value="${entVO.category}">
 							</div>
 						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">주소 :</label>
-							<div class="col-sm-3">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">주소 :</label>
+							<div class="col-sm-5">
 								<input type="text" id="sample6_postcode" name="zipCode"
 									class="form-control" value="${entVO.zipCode}">
 							</div>
@@ -52,30 +47,30 @@
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label"> </label>
-							<div class="col-sm-7">
+							<label class="col-sm-2 col-form-label fw-bold"> </label>
+							<div class="col-sm-10">
 								<input type="text" id="sample6_address" name="address"
 									value="${entVO.address}" class="form-control">
 							</div>
 						</div>
 						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label"> </label>
-							<div class="col-sm-7">
+							<label class="col-sm-2 col-form-label fw-bold"> </label>
+							<div class="col-sm-10">
 								<input type="text" id="sample6_detailAddress" name="address"
 									class="form-control">
 							</div>
 						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">대표 전화번호:</label>
-							<div class="col-sm-4">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">대표 전화번호:</label>
+							<div class="col-sm-10">
 								<input type="text" name="entPhone" class="form-control"
 									value="${entVO.entPhone}">
 							</div>
 						</div>
-						<div class="row mb-3">
-							<label class="col-sm-3 col-form-label">사업자 등록증 :</label>
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">사업자 등록증 :</label>
 							<!-- <div id='mydropzone' class="dropzone"> -->
-							<div class="col-sm-6">
+							<div class="col-sm-10">
 								<div id='mydropzone'
 									class="alert alert-primary alert-dismissible fade show">
 
@@ -99,88 +94,82 @@
 								</div>
 							</div>
 						</div>
-
-						<h5 class="card-title">기업 담당자 정보</h5>
-
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">담당자명 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">담당자명 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="mngName" class="form-control"
 									value="${mngVO.mngName}">
 							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">부서 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">부서 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="mngDept" class="form-control"
 									value="${mngVO.mngDept}">
 							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">직급 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">직급 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="mngRank" class="form-control"
 									value="${mngVO.mngRank}">
 							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">전화번호 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">전화번호 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="mngPhone" class="form-control"
 									value="${mngVO.mngPhone}">
 							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">아이디 :</label>
-							<div class="col-sm-3">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">아이디 :</label>
+							<div class="col-sm-10">
 								<input type="text" name="mngId" class="form-control"
 									placeholder="아이디" value="${mngVO.mngId}" readonly="readonly">
 							</div>
-							<div class="col-sm-5">
-								<button type="button" onclick="" class="btn btn-outline-primary">중복
-									검사</button>
-							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">비밀번호 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">비밀번호 :</label>
+							<div class="col-sm-10">
 								<input type="password" name="mngPwd" class="form-control"
 									value="${mngVO.mngPwd}">
 							</div>
 						</div>
-						<div class="row mb-3 ">
-							<label class="col-sm-3 col-form-label">비밀번호 확인 :</label>
-							<div class="col-sm-5">
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">비밀번호 확인 :</label>
+							<div class="col-sm-10">
 								<input type="password" class="form-control"
 									placeholder="비밀번호 확인">
 							</div>
 						</div>
-						<h5 class="card-title">계정 활성 여부</h5>
-						<div class="row mb-3 ">
-							<c:if test="${0 eq mngVO.mngAct}">
-								<div class="form-check form-switch">
-									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault">
-								</div>
-							</c:if>
-							<c:if test="${1 eq mngVO.mngAct}">
-								<div class="form-check form-switch">
-									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault" checked>
-								</div>
-							</c:if>
+						<div class="row mb-3 p-4 justify-content-center">
+							<label class="col-sm-2 col-form-label fw-bold">계정 활성 여부</label>
+							<div class="col-sm-10">
+								<c:if test="${0 eq mngVO.mngAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault">
+									</div>
+								</c:if>
+								<c:if test="${1 eq mngVO.mngAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault" checked>
+									</div>
+								</c:if>
+							</div>
 							<input type="hidden" name="mngAct" class="form-control">
 						</div>
 						<input type="hidden" name="adminId" class="form-control"
 							value='${login.adminId}'>
 
-						<div class="row mb-3">
-							<label class="col-sm-2 col-form-label">등록하기</label>
-							<div class="col-sm-10">
+						<div class="row mb-3 p-4 justify-content-center">
+							<div class="col-sm-5 d-flex justify-content-center">
 								<button type="button" class="btn btn-outline-danger">취소</button>
-								<button type="submit" class="btn btn-outline-primary">저장</button>
+								<button type="submit" class="btn btn-outline-primary mx-4">저장</button>
 							</div>
 						</div>
 					</form>

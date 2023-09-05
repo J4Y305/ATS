@@ -189,7 +189,7 @@
 										<button type="submit" onclick=""
 											class="btn btn-outline-danger">삭제</button>
 										<button type="submit" onclick=""
-											class="btn btn-outline-warning">수정</button>
+											class="btn btn-outline-warning mx-4">수정</button>
 										<button type="submit" onclick=""
 											class="btn btn-outline-primary">목록</button>
 									</div>
