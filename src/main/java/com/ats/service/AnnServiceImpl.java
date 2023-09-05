@@ -12,7 +12,7 @@ import com.ats.domain.AnnVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.persistence.AnnDAO;
 
-@Service
+@Service("annService")
 public class AnnServiceImpl implements AnnService {
 
 	@Inject
@@ -180,6 +180,11 @@ public class AnnServiceImpl implements AnnService {
 	@Override
 	public int listSearchCountResult(SearchCriteria cri) throws Exception {
 		return dao.listSearchCountResult(cri);
+	}
+
+	@Override
+	public void deadLineUpdate() throws Exception {
+		dao.deadLineUpdate();
 	}
 
 }

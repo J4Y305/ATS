@@ -44,5 +44,8 @@ public interface AnnService {
 	public List<AnnVO> listSearchResult(SearchCriteria cri) throws Exception;
 
 	public int listSearchCountResult(SearchCriteria cri) throws Exception;
+	
+	// 마감기한 지나면 마감여부 Update
+	public void deadLineUpdate() throws Exception;
 
 }

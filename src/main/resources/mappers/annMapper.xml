@@ -151,7 +151,7 @@
 									ANN.DETAIL, ANN.MNG_ID, ANN.ANN_ACT, ANN.DEADLINE, ANN.ANN_REG_DATE 
 									FROM TBL_ANN ANN, TBL_MNG MNG 
                                 		WHERE ANN.MNG_ID = MNG.MNG_ID
-                                    			AND MNG.MNG_ID = 'mng1'
+                                    			AND MNG.MNG_ID = #{keyword}
                                    				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_START_DATE < SYSDATE 
 												AND ANN.DEADLINE = 0
@@ -188,7 +188,7 @@
                                     			AND MNG.MNG_ID = #{keyword}
                                    				AND ANN.ANN_ACT = 1 
 												AND ANN.ANN_END_DATE < SYSDATE 
-												AND ANN.DEADLINE = 0
+												AND ANN.DEADLINE = 1
 									]]><include refid="search"></include>
 		<![CDATA[ORDER BY ANN_NUM DESC)) 
 				WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})ORDER BY ANN_NUM DESC
@@ -262,6 +262,11 @@
 		<include refid="search"></include>
 	</select>
 	
+	<update id="deadLineUpdate">
+	<![CDATA[
+		UPDATE TBL_ANN SET DEADLINE = 1 WHERE ANN_END_DATE < SYSDATE
+		]]>
+	</update>
 
 
 

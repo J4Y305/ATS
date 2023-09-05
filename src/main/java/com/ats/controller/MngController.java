@@ -388,7 +388,7 @@ public class MngController {
 		logger.info("eva ReadPage Get...");
 		EvaVO eVo = evaService.read(evaNum);
 		model.addAttribute(annService.read(eVo.getAnnNum()));
-
+		cri.setKeyword(Integer.toString(evaNum));
 		// 평가 정보
 		model.addAttribute(eVo);
 

@@ -111,7 +111,7 @@ public class AnnDAOImpl implements AnnDAO {
 	public int listIESearchCount(SearchCriteria cri) throws Exception {
 		return sqlSession.selectOne(namespace + ".listIESearchCount", cri);
 	}
-	
+
 	@Override
 	public List<AnnVO> listSearchResult(SearchCriteria cri) throws Exception {
 		return sqlSession.selectList(namespace + ".listSearchResult", cri);
@@ -120,6 +120,12 @@ public class AnnDAOImpl implements AnnDAO {
 	@Override
 	public int listSearchCountResult(SearchCriteria cri) throws Exception {
 		return sqlSession.selectOne(namespace + ".listSearchCountResult", cri);
+	}
+
+	@Override
+	public void deadLineUpdate() throws Exception {
+		sqlSession.update(namespace + ".deadLineUpdate");
+		System.out.println("업데이트 실행");
 	}
 
 }

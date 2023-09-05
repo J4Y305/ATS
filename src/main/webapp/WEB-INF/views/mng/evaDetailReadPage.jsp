@@ -15,7 +15,7 @@
 
 <section class="section">
 	<div class="row justify-content-center">
-		<div class="col-lg-6">
+		<div class="col-lg-12">
 			<div class="pagetitle">
 				<h1>지원서 상세</h1>
 			</div>
@@ -98,28 +98,28 @@
 
 		</div>
 	</div>
-
-	<div class="card p-4">
-		<div class="card-body">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="card" style="height: 838px;">
-						<div class="card-body">
-							<h5 class="card-title">지원서</h5>
-							<div id="example1" style="height: 750px;"></div>
-							<script>
-								PDFObject.embed("/file/${appVO.appFile}",
-										"#example1");
-							</script>
+	<form id="evaScoreForm" method="GET" action="evaReadPage">
+		<div class="card p-4">
+			<div class="card-body">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="card" style="height: 838px;">
+							<div class="card-body">
+								<h5 class="card-title">지원서</h5>
+								<div id="example1" style="height: 750px;"></div>
+								<script>
+									PDFObject.embed("/file/${appVO.appFile}",
+											"#example1");
+								</script>
+							</div>
 						</div>
 					</div>
-				</div>
 
-				<div class="col-lg-6">
-					<div class="card" style="">
-						<div class="card-body">
-							<h5 class="card-title">평가 항목</h5>
-							<form id="evaScoreForm" method="GET" action="/eva/evaPage">
+					<div class="col-lg-6">
+						<div class="card" style="">
+							<div class="card-body">
+								<h5 class="card-title">평가 항목</h5>
+
 								<input type='hidden' name='page' value="${cri.page}"> <input
 									type='hidden' name='perPageNum' value="${cri.perPageNum}">
 								<input type='hidden' name='searchType' value="${cri.searchType}">
@@ -128,8 +128,6 @@
 								<input type="hidden" name="annNum" value="${annVO.annNum}">
 								<input type="hidden" name="appNum" value="${appVO.appNum}">
 								<input type="hidden" name="userId" value="${userVO.userId}">
-								<input type="hidden" name="raterId" value="${detail.raterId}">
-
 								<table class="table table-hover">
 									<thead>
 										<tr>
@@ -147,20 +145,25 @@
 												<th scope="row">${var.count}</th>
 												<td>${evaItemVO.evaPlot}</td>
 												<td>
-												<div class="row"><input type="text"
-													value="${detailList[var.index].evaDetailScore}"
-													name="evaDetailScore" readonly="readonly"
-													class="form-control eva-score-input" style="width: 20%">
-													<div class="pt-2 col-sm-3">/${evaItemVO.evaScore}</div>
-													</div></td>
+													<div class="row">
+														<input type="text"
+															value="${detailList[var.index].evaDetailScore}"
+															name="evaDetailScore" readonly="readonly"
+															class="form-control eva-score-input" style="width: 20%">
+														<div class="pt-2 col-sm-3">/${evaItemVO.evaScore}</div>
+													</div>
+												</td>
 											</tr>
 										</c:forEach>
 
 										<td></td>
 										<th>종합점수</th>
-										<td><div class="row"><input type="text" id="evaScoreSum" name="scoreSum"
-											class="form-control" style="width: 20%" readonly="readonly"
-											value="${detail.scoreSum}"><div class="pt-2 col-sm-3"></div></div></td>
+										<td><div class="row">
+												<input type="text" id="evaScoreSum" name="scoreSum"
+													class="form-control" style="width: 20%" readonly="readonly"
+													value="${detail.scoreSum}">
+												<div class="pt-2 col-sm-3"></div>
+											</div></td>
 
 									</tbody>
 								</table>
@@ -168,27 +171,39 @@
 									<div class="card-body">
 										<h5 class="card-title">종합 의견</h5>
 										<textarea id="scoreComment" name="scoreComment"
-											class="form-control" rows="6">${detail.scoreComment }</textarea>
+											class="form-control" rows="6" readonly="readonly">${detail.scoreComment }</textarea>
 									</div>
 								</div>
-								<div style="display: flex; justify-content: center;">
-									<button type="submit" class="btn btn-primary">목록</button>
-								</div>
-							</form>
+							</div>
 						</div>
+					</div>
+					<div style="display: flex; justify-content: center;">
+						<button type="submit" class="btn btn-outline-primary">목록</button>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 </section>
-
-
 </main>
 <jsp:include page="../include/admin_footer.jsp" />
 
 </body>
 <script>
 	PDFObject.embed("/file/${appVO.appFile}", "#example1");
+
+	$(document)
+			.ready(
+					function() {
+						var formObj = $("form[role='form']");
+						$(".btn-outline-primary")
+								.on(
+										"click",
+										function() {
+											self.location = "/mng/evaReadPage?page=${cri.page}&perPageNum=${cri.perPageNum}"
+													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}&evaNum=${evaVO.evaNum}";
+										});
+
+					})
 </script>
 </html>
