@@ -206,10 +206,15 @@ public class EvaController {
 		logger.info("evaPass GET.....");
 
 		// 평가 상세 정보
-		model.addAttribute(evaService.read(evaNum));
+		EvaVO eVo = evaService.read(evaNum);
+		
+		model.addAttribute(eVo);
+		
+		model.addAttribute(annService.read(eVo.getAnnNum()));
 
 		// 합격을 위한 처리하기 위한 전체 리스트 가져오기
 		model.addAttribute("list", evaService.listEvaPass(evaNum));
+
 
 	}
 

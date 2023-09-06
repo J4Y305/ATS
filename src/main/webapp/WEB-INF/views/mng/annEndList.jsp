@@ -24,7 +24,7 @@
 										<th scope="col">공고명</th>
 										<th scope="col">접수 시작일</th>
 										<th scope="col">접수 마감일</th>
-										<th scope="col">마감 D-day</th>
+										<!-- <th scope="col">마감 D-day</th> -->
 										<th scope="col">작성자</th>
 									</tr>
 								</thead>
@@ -44,7 +44,7 @@
 													value="${annVO.annStartDate}" /></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}" /></td>
-											<td></td>
+											<%-- <td class="dDayCell">${annVO.dDay}-day</td> --%>
 											<td>${annVO.mngId}</td>
 										</tr>
 										<input type=hidden value="${annVO.annEndDate}"

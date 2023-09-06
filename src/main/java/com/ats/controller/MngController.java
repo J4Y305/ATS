@@ -247,15 +247,17 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/appReadPage", method = RequestMethod.GET)
-	public void appReadPage(@RequestParam("appNum") int appNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
+	public void appReadPage(@RequestParam("appNum") int appNum,@RequestParam("annNum") int annNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
 		logger.info("Ann ReadPage Get...");
 
+		AnnVO anVo = annService.read(annNum);
 		AppVO apVo = appService.read(appNum);
 		String userId = apVo.getUserId();
 		model.addAttribute(userService.read(userId));
 		// 지원서 글
 		model.addAttribute(apVo);
+		model.addAttribute(anVo);
 	}
 
 	@RequestMapping(value = "/raterRegister", method = RequestMethod.GET)

@@ -22,55 +22,80 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-							<h5 class="card-title">평가 정보</h5>
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label ">평가명:</div>
-								<div class="col-lg-9 col-md-8">${evaVO.evaName}</div>
+						<div class="icon">
+								<h5 class="card-title fw-bold">
+									<i class="bi bi bi-tags mx-3"></i>평가 기본 정보
+								</h5>
 							</div>
-
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label">평가 공고명:</div>
-								<div class="col-lg-9 col-md-8">${annVO.annName}</div>
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가명:</label>
+								<div class="col-sm-5">
+									<div class="pt-2">${evaVO.evaName}</div>
+								</div>
 							</div>
-
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label">평가 차수</div>
-								<div class="col-lg-9 col-md-8">${evaVO.degree}차</div>
-							</div>
-
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label">평가 시작일:</div>
-								<div class="col-lg-9 col-md-8">
-									<fmt:formatDate pattern="yyyy-MM-dd"
-										value="${evaVO.evaStartDate}" />
+							
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가 공고명:</label>
+								<div class="col-sm-5">
+									<div class="pt-2">${annVO.annName}</div>
 								</div>
 							</div>
 
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label">평가 마감일:</div>
-								<div class="col-lg-9 col-md-8">
-									<fmt:formatDate pattern="yyyy-MM-dd"
-										value="${evaVO.evaEndDate}" />
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가 차수 :</label>
+								<div class="col-sm-5">
+									<div class="pt-2">
+										<c:if test="${0 eq evaVO.degree}">
+											<div class="col-sm-5 pt-2">1차</div>
+										</c:if>
+										<c:if test="${1 eq evaVO.degree}">
+											<div class="col-sm-5 pt-2">2차</div>
+										</c:if>
+									</div>
 								</div>
 							</div>
 
-							<div class="row">
-								<div class="col-lg-3 col-md-4 label">평가 생성일:</div>
-								<div class="col-lg-9 col-md-8">
-									<fmt:formatDate pattern="yyyy-MM-dd"
-										value="${evaVO.evaRegDate}" />
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가 시작일:</label>
+								<div class="col-sm-5">
+									<div class="pt-2">
+										<fmt:formatDate pattern="yyyy-MM-dd"
+											value="${evaVO.evaStartDate}" />
+									</div>
 								</div>
 							</div>
 
-
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가 마감일:</label>
+								<div class="col-sm-5">
+									<div class="pt-2">
+										<fmt:formatDate pattern="yyyy-MM-dd"
+											value="${evaVO.evaEndDate}" />
+									</div>
+								</div>
+							</div>
+							<div class="row mb-3 ">
+								<label class="col-sm-3 col-form-label fw-bold">평가 생성일:</label>
+								<div class="col-sm-5">
+									<div class="pt-2">
+										<fmt:formatDate pattern="yyyy-MM-dd"
+											value="${evaVO.evaRegDate}" />
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+							
 
 			<div class="card">
 				<div class="card-body">
-					<h5 class="card-title">지원자 평가 목록</h5>
+					<div class="icon">
+								<h5 class="card-title fw-bold">
+									<i class="bi bi bi-tags mx-3"></i>지원자별 평가 결과
+								</h5>
+							</div>
 					<table class="table table-bordered text-center">
 						<thead>
 							<tr  class="table-primary">

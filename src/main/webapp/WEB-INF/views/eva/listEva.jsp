@@ -9,7 +9,7 @@
 	<div class="row justify-content-center">
 		<div class="col-lg-10">
 			<div class="pagetitle">
-				<h1>평가 목록</h1>
+				<h1>평가 결과</h1>
 			</div>
 
 			<div class="card" style="height: 750px;">

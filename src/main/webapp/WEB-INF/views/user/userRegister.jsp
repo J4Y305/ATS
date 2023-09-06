@@ -54,64 +54,28 @@
 </head>
 <body>
 	<script type="text/javascript">
-/* 			
-					var idc = $("#idc").val();
-					if(idc == "N"){
-						alert("중복확인 버튼을 눌러주세요.");
-					}else if(idc == "Y"){
-						$("#userId").submit();
-					}
-				});
-			})
-			
-			function idc(){
-				$.ajax({
-					url : "/user/register",
-					type : "post",
-					dataType : "json",
-					data : {"userId" : $("#userId").val()},
-					success : function(data){
-						if(data == 1){
-							alert("중복된 아이디입니다.");
-						}else if(data == 0){
-							$("#id").attr("value", "Y");
-							alert("사용가능한 아이디입니다.");
-						}
-					}
-				})
-			} */
-			
-			
-			
-			
-			/* function idc(){
-				var userId = $("#userId").val();
-			
-			$.ajax({
-				 
-				  url: "${contextPath}/user/idc",
-				  type:"post",
-				  data: {userId:userId}, 
-				  success:function(cnt){
-					  if(cnt != 1&& userId.length>0){
-						  $(".id_ok").css("display", "inline-block");
-						  $(".id_already").css("dispaly","none");
-					  }else if(cnt ==1 && userId.length >0){
-						  $(".id_already").css("display", "inline-block");
-						  $(".id_ok").css("display","none");
-					  }else{
-						  $(".id_ok").css("display","none");
-						  $(".id_already").css("display","none");
-					  }
-					  } 
-				  
-				  error: fuction(request, error){  
-					  alert("에러입니다");
-					  alert("code:" +request.status+"\n" +"message :" + request.responseTest+"\n"+"error" );
-				  }
-				});
-			}; */
-		</script>
+	function openIdChk(){
+        
+        window.name = "parentForm";
+        window.open("/user/idCheckForm.jsp",
+                "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
+    }
+	
+	function inputIdChk(){
+        document.userInfo.idDuplication.value ="idUncheck";
+    }
+	
+	function fn_joinMember(){
+		var userInfo = document.userInfo;
+		var id = userInfo.userId.value;
+		
+		if(userInfo.idDuplication.value != "idCheck"){
+			alert("아이디 중복확인을 해주세요!");
+			userInfo.userId.focus();
+		}
+	}
+	</script>
+	
 	<main>
 	<div class="container">
 
@@ -141,14 +105,17 @@
 									create account</p>
 							</div>
 
-							<form class="row g-3 needs-validation" method="post" novalidate>
+							<form class="row g-3 needs-validation" method="post" name="userInfo" novalidate>
 								<div class="col-12">
-									<label for="yourUsername" class="form-label">ID</label> <input
-										type="text" name="userId" class="form-control"
-										id="yourUsername" required>
+									<label for="yourUsername" class="form-label">ID</label> 
+									<!-- <input type="text" name="userId" class="form-control" id="yourUsername" required> -->
+									 <input type="text" name="userId" maxlength="50" onkeydown="inputIdChk()" 
+									 class="form-control" id="yourUsername" required>
+									 <input type="button" value="중복확인" onclick="openIdChk()" class="btn btn-outline-success">    
+                        				<input type="hidden" name="idDuplication" value="idUncheck" >
 									<div class="invalid-feedback">Please, enter your ID!</div>
-									<button class="idc" type="button" id="idc" onclick="idc();"
-										value="N">중복확인</button>
+									<!-- <button class="idc" type="button" id="idc" onclick="idc();"
+										value="N">중복확인</button> -->
 									<!-- <span class="id_ok" style="color: green; display: none;">사용가능한
 										아이디입니다</span> <span class="id_already"
 										style="color: red; display: none;">중복된 아이디입니다</span> -->
@@ -193,9 +160,9 @@
 								</div>
 
 								<div class="col-12">
-									<label for="Gender" class="form-label">Your Gender</label> <label><input
-										type="radio" name="gender" value="1"> 남자</label> <label><input
-										type="radio" name="gender" value="2"> 여자</label>
+									<label for="Gender" class="form-label">Your Gender</label> <input
+										type="radio" name="gender" value="1" required> 남자 
+										<input type="radio" name="gender" value="2" required> 여자
 									<div class="invalid-feedback">Please check your Gender!</div>
 								</div>
 

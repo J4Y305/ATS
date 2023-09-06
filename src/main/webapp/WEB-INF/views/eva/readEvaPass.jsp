@@ -131,12 +131,12 @@
 									<td class='avg'><div class="col-lg-9 col-md-8">${passVO.totalAvg}</div></td>
 
 									<td class='chk'>
-										<div class="col-lg-9 col-md-8 ">
-											<div style="color: white; text-align: center">${passVO.appNum}</div>
-											<c:if test="${0 eq passVO.passCheck}">불합격
+										<div class="col-lg-9 col-md-8" style="text-align: center">
+												<c:if test="${0 eq passVO.passCheck}">불합격
 										</c:if>
 											<c:if test="${1 eq passVO.passCheck}">합격
 										</c:if>
+											<%-- <div style="color: white; text-align: center">${passVO.appNum}</div> --%>
 										</div>
 									</td>
 								</tr>

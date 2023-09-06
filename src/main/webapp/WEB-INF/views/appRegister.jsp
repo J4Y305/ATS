@@ -10,19 +10,20 @@
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
 	<div class="container">
-		<h2>채용 공고</h2>
+	<div class="pagetitle">
+		<h2>${annVO.annName}</h2>
+		</div>
 		<!-- End Breadcrumbs -->
+		
 		
 		
 		<section id="pricing" class="pricing" style="padding-top: 1px;">
 			<div class="card" data-aos="fade-up">
 				<div class="card-body">
-				<h5 class="card-title"></h5>
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
 						<div class="card justify-content-center" style="padding-top: 1px;">
 							<div class="card-body">
-							
-							
+							<h5 class="card-title fw-bold">지원서 작성</h5>
 								<form action="appRegister" method="post" role="form" name="frm"
 									class="php-email-form">
 									<input type='hidden' name='page' value="${cri.page}"> <input
@@ -38,41 +39,43 @@
 										<div class="form-group col-md-6">
 											<label for="name" class="fw-bold">이름</label> <input type="text"
 												name="userName" class="form-control" id="name"
-												value="${userVO.userName}">
+												placeholder="${userVO.userName}" readonly>
 										</div>
 										<div class="form-group col-md-6">
 											<label for="phone" class="fw-bold">전화번호</label> <input type="text"
 												class="form-control" name="phone" id="phone"
-												value="${userVO.userPhone}">
+												placeholder="${userVO.userPhone}" readonly>
 										</div>
 									</div>
+									<div class="row">
 									<div class="form-group col-md-6">
 										<label for="email" class="fw-bold">이메일</label> <input type="email"
 											class="form-control" name="email" id="email"
-											value="${userVO.userEmail}">
+											placeholder="${userVO.userEmail}" readonly>
+									</div>
 									</div>
 
 									<div class="row">
 										<div class="form-group col-md-6">
 											<label for="birthDay" class="fw-bold">생년월일</label> <input type="text" name="birthDay"
-												class="form-control" id="birthDay" value="${userVO.birthDay}">
+												class="form-control" id="birthDay" placeholder="${userVO.birthDay}" readonly>
 										</div>
 										<div class="form-group col-md-6">
 											<label for="gender" class="fw-bold">성별</label>
 											<c:if test="${1 eq userVO.gender}">
 											<input type="text" name="gender"
-												class="form-control" id="gender" value="남자">
+												class="form-control" id="gender" placeholder="남자" readonly>
 												
 											</c:if>
 											<c:if test="${2 eq userVO.gender}">
 											<input type="text" name="gender"
-												class="form-control" id="gender" value="여자">
-												</c:if>
-												
-								</div>
+												class="form-control" id="gender" placeholder="여자" readonly>
+												</c:if>									
+												</div>
 											
 										</div>
-									</div>
+									
+									<div class="row">
 									<div class="form-group">
 										<label for="etc" class="fw-bold">비고란</label>
 										<textarea class="form-control" name="etc" rows="10" required></textarea>
@@ -94,11 +97,14 @@
 														<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나
 															클릭해주세요</p>
 													</div>
+													
+													</div>
+													
 												</div>
-											</div>
-											<div>
 												<ul class="dropzone-previews clearfix uploadedList">
 												</ul>
+											</div>
+											<div>
 											</div>
 										</div>
 									</div>

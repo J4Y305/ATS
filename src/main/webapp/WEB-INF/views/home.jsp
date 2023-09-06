@@ -111,7 +111,7 @@ padding: 60px 40px;
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>About ATS</h2>
+          <h2>About Greeting ATS</h2>
         </div>
 
         <div class="row content">

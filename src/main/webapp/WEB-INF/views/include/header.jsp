@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<title>ATS - Applicant Tracking System</title>
+<title>	ATS - Applicant Tracking System</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
 
@@ -60,7 +60,7 @@
 		<div class="container d-flex align-items-center">
 
 			<h1 class="logo me-auto">
-				<a href="/">ATS</a>
+				<a href="/">Greeting-ATS</a>
 			</h1>
 			<!-- Uncomment below if you prefer to use an image logo -->
 			<!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
