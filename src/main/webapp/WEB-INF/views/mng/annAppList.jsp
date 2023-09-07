@@ -8,8 +8,14 @@
 	<main id="main" class="main">
 
 	<div class="pagetitle">
-		<h1>진행 중인 공고</h1>
-		
+		<h1>공고 평가</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+				<li class="breadcrumb-item">Tables</li>
+				<li class="breadcrumb-item active">General</li>
+			</ol>
+		</nav>
 	</div>
 	<!-- End Page Title -->
 
@@ -20,25 +26,23 @@
 					<div class="card-body">
 						<h5 class="card-title">공고 정보</h5>
 						<div class="row">
-							<div class="col-lg-3 col-md-4 label fw-bold">공고명:</div>
+							<div class="col-lg-3 col-md-4 label ">공고명:</div>
 							<div class="col-lg-9 col-md-8">${annVO.annName}</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-3 col-md-4 label fw-bold">모집 분야:</div>
+							<div class="col-lg-3 col-md-4 label">모집 분야:</div>
 							<div class="col-lg-9 col-md-8">${annVO.annField}</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-3 col-md-4 label fw-bold" >접수 시작일</div>
-							<div class="col-lg-9 col-md-8">
+							<div class="col-lg-3 col-md-4 label">접수 시작일</div>
 							<fmt:formatDate pattern="yyyy-MM-dd"
 								value="${annVO.annStartDate}" />
-								</div>
 						</div>
 
 						<div class="row">
-							<div class="col-lg-3 col-md-4 label fw-bold">접수 마감일:</div>
+							<div class="col-lg-3 col-md-4 label">접수 마감일:</div>
 							<div class="col-lg-9 col-md-8">
 								<fmt:formatDate pattern="yyyy-MM-dd" value="${annVO.annEndDate}" />
 							</div>
@@ -61,7 +65,7 @@
 							<th scope="col">이름</th>
 							<th scope="col">접수번호</th>
 							<th scope="col">지원서 등록 날짜</th>
-							<th scope="col">제출 여부</th>
+							<th scope="col">평가 여부</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -74,15 +78,12 @@
 									<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 								</c:if>
 								<td scope="row"><a
-									href="/mng/appReadPage${pageMaker.makeSearch(pageMaker.cri.page)}
+									href="/mng/appReadPage${pageMaker.makeSearch(pageMaker.cri.page)}&evaNum=${evaVO.evaNum}
 								&annNum=${appVO.annNum}&appNum=${appVO.appNum}&userId=${appVO.userId}">${appVO.userId}</a></td>
 								<td>${appVO.appNum}</td>
 								<td><fmt:formatDate pattern="yyyy-MM-dd"
 										value="${appVO.appRegDate}" /></td>
-								<td><c:if test="${0 eq appVO.appSave}">임시저장됨
-								</c:if>
-								<c:if test="${1 eq appVO.appSave}">최종제출됨 </c:if>
-								</td>
+								<td>${appVO.appSave}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -141,8 +142,4 @@
 	</script>
 
 
-	<jsp:include page="../include/admin_footer.jsp" />
-
-</body>
-
-</html>
+<jsp:include page="../include/admin_footer.jsp" />
