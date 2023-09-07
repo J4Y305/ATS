@@ -58,8 +58,8 @@
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">자기소개</h5>
-                  <p class="small fst-italic">항상 나아지기 위해 노력하기를 멈추지 않고 어떠한 상황에도 성실히 맡은 일에 최선을 다하는 개발자입니다 :)</p>
+                  <!-- <h5 class="card-title">자기소개</h5>
+                  <p class="small fst-italic">항상 나아지기 위해 노력하기를 멈추지 않고 어떠한 상황에도 성실히 맡은 일에 최선을 다하는 개발자입니다 :)</p> -->
 
                   <h5 class="card-title">Profile Details</h5>
 

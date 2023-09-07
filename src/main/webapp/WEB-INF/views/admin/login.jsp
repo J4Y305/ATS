@@ -79,7 +79,7 @@
 
 							<div class="pt-4 pb-2">
 								<h5 class="card-title text-center pb-0 fs-4">Admin Login</h5>
-								<p class="text-center small">Enter your username & password
+								<p class="text-center small">Enter your ID & password
 									to login</p>
 							</div>
 

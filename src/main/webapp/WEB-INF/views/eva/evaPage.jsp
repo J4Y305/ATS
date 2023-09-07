@@ -97,6 +97,8 @@
 								</thead>
 								<tbody>
 									<c:forEach items="${list}" var="appVO" varStatus="var">
+									<input type="hidden" name="eva-end"
+												value="${appVO.evaEnd}">
 										<tr>
 											<c:if test="${pageMaker.cri.page == 1 }">
 												<td>${var.count }</td>
@@ -126,6 +128,8 @@
 									</c:forEach>
 								</tbody>
 							</table>
+							
+						
 							<div class="d-flex justify-content-center">
 								<!-- Pagination with icons -->
 								<nav aria-label="Page navigation example">
@@ -173,11 +177,22 @@
 </main>
 <script>
 	$(document).ready(function() {
-
 		$(".btn-outline-primary").on("click", function() {
-			self.location = "/eva/evaList";
+			var eva_end = $('input[name=eva-end]').val();
+			console.log("eva-end: " + eva_end);
+			
+			if(eva_end == 0){
+				console.log("eva-end: " + eva_end);
+				
+				alert("평가가 완료되지 않았습니다! 평가를 진행해주세요.");
+			}
+			else{
+				alert("평가가 완료되었습니다.");
+				self.location = "/eva/evaList";	
+			}
+				
 		});
-
 	});
-</script>
+
+ </script>
 <jsp:include page="../include/admin_footer.jsp" />
