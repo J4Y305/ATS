@@ -88,7 +88,6 @@
 								<div class="col-12">
 									<label for="adminId" class="form-label">ID</label>
 									<div class="input-group has-validation">
-										<span class="input-group-text" id="inputGroupPrepend">@</span>
 										<input type="text" name="adminId" class="form-control"
 											id="adminId" required>
 										<div class="invalid-feedback">Please enter your

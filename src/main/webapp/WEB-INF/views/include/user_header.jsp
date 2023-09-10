@@ -65,8 +65,8 @@
 		<div class="d-flex align-items-center justify-content-between">
 			<a href="/" class="logo d-flex align-items-center"> <img
 				src="/resources/admin/assets/img/logo.png" alt=""> <span
-				class="d-none d-lg-block">Greeting ATS</span>
-			</a> <i class="bi bi-list toggle-sidebar-btn"></i>
+				class="d-none d-lg-block">Greeting ATS</span></a>
+				<i class="bi bi-list toggle-sidebar-btn"></i>
 		</div>
 		<!-- End Logo -->
 
@@ -320,7 +320,7 @@
 			<li class="nav-item">
 			<a class="nav-link collapsed"
 				href="/user/myPage?userId=${login.userId}">
-						<i class="bi bi-person"></i> <span>회원정보 수정</span>
+						<i class="bi bi-person"></i> <span>회원정보</span>
 					
 			</a></li>
 			<!-- End 상품 관리 Page Nav -->

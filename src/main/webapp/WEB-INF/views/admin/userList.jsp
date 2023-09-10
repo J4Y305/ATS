@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <jsp:include page="../include/admin_header.jsp" />
 <main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 
@@ -18,8 +19,8 @@
 						<div class="card-body" style="height:600px;">
 
 							<form role="form" action="/admin/userRemovePage" method="POST">
-								<input type="hidden" name="userId" class="form-control"
-									value='${userVO.userId}' />
+								<input type="hidden" name="userId" class="form-control userIdField" 
+								value='${userVO.userId}' />								
 								<!-- Table with hoverable rows -->
 								<table class="table table-hover">
 									<thead>
@@ -47,15 +48,18 @@
 												<td>${userVO.userId}</td>
 												<td>${userVO.birthDay}</td>
 												<td><c:choose>
-														<c:when test="${1 eq userVO.gender}">남 </c:when>
-														<c:when test="${0 eq userVO.gender}">여 </c:when>
+														<c:when test="${1 eq userVO.gender}">남자 </c:when>
+														<c:when test="${2 eq userVO.gender}">여자</c:when>
 														<c:otherwise>0</c:otherwise>
 													</c:choose></td>
 												<td>${userVO.userEmail}</td>
 
-
-												<td><button id="delBtn" class="btn btn-outline-danger"
-														type="submit">삭제</button></td>
+												
+												<td><button id="delBtn" class="btn btn-outline-danger" 
+												type="button" data-userid="${userVO.userId}">삭제</button>
+												
+												</td>
+														
 
 											</tr>
 
@@ -109,8 +113,10 @@
 
 <jsp:include page="../include/admin_footer.jsp" />
 <script>
-	$(document).ready(
-			function() {
+	$(document).ready(function() {
+		var formObj = $("form[role='form']");
+
+		console.log(formObj);
 
 				$('#searchBtn').on(
 						"click",
@@ -123,6 +129,13 @@
 									+ "&keyword=" + $('#keywordInput').val();
 
 						});
+				
+				$('.btn-outline-danger').on("click", function() {
+					var userId = $(this).data("userid");
+					formObj.find(".userIdField").val(userId);
+					formObj.attr("action", "/admin/userRemovePage");
+					formObj.submit();
+				})
 
 			});
 </script>
