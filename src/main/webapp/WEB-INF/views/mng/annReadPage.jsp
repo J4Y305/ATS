@@ -14,7 +14,7 @@
 			<div class="pagetitle">
 				<h1>공고 정보</h1>
 			</div>
-			
+
 			<div class="card p-4">
 				<div class="card-body">
 					<!-- General Form Elements -->
@@ -35,30 +35,26 @@
 									value='${login.mngId}'> <input type="hidden"
 									name="annNum" class="form-control" value='${annVO.annNum}'>
 								<div class="row mb-3 ">
-									<label class="col-sm-3 col-form-label fw-bold">공고명
-										:</label>
+									<label class="col-sm-3 col-form-label fw-bold">공고명 :</label>
 									<div class="col-sm-5">
 										<div class="pt-2">${annVO.annName}</div>
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold">모집분야
-										:</label>
+									<label class="col-sm-3 col-form-label fw-bold">모집분야 :</label>
 									<div class="col-sm-5">
 										<div class="pt-2">${annVO.annField}</div>
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold">공고
-										시작일 :</label>
+									<label class="col-sm-3 col-form-label fw-bold">공고 시작일 :</label>
 									<div class="col-sm-5 pt-2">
 										<fmt:formatDate pattern="yyyy-MM-dd"
 											value="${annVO.annStartDate}" />
 									</div>
 								</div>
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold">공고
-										마감일:</label>
+									<label class="col-sm-3 col-form-label fw-bold">공고 마감일:</label>
 									<div class="col-sm-5 pt-2">
 										<fmt:formatDate pattern="yyyy-MM-dd"
 											value="${annVO.annEndDate}" />
@@ -66,6 +62,7 @@
 								</div>
 							</div>
 						</div>
+
 						<div class="card">
 							<div class="card-body">
 								<div class="icon">
@@ -73,26 +70,23 @@
 										<i class="bi bi-file-text mx-3"></i>공고 내용
 									</h5>
 								</div>
-								<c:if test="${!empty annImageVO}">
-									<ul class="dropzone-previews d-flex justify-content-center">
+								<!-- Card with an image on top -->
+								<div class="card">
+									<c:if test="${!empty annImageVO}">
 										<c:forEach items="${annImageVO}" var="annImageVO"
 											varStatus="status">
-											<div class="col-sm-5">
-												<img src="/displayFile?fileName=${annImageVO.fileLocation}">
-											</div>
-
-
+											<img src="/displayFile?fileName=${annImageVO.fileLocation}"
+												class="card-img-top" alt="...">
 										</c:forEach>
-									</ul>
-								</c:if>
-								<c:if test="${empty annImageVO}">
-								</c:if>
-								<br> <br>
-								<div class="row mb-3 justify-content-center">
-									<div class="col-sm-10">
-										<textarea class="form-control" style="height: 200px">${annVO.detail}</textarea>
+									</c:if>
+									<c:if test="${empty annImageVO}">
+									</c:if>
+									<div class="card-body">
+									<h5 class="card-title"></h5>
+										<p class="card-text">${annVO.detail}</p>
 									</div>
 								</div>
+								<!-- End Card with an image on top -->
 							</div>
 						</div>
 						<div class="card">
@@ -195,9 +189,12 @@
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-10 d-flex justify-content-center">
-								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg">삭제</button>
-								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg mx-4">수정</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary btn-lg ">목록</button>
+								<button type="submit" onclick=""
+									class="btn btn-outline-danger btn-lg">삭제</button>
+								<button type="submit" onclick=""
+									class="btn btn-outline-warning btn-lg mx-4">수정</button>
+								<button type="submit" onclick=""
+									class="btn btn-outline-primary btn-lg ">목록</button>
 							</div>
 						</div>
 
