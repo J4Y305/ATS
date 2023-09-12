@@ -380,7 +380,7 @@ width:-webikt-fill-available;
     </section>
     <!-- End Team Section -->
 
-<section id="faq" class="faq section-bg">
+<section id="faq" class="faq">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
