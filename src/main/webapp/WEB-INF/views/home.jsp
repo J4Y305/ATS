@@ -321,8 +321,126 @@ width:-webikt-fill-available;
 </section>
 <!-- End COMPANY Section -->
 
+<section id="team" class="team section-bg">
+      <div class="container" data-aos="fade-up">
 
+        <div class="section-title">
+          <h2>Team</h2>
+          <h5>.GIP</h5>
+          <p>Get Into IT Pool</p>
+        </div>
 
+        <div class="row">
+
+          <div class="col-lg-6" data-aos="zoom-in" data-aos-delay="100">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="resources/user/assets/img/team/WooJae.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>정우제</h4>
+                <span>팀장</span>
+                <p>시스템 설계 및 DB 설계</p>
+                <p>백엔드</p>
+                <p>전체 프로젝트 관리</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="resources/user/assets/img/team/JaeHyun.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>권재현</h4>
+                <span>팀원</span>
+                <p>백엔드</p>
+                <p>프론트엔드</p>
+                <p>전체 프로젝트 관리</p>
+                
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
+            <div class="member d-flex align-items-start">
+              <div class="pic"><img src="resources/user/assets/img/team/JunSung.jpg" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>최준성</h4>
+                <span>팀원</span>
+                <p>백엔드</p>
+                <p>프론트엔드</p>
+                
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+
+      </div>
+    </section>
+    <!-- End Team Section -->
+
+<section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>FAQ</h2>
+          <p>Frequently Asked Questions</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Greeting ATS를 통해 어떤 기능들이 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                	채용 공고 관리, 지원서 관리, 지원자 평가 관리, 결과 관리 등 채용에 관련된 다양한 기능들이 있습니다. 
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">누가 이 서비스를 이용할 수 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  	채용에 관련된 이용자들(기업, 지원자 등) 모두가 이용하실 수 있습니다.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">기업에 지원하고 싶은데 비용은 얼마나 드나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  	무료입니다!
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">서비스 이용은 어떻게 하나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  	상단 메뉴바의 회원가입 메뉴를 통해 회원가입 후 로그인하시면 서비스를 이용하실 수 있습니다.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="500">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">모바일에서도 이용할 수 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                  	네 물론입니다! 반응형 웹으로 구현했기 때문에 모바일에서도 이용하실 수 있습니다. 
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Frequently Asked Questions Section -->
 
 <section id="contact" class="contact section-bg">
 	<div class="container" data-aos="fade-up">
