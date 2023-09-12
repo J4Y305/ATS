@@ -6,8 +6,10 @@
 
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
-	<div class="container">
-		<h2>채용 공고</h2>
+	<div class="section-title">
+			<h2>채용 공고</h2>
+			
+		
 		<!-- End Breadcrumbs -->
 		<section id="pricing" class="pricing" style="padding-top: 1px;">
 			<div class="container" data-aos="fade-up">

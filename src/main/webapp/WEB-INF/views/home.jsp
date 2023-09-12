@@ -5,8 +5,8 @@
 <jsp:include page="include/header.jsp" />
 <head>
 <style>
-.img-fluid{
-width:-webikt-fill-available;
+.img-fluid {
+	width: -webikt-fill-available;
 }
 </style>
 </head>
@@ -175,7 +175,8 @@ width:-webikt-fill-available;
 				<c:if test="${var.index < 4}">
 					<div class="col-xl-3 col-md-6 d-flex align-items-stretch"
 						data-aos="zoom-in" data-aos-delay="100">
-						<div class="icon-box" style="width: -webkit-fill-available; height: -webkit-fill-available;">
+						<div class="icon-box"
+							style="width: -webkit-fill-available; height: -webkit-fill-available;">
 							<div class="icon"
 								style="width: -webkit-fill-available; height: -webkit-fill-available;">
 								<i class="bx bxl-dribbble"></i>
@@ -224,104 +225,165 @@ width:-webikt-fill-available;
 		<div class="section-title">
 			<h2>Company</h2>
 		</div>
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+		<div class="row portfolio-container" data-aos="fade-up"
+			data-aos-delay="200">
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/naver.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>NAVER</h4>
-              <p>naver</p>
-              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/naver.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>NAVER</h4>
+					<p>naver</p>
+					<a href="assets/img/portfolio/portfolio-1.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="App 1"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/kakao.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>KAKAO</h4>
-              <p>kakao</p>
-              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-web">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/kakao.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>KAKAO</h4>
+					<p>kakao</p>
+					<a href="assets/img/portfolio/portfolio-2.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Web 3"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/line.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>LINE</h4>
-              <p>line</p>
-              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/line.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>LINE</h4>
+					<p>line</p>
+					<a href="assets/img/portfolio/portfolio-3.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="App 2"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/google.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>GOOGLE</h4>
-              <p>google</p>
-              <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/google.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>GOOGLE</h4>
+					<p>google</p>
+					<a href="assets/img/portfolio/portfolio-4.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Card 2"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web ">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/plani.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>PLANI</h4>
-              <p>plani</p>
-              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-web ">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/plani.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>PLANI</h4>
+					<p>plani</p>
+					<a href="assets/img/portfolio/portfolio-5.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Web 2"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/coupang.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>COUPANG</h4>
-              <p>coupang</p>
-              <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-app">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/coupang.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>COUPANG</h4>
+					<p>coupang</p>
+					<a href="assets/img/portfolio/portfolio-6.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="App 3"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/amazon.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>AMAZON</h4>
-              <p>amazon</p>
-              <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/amazon.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>AMAZON</h4>
+					<p>amazon</p>
+					<a href="assets/img/portfolio/portfolio-7.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Card 1"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/microsoft.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>MICROSOFT</h4>
-              <p>microsoft</p>
-              <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-card">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/microsoft.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>MICROSOFT</h4>
+					<p>microsoft</p>
+					<a href="assets/img/portfolio/portfolio-8.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Card 3"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="resources/user/assets/img/portfolio/dolby.png" class="img-fluid" alt=""></div>
-            <div class="portfolio-info">
-              <h4>DOLBY</h4>
-              <p>dolby</p>
-              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
+			<div class="col-lg-4 col-md-6 portfolio-item filter-web">
+				<div class="portfolio-img">
+					<img src="resources/user/assets/img/portfolio/dolby.png"
+						class="img-fluid" alt="">
+				</div>
+				<div class="portfolio-info">
+					<h4>DOLBY</h4>
+					<p>dolby</p>
+					<a href="assets/img/portfolio/portfolio-9.jpg"
+						data-gallery="portfolioGallery"
+						class="portfolio-lightbox preview-link" title="Web 3"><i
+						class="bx bx-plus"></i></a> <a href="portfolio-details.html"
+						class="details-link" title="More Details"><i
+						class="bx bx-link"></i></a>
+				</div>
+			</div>
 
-        </div>
-		
+		</div>
 </section>
-<!-- End COMPANY Section -->
-
-<section id="team" class="team section-bg">
+<!-- End COMPANY Section --> <!-- <section id="team" class="team section-bg">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
@@ -378,69 +440,76 @@ width:-webikt-fill-available;
 
       </div>
     </section>
-    <!-- End Team Section -->
+    End Team Section -->
 
 <section id="faq" class="faq">
-      <div class="container" data-aos="fade-up">
+	<div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>FAQ</h2>
-          <p>Frequently Asked Questions</p>
-        </div>
+		<div class="section-title">
+			<h2>FAQ</h2>
+			<p>Frequently Asked Questions</p>
+		</div>
 
-        <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up" data-aos-delay="100">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Greeting ATS를 통해 어떤 기능들이 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                	채용 공고 관리, 지원서 관리, 지원자 평가 관리, 결과 관리 등 채용에 관련된 다양한 기능들이 있습니다. 
-                </p>
-              </div>
-            </li>
+		<div class="faq-list">
+			<ul>
+				<li data-aos="fade-up" data-aos-delay="100"><i
+					class="bx bx-help-circle icon-help"></i> <a
+					data-bs-toggle="collapse" class="collapse"
+					data-bs-target="#faq-list-1">Greeting ATS를 통해 어떤 기능들이 있나요? <i
+						class="bx bx-chevron-down icon-show"></i><i
+						class="bx bx-chevron-up icon-close"></i></a>
+					<div id="faq-list-1" class="collapse show"
+						data-bs-parent=".faq-list">
+						<p>채용 공고 관리, 지원서 관리, 지원자 평가 관리, 결과 관리 등 채용에 관련된 다양한 기능들이 있습니다.
+						</p>
+					</div></li>
 
-            <li data-aos="fade-up" data-aos-delay="200">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">누가 이 서비스를 이용할 수 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  	채용에 관련된 이용자들(기업, 지원자 등) 모두가 이용하실 수 있습니다.
-                </p>
-              </div>
-            </li>
+				<li data-aos="fade-up" data-aos-delay="200"><i
+					class="bx bx-help-circle icon-help"></i> <a
+					data-bs-toggle="collapse" data-bs-target="#faq-list-2"
+					class="collapsed">누가 이 서비스를 이용할 수 있나요? <i
+						class="bx bx-chevron-down icon-show"></i><i
+						class="bx bx-chevron-up icon-close"></i></a>
+					<div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+						<p>채용에 관련된 이용자들(기업, 지원자 등) 모두가 이용하실 수 있습니다.</p>
+					</div></li>
 
-            <li data-aos="fade-up" data-aos-delay="300">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">기업에 지원하고 싶은데 비용은 얼마나 드나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  	무료입니다!
-                </p>
-              </div>
-            </li>
+				<!-- <li data-aos="fade-up" data-aos-delay="300"><i
+					class="bx bx-help-circle icon-help"></i> <a
+					data-bs-toggle="collapse" data-bs-target="#faq-list-3"
+					class="collapsed">기업에 지원하고 싶은데 비용은 얼마나 드나요? <i
+						class="bx bx-chevron-down icon-show"></i><i
+						class="bx bx-chevron-up icon-close"></i></a>
+					<div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+						<p>무료입니다! 자세한 사항은 문의 부탁바랍니다.</p>
+					</div></li> -->
 
-            <li data-aos="fade-up" data-aos-delay="400">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">서비스 이용은 어떻게 하나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  	상단 메뉴바의 회원가입 메뉴를 통해 회원가입 후 로그인하시면 서비스를 이용하실 수 있습니다.
-                </p>
-              </div>
-            </li>
+				<li data-aos="fade-up" data-aos-delay="400"><i
+					class="bx bx-help-circle icon-help"></i> <a
+					data-bs-toggle="collapse" data-bs-target="#faq-list-4"
+					class="collapsed">서비스 이용은 어떻게 하나요? <i
+						class="bx bx-chevron-down icon-show"></i><i
+						class="bx bx-chevron-up icon-close"></i></a>
+					<div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+						<p>상단 메뉴바의 회원가입 메뉴를 통해 회원가입 후 로그인하시면 서비스를 이용하실 수 있습니다.</p>
+					</div></li>
 
-            <li data-aos="fade-up" data-aos-delay="500">
-              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">모바일에서도 이용할 수 있나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
-                <p>
-                  	네 물론입니다! 반응형 웹으로 구현했기 때문에 모바일에서도 이용하실 수 있습니다. 
-                </p>
-              </div>
-            </li>
+				<li data-aos="fade-up" data-aos-delay="500"><i
+					class="bx bx-help-circle icon-help"></i> <a
+					data-bs-toggle="collapse" data-bs-target="#faq-list-5"
+					class="collapsed">모바일에서도 이용할 수 있나요? <i
+						class="bx bx-chevron-down icon-show"></i><i
+						class="bx bx-chevron-up icon-close"></i></a>
+					<div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+						<p>네 물론입니다! 반응형 웹으로 구현했기 때문에 모바일에서도 이용하실 수 있습니다.</p>
+					</div></li>
 
-          </ul>
-        </div>
+			</ul>
+		</div>
 
-      </div>
-    </section>
-    <!-- End Frequently Asked Questions Section -->
+	</div>
+</section>
+<!-- End Frequently Asked Questions Section -->
 
 <section id="contact" class="contact section-bg">
 	<div class="container" data-aos="fade-up">
@@ -454,9 +523,9 @@ width:-webikt-fill-available;
 				<div class="address">
 					<i class="bi bi-geo-alt"></i>
 					<h4>Location:</h4>
-					<p>대전광역시 대덕구 한남로 70(대덕구 오정동)
-					<br>70 Hannam-ro, Daedeok-gu, Daejeon, Republic of Korea
-							(34430)</p>
+					<p>
+						포에스비 <br>대전광역시 서구 월평동 244번지 1003호
+					</p>
 				</div>
 
 				<div class="email">
@@ -468,18 +537,19 @@ width:-webikt-fill-available;
 				<div class="phone">
 					<i class="bi bi-phone"></i>
 					<h4>Call:</h4>
-					<p>042-629-7114</p>
+					<p>042-XXX-XXXX</p>
 				</div>
 
+
 				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3213.2525317443638!2d127.4210188!3d36.3546616!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654900b96a5a6b%3A0x8813f834e7a7d6d5!2z7ZWc64Ko64yA7ZWZ6rWQ!5e0!3m2!1sko!2skr!4v1694470178595!5m2!1sko!2skr"
-					style="border:0; width: 100%; height: 290px;"
-					loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3212.9725083004996!2d127.37636527557058!3d36.361444792309754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x35654bd9dee5bead%3A0xd16cfe55a6f238ca!2z7Y-s7JeQ7Iqk67mEKOyjvCk!5e0!3m2!1sko!2skr!4v1694501781279!5m2!1sko!2skr"
+					style="border: 0; width: 100%; height: 290px;" loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"></iframe>
+
 			</div>
 
 		</div>
-		
+
 	</div>
 	</div>
 </section>

@@ -239,11 +239,9 @@
 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>${userVO.userName}</h6> <span>Programmer</span>
+							<h6>${userVO.userName}</h6>
 						</li>
-						<li>
-							<hr class="dropdown-divider">
-						</li>
+						
 
 						<li><a class="dropdown-item d-flex align-items-center"
 							href="/user/myPage?userId=${login.userId}"> <i class="bi bi-person"></i> <span>My
