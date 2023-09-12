@@ -30,6 +30,7 @@
 									</tr>
 								</thead>
 								<tbody>
+								<c:if test="${!empty list}">
 									<c:forEach items="${list}" var="appPassDTO" varStatus="var">
 										<tr>
 											<td style="text-align:center;">${appPassDTO.appNum}</td>
@@ -41,6 +42,14 @@
 											<td style="text-align:center;">${appPassDTO.passMsg}</td>
 										</tr>
 									</c:forEach>
+									
+									</c:if>
+
+									<c:if test="${empty list}">
+										<tr>
+											<td colspan="5" align="center">.조회 가능한 결과가 없습니다.</td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 						</div>
