@@ -63,7 +63,7 @@
 	<header id="header" class="header fixed-top d-flex align-items-center">
 
 		<div class="d-flex align-items-center justify-content-between">
-			<a href="#" class="logo d-flex align-items-center"> <img
+			<a href="/eva/evaList" class="logo d-flex align-items-center"> <img
 				src="/resources/admin/assets/img/logo.png" alt=""> <span
 				class="d-none d-lg-block">Greeting ATS</span>
 			</a> <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -234,7 +234,7 @@
 					<ul
 						class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
 						<li class="dropdown-header">
-							<h6>${login.raterName}</h6> <span>Web Designer</span>
+							<h6>${login.raterName}</h6>
 						</li>
 <!-- 						<li>
 							<hr class="dropdown-divider">
