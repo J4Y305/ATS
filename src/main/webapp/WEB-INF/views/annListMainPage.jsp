@@ -5,7 +5,7 @@
 <jsp:include page="include/header.jsp" />
 
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
-<section id="breadcrumbs" class="breadcrumbs">
+<section id="annListMainPage" class="breadcrumbs">
 	<div class="section-title">
 			<h2>채용 공고</h2>
 			

@@ -72,10 +72,10 @@
 			</h1>
 			<nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="/">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="nav-link scrollto" href="/annListMainPage">채용공고</a></li>
+          <li><a class="nav-link scrollto" href="/#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="/#about">About</a></li>
+          <li><a class="nav-link scrollto" href="/#contact">Contact</a></li>
+          <li><a class="nav-link scrollto" href="/annListMainPage#annListMainPage">채용공고</a></li>
           
           <li><c:if test="${null eq login.userId}">
           <a class="getstarted scrollto" href="/user/login">로그인</a></c:if></li>
