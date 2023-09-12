@@ -51,7 +51,13 @@ public class AnnServiceImpl implements AnnService {
 
 				AnnImageVO iVo = new AnnImageVO();
 				iVo.setAnnNum(annNum);
-				iVo.setAnnImageName(vo.getAnnImage()[i]);
+				
+				String text = vo.getAnnImage()[i];
+				
+				String result = text.replaceAll("s_", "");
+		        
+		        // DB에 저장
+				iVo.setAnnImageName(result);
 
 				dao.insertImage(iVo);
 			}
