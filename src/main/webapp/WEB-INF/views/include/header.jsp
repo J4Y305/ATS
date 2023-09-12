@@ -86,7 +86,7 @@
           <form id="userIdForm" action="/user" method="GET" style="display: none;">
 			<input type="hidden" name="userId" id="userIdInput"></form></c:if></li>
           <li><c:if test="${null ne login.userId}">
-          <a class="nav-link scrollto" href="/user/userRegister">로그아웃</a></c:if></li>
+          <a class="nav-link scrollto" href="/user/logout">로그아웃</a></c:if></li>
           
           
           

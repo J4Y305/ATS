@@ -103,6 +103,9 @@
 								src="/resources/user/assets/img/logo.png" alt=""> <span
 								class="d-none d-lg-block">Greeting ATS</span>
 							</a>
+							
+						
+							
 						</div>
 						<!-- End Logo -->
 

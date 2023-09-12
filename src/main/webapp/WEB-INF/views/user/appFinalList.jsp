@@ -30,6 +30,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									<c:if test="${!empty list}">
 									<c:forEach items="${list}" var="appListDTO" varStatus="var">
 
 										<tr>
@@ -53,6 +54,14 @@
 										</tr>
 
 									</c:forEach>
+									
+									</c:if>
+
+									<c:if test="${empty list}">
+										<tr>
+											<td colspan="5" align="center">최종 제줄된 지원서가 없습니다.</td>
+										</tr>
+									</c:if>
 								</tbody>
 							</table>
 							</div>
