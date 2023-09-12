@@ -57,7 +57,7 @@
 										<c:forEach items="${annImageVO}" var="annImageVO"
 											varStatus="status">
 											<ol class="justify-content-center">
-												<img src="/displayFile?fileName=${annImageVO.fileLocation}">
+												<img src="/displayFile?fileName=${annImageVO.fileLocation}" class="img-fluid">
 											</ol>
 
 
@@ -157,23 +157,23 @@
 							</form>
 						</div>
 
-						
+
 					</div>
-<div class="row mb-3 p-4 justify-content-center">
-							<div class="col-sm-10 d-flex justify-content-center">
-								<button type="submit" onclick=""
-									class="btn btn-outline-success" style="margin: 10px">지원하기</button>
-								<button type="submit" onclick=""
-									class="btn btn-outline-primary" style="margin: 10px">목록</button>
-							</div>
+					<div class="row mb-3 p-4 justify-content-center">
+						<div class="col-sm-10 d-flex justify-content-center">
+							<button type="submit" onclick="" class="btn btn-outline-success"
+								style="margin: 10px">지원하기</button>
+							<button type="submit" onclick="" class="btn btn-outline-primary"
+								style="margin: 10px">목록</button>
 						</div>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
 
-</section>
-</div>
+	</section>
+	</div>
 </section>
 <!-- End Contact Section --> </main>
 <!-- End #main -->

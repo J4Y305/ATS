@@ -15,8 +15,9 @@
 			<div class="container" data-aos="fade-up">
 				<div class="row">
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
-						<div class="box">
-
+						<div class="card">
+							<div class="card-body">
+							
 							<!-- Table with hoverable rows -->
 							<table class="table table-hover">
 								<thead>
@@ -32,7 +33,7 @@
 									<c:forEach items="${list}" var="annVO" varStatus="var">
 										<tr>
 											<c:if test="${pageMaker.cri.page == 1 }">
-												<td>${var.count }</td>
+												<th scope="row">${var.count }</th>
 											</c:if>
 											<c:if test="${pageMaker.cri.page != 1 }">
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
@@ -46,10 +47,10 @@
 													-
 											<fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}" /></td>
-											<td><c:if test="${0 eq annVO.deadline}">
-													<div class="col-lg-9 col-md-8">모집중</div>
+											<td scope="row" style="color: #dc3545"><c:if test="${0 eq annVO.deadline}">
+													<span style="color: #198754">모집중</span>
 												</c:if> <c:if test="${1 eq annVO.deadline}">
-													<div class="col-lg-9 col-md-8">모집 마감</div>
+													<span style="color: #dc3545">모집마감</span>
 												</c:if></td>
 											
 										</tr>
@@ -58,10 +59,42 @@
 								</tbody>
 							</table>
 						</div>
+						<div class="d-flex justify-content-center">
+							<!-- Pagination with icons -->
+							<nav aria-label="Page navigation example ">
+								<ul class="pagination ">
+									<c:if test="${pageMaker.prev}">
+										<li class="page-item d-flex"><a class="page-link"
+											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
+										</a></li>
+									</c:if>
+									<c:forEach begin="${pageMaker.startPage }"
+										end="${pageMaker.endPage }" var="idx">
+										<li class="page-item"
+											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
+											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+										</li>
+									</c:forEach>
+									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+										<li class="page-item"><a class="page-link"
+											aria-label="Next"
+											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+												aria-hidden="true">&raquo;</span></a></li>
+									</c:if>
+
+								</ul>
+							</nav>
+							<!-- End Pagination with icons -->
+						</div>
 					</div>
 				</div>
 			</div>
+			
 		</section>
+		
+		
+		
 	</div>
 </section>
 <!-- End Contact Section --> </main>
