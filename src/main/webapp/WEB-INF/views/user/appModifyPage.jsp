@@ -27,28 +27,28 @@
 								</div>
 								<div class="row mb-3">
 									<label class="col-sm-3 col-form-label fw-bold">이름 :</label>
-									<div class="col-sm-5">
+									<div class="col-sm-8">
 										<input type="text" name="userName" class="form-control pt-2	"
 											value="${userVO.userName}" readOnly>
 									</div>
 								</div>
 								<div class="row mb-3">
 									<label class="col-sm-3 col-form-label fw-bold">전화번호 :</label>
-									<div class="col-sm-3">
+									<div class="col-sm-8">
 										<input type="text" name="userPhone" class="form-control pt-2"
 											value="${userVO.userPhone}" readOnly>
 									</div>
 								</div>
 								<div class="row mb-3">
 									<label class="col-sm-3 col-form-label fw-bold">이메일:</label>
-									<div class="col-sm-4">
+									<div class="col-sm-8">
 										<input type="text" name="entPhone" class="form-control"
 											value="${userVO.userEmail}" readOnly>
 									</div>
 								</div>
 								<div class="row mb-3 ">
 									<label class="col-sm-3 col-form-label fw-bold">생년월일 :</label>
-									<div class="col-sm-5">
+									<div class="col-sm-8">
 										<input type="text" name="mngName" class="form-control"
 											value="${userVO.birthDay}" readOnly>
 									</div>
@@ -56,13 +56,13 @@
 								<div class="row mb-3 ">
 									<label class="col-sm-3 col-form-label fw-bold">성별 :</label>
 									<c:if test="${1 eq userVO.gender}">
-										<div class="col-sm-5">
+										<div class="col-sm-8">
 											<input type="text" class="form-control" name="gender"
 												id="gender" readOnly value="남자">
 										</div>
 									</c:if>
 									<c:if test="${2 eq userVO.gender}">
-										<div class="col-sm-5">
+										<div class="col-sm-8">
 											<input type="text" class="form-control" name="gender"
 												id="gender" readOnly value="여자">
 										</div>
@@ -81,8 +81,8 @@
 								</div>
 								<div class="row mb-3 ">
 									<label class="col-sm-3 col-form-label fw-bold">비고란 :</label>
-									<div class="col-sm-5">
-										<textarea class="form-control" name="etc" style="height: 100px" value="${appVO.etc}"></textarea>
+									<div class="col-sm-8">
+										<textarea class="form-control" name="etc" style="height: 100px">${appVO.etc}</textarea>
 									</div>
 								</div>
 								<div class="row mb-3">
