@@ -90,6 +90,25 @@
 								</div>
 								<div>
 									<ul class="dropzone-previews clearfix uploadedList">
+										<li class="dropzone-previews mt-3">
+											<div
+												class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
+												<div class="p-2">
+													<div class="row align-items-center">
+														<div class="col-auto">
+														</div>
+														<div class="col pl-0">
+															<a href="/displayFile?fileName=${entVO.registration}" text-muted
+																font-weight-bold" data-dz-name="">${entVO.fileName}</a>
+														</div>
+														<div class="col-auto">
+															<a href="${entVO.registration}" class="btn btn-danger delbtn"><i
+																class="bi bi-exclamation-octagon"></i></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</li>
 									</ul>
 								</div>
 							</div>
@@ -161,7 +180,7 @@
 									</div>
 								</c:if>
 							</div>
-							<input type="hidden" name="mngAct" class="form-control">
+							<input type="hidden" name="mngAct" value="${mngVO.mngAct}" class="form-control">
 						</div>
 						<input type="hidden" name="adminId" class="form-control"
 							value='${login.adminId}'>

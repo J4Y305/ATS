@@ -36,7 +36,16 @@ public class MngServiceImpl implements MngService {
 
 	@Override
 	public EntVO entRead(int entNum) throws Exception {
-		return dao.entRead(entNum);
+		// 1. 기업 정보 조회
+		EntVO eVo = dao.entRead(entNum);
+		// 2. 사업자 등록증 파일 이름 추출
+		// 2-1 사업자 등록증 여부 확인
+		if(eVo.getRegistration()!= null) {
+			String text = eVo.getRegistration();
+			String[] text1 = text.split("-.*?_");
+			eVo.setFileName(text1[1]);
+		}
+		return eVo;
 	}
 
 	@Override
@@ -47,7 +56,7 @@ public class MngServiceImpl implements MngService {
 	@Override
 	public void modify(EntVO eVo, MngVO mVo) throws Exception {
 		dao.entUpdate(eVo);
-		mVo.setEntName(eVo.getEntName());
+		mVo.setEntNum(eVo.getEntNum());
 		dao.mngUpdate(mVo);
 	}
 

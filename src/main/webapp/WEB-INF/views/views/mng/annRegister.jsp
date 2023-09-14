@@ -3,68 +3,73 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="../include/mng_header.jsp" />
-<main id="main" class="main">
+<main id="main" class="main"> <!-- End Page Title -->
 <section class="section">
 	<div class="row justify-content-center">
 		<div class="col-lg-9">
 			<div class="pagetitle fw-bold p-4">
-				<h1>공고 수정</h1>
+				<h1>공고 등록</h1>
 			</div>
 			<div class="card">
 				<div class="card-body w-90 p-3">
 					<!-- General Form Elements -->
 					<form class="row g-3" role="form" method="post" name="frm"
-						onsubmit="onSubmitForm()" action="annModifyPage">
-						<input type='hidden' name='page' value="${cri.page}"> <input
-							type='hidden' name='perPageNum' value="${cri.perPageNum}">
-						<input type='hidden' name='searchType' value="${cri.searchType}">
-						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<input type="hidden" name="mngId" class="form-control"
-							value='${login.mngId}'> <input type="hidden"
-							name="annNum" class="form-control" value='${annVO.annNum}'>
+						onsubmit="onSubmitForm()">
+						<input type="hidden" name="annAct" class="form-control">
 						<div class="row mb-3">
+							<input type='hidden' name='page' value="${cri.page}"> <input
+								type='hidden' name='perPageNum' value="${cri.perPageNum}">
+							<input type='hidden' name='searchType' value="${cri.searchType}">
+							<input type='hidden' name='keyword' value="${cri.keyword}">
+							<input type="hidden" name="mngId" class="form-control"
+								value='${login.mngId}'>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고명 :</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고명
+									:</label>
 								<div class="col-sm-10">
 									<input type="text" name="annName" class="form-control"
-										value="${annVO.annName}">
+										placeholder="공고명">
 								</div>
 							</div>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">모집분야 :</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">모집분야
+									:</label>
 								<div class="col-sm-10">
 									<input type="text" name="annField" class="form-control"
-										value="${annVO.annField}">
+										placeholder="모집분야">
 								</div>
 							</div>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고 시작일 :</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									시작일 :</label>
 								<div class="col-sm-10">
-									<input type="date" id="startDate" class="form-control"
-										value=<fmt:formatDate pattern="yyyy-MM-dd"
-													value="${annVO.annStartDate}"/>>
-									<input type="hidden" class="form-control" name="annStartDate" value="${annVO.annStartDate}">
+									<input type="date" id="startDate" class="form-control">
+									<input type="hidden" class="form-control" name="annStartDate">
 								</div>
 							</div>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고 마감일:</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									마감일:</label>
 								<div class="col-sm-10">
-									<input type="date" id="endDate" class="form-control"
-										value=<fmt:formatDate pattern="yyyy-MM-dd"
-													value="${annVO.annEndDate}"/>>
-									<input type="hidden" class="form-control" name="annEndDate" value="${annVO.annEndDate}">
+									<input type="date" id="endDate" class="form-control"> <input
+										type="hidden" class="form-control" name="annEndDate">
 								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고 내용:</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고내용:</label>
 								<div class="col-sm-10">
 									<textarea class="form-control" style="height: 100px"
-										name="detail">${annVO.detail}</textarea>
+										name="detail"></textarea>
 								</div>
 							</div>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고 관련 이미지
-									:</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									관련 이미지 :</label>
 								<div class="col-sm-10">
 									<div id='mydropzoneImage'
 										class="alert alert-primary alert-dismissible fade show">
@@ -85,33 +90,14 @@
 									</div>
 									<div>
 										<ul class="dropzone-previews clearfix imageUploadedList">
-											<c:forEach items="${annImageVO}" var="iVo" varStatus="status">
-												<li class="dropzone-previews mt-3">
-													<div
-														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-														<div class="p-2">
-															<div class="row align-items-center">
-																<div class="col pl-0">
-																	<a href="/displayFile?fileName=${iVo.fileLocation}"
-																		text-muted font-weight-bold" data-dz-name="">${iVo.annImageName}</a>
-																</div>
-																<div class="col-auto">
-																	<a href="${iVo.fileLocation}"
-																		class="btn btn-danger delbtn"><i
-																		class="bi bi-exclamation-octagon"></i></a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
-											</c:forEach>
 										</ul>
 									</div>
 								</div>
 							</div>
+
 							<div class="row mb-3 p-4 justify-content-center">
-								<label class="col-sm-2 col-form-label fw-bold">공고 관련 파일
-									:</label>
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									관련 파일 :</label>
 								<!-- <div id='mydropzone' class="dropzone"> -->
 								<div class="col-sm-10">
 									<div id='mydropzone'
@@ -132,57 +118,28 @@
 									</div>
 									<div>
 										<ul class="dropzone-previews clearfix uploadedList">
-											<c:forEach items="${annFileVO}" var="fVo" varStatus="status">
-												<li class="dropzone-previews mt-3">
-													<div
-														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-														<div class="p-2">
-															<div class="row align-items-center">
-																<div class="col pl-0">
-																	<a href="/displayFile?fileName=${fVo.fileLocation}"
-																		text-muted font-weight-bold" data-dz-name="">${fVo.annFileName}</a>
-																</div>
-																<div class="col-auto">
-																	<a href="${fVo.fileLocation}"
-																		class="btn btn-danger delbtn"><i
-																		class="bi bi-exclamation-octagon"></i></a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
-											</c:forEach>
 										</ul>
 									</div>
 								</div>
 							</div>
 
 							<div class="row mb-3 p-4">
-								<label class="col-sm-2 col-form-label fw-bold">공고 활성 여부</label>
-								<c:if test="${0 eq annVO.annAct}">
-									<div class="form-check form-switch col-sm-10 pt-2">
-										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-										<input class="form-check-input" type="checkbox"
-											id="flexSwitchCheckDefault">
-									</div>
-								</c:if>
-								<c:if test="${1 eq annVO.annAct}">
-									<div class="form-check form-switch col-sm-10 pt-2">
-										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-										<input class="form-check-input" type="checkbox"
-											id="flexSwitchCheckDefault" checked>
-									</div>
-								</c:if>
-								<input type="hidden" name="annAct" class="form-control"
-									value="${annVO.annAct}">
+								<label for="inputText" class="col-sm-2 col-form-label fw-bold">공고
+									활성 여부</label>
+								<div class="form-check form-switch col-sm-10 pt-2">
+									<input class="form-check-input" type="checkbox"
+										id="flexSwitchCheckDefault"><label
+										class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
 								<div class="col-sm-5 d-flex justify-content-center">
 									<button type="button" class="btn btn-outline-danger btn-lg">취소</button>
 									<button type="submit"
-										class="btn btn-outline-primary btn-lg mx-4">저장</button>
+										class="btn btn-outline-success btn-lg mx-4">등록</button>
 								</div>
 							</div>
+
 						</div>
 					</form>
 				</div>
@@ -225,7 +182,7 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="template" type="text/x-handlebars-template">
-<li class="dropzone-previews mt-3">
+<li style="list-style:none;">
 <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 <div class="p-2">
 <div class="row align-items-center">
@@ -236,7 +193,7 @@
    <a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  </div>
  <div class="col-auto">
-   <a href="{{fullName}}" class="btn btn-danger delbtn"><i class="bi bi-exclamation-octagon"></i></a>
+   <a href="{{fullName}}" class="btn btn-danger delbtn"><i class="bi bi-folder-minus"></i></a>
  </div>
 </div>
 </div>
@@ -348,6 +305,14 @@
 									}//if문 종료
 
 								});
+
+						$(".btn-cancel")
+								.on(
+										"click",
+										function() {
+											self.location = "annList&page=${cri.page}&perPageNum=${cri.perPageNum}"
+													+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
+										});
 
 					});
 
@@ -665,24 +630,18 @@
 
 
 <script>
-	$(document)
-			.ready(
-					function() {
-						var formObj = $("form[role='form']");
+	$(document).ready(function() {
+		/* 		var formObj = $("form[role='form']");
 
-						console.log(formObj);
+		 console.log(formObj);
 
-						$(".btn-outline-danger")
-								.on(
-										"click",
-										function() {
-											self.location = "/mng/annList?page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+		 $("#btn_submit").on("click", function() {
 
-										});
-
-						$(".btn-outline-success").on("click", function() {
-							formObj.submit();
-						});
-					});
+		 formObj.submit();
+		 });
+		 */
+		$(".btn-outline-danger").on("click", function() {
+			self.location = "/mng/annList";
+		});
+	});
 </script>

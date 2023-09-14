@@ -58,39 +58,76 @@
 								<div class="row mb-3 py-4">
 									<div class="col-sm-3 col-form-label fw-bold pt-3">사업자
 										등록증:</div>
-									<c:choose>
-										<c:when test="${null eq entVO.registration}">
-											<div class="col-sm-5">
-												<div class="pt-2">"등록된 정보가 없습니다."</div>
-											</div>
-										</c:when>
-										<c:otherwise>
-											<div class="col-sm-5">
-												<ul>
-													<li style="list-style: none;">
-														<div
-															class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-															<div class="p-2">
-																<div class="row align-items-center">
-																	<div class="col">
-																		<div class="icon">
-																			<i class="bi bi-box-arrow-down"></i> <a
-																				href="/displayFile?fileName=${entVO.registration}"
-																				text-muted font-weight-bold data-dz-name="">
-																				${entVO.fileName}</a>
-																		</div>
-																	</div>
+									<div class="col-sm-5">
+										<ul>
+
+											<li style="list-style: none;">
+												<div
+													class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
+													<div class="p-2">
+														<div class="row align-items-center">
+															<!-- 
+															<c:forTokens var="token" items="${entVO.registration}"
+																delims="." varStatus="status">
+																<c:if test="${status.last}">
+																	<c:choose>
+																		<c:when test="${token eq 'hwp'}">
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/resources/dist/img/hwp.png"
+																				alt="${entVO.registration}" />
+																		</c:when>
+																		<c:when test="${token eq 'xls' || token eq 'xlsx' }">
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/resources/dist/img/excelIcon.png" />
+																		</c:when>
+																		<c:when
+																			test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/displayFile?fileName=${entVO.fileName}">
+																		</c:when>
+																		<c:when test="${token eq 'pdf'}">
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/resources/dist/img/pdf.png"
+																				alt="${entVO.fileName}" />
+																		</c:when>
+																		<c:when test="${token eq 'ppt' }">
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/resources/dist/img/ppt.png"
+																				alt="${entVO.fileName}" />
+																		</c:when>
+																		<c:otherwise>
+																			<img data-dz-thumbnail=""
+																				class="avatar-sm rounded bg-light"
+																				src="/resources/dist/img/file.svg"
+																				alt="${entVO.fileName}" />
+																		</c:otherwise>
+																	</c:choose>
+																</c:if>
+															</c:forTokens>
+															 -->
+															<div class="col">
+																<div class="icon">
+																	<i class="bi bi-box-arrow-down"></i> <a
+																		href="/displayFile?fileName=${entVO.registration}"
+																		text-muted font-weight-bold data-dz-name="">
+																		${entVO.fileName}</a>
 																</div>
 															</div>
 														</div>
-													</li>
-												</ul>
-											</div>
-										</c:otherwise>
-									</c:choose>
+													</div>
+												</div>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
 						</div>
+
 						<div class="card">
 							<div class="card-body">
 								<div class="icon">
@@ -136,7 +173,8 @@
 								</div>
 
 								<div class="row mb-3">
-									<label class="col-sm-3 col-form-label fw-bold ">활성여부 </label>
+									<label class="col-sm-3 col-form-label fw-bold ">활성여부
+									</label>
 									<div class="col-sm-5">
 										<c:if test="${0 eq mngVO.mngAct}">
 											<div class="col-lg-9 col-md-8 pt-2">비활성</div>

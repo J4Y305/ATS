@@ -12,35 +12,34 @@
 			</div>
 			<div class="card">
 				<div class="card-body w-90 p-3">
+
 					<!-- General Form Elements -->
-					<form class="row g-3" role="form" method="post" name="frm"
-						onsubmit="onSubmitForm()">
+					<form class="row g-3" role="form" action="mngModifyPage"
+						method="post" name="frm" onsubmit="onSubmitForm()">
+						<input type='hidden' name='entNum' value="${entVO.entNum}">
 						<input type='hidden' name='page' value="${cri.page}"> <input
 							type='hidden' name='perPageNum' value="${cri.perPageNum}">
 						<input type='hidden' name='searchType' value="${cri.searchType}">
 						<input type='hidden' name='keyword' value="${cri.keyword}">
-						<input type="hidden" name="adminId" class="form-control"
-							value='${login.adminId}'>
 						<div class="row mb-3 p-4 justify-content-center">
-							<label for="inputText" class="col-sm-2 col-form-label fw-bold">기업명
-								:</label>
+							<label class="col-sm-2 col-form-label fw-bold">기업명 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="entName" class="form-control"
-									placeholder="기업명">
+									value="${entVO.entName}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">업종 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="category" class="form-control"
-									placeholder="업종">
+									value="${entVO.category}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">주소 :</label>
 							<div class="col-sm-5">
 								<input type="text" id="sample6_postcode" name="zipCode"
-									class="form-control" placeholder="우편번호">
+									class="form-control" value="${entVO.zipCode}">
 							</div>
 							<div class="col-sm-5">
 								<button type="button" onclick="sample6_execDaumPostcode()"
@@ -50,24 +49,22 @@
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label fw-bold"> </label>
 							<div class="col-sm-10">
-								<input type="text" id="sample6_address" name="address1"
-									placeholder="도로명주소" class="form-control">
+								<input type="text" id="sample6_address" name="address"
+									value="${entVO.address}" class="form-control">
 							</div>
 						</div>
 						<div class="row mb-3">
 							<label class="col-sm-2 col-form-label fw-bold"> </label>
 							<div class="col-sm-10">
-								<input type="text" id="sample6_detailAddress" name="address2"
-									placeholder="상세주소" class="form-control">
+								<input type="text" id="sample6_detailAddress" name="address"
+									class="form-control">
 							</div>
-							<input type="hidden" name="address" id="plusAddress">
 						</div>
-
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">대표 전화번호:</label>
 							<div class="col-sm-10">
 								<input type="text" name="entPhone" class="form-control"
-									placeholder="대표 전화번호">
+									value="${entVO.entPhone}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
@@ -101,46 +98,42 @@
 							<label class="col-sm-2 col-form-label fw-bold">담당자명 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="mngName" class="form-control"
-									placeholder="담당자명">
+									value="${mngVO.mngName}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">부서 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="mngDept" class="form-control"
-									placeholder="부서">
+									value="${mngVO.mngDept}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">직급 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="mngRank" class="form-control"
-									placeholder="직급">
+									value="${mngVO.mngRank}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">전화번호 :</label>
 							<div class="col-sm-10">
 								<input type="text" name="mngPhone" class="form-control"
-									placeholder="전화번호">
+									value="${mngVO.mngPhone}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">아이디 :</label>
-							<div class="col-sm-5">
+							<div class="col-sm-10">
 								<input type="text" name="mngId" class="form-control"
-									placeholder="아이디">
-							</div>
-							<div class="col-sm-5">
-								<button type="button" onclick="" class="btn btn-outline-primary">중복
-									검사</button>
+									placeholder="아이디" value="${mngVO.mngId}" readonly="readonly">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">비밀번호 :</label>
 							<div class="col-sm-10">
 								<input type="password" name="mngPwd" class="form-control"
-									placeholder="비밀번호">
+									value="${mngVO.mngPwd}">
 							</div>
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
@@ -153,18 +146,30 @@
 						<div class="row mb-3 p-4 justify-content-center">
 							<label class="col-sm-2 col-form-label fw-bold">계정 활성 여부</label>
 							<div class="col-sm-10">
-								<div class="form-check form-switch">
-									<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
-									<input class="form-check-input" type="checkbox"
-										id="flexSwitchCheckDefault">
-								</div>
+								<c:if test="${0 eq mngVO.mngAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault">
+									</div>
+								</c:if>
+								<c:if test="${1 eq mngVO.mngAct}">
+									<div class="form-check form-switch">
+										<label class="form-check-label" for="flexSwitchCheckDefault">활성</label>
+										<input class="form-check-input" type="checkbox"
+											id="flexSwitchCheckDefault" checked>
+									</div>
+								</c:if>
 							</div>
+							<input type="hidden" name="mngAct" class="form-control">
 						</div>
-						<input type="hidden" name="mngAct" class="form-control">
+						<input type="hidden" name="adminId" class="form-control"
+							value='${login.adminId}'>
+
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-5 d-flex justify-content-center">
-								<button type="button" onclick="" class="btn btn-outline-danger btn-lg">취소</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary btn-lg mx-4">등록</button>
+								<button type="button" class="btn btn-outline-danger">취소</button>
+								<button type="submit" class="btn btn-outline-primary mx-4">저장</button>
 							</div>
 						</div>
 					</form>
@@ -175,6 +180,31 @@
 </section>
 </main>
 <jsp:include page="../include/admin_footer.jsp" />
+<script>
+	$(document)
+			.ready(
+					function() {
+
+						var formObj = $("form[role='form']");
+
+						console.log(formObj);
+
+						$(".btn-outline-danger")
+								.on(
+										"click",
+										function() {
+											self.location = "/admin/mngList?page=${cri.page}&perPageNum=${cri.perPageNum}"
+													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
+
+										});
+
+						$(".btn-outline-success").on("click", function() {
+							formObj.submit();
+						});
+					});
+</script>
+
+
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
@@ -221,7 +251,6 @@
 					}
 				}).open();
 	}
-
 	$('#flexSwitchCheckDefault').click(function() {
 		var checked = $('#flexSwitchCheckDefault').is(':checked');
 		if (checked == true) {
@@ -232,7 +261,6 @@
 			console.log($('input[name=mngAct]').val());
 		}
 	})
-
 	function onSubmitForm() {
 		var detail = document.getElementById("sample6_detailAddress").value;
 		var load = document.getElementById("sample6_address").value;
@@ -241,6 +269,7 @@
 
 	}
 </script>
+
 <!-- SD PROJECT JS -->
 
 <script
@@ -335,7 +364,9 @@
 														function(index) {
 															str += "<input type='hidden' name='registration'"
 																	+ " value='"
-																	+ $(this).attr("href")
+																	+ $(this)
+																			.attr(
+																					"href")
 																	+ "'> ";
 														});
 
@@ -480,48 +511,28 @@
 
 	});
 	//파일링크 처리(길이를 줄여줌)
-	function getOriginalName(noticeFileName) {
+	function getOriginalName(registration) {
 
-		if (checkImageType(noticeFileName)) {
+		if (checkImageType(registration)) {
 			return;
 		}
 
-		var idx = noticeFileName.indexOf("_") + 1;
-		return noticeFileName.substr(idx);
+		var idx = registration.indexOf("_") + 1;
+		return registration.substr(idx);
 
 	}
 	//이미지파일 원본 파일 찾기
-	function getImageLink(noticeFileName) {
+	function getImageLink(registration) {
 
-		if (!checkImageType(noticeFileName)) {
+		if (!checkImageType(registration)) {
 			return;
 		}
 		//noticeFileName.substring(0,12)/년/월/일 경로 추출  
 		//noticeFileName.substring(14) 파일 이름앞의 's_'제거
-		var front = noticeFileName.substr(0, 12);
-		var end = noticeFileName.substr(14);
+		var front = registration.substr(0, 12);
+		var end = registration.substr(14);
 
 		return front + end;
 
 	}
-</script>
-
-
-
-
-<script>
-	$(document).ready(function() {
-		var formObj = $("form[role='form']");
-
-		console.log(formObj);
-
-		$("#btn_submit").on("click", function() {
-
-			formObj.submit();
-		});
-
-		$(".btn-outline-danger").on("click", function() {
-			self.location = "/admin/mngList";
-		});
-	});
 </script>

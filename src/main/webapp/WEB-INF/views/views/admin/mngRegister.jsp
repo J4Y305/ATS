@@ -335,7 +335,9 @@
 														function(index) {
 															str += "<input type='hidden' name='registration'"
 																	+ " value='"
-																	+ $(this).attr("href")
+																	+ $(this)
+																			.attr(
+																					"href")
 																	+ "'> ";
 														});
 

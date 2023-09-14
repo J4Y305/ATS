@@ -43,7 +43,7 @@
 									<input type="date" id="startDate" class="form-control"
 										value=<fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annStartDate}"/>>
-									<input type="hidden" class="form-control" name="annStartDate" value="${annVO.annStartDate}">
+									<input type="hidden" class="form-control" name="annStartDate">
 								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
@@ -52,7 +52,7 @@
 									<input type="date" id="endDate" class="form-control"
 										value=<fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}"/>>
-									<input type="hidden" class="form-control" name="annEndDate" value="${annVO.annEndDate}">
+									<input type="hidden" class="form-control" name="annEndDate">
 								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
@@ -85,26 +85,6 @@
 									</div>
 									<div>
 										<ul class="dropzone-previews clearfix imageUploadedList">
-											<c:forEach items="${annImageVO}" var="iVo" varStatus="status">
-												<li class="dropzone-previews mt-3">
-													<div
-														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-														<div class="p-2">
-															<div class="row align-items-center">
-																<div class="col pl-0">
-																	<a href="/displayFile?fileName=${iVo.fileLocation}"
-																		text-muted font-weight-bold" data-dz-name="">${iVo.annImageName}</a>
-																</div>
-																<div class="col-auto">
-																	<a href="${iVo.fileLocation}"
-																		class="btn btn-danger delbtn"><i
-																		class="bi bi-exclamation-octagon"></i></a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
-											</c:forEach>
 										</ul>
 									</div>
 								</div>
@@ -132,26 +112,6 @@
 									</div>
 									<div>
 										<ul class="dropzone-previews clearfix uploadedList">
-											<c:forEach items="${annFileVO}" var="fVo" varStatus="status">
-												<li class="dropzone-previews mt-3">
-													<div
-														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-														<div class="p-2">
-															<div class="row align-items-center">
-																<div class="col pl-0">
-																	<a href="/displayFile?fileName=${fVo.fileLocation}"
-																		text-muted font-weight-bold" data-dz-name="">${fVo.annFileName}</a>
-																</div>
-																<div class="col-auto">
-																	<a href="${fVo.fileLocation}"
-																		class="btn btn-danger delbtn"><i
-																		class="bi bi-exclamation-octagon"></i></a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
-											</c:forEach>
 										</ul>
 									</div>
 								</div>
@@ -173,8 +133,7 @@
 											id="flexSwitchCheckDefault" checked>
 									</div>
 								</c:if>
-								<input type="hidden" name="annAct" class="form-control"
-									value="${annVO.annAct}">
+								<input type="hidden" name="annAct" class="form-control">
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
 								<div class="col-sm-5 d-flex justify-content-center">

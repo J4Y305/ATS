@@ -115,10 +115,6 @@ public class AdminController {
 			@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		// 1. 기업 정보 조회
 		EntVO eVo = mngService.entRead(entNum);
-		// 2. 사업자 등록증 파일 이름 추출
-		String text = eVo.getRegistration();
-		String[] text1 = text.split("-.*?_");
-		eVo.setFileName(text1[1]);
 		model.addAttribute(eVo);
 		// 3. 담당자 정보 조회
 		model.addAttribute(mngService.mngRead(mngId));

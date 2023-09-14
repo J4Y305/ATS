@@ -145,10 +145,10 @@ public class MngController {
 		model.addAttribute(annService.read(annNum));
 
 		// 이미지 첨부 파일
-		model.addAttribute("AnnImageVO", annService.imageList(annNum));
+		model.addAttribute("annImageVO", annService.imageList(annNum));
 
 		// 이미지 첨부 파일
-		model.addAttribute("AnnFileVO", annService.fileList(annNum));
+		model.addAttribute("annFileVO", annService.fileList(annNum));
 	}
 
 	@RequestMapping(value = "/annModifyPage", method = RequestMethod.POST)

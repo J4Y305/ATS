@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <jsp:include page="../include/user_header.jsp" />
 <main id="main" class="main" style="padding-top: 50px;"> <!-- End Page Title -->
 <section class="section">
@@ -83,8 +82,7 @@
 								<div class="row mb-3 ">
 									<label class="col-sm-3 col-form-label fw-bold">비고란 :</label>
 									<div class="col-sm-8">
-										<textarea class="form-control" name="etc"
-											style="height: 100px">${appVO.etc}</textarea>
+										<textarea class="form-control" name="etc" style="height: 100px">${appVO.etc}</textarea>
 									</div>
 								</div>
 								<div class="row mb-3">
@@ -108,38 +106,18 @@
 										</div>
 										<div>
 											<ul class="dropzone-previews clearfix uploadedList">
-												<c:set var="appName" value="${appVO.appFile}" />
-												<c:set var="appLength" value="${fn:length(appName)}" />
-												<li class="dropzone-previews mt-3">
-													<div
-														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
-														<div class="p-2">
-															<div class="row align-items-center">
-																<div class="col pl-0">
-																	<a href="/displayFile?fileName=${appVO.appFile}"
-																		text-muted font-weight-bold" data-dz-name="">${fn:substring(appName,50,appLength)}</a>
-																</div>
-																<div class="col-auto">
-																	<a href="${appVO.appFile}"
-																		class="btn btn-danger delbtn"><i
-																		class="bi bi-exclamation-octagon"></i></a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
 											</ul>
 										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<input type=hidden name="appSave">
+								</div>
+								</div>
+								<input type=hidden name="appSave">
 			</form>
 
 		</div>
 	</div>
-	<div class="row mb-3 p-4 justify-content-center">
+		<div class="row mb-3 p-4 justify-content-center">
 		<div class="col-sm-10 d-flex justify-content-center">
 			<button type="submit" class="btn btn-outline-primary btn-lg"
 				style="margin: 10px">최종제출</button>
@@ -202,6 +180,9 @@
 <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 <div class="p-2">
 <div class="row align-items-center">
+ <div class="col-auto">
+    <img data-dz-thumbnail="" class="avatar-sm rounded bg-light" src="{{imgsrc}}">
+ </div>
  <div class="col pl-0">
    <a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  </div>
