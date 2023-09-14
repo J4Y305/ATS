@@ -40,10 +40,10 @@
 								<div class="col-sm-5">
 									<div class="pt-2">
 										<c:if test="${0 eq evaVO.degree}">
-											<div class="col-sm-5 pt-2">1차</div>
+											1차
 										</c:if>
 										<c:if test="${1 eq evaVO.degree}">
-											<div class="col-sm-5 pt-2">2차</div>
+											2차
 										</c:if>
 									</div>
 								</div>
@@ -121,7 +121,7 @@
 									<ul class="pagination">
 										<c:if test="${pageMaker.prev}">
 											<li class="page-item"><a class="page-link"
-												href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+												href="evaReadPage${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 												aria-label="Previous"><span aria-hidden="true">&raquo;</span>
 											</a></li>
 										</c:if>
@@ -129,13 +129,13 @@
 											end="${pageMaker.endPage }" var="idx">
 											<li class="page-item"
 												<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-												<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+												<a class="page-link" href="evaReadPage${pageMaker.makeSearch(idx)}">${idx}</a>
 											</li>
 										</c:forEach>
 										<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 											<li class="page-item"><a class="page-link"
 												aria-label="Next"
-												href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+												href="evaReadPage${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
 													aria-hidden="true">&raquo;</span></a></li>
 										</c:if>
 
@@ -146,10 +146,13 @@
 							</div>
 						</div>
 					</div>
-					<div class="box-footer">
-						<div style="display: flex; justify-content: center;">
-							<button type="submit" class="btn btn-outline-primary">목록</button>
-							<!-- /.box-body -->
+					<div class="row mb-3 p-4 justify-content-center">
+
+							<div class="col-sm-10 d-flex justify-content-center">
+								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg">삭제</button>
+								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg mx-4">수정</button>
+								<button type="submit" onclick="" class="btn btn-outline-primary btn-lg">목록</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -166,10 +169,11 @@
 
 		console.log(formObj);
 
-		$("btn-outline-primary").on("click", function() {
-			formObj.attr("method", "get");
-			formObj.attr("action", "/evaList");
-			formObj.submit();
+		$(".btn-outline-primary").on("click", function() {
+			/* formObj.attr("method", "get");
+			formObj.attr("action", "mng/evaList");
+			formObj.submit(); */
+			self.location = "/mng/evaList";
 		});
 
 	});

@@ -69,7 +69,7 @@
 								<ul class="pagination ">
 									<c:if test="${pageMaker.prev}">
 										<li class="page-item d-flex"><a class="page-link"
-											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+											href="evaList${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
 										</a></li>
 									</c:if>
@@ -77,13 +77,13 @@
 										end="${pageMaker.endPage }" var="idx">
 										<li class="page-item"
 											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+											<a class="page-link" href="evaList${pageMaker.makeSearch(idx)}">${idx}</a>
 										</li>
 									</c:forEach>
 									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 										<li class="page-item"><a class="page-link"
 											aria-label="Next"
-											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+											href="evaList${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
 												aria-hidden="true">&raquo;</span></a></li>
 									</c:if>
 

@@ -41,8 +41,10 @@
 	</select>
 
 	<select id="listCountCriteria" resultType="int">
-		SELECT COUNT(*) FROM
-		TBL_APP
+		SELECT COUNT(*)
+		FROM TBL_ANN ANN, TBL_APP APP
+		WHERE ANN.ANN_NUM = #{keyword}
+        AND ANN.ANN_NUM = APP.ANN_NUM
 	</select>
 
 	<select id="listCriteria" resultType="com.ats.domain.AppVO">

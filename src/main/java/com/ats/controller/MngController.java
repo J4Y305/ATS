@@ -243,7 +243,27 @@ public class MngController {
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	@RequestMapping(value = "/annAppEndList", method = RequestMethod.GET)
+	public void annAppEndList(@RequestParam("annNum") int annNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
+		logger.info("Ann ReadPage Get...");
+		// 공고 정보 가져오기
+		model.addAttribute(annService.read(annNum));
 
+		// 지원서 리스트 가져오기
+		
+		cri.setKeyword(Integer.toString(annNum));
+		model.addAttribute("list", appService.listCriteria(cri));
+
+		// 페이징 네비게이션 추가
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(appService.listCountCriteria(cri));
+
+		// 페이징 정보 화면 전달
+		model.addAttribute("pageMaker", pageMaker);
 	}
 
 	@RequestMapping(value = "/appReadPage", method = RequestMethod.GET)

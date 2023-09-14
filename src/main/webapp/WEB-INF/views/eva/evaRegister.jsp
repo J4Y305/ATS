@@ -63,10 +63,10 @@
 								<label class="col-sm-3 col-form-label fw-bold">성별:</label>
 								<div class="col-sm-5">
 									<div class="pt-2">
-										<c:if test="${0 eq userVO.gender}">
+										<c:if test="${1 eq userVO.gender}">
 											<div class="col-lg-9 col-md-8">남자</div>
 										</c:if>
-										<c:if test="${1 eq userVO.gender}">
+										<c:if test="${2 eq userVO.gender}">
 											<div class="col-lg-9 col-md-8">여자</div>
 										</c:if>
 									</div>
