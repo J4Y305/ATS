@@ -18,6 +18,7 @@ import com.ats.domain.EvaVO;
 import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.PassVO;
+import com.ats.domain.RaterListVO;
 import com.ats.domain.RaterVO;
 import com.ats.domain.SearchCriteria;
 import com.ats.dto.AppEvaDTO;
@@ -75,6 +76,30 @@ public class EvaController {
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);
+	}
+
+	// READPAGE
+	@RequestMapping(value = "/evaPage", method = RequestMethod.POST)
+	public String evaPagePost(RaterListVO rVo, @RequestParam("evaNum") int evaNum, @RequestParam("raterId") String raterId, 
+							Model model, @ModelAttribute("cri") SearchCriteria cri, 
+							RedirectAttributes rttr)
+			throws Exception {
+		logger.info("evaPagePost.....");
+		
+		// 세션에서 평가자 아이디 정보 가져오기
+		
+		rVo.setEvaNum(evaNum);
+		rVo.setRaterId(raterId);
+		evaService.raterCompleteUpdate(rVo);
+
+		rttr.addFlashAttribute("msg", "SUCCESS");
+
+		// 페이징 및 검색 기능 유지
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+
+		return "redirect:/eva/evaList";
 	}
 
 	// READPAGE
@@ -207,14 +232,13 @@ public class EvaController {
 
 		// 평가 상세 정보
 		EvaVO eVo = evaService.read(evaNum);
-		
+
 		model.addAttribute(eVo);
-		
+
 		model.addAttribute(annService.read(eVo.getAnnNum()));
 
 		// 합격을 위한 처리하기 위한 전체 리스트 가져오기
 		model.addAttribute("list", evaService.listEvaPass(evaNum));
-
 
 	}
 
@@ -237,9 +261,9 @@ public class EvaController {
 
 		// 평가 상세 정보
 		EvaVO eVo = evaService.read(evaNum);
-		
+
 		model.addAttribute(eVo);
-		
+
 		model.addAttribute(annService.read(eVo.getAnnNum()));
 
 		// 합격을 위한 처리하기 위한 전체 리스트 가져오기

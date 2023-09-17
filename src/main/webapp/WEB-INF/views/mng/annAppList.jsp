@@ -91,8 +91,8 @@
 												<td>${appVO.appNum}</td>
 												<td><fmt:formatDate pattern="yyyy-MM-dd"
 														value="${appVO.appRegDate}" /></td>
-												<td><c:if test="${ 0 eq appVO.appSave}">O</c:if> <c:if
-														test="${ 1 eq appVO.appSave }">X</c:if></td>
+												<td><c:if test="${ 1 eq appVO.appSave}">O</c:if> <c:if
+														test="${ 0 eq appVO.appSave }">X</c:if></td>
 											</tr>
 										</c:forEach>
 									</tbody>

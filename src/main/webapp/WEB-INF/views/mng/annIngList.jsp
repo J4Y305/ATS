@@ -39,7 +39,7 @@
 												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
 											</c:if>
 											<td><a
-												href='/mng/annAppList${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
+												href='/mng/annAppList${pageMaker.makeSearch(pageMaker.cri.page)}&annNum=${annVO.annNum}'>
 													${annVO.annName} </a></td>
 											<td><fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annStartDate}" /></td>

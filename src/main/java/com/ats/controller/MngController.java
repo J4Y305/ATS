@@ -227,19 +227,17 @@ public class MngController {
 	@RequestMapping(value = "/annAppList", method = RequestMethod.GET)
 	public void annAppList(@RequestParam("annNum") int annNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
 			throws Exception {
-		logger.info("Ann ReadPage Get...");
+		logger.info("annAppList Get...");
 		// 공고 정보 가져오기
 		model.addAttribute(annService.read(annNum));
-
 		// 지원서 리스트 가져오기
-		
 		cri.setKeyword(Integer.toString(annNum));
-		model.addAttribute("list", appService.listCriteria(cri));
+		model.addAttribute("list", appService.finalApplistCriteria(cri));
 
 		// 페이징 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(appService.listCountCriteria(cri));
+		pageMaker.setTotalCount(appService.finalApplistCountCriteria(cri));
 
 		// 페이징 정보 화면 전달
 		model.addAttribute("pageMaker", pageMaker);

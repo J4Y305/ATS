@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.ats.domain.AppVO;
 import com.ats.domain.Criteria;
+import com.ats.domain.SearchCriteria;
 import com.ats.dto.AppEvaDTO;
 import com.ats.dto.AppListDTO;
 import com.ats.dto.AppPassDTO;
@@ -92,6 +93,16 @@ public class AppDAOImpl implements AppDAO{
 	@Override
 	public int listCountAppPass(String userId) throws Exception {
 		return session.selectOne(namespace + ".listCountAppPass", userId);
+	}
+
+	@Override
+	public List<AppVO> finalApplistCriteria(SearchCriteria cri) throws Exception {
+		return session.selectList(namespace + ".finalApplistCriteria", cri);
+	}
+
+	@Override
+	public int finalApplistCountCriteria(SearchCriteria cri) throws Exception {
+		return session.selectOne(namespace + ".finalApplistCountCriteria", cri);
 	}
 
 

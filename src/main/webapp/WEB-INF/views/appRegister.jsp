@@ -10,20 +10,20 @@
 <main id="main"> <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
 	<div class="container">
-	<div class="pagetitle">
-		<h2>${annVO.annName}</h2>
+		<div class="pagetitle">
+			<h2>${annVO.annName}</h2>
 		</div>
 		<!-- End Breadcrumbs -->
-		
-		
-		
+
+
+
 		<section id="pricing" class="pricing" style="padding-top: 1px;">
 			<div class="card" data-aos="fade-up">
 				<div class="card-body">
 					<div class="col-lg-20" data-aos="fade-up" data-aos-delay="100">
 						<div class="card justify-content-center" style="padding-top: 1px;">
 							<div class="card-body">
-							<h5 class="card-title fw-bold">지원서 작성</h5>
+								<h5 class="card-title fw-bold">지원서 작성</h5>
 								<form action="appRegister" method="post" role="form" name="frm"
 									class="php-email-form">
 									<input type='hidden' name='page' value="${cri.page}"> <input
@@ -37,84 +37,88 @@
 									<input type=hidden name="appSave">
 									<div class="row">
 										<div class="form-group col-md-6">
-											<label for="name" class="fw-bold">이름</label> <input type="text"
-												name="userName" class="form-control" id="name"
+											<label for="name" class="fw-bold">이름</label> <input
+												type="text" name="userName" class="form-control" id="name"
 												placeholder="${userVO.userName}" readonly>
 										</div>
 										<div class="form-group col-md-6">
-											<label for="phone" class="fw-bold">전화번호</label> <input type="text"
-												class="form-control" name="phone" id="phone"
+											<label for="phone" class="fw-bold">전화번호</label> <input
+												type="text" class="form-control" name="phone" id="phone"
 												placeholder="${userVO.userPhone}" readonly>
 										</div>
 									</div>
 									<div class="row">
-									<div class="form-group col-md-6">
-										<label for="email" class="fw-bold">이메일</label> <input type="email"
-											class="form-control" name="email" id="email"
-											placeholder="${userVO.userEmail}" readonly>
-									</div>
+										<div class="form-group col-md-6">
+											<label for="email" class="fw-bold">이메일</label> <input
+												type="email" class="form-control" name="email" id="email"
+												placeholder="${userVO.userEmail}" readonly>
+										</div>
 									</div>
 
 									<div class="row">
 										<div class="form-group col-md-6">
-											<label for="birthDay" class="fw-bold">생년월일</label> <input type="text" name="birthDay"
-												class="form-control" id="birthDay" placeholder="${userVO.birthDay}" readonly>
+											<label for="birthDay" class="fw-bold">생년월일</label> <input
+												type="text" name="birthDay" class="form-control"
+												id="birthDay" placeholder="${userVO.birthDay}" readonly>
 										</div>
 										<div class="form-group col-md-6">
 											<label for="gender" class="fw-bold">성별</label>
 											<c:if test="${1 eq userVO.gender}">
-											<input type="text" name="gender"
-												class="form-control" id="gender" placeholder="남자" readonly>
-												
+												<input type="text" name="gender" class="form-control"
+													id="gender" placeholder="남자" readonly>
+
 											</c:if>
 											<c:if test="${2 eq userVO.gender}">
-											<input type="text" name="gender"
-												class="form-control" id="gender" placeholder="여자" readonly>
-												</c:if>									
-												</div>
-											
+												<input type="text" name="gender" class="form-control"
+													id="gender" placeholder="여자" readonly>
+											</c:if>
 										</div>
-									
-									<div class="row">
-									<div class="form-group">
-										<label for="etc" class="fw-bold">비고란</label>
-										<textarea class="form-control" name="etc" rows="10" required></textarea>
+
 									</div>
-									<div class="row mb-3">
-										<label class="col-sm-3 col-form-label fw-bold">지원서 업로드 :</label>
-										<!-- <div id='mydropzone' class="dropzone"> -->
-										<div class="col-sm-8">
-											<div id='mydropzone'
-												class="alert alert-primary alert-dismissible fade show">
-												<input type="file" id="fileUpload" name="fileUpload"
-													style="visibility: hidden;" />
-												<div class="fileDrop">
-													<input type="hidden" id="uploadCount">
-													<div class="dz-message needsclick">
-														<i class="h1 text-muted dripicons-cloud-upload"></i>
-														<h4 class="alert-heading">Drop files here or click to
-															upload.</h4>
-														<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나
-															클릭해주세요</p>
+
+									<div class="row">
+										<div class="form-group">
+											<label for="etc" class="fw-bold">비고란</label>
+											<textarea class="form-control" name="etc" rows="10" required></textarea>
+										</div>
+										<div class="row mb-3">
+											<label class="col-sm-3 col-form-label fw-bold">지원서
+												업로드 :</label>
+											<!-- <div id='mydropzone' class="dropzone"> -->
+											<div class="col-sm-8">
+												<div id='mydropzone'
+													class="alert alert-primary alert-dismissible fade show">
+													<input type="file" id="fileUpload" name="fileUpload"
+														style="visibility: hidden;" />
+													<div class="fileDrop">
+														<input type="hidden" id="uploadCount">
+														<div class="dz-message needsclick">
+															<i class="h1 text-muted dripicons-cloud-upload"></i>
+															<h4 class="alert-heading">Drop files here or click
+																to upload.</h4>
+															<p class="mb-0">첨부파일을 업로드하려면 여기에 첨부파일 파일을 끌어 넣거나
+																클릭해주세요</p>
+														</div>
+
 													</div>
-													
-													</div>
-													
+
 												</div>
 												<ul class="dropzone-previews clearfix uploadedList">
 												</ul>
 											</div>
-											<div>
-											</div>
+											<div></div>
 										</div>
 									</div>
 								</form>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
-									<div class="col-sm-10 d-flex justify-content-center">
-									<button type="submit" class="btn btn-outline-primary btn-lg" style="margin:10px" value="1">최종제출</button>
-									<button type="submit" class="btn btn-outline-success btn-lg" style="margin:10px" value="0">임시저장</button>
-									<button type="submit" class="btn btn-outline-danger btn-lg" style="margin:10px">취소</button>
+								<div class="col-sm-10 d-flex justify-content-center">
+									<button type="submit" class="btn btn-outline-primary btn-lg"
+										style="margin: 10px" value="1">최종제출</button>
+									<button type="submit" class="btn btn-outline-success btn-lg"
+										style="margin: 10px" value="0">임시저장</button>
+									<button type="submit" class="btn btn-outline-danger btn-lg"
+										style="margin: 10px">취소</button>
 								</div>
 							</div>
 						</div>
@@ -182,16 +186,13 @@
 <li class="dropzone-previews mt-3">
 <div class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 <div class="p-2">
-<div class="row align-items-center">
- <div class="col-auto">
-    <img data-dz-thumbnail="" class="avatar-sm rounded bg-light" src="{{imgsrc}}">
- </div>
+<div class="row align-items-center pt-1">
  <div class="col pl-0">
    <a href="/displayFile?fileName={{fullName}}" text-muted font-weight-bold" data-dz-name="">{{fileName}}</a>
  </div>
  <div class="col-auto">
-   <a href="{{fullName}}" class="btn btn-danger delbtn"><i class="bi bi-exclamation-octagon"></i></a>
- </div>
+   <a href="{{fullName}}" class="btn btn-danger delbtn">삭제</a>
+</div>
 </div>
 </div>
 </div>

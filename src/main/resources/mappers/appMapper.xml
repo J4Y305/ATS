@@ -152,4 +152,26 @@
 						WHERE app.ANN_NUM = ann.ANN_NUM and ann.ANN_NUM = eva.ANN_NUM
 								and app.APP_NUM in (SELECT APP_NUM FROM TBL_APP WHERE USER_ID=#{userId})))]]>
 	</select>
+	
+	
+	<select id="finalApplistCriteria" resultType="com.ats.domain.AppVO">
+	<![CDATA[
+		SELECT * FROM (
+			SELECT ROWNUM RNUM, USER_ID, ANN_NUM, APP_NUM, APP_FILE, ETC, APP_REG_DATE, APP_SAVE, 
+			(SELECT COUNT(*) FROM TBL_APP_EVA WHERE TBL_APP_EVA.APP_NUM = APP.APP_NUM) AS EVA_END
+				FROM (SELECT * FROM TBL_APP WHERE ANN_NUM = #{keyword} AND APP_SAVE = 1 ORDER BY APP_NUM DESC) APP )			
+		WHERE (RNUM >= #{pageStart} AND RNUM <= #{pageEnd})
+		ORDER BY APP_NUM DESC, APP_REG_DATE DESC
+		]]>
+	</select>
+
+	<select id="finalApplistCountCriteria" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*)
+		FROM TBL_ANN ANN, TBL_APP APP
+		WHERE ANN.ANN_NUM = #{keyword}
+		AND APP.APP_SAVE = 1
+        AND ANN.ANN_NUM = APP.ANN_NUM
+		]]>
+	</select>
 </mapper>

@@ -150,7 +150,7 @@
 
 
 	<update id="raterCompleteUpdate">
-		UPDATE TBL_RATER_LIST SET COMPLETE = #{complete}
+		UPDATE TBL_RATER_LIST SET COMPLETE = 1
 		WHERE EVA_NUM = #{evaNum} AND RATER_ID = #{raterId}
 	</update>
 
