@@ -32,6 +32,7 @@ import com.ats.service.MngService;
 import com.ats.service.RaterService;
 import com.ats.service.UserService;
 
+
 @Controller
 @RequestMapping("/mng/*")
 public class MngController {
