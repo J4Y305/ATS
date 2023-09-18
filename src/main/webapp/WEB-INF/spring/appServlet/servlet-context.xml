@@ -90,7 +90,6 @@
 			<mapping path="/mng/**" />
 			<mapping path="/rater/**" />
 			<mapping path="/eva/**"/>
-			<mapping path="/appRegister/**"/>
 			<exclude-mapping path="/admin/login"/>
 			<exclude-mapping path="/user/login"/>
 			<exclude-mapping path="/user/userRegister"/>
@@ -102,7 +101,7 @@
 			<exclude-mapping path="/rater/loginPost"/>
 			<beans:ref bean="AuthInterceptor" />
 		</interceptor>
-	</interceptors>
+	</interceptors> 
 
 
 
