@@ -112,6 +112,15 @@
 <!-- End #main -->
 
 <jsp:include page="../include/admin_footer.jsp" />
+
+<script>
+var result = '${msg}';
+
+if (result == 'SUCCESS') {
+   alert("처리가 완료되었습니다.");
+}
+</script>
+
 <script>
 	$(document).ready(function() {
 		var formObj = $("form[role='form']");
@@ -131,10 +140,13 @@
 						});
 				
 				$('.btn-outline-danger').on("click", function() {
-					var userId = $(this).data("userid");
-					formObj.find(".userIdField").val(userId);
-					formObj.attr("action", "/admin/userRemovePage");
-					formObj.submit();
+					if(confirm("삭제하시겠습니까?")){
+						var userId = $(this).data("userid");
+						formObj.find(".userIdField").val(userId);
+						formObj.attr("action", "/admin/userRemovePage");
+						formObj.submit();
+					}
+					
 				})
 
 			});

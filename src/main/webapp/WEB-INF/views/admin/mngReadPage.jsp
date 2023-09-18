@@ -148,12 +148,12 @@
 								</div>
 								<div class="row mb-3 p-4 justify-content-center">
 									<div class="col-sm-10 d-flex justify-content-center">
-										<button type="submit" onclick=""
-											class="btn btn-outline-danger">삭제</button>
-										<button type="submit" onclick=""
-											class="btn btn-outline-warning mx-4">수정</button>
-										<button type="submit" onclick=""
-											class="btn btn-outline-primary">목록</button>
+										<button type="button" onclick=""
+											class="btn btn-outline-danger btn-lg">삭제</button>
+										<button type="button" onclick=""
+											class="btn btn-outline-warning btn-lg mx-4">수정</button>
+										<button type="button" onclick=""
+											class="btn btn-outline-primary btn-lg">목록</button>
 									</div>
 								</div>
 							</div>
@@ -180,8 +180,11 @@
 		});
 
 		$(".btn-outline-danger").on("click", function() {
-			formObj.attr("action", "/admin/mngRemovePage");
-			formObj.submit();
+			if(confirm("삭제하시겠습니까?")){
+				formObj.attr("action", "/admin/mngRemovePage");
+				formObj.submit();
+			}
+			
 		});
 
 		$(".btn-outline-primary").on("click", function() {

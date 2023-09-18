@@ -521,7 +521,11 @@
 		});
 
 		$(".btn-outline-danger").on("click", function() {
-			self.location = "/admin/mngList";
+			if(confirm("등록을 취소하시겠습니까?")){
+				self.location = "/admin/mngList";	
+			}
+				
+			
 		});
 	});
 </script>

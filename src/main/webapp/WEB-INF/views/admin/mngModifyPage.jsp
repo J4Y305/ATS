@@ -95,14 +95,14 @@
 												class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
 												<div class="p-2">
 													<div class="row align-items-center">
-														<div class="col-auto">
-														</div>
+														<div class="col-auto"></div>
 														<div class="col pl-0">
-															<a href="/displayFile?fileName=${entVO.registration}" text-muted
-																font-weight-bold" data-dz-name="">${entVO.fileName}</a>
+															<a href="/displayFile?fileName=${entVO.registration}"
+																text-muted font-weight-bold" data-dz-name="">${entVO.fileName}</a>
 														</div>
 														<div class="col-auto">
-															<a href="${entVO.registration}" class="btn btn-danger delbtn"><i
+															<a href="${entVO.registration}"
+																class="btn btn-danger delbtn"><i
 																class="bi bi-exclamation-octagon"></i></a>
 														</div>
 													</div>
@@ -180,15 +180,16 @@
 									</div>
 								</c:if>
 							</div>
-							<input type="hidden" name="mngAct" value="${mngVO.mngAct}" class="form-control">
+							<input type="hidden" name="mngAct" value="${mngVO.mngAct}"
+								class="form-control">
 						</div>
 						<input type="hidden" name="adminId" class="form-control"
 							value='${login.adminId}'>
 
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-5 d-flex justify-content-center">
-								<button type="button" class="btn btn-outline-danger">취소</button>
-								<button type="submit" class="btn btn-outline-primary mx-4">저장</button>
+								<button type="button" class="btn btn-outline-danger btn-lg">취소</button>
+								<button type="button" class="btn btn-outline-primary btn-lg mx-4">저장</button>
 							</div>
 						</div>
 					</form>
@@ -208,17 +209,17 @@
 
 						console.log(formObj);
 
-						$(".btn-outline-danger")
-								.on(
-										"click",
-										function() {
-											self.location = "/admin/mngList?page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
-
+						$(".btn-outline-danger").on("click",function() {
+							if(confirm("수정을 취소하시겠습니까?")){
+								self.location = "/admin/mngList?page=${cri.page}&perPageNum=${cri.perPageNum}"
+									+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";	
+							}
 										});
 
-						$(".btn-outline-success").on("click", function() {
-							formObj.submit();
+						$(".btn-outline-primary").on("click", function() {
+							if(confirm("수정하시겠습니까?")){
+								formObj.submit();
+							}
 						});
 					});
 </script>
