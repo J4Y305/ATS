@@ -101,7 +101,7 @@
 			<exclude-mapping path="/rater/loginPost"/>
 			<beans:ref bean="AuthInterceptor" />
 		</interceptor>
-	</interceptors> 
+	</interceptors>
 
 
 
