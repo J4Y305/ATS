@@ -90,7 +90,7 @@
 			<mapping path="/mng/**" />
 			<mapping path="/rater/**" />
 			<mapping path="/eva/**"/>
-			<mapping path="/appRegister"/>
+			<mapping path="/appRegister/**"/>
 			<exclude-mapping path="/admin/login"/>
 			<exclude-mapping path="/user/login"/>
 			<exclude-mapping path="/user/userRegister"/>
