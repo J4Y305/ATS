@@ -85,22 +85,23 @@
 		</interceptor>
 
 		<interceptor>
-			<mapping path="/admin/**"/>
-			<mapping path="/user/**" />
-			<mapping path="/mng/**" />
-			<mapping path="/rater/**" />
-			<mapping path="/eva/**"/>
-			<exclude-mapping path="/admin/login"/>
-			<exclude-mapping path="/user/login"/>
-			<exclude-mapping path="/user/userRegister"/>
-			<exclude-mapping path="/mng/login"/>
-			<exclude-mapping path="/rater/login"/>
-			<exclude-mapping path="/admin/loginPost"/>
-			<exclude-mapping path="/user/loginPost"/>
-			<exclude-mapping path="/mng/loginPost"/>
-			<exclude-mapping path="/rater/loginPost"/>
-			<beans:ref bean="AuthInterceptor" />
-		</interceptor>
+         <mapping path="/admin/**"/>
+         <mapping path="/user/**" />
+         <mapping path="/mng/**" />
+         <mapping path="/rater/**" />
+         <mapping path="/eva/**"/>
+         <mapping path="/appRegister/**"/>
+         <exclude-mapping path="/admin/login"/>
+         <exclude-mapping path="/user/login"/>
+         <exclude-mapping path="/user/userRegister"/>
+         <exclude-mapping path="/mng/login"/>
+         <exclude-mapping path="/rater/login"/>
+         <exclude-mapping path="/admin/loginPost"/>
+         <exclude-mapping path="/user/loginPost"/>
+         <exclude-mapping path="/mng/loginPost"/>
+         <exclude-mapping path="/rater/loginPost"/>
+         <beans:ref bean="AuthInterceptor" />
+      </interceptor>
 	</interceptors>
 
 

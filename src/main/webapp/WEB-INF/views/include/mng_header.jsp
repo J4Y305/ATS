@@ -290,7 +290,7 @@
 
 		<ul class="sidebar-nav" id="sidebar-nav">
 
-			<li class="nav-item"><a class="nav-link " href="/mng">
+			<li class="nav-item"><a class="nav-link " href="/mng/mngInfo">
 					<i class="bi bi-grid"></i> <span>기업 담당자</span>
 			</a></li>
 			<!-- End Dashboard Nav -->
@@ -334,6 +334,7 @@
 								관리</span>
 					</a></li>
 				</ul></li>
+				
 			<!-- End Icons Nav -->
 		</ul>
 

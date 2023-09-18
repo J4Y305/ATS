@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ats.domain.AnnVO;
 import com.ats.domain.AppEvaVO;
 import com.ats.domain.AppVO;
+import com.ats.domain.EntVO;
 import com.ats.domain.EvaVO;
 import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
@@ -251,7 +252,7 @@ public class MngController {
 		model.addAttribute(annService.read(annNum));
 
 		// 지원서 리스트 가져오기
-		
+
 		cri.setKeyword(Integer.toString(annNum));
 		model.addAttribute("list", appService.listCriteria(cri));
 
@@ -265,8 +266,8 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/appReadPage", method = RequestMethod.GET)
-	public void appReadPage(@RequestParam("appNum") int appNum,@RequestParam("annNum") int annNum, @ModelAttribute("cri") SearchCriteria cri, Model model)
-			throws Exception {
+	public void appReadPage(@RequestParam("appNum") int appNum, @RequestParam("annNum") int annNum,
+			@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		logger.info("Ann ReadPage Get...");
 
 		AnnVO anVo = annService.read(annNum);
@@ -499,4 +500,59 @@ public class MngController {
 		return "redirect:/mng/evaList";
 	}
 
+	@RequestMapping(value = "/mngInfo", method = RequestMethod.GET)
+	public void infoGET(HttpSession session, Model model) throws Exception {
+
+		// 세션 객체 안에 있는 ID정보 저장
+		MngVO login = (MngVO) session.getAttribute("login");
+		String mngId = (String)login.getMngId();
+		logger.info("C: 회원정보보기 GET의 아이디 " + mngId);
+
+		// 서비스안의 회원정보보기 메서드 호출
+		MngVO mVo = mngService.mngRead(mngId);
+		System.out.println(mVo);
+		
+		// 기업정보 조회
+		EntVO eVo = mngService.entRead(mVo.getEntNum());
+		System.out.println(eVo);
+		// 정보저장 후 페이지 이동
+		model.addAttribute("mmgVO", mVo);
+		model.addAttribute("entVO", eVo);
+
+	}
+
+	/* 회원정보 수정 */
+	@RequestMapping(value = "/mngModifyPage", method = RequestMethod.GET)
+	public void modifyGET(HttpSession session, Model model) throws Exception {
+		// 세션 객체 안에 있는 ID정보 저장
+		String mngId = (String) session.getAttribute("mngId");
+		logger.info("C: 회원정보보기 GET의 아이디 " + mngId);
+
+		// 서비스안의 회원정보보기 메서드 호출
+		MngVO mVo = mngService.mngRead(mngId);
+
+		// 기업정보 조회
+		EntVO eVo = mngService.entRead(mVo.getEntNum());
+
+		// 정보저장 후 페이지 이동
+		model.addAttribute("mmgVO", mVo);
+		model.addAttribute("entVO", eVo);
+	}
+
+	@RequestMapping(value = "/mngModifyPage", method = RequestMethod.POST)
+	public String modifyPOST(EntVO eVo, MngVO mVo, @ModelAttribute("cri") SearchCriteria cri,
+			RedirectAttributes rttr) throws Exception {
+		logger.info("C: 회원정보수정 입력페이지 POST");
+
+		mngService.modify(eVo, mVo);
+
+		// 페이징 및 검색 기능 유지
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		return "/mng/";
+	}
 }
