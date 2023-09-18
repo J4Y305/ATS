@@ -16,7 +16,7 @@ public interface RaterService {
 
 	public void modify(RaterVO vo) throws Exception;
 
-	public void remove(String raterId) throws Exception;
+	public int remove(String raterId);
 
 	public List<RaterVO> listSearch(SearchCriteria cri) throws Exception;
 

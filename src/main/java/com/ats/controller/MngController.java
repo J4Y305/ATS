@@ -213,6 +213,7 @@ public class MngController {
 		MngVO mVo = (MngVO) session.getAttribute("login");
 		cri.setKeyword(mVo.getMngId());
 
+		annService.deadLineUpdate();
 		// 본인이 작성한 공고글 리스트 가져오기
 		model.addAttribute("list", annService.listEndSearch(cri));
 
@@ -249,7 +250,7 @@ public class MngController {
 			throws Exception {
 		logger.info("Ann ReadPage Get...");
 		// 공고 정보 가져오기
-		model.addAttribute(annService.read(annNum));
+		model.addAttribute(annService.read(annNum));		
 
 		// 지원서 리스트 가져오기
 
@@ -304,8 +305,18 @@ public class MngController {
 	@RequestMapping(value = "/raterRemovePage", method = RequestMethod.POST)
 	public String remove(@RequestParam("raterId") String raterId, RedirectAttributes rttr) throws Exception {
 
-		raterService.remove(raterId);
-		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		int removeNum = raterService.remove(raterId);
+		if(removeNum==1) {
+			System.out.println("이미 평가가 존재합니다.");
+			rttr.addFlashAttribute("msg", "FAIL");
+		}
+		else {
+			System.out.println("삭제가 완료되었습니다.");
+			rttr.addFlashAttribute("msg", "SUCCESS");
+			
+		}
+		
 
 		return "redirect:/mng/raterList";
 	}
@@ -492,9 +503,16 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/evaRemovePage", method = RequestMethod.POST)
-	public String remove(@RequestParam("evaNum") int evaNum, RedirectAttributes rttr) throws Exception {
+	public String evaRemove(@RequestParam("evaNum") int evaNum, @ModelAttribute("cri") SearchCriteria cri,
+			RedirectAttributes rttr) throws Exception {
 
 		evaService.remove(evaNum);
+		
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
+		
 		rttr.addFlashAttribute("msg", "SUCCESS");
 
 		return "redirect:/mng/evaList";

@@ -41,8 +41,13 @@ public class RaterDAOImpl implements RaterDAO {
 	}
 
 	@Override
-	public void delete(String raterId) throws Exception {
-		sqlSession.delete(namespace + ".delete", raterId);
+	public int delete(String raterId) {
+		try {
+			sqlSession.delete(namespace + ".delete", raterId);
+			return 0;
+		} catch (Exception e) {
+			return 1;
+		}
 
 	}
 

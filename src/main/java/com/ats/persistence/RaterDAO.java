@@ -16,7 +16,7 @@ public interface RaterDAO {
 
 	public void update(RaterVO vo) throws Exception;
 
-	public void delete(String raterId) throws Exception;
+	public int delete(String raterId);
 
 	public List<RaterVO> listSearch(SearchCriteria cri) throws Exception;
 

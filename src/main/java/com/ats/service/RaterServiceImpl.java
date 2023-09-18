@@ -12,8 +12,8 @@ import com.ats.dto.RaterLoginDTO;
 import com.ats.persistence.RaterDAO;
 
 @Service
-public class RaterServiceImpl implements RaterService{
-	
+public class RaterServiceImpl implements RaterService {
+
 	@Inject
 	private RaterDAO dao;
 
@@ -38,8 +38,9 @@ public class RaterServiceImpl implements RaterService{
 	}
 
 	@Override
-	public void remove(String raterId) throws Exception {
-		dao.delete(raterId);
+	public int remove(String raterId){
+		return dao.delete(raterId);
+		
 	}
 
 	@Override
