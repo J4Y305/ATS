@@ -38,13 +38,7 @@ public class MngServiceImpl implements MngService {
 	public EntVO entRead(int entNum) throws Exception {
 		// 1. 기업 정보 조회
 		EntVO eVo = dao.entRead(entNum);
-		// 2. 사업자 등록증 파일 이름 추출
-		// 2-1 사업자 등록증 여부 확인
-		if(eVo.getRegistration()!= null) {
-			String text = eVo.getRegistration();
-			String[] text1 = text.split("-.*?_");
-			eVo.setFileName(text1[1]);
-		}
+
 		return eVo;
 	}
 
@@ -75,7 +69,5 @@ public class MngServiceImpl implements MngService {
 	public int listSearchCount(SearchCriteria cri) throws Exception {
 		return dao.listSearchCount(cri);
 	}
-
-
 
 }

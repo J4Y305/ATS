@@ -19,7 +19,8 @@
 
 	<select id="read" resultType="com.ats.domain.AppVO">
 		SELECT USER_ID, ANN_NUM, APP_NUM,
-		APP_FILE, ETC, APP_REG_DATE, APP_SAVE
+		APP_FILE, ETC, APP_REG_DATE, APP_SAVE,
+        SUBSTR(APP_FILE, 50) AS FILE_NAME
 		FROM TBL_APP
 		WHERE APP_NUM =
 		#{appNum}

@@ -12,6 +12,7 @@ public class AppVO {
 	private Date appRegDate;
 	private int appSave;
 	private int evaEnd;
+	private String fileName;
 
 	public String getUserId() {
 		return userId;
@@ -77,12 +78,19 @@ public class AppVO {
 		this.evaEnd = evaEnd;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	@Override
 	public String toString() {
 		return "AppVO [userId=" + userId + ", annNum=" + annNum + ", appNum=" + appNum + ", appFile=" + appFile
-				+ ", etc=" + etc + ", appRegDate=" + appRegDate + ", appSave=" + appSave + ", evaEnd=" + evaEnd + "]";
+				+ ", etc=" + etc + ", appRegDate=" + appRegDate + ", appSave=" + appSave + ", evaEnd=" + evaEnd
+				+ ", fileName=" + fileName + "]";
 	}
-	
-	
 
 }

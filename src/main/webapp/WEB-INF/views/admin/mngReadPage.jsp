@@ -61,7 +61,7 @@
 									<c:choose>
 										<c:when test="${null eq entVO.registration}">
 											<div class="col-sm-5">
-												<div class="pt-2">"등록된 정보가 없습니다."</div>
+												<div class="pt-2">등록된 정보가 없습니다.</div>
 											</div>
 										</c:when>
 										<c:otherwise>

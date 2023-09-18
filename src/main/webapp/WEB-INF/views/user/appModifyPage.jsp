@@ -108,8 +108,6 @@
 										</div>
 										<div>
 											<ul class="dropzone-previews clearfix uploadedList">
-												<c:set var="appName" value="${appVO.appFile}" />
-												<c:set var="appLength" value="${fn:length(appName)}" />
 												<li class="dropzone-previews mt-3">
 													<div
 														class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
@@ -117,7 +115,7 @@
 															<div class="row align-items-center">
 																<div class="col pl-0">
 																	<a href="/displayFile?fileName=${appVO.appFile}"
-																		text-muted font-weight-bold" data-dz-name="">${fn:substring(appName,50,appLength)}</a>
+																		text-muted font-weight-bold" data-dz-name="">${appVO.fileName}</a>
 																</div>
 																<div class="col-auto">
 																	<a href="${appVO.appFile}"
