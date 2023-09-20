@@ -16,12 +16,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.ats.domain.AnnVO;
 import com.ats.domain.AppEvaVO;
 import com.ats.domain.AppVO;
+import com.ats.domain.EntVO;
 import com.ats.domain.EvaVO;
 import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.RaterVO;
 import com.ats.domain.SearchCriteria;
-import com.ats.dto.AppEvaDTO;
 import com.ats.dto.MngLoginDTO;
 import com.ats.service.AnnService;
 import com.ats.service.AppEvaService;
@@ -516,5 +516,51 @@ public class MngController {
 
 		return "redirect:/mng/evaList";
 	}
+	
+	@RequestMapping(value = "/mngInfo", method = RequestMethod.GET)
+	   public void infoGET(HttpSession session, Model model) throws Exception {
+
+	      // 세션 객체 안에 있는 ID정보 저장
+	      MngVO login = (MngVO) session.getAttribute("login");
+	      String mngId = (String)login.getMngId();
+	      logger.info("C: 회원정보보기 GET의 아이디 " + mngId);
+	      
+	      EntVO eVo = mngService.entRead(login.getEntNum());
+	      model.addAttribute(eVo);
+	      
+	      model.addAttribute(mngService.mngRead(mngId));
+	   }
+	   
+
+
+	   /* 회원정보 수정 */
+	   @RequestMapping(value = "/mngModifyPage", method = RequestMethod.GET)
+	   public void modifyGET(HttpSession session, Model model) throws Exception {
+	      // 세션 객체 안에 있는 ID정보 저장
+	      MngVO login = (MngVO) session.getAttribute("login");
+	      String mngId = (String)login.getMngId();
+	      logger.info("C: 회원정보보기 GET의 아이디 " + mngId);
+
+	      // 서비스안의 회원정보보기 메서드 호출
+	      MngVO mVo = mngService.mngRead(mngId);
+
+	      // 기업정보 조회
+	      EntVO eVo = mngService.entRead(login.getEntNum());
+
+	      // 정보저장 후 페이지 이동
+	      model.addAttribute("mngVO", mVo);
+	      model.addAttribute("entVO", eVo);
+	   }
+
+	   @RequestMapping(value = "/mngModifyPage", method = RequestMethod.POST)
+	   public String modifyPOST(EntVO eVo, MngVO mVo, @ModelAttribute("cri") SearchCriteria cri,
+	         RedirectAttributes rttr) throws Exception {
+	      logger.info("C: 회원정보수정 입력페이지 POST");
+
+	      mngService.modify(eVo, mVo);
+
+	      rttr.addFlashAttribute("msg", "SUCCESS");
+	      return "redirect:/mng/mngInfo";
+	   }
 
 }
