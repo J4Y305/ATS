@@ -218,6 +218,8 @@
 
 						$(".btn-outline-primary").on("click", function() {
 							if(confirm("수정하시겠습니까?")){
+								formObj.attr("method", "post");
+								formObj.attr("action", "/mng/annModifyPage");
 								formObj.submit();
 							}
 						});

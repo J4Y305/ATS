@@ -49,6 +49,13 @@
 										<input type="hidden" class="form-control" name="evaEndDate">
 									</div>
 								</div>
+								<!-- <div class="row mb-3 p-4 justify-content-center">
+									<label class="col-sm-2 col-form-label fw-bold">평가 공개일:</label>
+									<div class="col-sm-10">
+										<input type="date" id="endDate" class="form-control">
+										<input type="hidden" class="form-control" name="evaEndDate">
+									</div>
+								</div> -->
 								<div class="row mb-3 p-4 justify-content-center">
 									<label class="col-sm-2 col-form-label fw-bold">해당 공고:</label>
 									<div class="col-sm-10">
@@ -370,7 +377,7 @@ function updateResult() {
 										if ($(this).is(":checked")) {
 											var text = $(this).val();
 								            str += "<input type='hidden' name='raterList'"+ " value='"+text+ "'> ";
-								            alert("rater" + text);
+								            //alert("rater" + text);
 								        } 
 
 							      });

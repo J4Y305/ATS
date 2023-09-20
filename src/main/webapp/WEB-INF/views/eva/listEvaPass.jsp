@@ -151,7 +151,7 @@
 	<div class="row mb-3 p-4 justify-content-center">
 		<div class="col-sm-5 d-flex justify-content-center">
 			<button type="button" class="btn btn-outline-primary btn-lg">목록</button>
-			<button type="submit" class="btn btn-outline-success btn-lg mx-4">등록</button>
+			<button type="button" class="btn btn-outline-success btn-lg mx-4">등록</button>
 		</div>
 	</div>
 	</main>
@@ -175,9 +175,11 @@
 							});
 
 							$(".btn-outline-success").on("click", function() {
-							formObj.attr("method", "post");
-							formObj.attr("action", "/eva/evaPassRegister");
-							formObj.submit();
+								if(confirm("평가결과를 등록하시겠습니까?")){
+									formObj.attr("method", "post");
+									formObj.attr("action", "/eva/evaPassRegister");							
+									formObj.submit();
+								}
 							});
 
 							function genRowspan(className) {

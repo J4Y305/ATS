@@ -149,9 +149,9 @@
 					<div class="row mb-3 p-4 justify-content-center">
 
 							<div class="col-sm-10 d-flex justify-content-center">
-								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg">삭제</button>
-								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg mx-4">수정</button>
-								<button type="submit" onclick="" class="btn btn-outline-primary btn-lg">목록</button>
+								<button type="button" onclick="" class="btn btn-outline-danger btn-lg">삭제</button>
+								<button type="button" onclick="" class="btn btn-outline-warning btn-lg mx-4">수정</button>
+								<button type="button" onclick="" class="btn btn-outline-primary btn-lg">목록</button>
 							</div>
 						</div>
 					</div>
@@ -160,6 +160,14 @@
 		</div>
 	</div>
 </section>
+<form class="row g-3" role="form" method="post" name="frm" action="mngModifyPage">
+	<input type='hidden' name='page' value="${cri.page}"> 
+	<input type='hidden' name='perPageNum' value="${cri.perPageNum}">
+	<input type='hidden' name='searchType' value="${cri.searchType}">
+	<input type='hidden' name='keyword' value="${cri.keyword}">
+	<input type="hidden" name="mngId" class="form-control" value='${login.mngId}'> 
+	<input type="hidden" name="evaNum" class="form-control" value='${evaVO.evaNum}'>
+</form>
 </main>
 <!-- End #main -->
 <script>
@@ -174,6 +182,19 @@
 			formObj.attr("action", "mng/evaList");
 			formObj.submit(); */
 			self.location = "/mng/evaList";
+		});
+		
+		$(".btn-outline-danger").on("click", function() {
+			console.log("BTN DANGER");
+			formObj.attr("action", "/mng/evaRemovePage");
+			formObj.submit();
+		});
+		
+		$(".btn-outline-warning").on("click", function() {
+			console.log("BTN WARNING");
+			formObj.attr("action", "/mng/evaModifyPage");
+			formObj.attr("method", "get");
+			formObj.submit();
 		});
 
 	});

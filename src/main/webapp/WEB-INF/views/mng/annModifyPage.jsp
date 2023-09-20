@@ -179,7 +179,7 @@
 							<div class="row mb-3 p-4 justify-content-center">
 								<div class="col-sm-5 d-flex justify-content-center">
 									<button type="button" class="btn btn-outline-danger btn-lg">취소</button>
-									<button type="submit"
+									<button type="button"
 										class="btn btn-outline-primary btn-lg mx-4">저장</button>
 								</div>
 							</div>
@@ -672,17 +672,17 @@
 
 						console.log(formObj);
 
-						$(".btn-outline-danger")
-								.on(
-										"click",
-										function() {
-											self.location = "/mng/annList?page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";
-
+						$(".btn-outline-danger").on("click", function() {
+							if(confirm("수정을 취소하시겠습니까?")){
+								self.location = "/mng/annList?page=${cri.page}&perPageNum=${cri.perPageNum}"
+									+ "&searchType=${cri.searchType}&keyword=${cri.keyword}";	
+							}
 										});
 
-						$(".btn-outline-success").on("click", function() {
-							formObj.submit();
+						$(".btn-outline-primary").on("click", function() {
+							if(confirm("수정하시겠습니까?")){
+								formObj.submit();
+							}
 						});
 					});
 </script>

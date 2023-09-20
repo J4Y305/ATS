@@ -139,11 +139,11 @@
 	</div>
 	<div class="row mb-3 p-4 justify-content-center">
 		<div class="col-sm-10 d-flex justify-content-center">
-			<button type="submit" class="btn btn-outline-primary btn-lg"
+			<button type="button" class="btn btn-outline-primary btn-lg"
 				style="margin: 10px">최종제출</button>
-			<button type="submit" class="btn btn-outline-success btn-lg"
+			<button type="button" class="btn btn-outline-success btn-lg"
 				style="margin: 10px">임시저장</button>
-			<button type="submit" class="btn btn-outline-danger btn-lg"
+			<button type="button" class="btn btn-outline-danger btn-lg"
 				style="margin: 10px">취소</button>
 		</div>
 	</div>
@@ -162,10 +162,12 @@
 		console.log(formObj);
 
 		$(".btn-outline-primary").on("click", function() {
-			$('input[name=appSave]').val(1);
-			formObj.attr("method", "post");
-			formObj.attr("action", "/user/appModifyPage");
-			formObj.submit();
+			if(confirm("최종 제출하면 수정이 불가합니다. 최종 제출하시겠습니까?")){
+				$('input[name=appSave]').val(1);
+				formObj.attr("method", "post");
+				formObj.attr("action", "/user/appModifyPage");
+				formObj.submit();
+			}
 		});
 
 		$(".btn-outline-success").on("click", function() {

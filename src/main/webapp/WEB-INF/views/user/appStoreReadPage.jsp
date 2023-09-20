@@ -73,8 +73,8 @@
 						</div>
 						<div class="row mb-3 p-4 justify-content-center">
 							<div class="col-sm-10 d-flex justify-content-center">
-								<button type="submit" onclick="" class="btn btn-outline-danger btn-lg" style="margin:10px">삭제</button>
-								<button type="submit" onclick="" class="btn btn-outline-warning btn-lg" style="margin:10px">수정</button>
+								<button type="button" onclick="" class="btn btn-outline-danger btn-lg" style="margin:10px">삭제</button>
+								<button type="button" onclick="" class="btn btn-outline-warning btn-lg" style="margin:10px">수정</button>
 								<button type="button" class="btn btn-outline-primary btn-lg" style="margin:10px">목록</button>
 							</div>
 						</div>
@@ -102,8 +102,10 @@
 		});
 
 		$(".btn-outline-danger").on("click", function() {
-			formObj.attr("action", "/user/appRemovePage");
-			formObj.submit();
+			if(confirm("삭제하시겠습니까?")){
+				formObj.attr("action", "/user/appRemovePage");
+				formObj.submit();
+			}
 		});
 
 		$(".btn-outline-primary").on("click", function() {

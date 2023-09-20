@@ -181,7 +181,7 @@
 											<div class="col-lg-9 col-md-8 pt-2">비활성</div>
 										</c:if>
 										<c:if test="${1 eq annVO.annAct}">
-											<div class="col-lg-9 col-md-8 pt-2">활성</div>
+											<div class="col-lg-9 col-md-8 pt-2" >활성</div>
 										</c:if>
 									</div>
 								</div>

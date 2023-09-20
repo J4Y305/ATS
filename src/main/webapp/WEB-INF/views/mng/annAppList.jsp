@@ -135,7 +135,12 @@
 								<button type="button" class="btn btn-outline-primary">목록</button>
 							</div>
 						</div>
-						<!-- /.box-body -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- /.box-body -->
 	</section>
 
 

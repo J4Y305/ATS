@@ -92,8 +92,9 @@
 												<td>${appVO.appNum}</td>
 												<td><fmt:formatDate pattern="yyyy-MM-dd"
 														value="${appVO.appRegDate}" /></td>
-												<td><c:if test="${0 eq appVO.appSave}">임시저장됨
-								</c:if> <c:if test="${1 eq appVO.appSave}">최종제출됨 </c:if></td>
+												<td><c:if test="${0 eq appVO.appSave}">X</c:if> 
+													<c:if test="${1 eq appVO.appSave}">O</c:if>
+												</td>
 											</tr>
 										</c:forEach>
 									</tbody>

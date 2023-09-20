@@ -135,7 +135,7 @@
 							<div class="row mb-3 p-4 justify-content-center">
 								<div class="col-sm-5 d-flex justify-content-center">
 									<button type="button" class="btn btn-outline-danger btn-lg">취소</button>
-									<button type="submit"
+									<button type="button"
 										class="btn btn-outline-success btn-lg mx-4">등록</button>
 								</div>
 							</div>
@@ -306,13 +306,6 @@
 
 								});
 
-						$(".btn-cancel")
-								.on(
-										"click",
-										function() {
-											self.location = "annList&page=${cri.page}&perPageNum=${cri.perPageNum}"
-													+ "&searchType=${cri.searchType}&listType=${cri.listType}&keyword=${cri.keyword}";
-										});
 
 					});
 
@@ -630,18 +623,20 @@
 
 
 <script>
-	$(document).ready(function() {
-		/* 		var formObj = $("form[role='form']");
+$(document).ready(function() {
+	var formObj = $("form[role='form']");
+	console.log(formObj);
 
-		 console.log(formObj);
-
-		 $("#btn_submit").on("click", function() {
-
-		 formObj.submit();
-		 });
-		 */
-		$(".btn-outline-danger").on("click", function() {
-			self.location = "/mng/annList";
-		});
+	$(".btn-outline-danger").on("click", function() {
+		if(confirm("등록을 취소하시겠습니까?")){
+			self.location = "/mng/annList";	
+		}	
 	});
+	
+	$(".btn-outline-success").on("click", function() {
+		if(confirm("공고를 등록하시겠습니까?")){
+			formObj.submit();
+		}	
+	});
+});
 </script>

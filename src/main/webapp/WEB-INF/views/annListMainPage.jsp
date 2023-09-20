@@ -36,7 +36,7 @@
 												<th scope="row">${var.count }</th>
 											</c:if>
 											<c:if test="${pageMaker.cri.page != 1 }">
-												<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+												<th>${var.count + ((pageMaker.cri.page-1)*10) }</th>
 											</c:if>
 											<td><a
 												href='/annReadMainPage${pageMaker.makeSearch(pageMaker.cri.page) }&annNum=${annVO.annNum}'>
@@ -65,7 +65,7 @@
 								<ul class="pagination ">
 									<c:if test="${pageMaker.prev}">
 										<li class="page-item d-flex"><a class="page-link"
-											href="list${pageMaker.makeSearch(pageMaker.startPage - 1) }"
+											href="annListMainPage${pageMaker.makeSearch(pageMaker.startPage - 1) }"
 											aria-label="Previous"><span aria-hidden="true">&raquo;</span>
 										</a></li>
 									</c:if>
@@ -73,13 +73,13 @@
 										end="${pageMaker.endPage }" var="idx">
 										<li class="page-item"
 											<c:out value="${pageMaker.cri.page == idx?'class =active':''}"/>>
-											<a class="page-link" href="list${pageMaker.makeSearch(idx)}">${idx}</a>
+											<a class="page-link" href="annListMainPage${pageMaker.makeSearch(idx)}">${idx}</a>
 										</li>
 									</c:forEach>
 									<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
 										<li class="page-item"><a class="page-link"
 											aria-label="Next"
-											href="list${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
+											href="annListMainPage${pageMaker.makeSearch(pageMaker.endPage +1) }"><span
 												aria-hidden="true">&raquo;</span></a></li>
 									</c:if>
 
