@@ -51,7 +51,7 @@ public class AdminController {
 		if (vo == null) {
 			logger.info("Admin Login Post FAILED..");
 			rttr.addFlashAttribute("msg", "FAIL");
-			return "redirect:/admin/login"; 
+			return "redirect:/admin/login";
 		}
 		
 		model.addAttribute("adminVO", vo);
