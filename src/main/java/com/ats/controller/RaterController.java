@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ats.domain.RaterVO;
 import com.ats.dto.RaterLoginDTO;
@@ -32,16 +33,18 @@ public class RaterController {
 	}
 	
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(RaterLoginDTO dto, Model model) throws Exception {
+	public String loginPOST(RaterLoginDTO dto, Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("LOGIN POST...");
 		RaterVO vo = raterService.login(dto);
 		logger.info("LOGIN POST..." + dto);
 		if (vo == null) {
-			return;
+			rttr.addFlashAttribute("msg", "FAIL");
+			return "redirect:/rater/login";
 		}
 
 		model.addAttribute("raterVO", vo);
 		logger.info("register post..." + vo);
+		return "self.location = '/rater';";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

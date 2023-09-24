@@ -44,15 +44,19 @@ public class AdminController {
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(AdminLoginDTO dto, Model model) throws Exception {
+	public String loginPOST(AdminLoginDTO dto, Model model, RedirectAttributes rttr) throws Exception {
 
 		logger.info("Admin Login Post..");
 		AdminVO vo = adService.login(dto);
 		if (vo == null) {
-			return;
+			logger.info("Admin Login Post FAILED..");
+			rttr.addFlashAttribute("msg", "FAIL");
+			return "redirect:/admin/login";
 		}
-
+		
 		model.addAttribute("adminVO", vo);
+		return "self.location = '/admin';";
+		
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

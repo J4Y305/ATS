@@ -63,15 +63,17 @@ public class MngController {
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(MngLoginDTO dto, Model model) throws Exception {
+	public String loginPOST(MngLoginDTO dto, Model model, RedirectAttributes rttr) throws Exception {
 
 		logger.info("Mng Login Post..");
 		MngVO vo = mngService.login(dto);
 		if (vo == null) {
-			return;
+			rttr.addFlashAttribute("msg", "FAIL");
+			return "redirect:/mng/login";
 		}
 
 		model.addAttribute("mngVO", vo);
+		return "self.location = '/mng';";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

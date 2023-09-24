@@ -1,14 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <jsp:include page="include/mng_header.jsp" />
  <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Dashboard</h1>
+      <h1>기업담당자</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item"><a href="/mng">Home</a></li>
+          <li class="breadcrumb-item active">Manager</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -38,15 +39,17 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Posted Recruit</h5>
 
                   <div class="d-flex align-items-center">
+                  <a href="/mng/annList">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-menu-button-wide"></i>
                     </div>
+                    </a>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>${postedAnnCount}<span> 개</span></h6>
+                      
 
                     </div>
                   </div>
@@ -57,42 +60,6 @@
 
             <!-- Revenue Card -->
             <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
               <div class="card info-card customers-card">
 
                 <div class="filter">
@@ -109,15 +76,54 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
+                  <h5 class="card-title">Closed Recruit</h5>
 
                   <div class="d-flex align-items-center">
+                  <a href="/mng/annEndList">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
+                      <i class="bi bi-calendar-x"></i>
                     </div>
+                    </a>
                     <div class="ps-3">
-                      <h6>1244</h6>
-                      <span class="text-danger small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
+                      <h6>${closedAnnCount}<span> 개</span></h6>
+                      
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Revenue Card -->
+
+            <!-- Customers Card -->
+            <div class="col-xxl-4 col-xl-12">
+
+              <div class="card info-card revenue-card">
+
+                <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+                </div>
+
+                <div class="card-body">
+                  <h5 class="card-title">Rating</h5>
+
+                  <div class="d-flex align-items-center">
+                  <a href="/mng/evaList">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-clipboard-check"></i>
+                    </div>
+                    </a>
+                    <div class="ps-3">
+                      <h6>${evaCount}<span> 개</span></h6>
 
                     </div>
                   </div>
@@ -145,57 +151,50 @@
                 </div>
 
                 <div class="card-body pb-0">
-                  <h5 class="card-title">Top Selling <span>| Today</span></h5>
+                <a href="mng/annIngList">
+                  <h5 class="card-title">Ongoing Recruit</h5>
+                </a>
 
+				<div style="position: relative;">
                   <table class="table table-borderless">
                     <thead>
                       <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
+                        <th scope="col">번호</th>
+						<th scope="col">공고명</th>
+						<th scope="col">접수 시작일</th>
+						<th scope="col">접수 마감일</th>
+						<th scope="col">마감 D-day</th>
+						<th scope="col">작성자</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="/resources/admin/assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
+                    <c:forEach items="${list}" var="annVO" varStatus="var">
+                    	<c:if test="${var.index < 6}">
+							<tr>
+								<c:if test="${pageMaker.cri.page == 1 }">
+									<td>${var.count }</td>
+								</c:if>
+								<c:if test="${pageMaker.cri.page != 1 }">
+									<td>${var.count + ((pageMaker.cri.page-1)*10) }</td>
+								</c:if>
+								<td><a
+									href='/mng/annAppList${pageMaker.makeSearch(pageMaker.cri.page)}&annNum=${annVO.annNum}'>
+										${annVO.annName} </a></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${annVO.annStartDate}" /></td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${annVO.annEndDate}" /></td>
+								<td class="dDayCell">${annVO.dDay}-day</td>
+								<td>${annVO.mngId}</td>
+							</tr>
+							<div class="annEd">
+								<input type=hidden value="${annVO.annEndDate}"
+									name="annEndDate" class="annEndInput">
+							</div>
+						</c:if>
+					</c:forEach>
                     </tbody>
                   </table>
-
                 </div>
 
               </div>
@@ -226,8 +225,8 @@
               <div class="news">
                 <div class="post-item clearfix">
                   <img src="/resources/admin/assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                  <h4><a href="#">서비스 정기점검 안내 (9/2)</a></h4>
+                  <p>Greeting ATS 서비스의 정기점검을 안내드립니다.</p>
                 </div>
 
                 <div class="post-item clearfix">
@@ -267,3 +266,19 @@
   </main><!-- End #main -->
 
 <jsp:include page="include/admin_footer.jsp" />
+
+<script>
+$(document).ready(function() {
+
+	var formObj = $("form[role='form']");
+
+	console.log(formObj);
+
+	$(".btn-outline-primary").on("click", function() {
+		formObj.attr("method", "get");
+		formObj.attr("action", "/mng/annIngList");
+		formObj.submit();
+	});
+
+});
+</script>

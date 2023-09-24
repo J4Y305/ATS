@@ -44,15 +44,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/loginPost", method = RequestMethod.POST)
-	public void loginPOST(UserLoginDTO dto, Model model) throws Exception {
+	public String loginPOST(UserLoginDTO dto, Model model, RedirectAttributes rttr) throws Exception {
 
 		UserVO vo = service.login(dto);
 
 		if (vo == null) {
-			return;
+			rttr.addFlashAttribute("msg", "FAIL");
+			return "redirect:/user/login";
 		}
 
 		model.addAttribute("userVO", vo);
+		return "self.location = '/';";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -236,9 +238,11 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/appModifyPage", method = RequestMethod.POST)
-	public String appModifyPagePOST(AppVO apVo, Model model) throws Exception {
+	public String appModifyPagePOST(AppVO apVo, Model model, RedirectAttributes rttr) throws Exception {
 		logger.info("appReadPage Get...");
 		appService.modify(apVo);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
 		return "redirect:/user/appStoreList";
 	}
 

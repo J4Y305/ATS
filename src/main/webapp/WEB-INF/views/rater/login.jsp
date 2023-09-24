@@ -178,3 +178,10 @@
 <!-- Template Main JS File -->
 <script src="/resources/admin/assets/js/main.js"></script>
 </html>
+<script>
+var result = '${msg}';
+
+if (result == 'FAIL') {
+   alert("로그인 정보가 일치하지 않습니다.");
+}
+</script>
