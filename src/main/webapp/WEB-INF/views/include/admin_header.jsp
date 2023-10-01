@@ -264,7 +264,7 @@
 
 		<ul class="sidebar-nav" id="sidebar-nav">
 			<li class="nav-item"><a class="nav-link " href="/admin">
-					<i class="bi bi-grid"></i> <span>플랫폼 관리자 - Dashboard</span>
+					<i class="bi bi-grid"></i> <span>플랫폼 관리자</span>
 			</a></li>
 			<!-- End Dashboard Nav -->
 

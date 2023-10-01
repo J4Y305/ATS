@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.ats.domain.AdminVO;
 import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.SearchCriteria;
 import com.ats.service.AnnService;
 import com.ats.service.EvaService;
+import com.ats.service.MngService;
+import com.ats.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -38,6 +41,12 @@ public class HomeController {
 	
 	@Inject
 	private EvaService evaService;
+	
+	@Inject
+	private MngService mngService;
+	
+	@Inject
+	private UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
@@ -69,7 +78,8 @@ public class HomeController {
 	} 
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminHome(Locale locale, Model model) {
+	public String adminHome(Locale locale, Model model, @ModelAttribute("cri") SearchCriteria cri, 
+			HttpSession session) throws Exception{
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -79,6 +89,14 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
+		// 어드민 아이디 가져오기
+		AdminVO aVo = (AdminVO) session.getAttribute("login");
+		cri.setKeyword(aVo.getAdminId());
+		
+		model.addAttribute("companyCount", mngService.listSearchCount(cri));
+		model.addAttribute("userCount", userService.listSearchCount(cri));
+		
+		
 		return "admin_home";
 	}
 

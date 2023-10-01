@@ -8,7 +8,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Admin</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -38,15 +38,17 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
+                  <h5 class="card-title">Company</span></h5>
 
                   <div class="d-flex align-items-center">
+                  <a href="/admin/mngList">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
+                      <i class="bi bi-building"></i>
                     </div>
+                    </a>
                     <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>${companyCount}</h6>
+                      
 
                     </div>
                   </div>
@@ -73,15 +75,17 @@
                 </div>
 
                 <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
+                  <h5 class="card-title">User</h5>
 
                   <div class="d-flex align-items-center">
+                  <a href="/admin/userList">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-dollar"></i>
+                      <i class="bi bi-person-fill"></i>
                     </div>
+                    </a>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
+                      <h6>${userCount}</h6>
+                      
 
                     </div>
                   </div>
@@ -91,7 +95,7 @@
             </div><!-- End Revenue Card -->
 
             <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
+            <!-- <div class="col-xxl-4 col-xl-12">
 
               <div class="card info-card customers-card">
 
@@ -125,10 +129,11 @@
                 </div>
               </div>
 
-            </div><!-- End Customers Card -->
+            </div>-->
+             <!-- End Customers Card -->
 
             <!-- Top Selling -->
-            <div class="col-12">
+            <!-- <div class="col-12">
               <div class="card top-selling overflow-auto">
 
                 <div class="filter">
@@ -199,7 +204,8 @@
                 </div>
 
               </div>
-            </div><!-- End Top Selling -->
+            </div> -->
+            <!-- End Top Selling -->
 
           </div>
         </div><!-- End Left side columns -->
@@ -226,8 +232,8 @@
               <div class="news">
                 <div class="post-item clearfix">
                   <img src="/resources/admin/assets/img/news-1.jpg" alt="">
-                  <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                  <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
+                  <h4><a href="#">서비스 정기점검 안내 (9/2)</a></h4>
+                  <p>Greeting ATS 서비스의 정기점검을 안내드립니다.</p>
                 </div>
 
                 <div class="post-item clearfix">
