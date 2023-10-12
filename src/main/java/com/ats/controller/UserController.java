@@ -34,7 +34,7 @@ public class UserController {
 
 	@Inject
 	private AppService appService;
-	
+
 	@Inject
 	private AnnService annService;
 
@@ -85,30 +85,27 @@ public class UserController {
 
 		return "redirect:/";
 	}
-	
-	
-	//비번확인
-		@ResponseBody
-		@RequestMapping(value = "/pwdc", method = RequestMethod.POST)
-		public int pwdc(UserVO vo) throws Exception {
-			int result = service.pwdc(vo);
-			return result;
-		}
-		
-		/*//아이디중복췍
-		@ResponseBody
-		@RequestMapping(value="/idc", method = RequestMethod.POST)
-		public int idc(UserVO vo) throws Exception {
-			int result = service.idc(vo);
-			return result;
-		
-		}*/
-	@RequestMapping(value = "/user/idc")
-	@ResponseBody
-	public int idc(@RequestParam("id") UserVO vo) throws Exception{
-		int cnt = service.idc(vo);
-		return cnt;
+
+	// 비번확인
+	@RequestMapping(value = "/pwdc", method = RequestMethod.POST)
+	public int pwdc(UserVO vo) throws Exception {
+		int result = service.pwdc(vo);
+		return result;
 	}
+
+	@RequestMapping(value = "/idCheckForm", method = RequestMethod.GET)
+	public void idcGet() throws Exception {
+		logger.info("idCheck GET...");
+	}
+
+	@RequestMapping(value="/idCheckForm", method = RequestMethod.POST)
+	public String idcPost(@RequestParam("userId") String userId, RedirectAttributes rttr, Model model) throws Exception {
+		int result = service.idc(userId);
+		rttr.addFlashAttribute("message", result);
+		rttr.addFlashAttribute("userId", userId);
+		return "redirect:/user/idCheckForm";
+	}
+
 	// LISTPAGE
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
@@ -172,10 +169,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/appStoreList", method = RequestMethod.GET)
-	public void appStoreList(UserVO vo, HttpSession session, @ModelAttribute("cri") SearchCriteria cri,
-			Model model) throws Exception {
+	public void appStoreList(UserVO vo, HttpSession session, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
 		logger.info("app Store Get...");
-		
+
 		UserVO user = (UserVO) session.getAttribute("login");
 		String userId = user.getUserId();
 		cri.setKeyword(userId);
@@ -192,8 +189,8 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/appFinalList", method = RequestMethod.GET)
-	public void annAppList(UserVO vo, HttpSession session, @ModelAttribute("cri") SearchCriteria cri,
-			Model model) throws Exception {
+	public void annAppList(UserVO vo, HttpSession session, @ModelAttribute("cri") SearchCriteria cri, Model model)
+			throws Exception {
 		logger.info("app Final Get...");
 
 		UserVO user = (UserVO) session.getAttribute("login");
@@ -202,7 +199,7 @@ public class UserController {
 		logger.info("final" + appService.listFinalCriteria(cri));
 		// 지원서 리스트 가져오기
 		model.addAttribute("list", appService.listFinalCriteria(cri));
-		
+
 		// 페이징 네비게이션 추가
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri);
@@ -220,7 +217,7 @@ public class UserController {
 		model.addAttribute(appService.read(appNum));
 		model.addAttribute(annService.read(annNum));
 	}
-	
+
 	@RequestMapping(value = "/appFinalReadPage", method = RequestMethod.GET)
 	public void appFinalReadPageGET(@RequestParam("appNum") int appNum, @RequestParam("annNum") int annNum, Model model)
 			throws Exception {
@@ -242,7 +239,7 @@ public class UserController {
 		logger.info("appReadPage Get...");
 		appService.modify(apVo);
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+
 		return "redirect:/user/appStoreList";
 	}
 
@@ -254,29 +251,27 @@ public class UserController {
 
 		return "redirect:/user/appStoreList";
 	}
-	
-	// 사용자가 지원한 결과를 확인하는 기능
-		@RequestMapping(value = "/appResultList", method = RequestMethod.GET)
-		public void resultPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session,
-				Model model) throws Exception {
-			logger.info("listPage GET.....");
 
-			UserVO vo = (UserVO) session.getAttribute("login");
-			String userId = vo.getUserId();
-			
-			
-			// 선택된 페이지의 게시글 정보로 10개 가져오기
-			model.addAttribute("list", appService.listAppPassCriteria(userId));
-			
-			// 페이징 네비게이션 추가
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(appService.listCountAppPass(userId));
-			// 페이징 정보 화면 전달 
-			model.addAttribute("pageMaker", pageMaker);
-			
-			
-			logger.info("result Model....." + model);
-			logger.info("result cri....." + cri);
-		}
+	// 사용자가 지원한 결과를 확인하는 기능
+	@RequestMapping(value = "/appResultList", method = RequestMethod.GET)
+	public void resultPage(@ModelAttribute("cri") SearchCriteria cri, HttpSession session, Model model)
+			throws Exception {
+		logger.info("listPage GET.....");
+
+		UserVO vo = (UserVO) session.getAttribute("login");
+		String userId = vo.getUserId();
+
+		// 선택된 페이지의 게시글 정보로 10개 가져오기
+		model.addAttribute("list", appService.listAppPassCriteria(userId));
+
+		// 페이징 네비게이션 추가
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(appService.listCountAppPass(userId));
+		// 페이징 정보 화면 전달
+		model.addAttribute("pageMaker", pageMaker);
+
+		logger.info("result Model....." + model);
+		logger.info("result cri....." + cri);
+	}
 }

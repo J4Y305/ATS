@@ -44,12 +44,12 @@
 		WHERE
 		USER_ID = #{userId}
 	</select> -->
-	<select id="idc" resultType = "int" parameterType = "String">
-    SELECT COUNT(id)
+	<select id="idc" resultType="int">
+    SELECT COUNT(USER_ID)
     FROM
     	TBL_USER
     WHERE
-    	userId = #{userId}	
+    	USER_ID = #{userId}	
 </select>
    
    

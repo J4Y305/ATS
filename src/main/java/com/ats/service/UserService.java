@@ -21,7 +21,7 @@ public interface UserService {
    
    public int pwdc(UserVO vo) throws Exception;
    
-   public int idc(UserVO vo) throws Exception;
+   public int idc(String userId) throws Exception;
    
    // 페이징, 검색할 수 있는 list
    public List<UserVO> listSearch(SearchCriteria cri) throws Exception;

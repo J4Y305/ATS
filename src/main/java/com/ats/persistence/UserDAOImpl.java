@@ -52,8 +52,8 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public int idc(UserVO vo) throws Exception {
-		int result = session.selectOne(namespace + "idc", vo);
+	public int idc(String userId) throws Exception {
+		int result = session.selectOne(namespace + ".idc", userId);
 		return result;
 	}
 

@@ -57,7 +57,7 @@
 	function openIdChk(){
         
         window.name = "parentForm";
-        window.open("/user/idCheckForm.jsp",
+        window.open("/user/idCheckForm",
                 "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
     }
 	
@@ -221,7 +221,6 @@
 
 	</div>
 	</main>
-
 	<!-- End #main -->
 
 	<a href="#"

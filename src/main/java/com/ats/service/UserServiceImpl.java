@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int idc(UserVO vo) throws Exception {
-		int result = dao.idc(vo);
+	public int idc(String userId) throws Exception {
+		int result = dao.idc(userId);
 		return result;
 	}
 
