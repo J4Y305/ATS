@@ -43,7 +43,7 @@
 									<input type="date" id="startDate" class="form-control"
 										value=<fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annStartDate}"/>>
-									<input type="hidden" class="form-control" name="annStartDate" value="${annVO.annStartDate}">
+									<input type="hidden" class="form-control" name="annStartDate" id="originSd" value="${annVO.annStartDate}">
 								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
@@ -52,7 +52,7 @@
 									<input type="date" id="endDate" class="form-control"
 										value=<fmt:formatDate pattern="yyyy-MM-dd"
 													value="${annVO.annEndDate}"/>>
-									<input type="hidden" class="form-control" name="annEndDate" value="${annVO.annEndDate}">
+									<input type="hidden" class="form-control" name="annEndDate" id="originEd" value="${annVO.annEndDate}">
 								</div>
 							</div>
 							<div class="row mb-3 p-4 justify-content-center">
@@ -205,13 +205,14 @@
 		}
 	})
 	// 시작일 날짜형으로 변환
-	$('#startDate').change(function() {
+	$('#startDate').click(function() {
+		console.log($('#startDate').val());
 		var sd = new Date($('#startDate').val());
 		console.log(sd);
 		$('input[name=annStartDate]').val(sd);
 	})
 	// 마감일 날짜형으로 변환
-	$('#endDate').change(function() {
+	$('#endDate').click(function() {
 		var ed = new Date($('#endDate').val());
 		console.log(ed);
 		$('input[name=annEndDate]').val(ed);

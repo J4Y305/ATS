@@ -32,14 +32,14 @@
 									</h5>
 								</div>
 								<div class="row mb-3 ">
-									<label class="col-sm-3 col-form-label fw-bold">평가명: :</label>
+									<label class="col-sm-3 col-form-label fw-bold">평가명:</label>
 									<div class="col-sm-5">
 										<div class="pt-2">${evaVO.evaName}</div>
 									</div>
 								</div>
 								<div class="row mb-3 ">
 									<label class="col-sm-3 col-form-label fw-bold">평가 공고명:
-										:</label>
+										</label>
 									<div class="col-sm-5">
 										<div class="pt-2">${annVO.annName}</div>
 									</div>
@@ -173,7 +173,7 @@
 
 						<div class="box-footer">
 							<div style="display: flex; justify-content: center;">
-								<button type="submit" class="btn btn-outline-primary"
+								<button type="button" class="btn btn-outline-primary"
 									id="submitBtn">평가 완료</button>
 							</div>
 						</div>
