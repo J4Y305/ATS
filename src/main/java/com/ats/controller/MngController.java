@@ -73,7 +73,7 @@ public class MngController {
 		}
 
 		model.addAttribute("mngVO", vo);
-		return "self.location = '/mng';";
+		return "mng_home";
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)

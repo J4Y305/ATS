@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -53,28 +55,7 @@
   ======================================================== -->
 </head>
 <body>
-	<script type="text/javascript">
-	function openIdChk(){
-        
-        window.name = "parentForm";
-        window.open("/user/idCheckForm",
-                "chkForm", "width=500, height=300, resizable = no, scrollbars = no");    
-    }
-	
-	function inputIdChk(){
-        document.userInfo.idDuplication.value ="idUncheck";
-    }
-	
-	function fn_joinMember(){
-		var userInfo = document.userInfo;
-		var id = userInfo.userId.value;
-		
-		if(userInfo.idDuplication.value != "idCheck"){
-			alert("아이디 중복확인을 해주세요!");
-			userInfo.userId.focus();
-		}
-	}
-	</script>
+ 	
 	
 	<main>
 	<div class="container">
@@ -105,20 +86,14 @@
 									create account</p>
 							</div>
 
-							<form class="row g-3 needs-validation" method="post" name="userInfo" novalidate>
+							<form class="row g-3 needs-validation" role ="form"method="post" name="userInfo" novalidate>
 								<div class="col-12">
 									<label for="yourUsername" class="form-label">ID</label> 
 									<!-- <input type="text" name="userId" class="form-control" id="yourUsername" required> -->
-									 <input type="text" name="userId" maxlength="50" onkeydown="inputIdChk()" 
-									 class="form-control" id="yourUsername" required>
-									 <input type="button" value="중복확인" onclick="openIdChk()" class="btn btn-outline-success">    
-                        				<input type="hidden" name="idDuplication" value="idUncheck" >
+									 <input type="text" name="userId" maxlength="50" class="form-control" id="userId" required>
+									 <input type="button" value="중복확인" id="idCheck" class="btn btn-outline-success">    
+                        				<span id = "isIdOk"></span>
 									<div class="invalid-feedback">Please, enter your ID!</div>
-									<!-- <button class="idc" type="button" id="idc" onclick="idc();"
-										value="N">중복확인</button> -->
-									<!-- <span class="id_ok" style="color: green; display: none;">사용가능한
-										아이디입니다</span> <span class="id_already"
-										style="color: red; display: none;">중복된 아이디입니다</span> -->
 								</div>
 
 								<div class="col-12">
@@ -192,7 +167,7 @@
 									</div>
 								</div>
 								<div class="col-12">
-									<button class="btn btn-primary w-100" type="submit">Create
+									<button class="btn btn-primary w-100" type="button">Create
 										Account</button>
 								</div>
 								<div class="col-12">
@@ -221,6 +196,7 @@
 
 	</div>
 	</main>
+
 	<!-- End #main -->
 
 	<a href="#"
@@ -243,5 +219,64 @@
 	<!-- Template Main JS File -->
 	<script src="/resources/admin/assets/js/main.js"></script>
 
+
+<script>
+$(document).ready(function() {
+	var formObj = $("form[role='form']");
+	var idDuplicate = 0;
+	
+	$('input[name="userId"]').keydown(function(){
+ 		$('#isIdOk').css("display", "none");
+ 		idDuplicate = 0;
+ 	});
+ 		
+ 	$('#idCheck').click(function(){
+ 		
+ 		if($('#userId').val() !=''){
+ 		
+ 			var id = $('#userId').val(); //id값이 "id"인 입력란의 값을 저장
+ 			
+	        $.ajax({
+	            url:'/user/idc',  //Controller에서 요청 받을 주소
+	            type:'POST', //POST 방식으로 전달
+	            data:{userId:id},
+	            success:function(result){ //컨트롤러에서 넘어온 cnt값을 받는다 
+	            	console.log(idDuplicate);
+	                if(result != 1 && id.length> 0){ // result가 1이 아니면(=0일 경우) -> 사용 가능한 아이디 
+	                	$('#isIdOk').css("display", "inline-block");
+	                	$('#isIdOk').text("사용가능한 아이디입니다.").css("color", "green");
+	                	idDuplicate = 1;
+	                } else if(result == 1 && id.length > 0){ // result가 1일 경우 -> 이미 존재하는 아이디
+	                	$('#isIdOk').css("display", "inline-block");
+	                	$('#isIdOk').text("이미 존재하는 아이디입니다.").css("color", "red");
+	                	$('#userId').focus();
+	                	idDuplicate = 0;
+	                } else{
+	                	$('#isIdOk').css("display", "none");
+	                }
+	            
+	            },
+	            error:function(){
+	                alert("에러입니다");
+	            }
+        });
+ 	} else{
+ 		alert("아이디를 입력하세요.");
+ 		$('#userId').focus();
+ 	}
+        
+        });
+ 	
+ 	$(".btn-primary").on("click", function(){
+ 		if(idDuplicate == 0){
+ 			alert("아이디 중복확인을 해주세요.");
+ 		} else{
+			formObj.submit();
+ 		}
+ 	});
+ });
+ 	
+
+ 	</script>
 </body>
 </html>

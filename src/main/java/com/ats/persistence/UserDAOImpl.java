@@ -1,5 +1,7 @@
 package com.ats.persistence;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -50,9 +52,8 @@ public class UserDAOImpl implements UserDAO {
 		int result = session.selectOne(namespace + ".pwdc", vo);
 		return result;
 	}
-
-	@Override
-	public int idc(String userId) throws Exception {
+	
+	public int idc(String userId) throws Exception{
 		int result = session.selectOne(namespace + ".idc", userId);
 		return result;
 	}

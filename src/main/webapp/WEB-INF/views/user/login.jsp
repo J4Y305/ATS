@@ -101,7 +101,7 @@
 							<a href="/"
 								class="logo d-flex align-items-center w-auto"> <img
 								src="/resources/user/assets/img/logo.png" alt=""> <span
-								class="d-none d-lg-block">Greeting ATS</span>
+								class="d-lg-block">Greeting ATS</span>
 							</a>
 							
 						
@@ -151,7 +151,7 @@
 									</div>
 									<div class="col-12">
 										<p class="small mb-0">
-											Don't have account? <a href="/user/register">Create an
+											Don't have account? <a href="/user/userRegister">Create an
 												account</a>
 										</p>
 									</div>
@@ -165,7 +165,7 @@
 							<!-- You can delete the links only if you purchased the pro version. -->
 							<!-- Licensing information: https://bootstrapmade.com/license/ -->
 							<!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-							Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+							
 						</div>
 
 					</div>
@@ -200,10 +200,3 @@
 
 </body>
 </html>
-<script>
-var result = '${msg}';
-
-if (result == 'FAIL') {
-   alert("로그인 정보가 일치하지 않습니다.");
-}
-</script>

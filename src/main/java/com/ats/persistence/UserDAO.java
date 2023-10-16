@@ -18,10 +18,10 @@ public interface UserDAO {
    
    public void delete(String userId) throws Exception;
    
-   	// 패스워트 체크
+   // 패스워트 체크
    public int pwdc(UserVO vo) throws Exception;
-   
-   // 아이디 중복 확인
+	
+   // 아이디 중복 확인	
    public int idc(String userId) throws Exception;
    
    // 페이징, 검색할 수 있는 list

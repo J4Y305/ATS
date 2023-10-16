@@ -14,8 +14,7 @@
 		<h2>채용 공고</h2>
 	</div>
 	<!-- End Breadcrumbs -->
-
-	<section id="pricing" class="pricing " style="padding-top: 1px;">
+	<div class="container aos-init aos-animate" data-aos="fade-up">
 		<div class="card " data-aos="fade-up">
 			<div class="card-body">
 				<h5 class="card-title"></h5>
@@ -59,8 +58,6 @@
 											<ol class="justify-content-center">
 												<img src="/displayFile?fileName=${annImageVO.fileLocation}" class="img-fluid">
 											</ol>
-
-
 										</c:forEach>
 									</ul>
 								</c:if>
@@ -68,7 +65,7 @@
 								</c:if>
 								<br> <br>
 								<div class="portfolio-description">
-									<p>${annVO.detail}</p>
+									<p style="white-space:pre-line;">${annVO.detail}</p>
 								</div>
 								<hr />
 
@@ -77,69 +74,19 @@
 									<h3>
 										<strong>첨부파일</strong>
 									</h3>
-
-
-
-									<ul class="dropzone-previews">
-
+									<ul>
 										<c:forEach items="${annFileVO}" var="annFileVO"
 											varStatus="status">
 											<c:set var="annFileName" value="${annFileVO.annFileName}" />
-											<c:set var="annFileNum"
-												value="${fn:toLowerCase(annFileName)}" />
-
-											<li class="dropzone-previews mt-3">
-												<div
-													class="card mt-1 mb-0 shadow-none border dz-processing dz-image-preview dz-success dz-complete">
+											<c:set var="annFileNum" value="${fn:toLowerCase(annFileName)}" />
+											<li>
+												<div>
 													<div class="p-2">
 														<div class="row align-items-center">
-															<%--<c:forTokens var="token" items="${annFileNum}"
-																		delims="." varStatus="status">
-																		<c:if test="${status.last}">
-																			<c:choose>
-																				<c:when test="${token eq 'hwp'}">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/hwp.png"
-																						alt="${annFileName}" />
-																				</c:when>
-																				<c:when test="${token eq 'xls' || token eq 'xlsx' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/excelIcon.png" />
-																				</c:when>
-																				<c:when
-																					test="${token eq 'jpg' || token eq 'gif' || token eq 'png' || token eq 'bmp' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/displayFile?fileName=${annFileVO.fileLocation}">
-																				</c:when>
-																				<c:when test="${token eq 'pdf'}">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/pdf.png"
-																						alt="${annFileName}" />
-																				</c:when>
-																				<c:when test="${token eq 'ppt' }">
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/ppt.png"
-																						alt="${annFileName}" />
-																				</c:when>
-																				<c:otherwise>
-																					<img data-dz-thumbnail=""
-																						class="avatar-sm rounded bg-light"
-																						src="/resources/dist/img/file.svg"
-																						alt="${annFileName}" />
-																				</c:otherwise>
-																			</c:choose>
-																		</c:if>
-																	</c:forTokens> --%>
 															<div class="col">
 																<div class="icon">
 																	<i class="bi bi-box-arrow-down"> <a
-																		href="/displayFile?fileName=${annFileVO.fileLocation}"
-																		text-muted font-weight-bold data-dz-name="">
+																		href="/displayFile?fileName=${annFileVO.fileLocation}" text-muted font-weight-bold data-dz-name="">
 																			${annFileVO.annFileName}</a></i>
 																</div>
 															</div>
@@ -171,10 +118,8 @@
 			</div>
 		</div>
 		</div>
-
 	</section>
-	</div>
-</section>
+
 <!-- End Contact Section --> </main>
 <!-- End #main -->
 

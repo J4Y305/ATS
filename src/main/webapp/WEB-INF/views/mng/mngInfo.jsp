@@ -149,9 +149,9 @@
 								<div class="row mb-3 p-4 justify-content-center">
 									<div class="col-sm-10 d-flex justify-content-center">
 										<button type="submit" onclick=""
-											class="btn btn-outline-warning btn-lg mx-4">수정</button>
+											class="btn btn-outline-warning mx-4">수정</button>
 										<button type="submit" onclick=""
-											class="btn btn-outline-primary btn-lg">홈화면</button>
+											class="btn btn-outline-primary">홈화면</button>
 									</div>
 								</div>
 							</div>

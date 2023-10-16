@@ -67,8 +67,7 @@
 								<div id="example1"
 									style="height: 80rem;"></div>
 								<script>
-									PDFObject.embed("/file/${appVO.appFile}",
-											"#example1");
+									PDFObject.embed("/file/${appVO.appFile}", "#example1");
 								</script>
 							</div>
 						</div>

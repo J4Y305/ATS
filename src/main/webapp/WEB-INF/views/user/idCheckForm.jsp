@@ -57,17 +57,15 @@
 <div class="card">
 	<div class="card-body">
 		<h5 class="card-title">ID 중복확인</h5>
-		<form method=post name=formm style="margin-right: 0"
-			action="idCheckForm">
+		<form method=post name=formm style="margin-right: 0" action="idCheckForm">
 			<div class="row">
 				<div class="form-group col-md-6">
-					<input type=text name="userId" value="" class="form-control"
-						id="userId" required> <input type=submit value="검색"
-						class="submit btn btn-outline-primary my-3" ><br>
+					<input type=text name="userId" value="${userId}" class="form-control" id="userId" required> 
+					<input type=submit value="확인" class="submit btn btn-outline-primary my-3" ><br>
 					<div class="modal-body">
 						<c:if test="${message == 1}">
 							<script type="text/javascript">
-								opener.document.formm.id.value = "";
+								opener.document.formm.userId.value = "";
 							</script>
         ${userId}는 이미 사용중인 아이디입니다.
       </c:if>

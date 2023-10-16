@@ -29,9 +29,6 @@
 			</div>
 
 
-
-
-
 			<div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in"
 				data-aos-delay="200">
 				<!-- Slides with indicators -->
@@ -127,40 +124,6 @@
 	</div>
 </section>
 <!-- End Cliens Section --> <!-- ======= About Us Section ======= -->
-<section id="about" class="about">
-	<div class="container" data-aos="fade-up">
-
-		<div class="section-title">
-			<h2>About Greeting ATS</h2>
-		</div>
-
-		<div class="row content">
-			<div class="col-lg-6">
-				<ul>
-					<li><i class="ri-check-double-line"></i> ATS란, <strong>A</strong>pplication
-						<strong>T</strong>racking <strong>S</strong>ystem의 약자로 사용자와 기업간
-						지원서 제출 및 평가 기능을 수행합니다. <br>ATS, Application Tracking System,
-						performs application submission and evaluation functions between
-						users and companies.</li>
-
-				</ul>
-			</div>
-			<div class="col-lg-6 pt-4 pt-lg-0">
-				<ul>
-					<li><i class="ri-check-double-line"></i> ATS는 기존의 고착화된 평가 절차보다
-						쉽고 신속하게 진행해 빠르고 정확한 지원 및 평가를 경험하실 수 있습니다. <br>ATS will make
-						you to experience faster and more accurate support and assessment
-						by easier and faster assessment procedures than traditional.</li>
-
-				</ul>
-
-			</div>
-		</div>
-
-	</div>
-</section>
-<!-- End About Us Section -->
-
 
 <section id="ann" class="services section-bg">
 	<div class="container" data-aos="fade-up">
@@ -217,6 +180,42 @@
 	</div>
 
 </section>
+<section id="about" class="about">
+	<div class="container" data-aos="fade-up">
+
+		<div class="section-title">
+			<h2>About Greeting ATS</h2>
+		</div>
+
+		<div class="row content">
+			<div class="col-lg-6">
+				<ul>
+					<li><i class="ri-check-double-line"></i> ATS란, <strong>A</strong>pplication
+						<strong>T</strong>racking <strong>S</strong>ystem의 약자로 사용자와 기업간
+						지원서 제출 및 평가 기능을 수행합니다. <br>ATS, Application Tracking System,
+						performs application submission and evaluation functions between
+						users and companies.</li>
+
+				</ul>
+			</div>
+			<div class="col-lg-6 pt-4 pt-lg-0">
+				<ul>
+					<li><i class="ri-check-double-line"></i> ATS는 기존의 고착화된 평가 절차보다
+						쉽고 신속하게 진행해 빠르고 정확한 지원 및 평가를 경험하실 수 있습니다. <br>ATS will make
+						you to experience faster and more accurate support and assessment
+						by easier and faster assessment procedures than traditional.</li>
+
+				</ul>
+
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- End About Us Section -->
+
+
+
 
 
 <section id="company" class="portfolio">

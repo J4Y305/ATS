@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,14 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.ats.domain.AdminVO;
-import com.ats.domain.MngVO;
 import com.ats.domain.PageMaker;
 import com.ats.domain.SearchCriteria;
 import com.ats.service.AnnService;
-import com.ats.service.EvaService;
-import com.ats.service.MngService;
-import com.ats.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -38,15 +32,6 @@ public class HomeController {
 	
 	@Inject
 	private AnnService annService;
-	
-	@Inject
-	private EvaService evaService;
-	
-	@Inject
-	private MngService mngService;
-	
-	@Inject
-	private UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
@@ -78,8 +63,7 @@ public class HomeController {
 	} 
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminHome(Locale locale, Model model, @ModelAttribute("cri") SearchCriteria cri, 
-			HttpSession session) throws Exception{
+	public String adminHome(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -89,20 +73,11 @@ public class HomeController {
 
 		model.addAttribute("serverTime", formattedDate);
 
-		// 어드민 아이디 가져오기
-		AdminVO aVo = (AdminVO) session.getAttribute("login");
-		cri.setKeyword(aVo.getAdminId());
-		
-		model.addAttribute("companyCount", mngService.listSearchCount(cri));
-		model.addAttribute("userCount", userService.listSearchCount(cri));
-		
-		
 		return "admin_home";
 	}
 
 	@RequestMapping(value = "/mng", method = RequestMethod.GET)
-	public String mngHome(Locale locale, Model model, @ModelAttribute("cri") SearchCriteria cri, 
-			HttpSession session) throws Exception{
+	public String mngHome(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 
 		Date date = new Date();
@@ -111,25 +86,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 
 		model.addAttribute("serverTime", formattedDate);
-		
-		// 기업 담당자 아이디 가져오기
-		MngVO mVo = (MngVO) session.getAttribute("login");
-		cri.setKeyword(mVo.getMngId());
 
-		// 본인이 작성한 공고글 리스트 가져오기
-		model.addAttribute("list", annService.listIngSearch(cri));
-		model.addAttribute("postedAnnCount", annService.listSearchCount(cri));
-		model.addAttribute("closedAnnCount", annService.listEndSearchCount(cri));
-		model.addAttribute("evaCount", evaService.listMngEvaCount(cri));
-		
-		// 페이징 네비게이션 추가
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(annService.listIngSearchCount(cri));
-
-		// 페이징 정보 화면 전달
-		model.addAttribute("pageMaker", pageMaker);
-		
 		return "mng_home";
 	}
 

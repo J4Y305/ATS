@@ -668,6 +668,9 @@
 	$(document)
 			.ready(
 					function() {
+						document.getElementById('startDate').click();
+						document.getElementById('endDate').click();
+						
 						var formObj = $("form[role='form']");
 
 						console.log(formObj);

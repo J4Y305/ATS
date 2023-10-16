@@ -91,9 +91,7 @@
 									<h5 class="card-title">지원서</h5>
 									<div id="example1" style="height: 750px;"></div>
 									<script>
-										PDFObject.embed(
-												"/file/${appVO.appFile}",
-												"#example1");
+										PDFObject.embed("/file/${appVO.appFile}","#example1");
 									</script>
 								</div>
 							</div>

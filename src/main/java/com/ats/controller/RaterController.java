@@ -37,14 +37,15 @@ public class RaterController {
 		logger.info("LOGIN POST...");
 		RaterVO vo = raterService.login(dto);
 		logger.info("LOGIN POST..." + dto);
+		
 		if (vo == null) {
 			rttr.addFlashAttribute("msg", "FAIL");
 			return "redirect:/rater/login";
 		}
 
 		model.addAttribute("raterVO", vo);
-		logger.info("register post..." + vo);
-		return "self.location = '/rater';";
+		
+		return "rater_home";
 	}
 	
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
